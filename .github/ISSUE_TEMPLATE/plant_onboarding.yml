@@ -1,0 +1,47 @@
+name: Onboard new plant
+description: Request onboarding of a new cement or brick plant onto the platform
+title: "[Onboard]: "
+labels: ["plant-onboarding", "outreach"]
+body:
+  - type: input
+    id: plant_name
+    attributes:
+      label: Plant name
+      placeholder: "Hetauda Cement Industries Ltd"
+    validations:
+      required: true
+  - type: dropdown
+    id: plant_type
+    attributes:
+      label: Plant type
+      options:
+        - cement_dry
+        - cement_wet
+        - cement_blended
+        - brick_clamp_traditional
+        - brick_clamp_improved
+        - brick_zigzag
+        - brick_tunnel
+        - brick_hoffman
+    validations:
+      required: true
+  - type: input
+    id: capacity
+    attributes:
+      label: Annual capacity (tonnes/year)
+      placeholder: "1,100,000"
+  - type: input
+    id: province
+    attributes:
+      label: Province
+      placeholder: "Bagmati"
+  - type: input
+    id: contact
+    attributes:
+      label: Manager contact (email or phone)
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes (data available, timeline, blockers)

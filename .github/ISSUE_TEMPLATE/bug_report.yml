@@ -1,0 +1,80 @@
+name: Bug Report
+description: Report a bug in nepal_decarb_pro
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill in as much as you can.
+  - type: input
+    id: version
+    attributes:
+      label: nepal_decarb_pro version
+      placeholder: "1.1.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Ubuntu 22.04
+        - Ubuntu 20.04
+        - Debian 11
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: python
+    attributes:
+      label: Python version
+      options:
+        - "3.10"
+        - "3.11"
+        - "3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      placeholder: |
+        Tell us what went wrong. Include the exact error message.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. install: `pip install -e .`
+        2. run: `python scripts/run_pilot.py`
+        3. see error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / output
+      render: shell
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission checklist
+      options:
+        - label: I have read the documentation in pro/docs/
+          required: true
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I have run the test suite and it passes locally
+          required: false

@@ -1,0 +1,40 @@
+# Render.com — one-click deploy
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: nepal-decarb-api
+    runtime: python
+    rootDir: pro
+    plan: free
+    buildCommand: "pip install --upgrade pip && pip install -e . && pip install fastapi uvicorn pydantic numpy scipy pandas matplotlib reportlab openpyxl pyyaml requests"
+    startCommand: "uvicorn nepal_decarb_pro.api:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: LLM_BACKEND
+        value: stub
+      - key: TZ
+        value: Asia/Kathmandu
+    healthCheckPath: /health
+    autoDeploy: true
+
+  - type: web
+    name: nepal-decarb-explorer
+    runtime: static
+    rootDir: pro/site
+    plan: free
+    buildCommand: "echo 'static site, no build needed'"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    autoDeploy: true
+
+databases:
+  - name: nepal-decarb-db
+    plan: free
+    databaseName: nepal_decarb
+    user: nepal_admin

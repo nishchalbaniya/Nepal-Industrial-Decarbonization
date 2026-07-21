@@ -1,0 +1,18 @@
+# CODEOWNERS — auto-assigns reviewers
+# Order matters: later patterns override earlier.
+
+# Default: Nishchal owns everything
+*       @nishchalbaniya
+
+# Standards modules need compliance review
+/pro/nepal_decarb_pro/standards/  @nishchalbaniya @compliance-team
+/pro/nepal_decarb_pro/markets/    @nishchalbaniya @compliance-team
+/pro/docs/RATING_95_PLUS.md       @nishchalbaniya @compliance-team
+
+# Deployment is sensitive
+/pro/deploy/                     @nishchalbaniya @devops-team
+/pro/.github/workflows/          @nishchalbaniya @devops-team
+
+# LLM advisor is GPU-cost-sensitive
+/pro/nepal_decarb_pro/llm/       @nishchalbaniya @ai-team
+/pro/deploy/vllm/                @nishchalbaniya @ai-team
