@@ -1,0 +1,19 @@
+{
+  "project_name": "Hetauda Cement Decarbonization - Biomass Co-firing + WHR",
+  "project_type": "cement",
+  "methodology": "Verra VCS AMS-III.H (alternative fuels + waste-heat recovery)",
+  "crediting_period_years": 10,
+  "baseline_annual_tco2": 861025.36,
+  "project_annual_tco2": 791171.45,
+  "leakage_annual_tco2": 3492.7,
+  "net_annual_reduction_tco2": 66361.21,
+  "cumulative_reduction_tco2": 663612.15,
+  "annual_revenue_usd": 995418.0,
+  "npv_revenue_usd": 6116414.0,
+  "npv_at_30_usd": 12232828.0,
+  "npv_at_50_usd": 20388047.0,
+  "additionality_screening": "PASS",
+  "buffer_pool_pct": 0.15,
+  "buffer_deduction_annual_tco2": 9954.18,
+  "net_issuable_annual_tco2": 56407.03
+}

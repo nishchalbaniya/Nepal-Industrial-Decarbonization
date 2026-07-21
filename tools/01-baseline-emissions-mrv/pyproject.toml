@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nepal-mrv"
+version = "0.1.0"
+description = "Baseline emissions calculation and MRV tool for Nepalese cement & brick industry (Verra VCS / Gold Standard compatible)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Nishchal Baniya", email = "nishchal.baniya@himalayancarbonnepal.com"},
+]
+keywords = ["carbon", "cement", "brick", "nepal", "mrv", "verra", "gold-standard", "ipcc", "decarbonization"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Manufacturing",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Environment",
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pydantic>=2.0",
+  "streamlit>=1.30",
+  "plotly>=5.18",
+  "matplotlib>=3.7",
+  "fpdf2>=2.7",
+  "click>=8.1",
+  "pyyaml>=6.0",
+  "tabulate>=0.9",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.1"]
+full = ["streamlit>=1.30", "folium>=0.15", "streamlit-folium>=0.18"]
+
+[project.scripts]
+nepal-mrv = "nepal_mrv.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"

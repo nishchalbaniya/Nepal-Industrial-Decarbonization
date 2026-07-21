@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Baniya
+    given-names: Nishchal
+    email: nishchal.baniya@himalayancarbonnepal.com
+    affiliation: Himalayan Carbon Nepal
+title: "Nepal Industrial Decarbonization Suite"
+version: 0.1.0
+date-released: 2026-07-21
+license: MIT
+type: software
+keywords:
+  - carbon
+  - cement
+  - brick
+  - nepal
+  - decarbonization
+  - mrv
+  - climate
+  - open-source

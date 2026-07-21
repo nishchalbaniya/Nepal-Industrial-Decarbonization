@@ -1,0 +1,17 @@
+{
+  "kiln_type": "clamp_traditional",
+  "annual_brick_production": 4500000.0,
+  "e_coal_combustion_tco2": 3256.61,
+  "e_biomass_combustion_tco2": 0.0,
+  "e_other_fuel_tco2": 0.0,
+  "e_total_baseline_tco2": 3256.61,
+  "e_total_project_tco2": 955.27,
+  "e_reduction_tco2": 2301.33,
+  "e_reduction_pct": 70.67,
+  "intensity_kgco2_per_1000_bricks": 723.69,
+  "intensity_kgco2_per_brick": 0.7237,
+  "sec_mj_per_brick": 7.65,
+  "sec_mj_per_1000_bricks": 7650.0,
+  "thermal_efficiency": 0.4,
+  "delta_vs_nepal_avg_kgco2_per_1000": 453.69
+}
