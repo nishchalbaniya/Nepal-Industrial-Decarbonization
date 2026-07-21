@@ -135,7 +135,7 @@
       "annual_revenue_at_15": 846110.9354999999,
       "annual_revenue_at_30": 1692221.8709999998,
       "annual_revenue_at_50": 2820369.7849999997,
-      "timestamp": "2026-07-21T02:42:18.593049"
+      "timestamp": "2026-07-21T17:15:13.353382"
     },
     "gold_standard_pdd": {
       "project_name": "Hetauda Decarb",
@@ -172,7 +172,7 @@
       "annual_revenue_at_15": 895882.1669999999,
       "annual_revenue_at_30": 1791764.3339999998,
       "annual_revenue_at_50": 2986273.8899999997,
-      "timestamp": "2026-07-21T02:42:18.593073",
+      "timestamp": "2026-07-21T17:15:13.353404",
       "gs_methodology": "GS Methodology for Cement Sector",
       "sustainable_development_goals": [
         "SDG 7: Affordable and Clean Energy",
@@ -301,7 +301,7 @@
       ],
       "gaps": [],
       "recommendations": [],
-      "timestamp": "2026-07-21T02:42:18.592716"
+      "timestamp": "2026-07-21T17:15:13.353063"
     },
     "iso_14064_2": {
       "standard": "ISO 14064-2:2019",
@@ -383,7 +383,7 @@
       ],
       "gaps": [],
       "recommendations": [],
-      "timestamp": "2026-07-21T02:42:18.592747"
+      "timestamp": "2026-07-21T17:15:13.353094"
     },
     "iso_14064_3": {
       "standard": "ISO 14064-3:2019",
@@ -445,7 +445,7 @@
       ],
       "gaps": [],
       "recommendations": [],
-      "timestamp": "2026-07-21T02:42:18.592768"
+      "timestamp": "2026-07-21T17:15:13.353117"
     },
     "iso_50001": {
       "pass_": true,
@@ -786,7 +786,7 @@
           "carbon_price_usd_per_t_2050": 50.0
         }
       },
-      "timestamp": "2026-07-21T02:42:18.592870"
+      "timestamp": "2026-07-21T17:15:13.353227"
     },
     "sbti": {
       "target": {
@@ -806,7 +806,7 @@
       "pathway_1_5c_2030_intensity": 553.5,
       "pathway_1_5c_2050_intensity": 45.0,
       "recommendation": "Target is aligned with 1.5\u00b0C. Required: 38.5%, achieved: 55.6%",
-      "timestamp": "2026-07-21T02:42:18.592901"
+      "timestamp": "2026-07-21T17:15:13.353258"
     },
     "gcca": {
       "plant_name": "Hetauda Cement Industries Ltd",
