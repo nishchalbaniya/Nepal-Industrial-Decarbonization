@@ -66,8 +66,8 @@ jobs:
       - name: Build & push API image
         uses: docker/build-push-action@v5
         with:
-          context: pro
-          file: pro/Dockerfile
+          context: ./pro
+          file: ./pro/Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/nepal-decarb-pro-api:latest
@@ -76,8 +76,8 @@ jobs:
       - name: Build & push Streamlit image
         uses: docker/build-push-action@v5
         with:
-          context: pro
-          file: pro/Dockerfile.streamlit
+          context: ./pro
+          file: ./pro/Dockerfile.streamlit
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/nepal-decarb-pro-streamlit:latest
@@ -109,15 +109,15 @@ jobs:
           python scripts/run_pilot.py
       - name: Copy artifacts
         run: |
-          mkdir -p docs-site/reports
-          cp pro/reports/*.pdf pro/reports/*.png pro/reports/*.json docs-site/reports/ 2>/dev/null || true
-          cp pro/explorer.html docs-site/index.html
+          mkdir -p docs/reports
+          cp pro/reports/*.pdf pro/reports/*.png pro/reports/*.json docs/reports/ 2>/dev/null || true
+          cp pro/explorer.html docs/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs-site
+          path: docs
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
