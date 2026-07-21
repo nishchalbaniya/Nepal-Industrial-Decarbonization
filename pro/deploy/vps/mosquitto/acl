@@ -1,0 +1,14 @@
+# ACL for nepal_decarb_pro
+# Read-only user for dashboards
+user dashboard
+topic read nepal/#
+
+# Plant sensor users (write only to their own plant's topic)
+user plant_hetauda
+topic write nepal/hetauda/#
+user plant_bhairahawa
+topic write nepal/bhairahawa/#
+
+# Admin user (full access)
+user nepal
+topic readwrite #

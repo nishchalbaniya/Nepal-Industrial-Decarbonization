@@ -1,0 +1,54 @@
+version: "3.9"
+
+# GPU-deployed vLLM serving the Nepali LLM advisor.
+# Connects to the main nepal_decarb_pro stack.
+#
+# Requires:
+#   - NVIDIA Container Toolkit installed on host
+#   - nvidia-smi available
+#   - A single GPU with >= 24GB VRAM (A100 40GB, L40, RTX 6000 Ada)
+#
+# Launch:
+#   docker compose -f deploy/vllm/docker-compose.yml up -d
+#   # Or to test on a small GPU:
+#   QUANTIZATION=gptq GPU_MEMORY_UTILIZATION=0.85 docker compose up
+
+services:
+  vllm:
+    image: vllm/vllm-openai:v0.4.2
+    container_name: nepal-decarb-vllm
+    runtime: nvidia
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      LLM_MODEL: ${LLM_MODEL:-Qwen/Qwen2.5-7B-Instruct-AWQ}
+      QUANTIZATION: ${QUANTIZATION:-awq}
+      VLLM_PORT: 8001
+      GPU_MEMORY_UTILIZATION: "0.90"
+      MAX_MODEL_LEN: "8192"
+      HUGGING_FACE_HUB_TOKEN: ${HF_TOKEN:-}
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+      - ./serve.sh:/opt/nepal_decarb_pro/deploy/vllm/serve.sh:ro
+      - ./chat_template.jinja:/opt/nepal_decarb_pro/deploy/vllm/chat_template.jinja:ro
+    ports:
+      - "8001:8001"
+    networks:
+      - nepal_net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8001/v1/models"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 300s  # model loading can take 5 min
+    restart: unless-stopped
+
+networks:
+  nepal_net:
+    external: true

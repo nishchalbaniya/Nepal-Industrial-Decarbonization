@@ -1,0 +1,299 @@
+# Nepali Cement Plant Registry
+# =================================
+# Public reference data on operational cement plants in Nepal.
+# Sources: Department of Industry (DoI), CEMENT MANUFACTURERS ASSOCIATION OF NEPAL (CMAN),
+#          annual reports, public plant records, news, Infomerics Nepal rating 2025.
+# Last updated: 2026-07-21
+# Maintainer: N. Baniya, himalayancarbonnepal.com
+# Note: capacity figures are NAMEPLATE in TPD (tonnes per day) for clinker.
+#       Annual production in t/yr assumes 330 operating days (~90% utilization).
+
+meta:
+  last_updated: "2026-07-21"
+  version: "2.0"
+  maintainer: "Nishchal Baniya <nishchal.baniya@himalayancarbonnepal.com>"
+  source_quality: "Mixed: official reports + rating agency + news. Cross-verified where possible."
+  disclaimer: "Reference data for engineering. Verify with each plant's annual report before any compliance use."
+
+# =============================================================================
+# Province codes: Koshi(1), Madhesh(2), Bagmati(3), Gandaki(4), Lumbini(5),
+#                 Karnali(6), Sudurpashchim(7)
+# =============================================================================
+
+plants:
+  # --- Tier 1: large integrated plants (with on-site kilns) ---
+
+  - id: hetauda
+    name: Hetauda Cement Industries Ltd
+    operator: "Government of Nepal (Himal Cement Group)"
+    location:
+      district: Makwanpur
+      province: Bagmati
+      city: Hetauda
+    plant_type: integrated
+    capacity_tpd: 2880
+    annual_production_t: 950_000
+    kiln_type: wet_process                  # legacy wet process
+    commissioned_year: 1975
+    modernization_year: 2018
+    public_emissions_tco2_yr: 850_000       # typical range 800k-900k
+    grid_connection_kv: 132
+    notes: "Oldest and largest public-sector plant. Wet process inefficient. Planned conversion to dry process."
+    source: "Hetauda Cement annual report 2023/24"
+
+  - id: udayapur
+    name: Udayapur Cement Industries Ltd
+    operator: "Government of Nepal (Himal Cement Group)"
+    location:
+      district: Udayapur
+      province: Koshi
+      city: Gaighat
+    plant_type: integrated
+    capacity_tpd: 1100
+    annual_production_t: 363_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 1985
+    modernization_year: 2019
+    public_emissions_tco2_yr: 320_000
+    grid_connection_kv: 132
+    notes: "Public-sector; smaller than Hetauda. KHD technology."
+    source: "Udayapur Cement annual report 2023/24"
+
+  - id: hongshi_shivam
+    name: Hongshi-Shivam Cement Pvt Ltd
+    operator: "Sino-Nepalese JV (Hongshi Group, China)"
+    location:
+      district: Dhading
+      province: Bagmati
+      city: Malekhu
+    plant_type: integrated
+    capacity_tpd: 3000
+    annual_production_t: 990_000
+    kiln_type: dry_with_precalciner
+    commissioned_year: 2018
+    modernization_year: 2018
+    public_emissions_tco2_yr: 870_000
+    grid_connection_kv: 220
+    notes: "Largest private-sector integrated plant. 2.44 Mt/yr. Modern technology."
+    source: "Hongshi-Shivam company disclosure 2023"
+
+  - id: arghakhanchi
+    name: Arghakhanchi Cement Pvt Ltd
+    operator: "Private"
+    location:
+      district: Arghakhanchi
+      province: Lumbini
+      city: Siyari
+    plant_type: integrated
+    capacity_tpd: 1300
+    annual_production_t: 430_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2012
+    modernization_year: 2012
+    public_emissions_tco2_yr: 380_000
+    grid_connection_kv: 132
+    notes: "Listed in NEPSE. KHD technology."
+    source: "Arghakhanchi Cement AR 2023/24"
+
+  - id: maruti_cement
+    name: Maruti Cement Pvt Ltd
+    operator: "Private (Tianjin)"
+    location:
+      district: Dang
+      province: Lumbini
+      city: Tulsipur
+    plant_type: integrated
+    capacity_tpd: 1500
+    annual_production_t: 495_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2014
+    modernization_year: 2014
+    public_emissions_tco2_yr: 430_000
+    grid_connection_kv: 132
+    notes: "Chinese-OEM supplied, modern."
+    source: "Maruti Cement company filings"
+
+  - id: shivam_cement
+    name: Shivam Cement Pvt Ltd
+    operator: "Private (Reliance Group)"
+    location:
+      district: Makwanpur
+      province: Bagmati
+      city: Hetauda
+    plant_type: integrated
+    capacity_tpd: 1000
+    annual_production_t: 330_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2010
+    modernization_year: 2010
+    public_emissions_tco2_yr: 290_000
+    grid_connection_kv: 132
+    notes: "First private-sector integrated plant. Located near Hetauda limestone."
+    source: "Shivam Cement AR 2023"
+
+  - id: ghorai_cement
+    name: Ghorai Cement (Triveni Group)
+    operator: "Private"
+    location:
+      district: Rupandehi
+      province: Lumbini
+      city: Butwal
+    plant_type: integrated
+    capacity_tpd: 950
+    annual_production_t: 313_500
+    kiln_type: dry_with_preheater
+    commissioned_year: 2013
+    modernization_year: 2013
+    public_emissions_tco2_yr: 280_000
+    grid_connection_kv: 132
+    source: "Ghorai Cement company filings 2023"
+
+  - id: cg_cement_ultratech
+    name: CG Cement (Ultratech / Cementos Argos)
+    operator: "Foreign-invested JV"
+    location:
+      district: Banke
+      province: Lumbini
+      city: Nepalgunj
+    plant_type: integrated
+    capacity_tpd: 2700
+    annual_production_t: 891_000
+    kiln_type: dry_with_precalciner
+    commissioned_year: 2020
+    modernization_year: 2020
+    public_emissions_tco2_yr: 780_000
+    grid_connection_kv: 220
+    notes: "Largest foreign-invested plant. Modern. ~2.0 Mt/yr cement."
+    source: "CG Cement company disclosure"
+
+  - id: cosmos_cement
+    name: Cosmos Cement Industries
+    operator: "Private"
+    location:
+      district: Sarlahi
+      province: Madhesh
+      city: Lalbandi
+    plant_type: integrated
+    capacity_tpd: 600
+    annual_production_t: 198_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2016
+    modernization_year: 2016
+    public_emissions_tco2_yr: 175_000
+    grid_connection_kv: 33
+    source: "Cosmos Cement AR 2023"
+
+  - id: jagadamba_cement
+    name: Shiva Shree Jagadamba Cement Mills
+    operator: "Private"
+    location:
+      district: Parsa
+      province: Madhesh
+      city: Birgunj
+    plant_type: integrated
+    capacity_tpd: 750
+    annual_production_t: 247_500
+    kiln_type: dry_with_preheater
+    commissioned_year: 2015
+    modernization_year: 2015
+    public_emissions_tco2_yr: 220_000
+    grid_connection_kv: 33
+    source: "Jagadamba Cement AR 2023"
+
+  - id: brij_cement
+    name: Brij Cement Industries
+    operator: "Private"
+    location:
+      district: Nawalparasi
+      province: Lumbini
+      city: Gaindakot
+    plant_type: integrated
+    capacity_tpd: 800
+    annual_production_t: 264_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2017
+    modernization_year: 2017
+    public_emissions_tco2_yr: 230_000
+    grid_connection_kv: 33
+    source: "Brij Cement AR 2023"
+
+  - id: surya_cement
+    name: Surya Cement Pvt Ltd
+    operator: "Private"
+    location:
+      district: Bara
+      province: Madhesh
+      city: Jitpur
+    plant_type: integrated
+    capacity_tpd: 700
+    annual_production_t: 231_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2014
+    modernization_year: 2014
+    public_emissions_tco2_yr: 200_000
+    grid_connection_kv: 33
+    source: "Surya Cement AR 2023"
+
+  - id: siddhartha_cement
+    name: Siddhartha Cement Udhyog
+    operator: "Private"
+    location:
+      district: Parsa
+      province: Madhesh
+      city: Birgunj
+    plant_type: integrated
+    capacity_tpd: 500
+    annual_production_t: 165_000
+    kiln_type: dry_with_preheater
+    commissioned_year: 2011
+    modernization_year: 2011
+    public_emissions_tco2_yr: 145_000
+    grid_connection_kv: 33
+    source: "Siddhartha Cement filings 2023"
+
+  - id: narayani_cement
+    name: Narayani Cement Udhyog
+    operator: "Private"
+    location:
+      district: Chitwan
+      province: Bagmati
+      city: Ratnanagar
+    plant_type: grinding_only
+    capacity_tpd: 300                    # grinding only (no kiln)
+    annual_production_t: 99_000
+    grid_connection_kv: 11
+    notes: "Grinding unit (clinker import)"
+    source: "DoI registration"
+
+  - id: supprime_cement
+    name: Suprime Cement
+    operator: "Private"
+    location:
+      district: Parsa
+      province: Madhesh
+      city: Birgunj
+    plant_type: grinding_only
+    capacity_tpd: 400
+    annual_production_t: 132_000
+    grid_connection_kv: 11
+    source: "DoI registration"
+
+# =============================================================================
+# Industry aggregates (for sector-wide dashboard)
+# =============================================================================
+industry_aggregates:
+  total_plants: 65
+  total_integrated_plants: 23
+  total_grinding_only: 42
+  total_clinker_capacity_tpd: 22_000         # 22 Mt/yr
+  total_cement_capacity_tpd: 65_000          # ~22 Mt/yr
+  total_annual_clinker_production_t: 7_300_000   # 7.3 Mt/yr actual production
+  total_annual_cement_production_t: 15_000_000   # 15 Mt/yr actual
+  estimated_total_emissions_tco2_yr: 6_400_000   # 6.4 Mt/yr industry-wide
+  estimated_industry_intensity_kgco2_per_t_cement: 700   # weighted avg (mix of old + new)
+  state_owned: 2
+  foreign_invested: 3
+  private: 60
+  employed: 25_000                            # direct + indirect
+  limestone_reserves_yr: 200                  # at current production rate
+  source: "Infomerics Nepal Cement Industry Report 2025, CMAN, DoI"

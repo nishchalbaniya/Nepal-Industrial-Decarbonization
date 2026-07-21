@@ -1,0 +1,180 @@
+# =============================================================================
+# nepal_decarb_pro — production docker-compose (single VPS)
+# =============================================================================
+# Stack: db, api, streamlit, mosquitto, nginx
+# Use deploy.sh to bring it up, or:
+#   docker compose -f deploy/vps/docker-compose.yml --env-file .env up -d
+# =============================================================================
+
+version: "3.9"
+
+x-restart-policy: &restart_policy
+  restart: unless-stopped
+
+services:
+  db:
+    <<: *restart_policy
+    image: postgres:15.4-alpine
+    container_name: nepal-decarb-db
+    environment:
+      POSTGRES_USER: nepal_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: nepal_decarb
+      TZ: Asia/Kathmandu
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nepal_admin -d nepal_decarb"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nepal_net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  api:
+    <<: *restart_policy
+    image: ghcr.io/himalayan-carbon-nepal/nepal-decarb-pro-api:v1.0.1
+    container_name: nepal-decarb-api
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      mqtt:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql://nepal_admin:${POSTGRES_PASSWORD}@db:5432/nepal_decarb
+      REDIS_URL: redis://redis:6379
+      MQTT_HOST: mqtt
+      MQTT_PORT: 1883
+      MQTT_USER: nepal
+      MQTT_PASSWORD: ${MQTT_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      S3_BUCKET: ${S3_BUCKET:-}
+      ALERT_WEBHOOK: ${ALERT_WEBHOOK:-}
+      ENABLE_LLM_ADVISOR: ${ENABLE_LLM_ADVISOR:-0}
+      TZ: Asia/Kathmandu
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    ports:
+      - "8000:8000"
+    networks:
+      - nepal_net
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  streamlit:
+    <<: *restart_policy
+    image: ghcr.io/himalayan-carbon-nepal/nepal-decarb-pro-streamlit:v1.0.1
+    container_name: nepal-decarb-streamlit
+    build:
+      context: ../..
+      dockerfile: Dockerfile.streamlit
+    depends_on:
+      - api
+    environment:
+      API_URL: http://api:8000
+      TZ: Asia/Kathmandu
+    ports:
+      - "8501:8501"
+    networks:
+      - nepal_net
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  mqtt:
+    <<: *restart_policy
+    image: eclipse-mosquitto:2.0
+    container_name: nepal-decarb-mqtt
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/passwd:/mosquitto/config/passwd:ro
+      - mqtt_data:/mosquitto/data
+      - mqtt_log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - nepal_net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    <<: *restart_policy
+    image: redis:7-alpine
+    container_name: nepal-decarb-redis
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis_data:/data
+    networks:
+      - nepal_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  prometheus:
+    <<: *restart_policy
+    image: prom/prometheus:v2.48.0
+    container_name: nepal-decarb-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prom_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - nepal_net
+
+  grafana:
+    <<: *restart_policy
+    image: grafana/grafana:10.2.0
+    container_name: nepal-decarb-grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${POSTGRES_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana-datasources:/etc/grafana/provisioning/datasources:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - nepal_net
+    depends_on:
+      - prometheus
+
+networks:
+  nepal_net:
+    driver: bridge
+    name: nepal_net
+
+volumes:
+  db_data:
+  mqtt_data:
+  mqtt_log:
+  redis_data:
+  prom_data:
+  grafana_data:
