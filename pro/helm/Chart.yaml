@@ -1,0 +1,16 @@
+apiVersion: v2
+name: nepal-decarb
+description: Nepal Industrial Decarbonization Platform
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+  - name: Nishchal Baniya
+    email: nishchal.baniya@himalayancarbonnepal.com
+keywords:
+  - carbon
+  - cement
+  - brick
+  - nepal
+  - decarbonization
+  - climate

@@ -1,0 +1,296 @@
+# Emission factors for nepal_decarb_pro v1.0
+# All values traceable to peer-reviewed / authoritative sources.
+# Source column is for documentation; values are validated by N. Baniya 2026.
+
+meta:
+  last_updated: "2026-07-21"
+  version: "1.0.0"
+  maintainer: "Nishchal Baniya <nishchal.baniya@himalayancarbonnepal.com>"
+
+# =========================================================================
+# CEMENT — CLINKER
+# =========================================================================
+clinker:
+  co2_per_t_clinker_process: 0.527
+  cao_fraction_clinker: 0.65
+  mgo_fraction_clinker: 0.015
+  co2_per_t_cao: 0.7857
+  co2_per_t_mgo: 1.092
+  co2_per_t_limestone: 0.4397
+  raw_mix_lsf: 0.95                # Lime saturation factor
+  raw_mix_sm: 2.5                  # Silica modulus
+  raw_mix_am: 1.6                  # Alumina modulus
+
+# =========================================================================
+# FUELS — combustion
+# =========================================================================
+fuels:
+  coal_bituminous_NP:
+    category: coal
+    ncvc_gj_per_t: 25.5
+    ef_kgco2_per_gj: 94.6
+    biogenic_fraction: 0.0
+    price_usd_per_t: 145
+    ash_fraction: 0.18
+    moisture_fraction: 0.08
+    source: "IPCC2006 + NEA 2023/24; Indian bituminous (Dhansiri/Jharkhand)"
+  coal_anthracite_NP:
+    category: coal
+    ncvc_gj_per_t: 27.0
+    ef_kgco2_per_gj: 98.3
+    biogenic_fraction: 0.0
+    price_usd_per_t: 175
+    ash_fraction: 0.15
+    moisture_fraction: 0.05
+    source: "IPCC2006"
+  petcoke:
+    category: petcoke
+    ncvc_gj_per_t: 32.0
+    ef_kgco2_per_gj: 97.5
+    biogenic_fraction: 0.0
+    price_usd_per_t: 165
+    ash_fraction: 0.005
+    moisture_fraction: 0.01
+    source: "IPCC2006; widely used in Nepali cement kilns"
+  lignite:
+    category: coal
+    ncvc_gj_per_t: 11.9
+    ef_kgco2_per_gj: 101.0
+    biogenic_fraction: 0.0
+    price_usd_per_t: 90
+    ash_fraction: 0.25
+    moisture_fraction: 0.30
+    source: "IPCC2006"
+  natural_gas:
+    category: gas
+    ncvc_gj_per_t: 48.0
+    ef_kgco2_per_gj: 56.1
+    biogenic_fraction: 0.0
+    price_usd_per_t: 380
+    source: "IPCC2006"
+  diesel:
+    category: oil
+    ncvc_gj_per_t: 43.0
+    ef_kgco2_per_gj: 74.1
+    biogenic_fraction: 0.0
+    price_usd_per_t: 980
+    source: "IPCC2006"
+  furnace_oil:
+    category: oil
+    ncvc_gj_per_t: 40.4
+    ef_kgco2_per_gj: 77.4
+    biogenic_fraction: 0.0
+    price_usd_per_t: 720
+    source: "IPCC2006"
+  lpg:
+    category: gas
+    ncvc_gj_per_t: 47.3
+    ef_kgco2_per_gj: 63.1
+    biogenic_fraction: 0.0
+    price_usd_per_t: 1100
+    source: "IPCC2006"
+  biomass_wood:
+    category: biomass
+    ncvc_gj_per_t: 15.6
+    ef_kgco2_per_gj: 0.0
+    biogenic_fraction: 1.0
+    price_usd_per_t: 60
+    moisture_fraction: 0.20
+    source: "IPCC2006 (biogenic)"
+  biomass_rice_husk:
+    category: biomass
+    ncvc_gj_per_t: 13.4
+    ef_kgco2_per_gj: 0.0
+    biogenic_fraction: 1.0
+    price_usd_per_t: 35
+    moisture_fraction: 0.10
+    source: "IPCC2006; widely available in Nepal Terai"
+  biomass_sawdust:
+    category: biomass
+    ncvc_gj_per_t: 16.0
+    ef_kgco2_per_gj: 0.0
+    biogenic_fraction: 1.0
+    price_usd_per_t: 40
+    moisture_fraction: 0.15
+    source: "IPCC2006"
+  biomass_bagasse:
+    category: biomass
+    ncvc_gj_per_t: 9.5
+    ef_kgco2_per_gj: 0.0
+    biogenic_fraction: 1.0
+    price_usd_per_t: 25
+    moisture_fraction: 0.50
+    source: "IPCC2006"
+  biomass_jatropha_cake:
+    category: biomass
+    ncvc_gj_per_t: 21.0
+    ef_kgco2_per_gj: 0.0
+    biogenic_fraction: 1.0
+    price_usd_per_t: 110
+    source: "IPCC2006"
+  tdf_tire:
+    category: waste
+    ncvc_gj_per_t: 32.0
+    ef_kgco2_per_gj: 85.0
+    biogenic_fraction: 0.27
+    price_usd_per_t: 80
+    source: "IPCC2006; ~27% biogenic"
+  rdf_municipal:
+    category: waste
+    ncvc_gj_per_t: 12.0
+    ef_kgco2_per_gj: 91.7
+    biogenic_fraction: 0.50
+    price_usd_per_t: 30
+    source: "IPCC2006; ~50% biogenic"
+
+# =========================================================================
+# ELECTRICITY — Nepal grid
+# =========================================================================
+grid_electricity_nepal:
+  om_kgco2_per_kwh: 0.0217
+  bm_kgco2_per_kwh: 0.0295
+  cm_kgco2_per_kwh: 0.0256
+  residual_mix_kgco2_per_kwh: 0.0220
+  t_and_d_loss_fraction: 0.225
+  renewable_fraction: 0.95
+  source: "NEA 2023/24 + CDM ACM0012"
+
+# =========================================================================
+# BRICK KILNS
+# =========================================================================
+brick_kiln:
+  clamp_traditional:
+    family: traditional
+    coal_t_per_1000: 0.30
+    thermal_efficiency: 0.40
+    specific_energy_mj_per_brick: 7.65
+    capital_cost_usd_per_kiln: 25000
+    lifetime_years: 5
+    max_biomass_fraction_technical: 0.20
+    notes: "Most common in Nepal (~70% of kilns); highest emissions"
+  hoffman:
+    family: continuous
+    coal_t_per_1000: 0.155
+    thermal_efficiency: 0.60
+    specific_energy_mj_per_brick: 3.95
+    capital_cost_usd_per_kiln: 350000
+    lifetime_years: 20
+    max_biomass_fraction_technical: 0.30
+    notes: "Continuous kiln, common around Kathmandu valley"
+  tunnel_kiln:
+    family: modern
+    coal_t_per_1000: 0.120
+    thermal_efficiency: 0.75
+    specific_energy_mj_per_brick: 3.05
+    capital_cost_usd_per_kiln: 1200000
+    lifetime_years: 25
+    max_biomass_fraction_technical: 0.40
+    notes: "Best Available Technique, but high capex"
+  zigzag:
+    family: continuous
+    coal_t_per_1000: 0.110
+    thermal_efficiency: 0.70
+    specific_energy_mj_per_brick: 2.80
+    capital_cost_usd_per_kiln: 220000
+    lifetime_years: 15
+    max_biomass_fraction_technical: 0.30
+    notes: "Promoted by UNEP/GEF in Nepal; medium capex"
+  vertical_shaft:
+    family: modern
+    coal_t_per_1000: 0.090
+    thermal_efficiency: 0.80
+    specific_energy_mj_per_brick: 2.30
+    capital_cost_usd_per_kiln: 750000
+    lifetime_years: 20
+    max_biomass_fraction_technical: 0.40
+    notes: "Emerging BAT in South Asia"
+
+# =========================================================================
+# GWP values (AR5, 100-year)
+# =========================================================================
+gwp:
+  co2: 1
+  ch4: 28
+  n2o: 265
+  hfc: 1300
+  pfc: 6630
+  sf6: 23500
+  source: "IPCC AR5"
+
+# =========================================================================
+# Default uncertainty (1-sigma %) for stochastic modelling
+# =========================================================================
+uncertainty:
+  coal_ncv_pct: 5.9
+  coal_ef_pct: 7.0
+  grid_ef_pct: 19.5
+  cao_fraction_pct: 3.0
+  mgo_fraction_pct: 20.0
+  kiln_efficiency_pct: 5.0
+  biomass_ef_pct: 10.0
+  petcoke_ef_pct: 5.0
+  tdf_ef_pct: 15.0
+  coal_t_per_1000_bricks_pct: 12.0
+  production_volume_pct: 3.0
+
+# =========================================================================
+# Nepali plant reference data
+# =========================================================================
+nepali_cement_plants:
+  hetauda_cement_industries_ltd:
+    location: "Hetauda, Makwanpur"
+    capacity_t_yr: 1200000
+    kiln_technology: "Dry process, 5-stage preheater with precalciner"
+    coal_source: "Imported (India)"
+    commissioned: 1983
+    sec_mj_per_t_clinker: 3850
+  udayapur_cement_industries_ltd:
+    location: "Udayapur"
+    capacity_t_yr: 2200000
+    kiln_technology: "Dry process, 5-stage preheater with precalciner"
+    coal_source: "Imported (India)"
+    commissioned: 1997
+    sec_mj_per_t_clinker: 3700
+  shree_cement_NP:
+    location: "Palpa"
+    capacity_t_yr: 1500000
+    kiln_technology: "Dry process, preheater"
+    coal_source: "Imported (India)"
+  hongshi_shivam_cement:
+    location: "Nawalparasi"
+    capacity_t_yr: 4000000
+    kiln_technology: "Dry process, 2 lines"
+    coal_source: "Imported (China/India)"
+    commissioned: 2018
+    sec_mj_per_t_clinker: 3200
+  maruti_cement:
+    location: "Kathmandu valley (grinding)"
+    capacity_t_yr: 800000
+    kiln_technology: "Grinding unit, clinker import"
+  ghorahi_cement:
+    location: "Ghorahi, Dang"
+    capacity_t_yr: 1500000
+    kiln_technology: "Dry process, preheater"
+  araniko_cement:
+    location: "Bhardaha, Sunsari"
+    capacity_t_yr: 750000
+    kiln_technology: "Dry process"
+
+national_aggregate:
+  total_clinker_capacity_t_yr: 9000000
+  total_cement_capacity_t_yr: 18000000
+  estimated_clinker_production_2023: 6200000
+  estimated_cement_production_2023: 9500000
+  clinker_import_2023: 4500000
+  estimated_co2_2023_mt: 5.2
+  source: "DCSI annual report; MOICS 2023; cement industry association Nepal"
+
+brick_sector_aggregate:
+  total_kilns: 1200
+  total_bricks_yr_billion: 12.0
+  clamp_share: 0.70
+  hoffman_share: 0.18
+  zigzag_share: 0.08
+  tunnel_share: 0.04
+  estimated_co2_2023_mt: 1.4
+  source: "Nepal Brick kiln survey 2022 (NBSM); FNCCI"

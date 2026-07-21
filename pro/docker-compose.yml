@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  api:
+    build: .
+    command: ["python", "-m", "nepal_decarb_pro.api"]
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - web
+    restart: unless-stopped
+
+  mqtt-bridge:
+    build: .
+    command: ["python", "-m", "nepal_decarb_pro.io.mqtt_bridge"]
+    environment:
+      - MQTT_BROKER=mqtt://mosquitto:1883
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped

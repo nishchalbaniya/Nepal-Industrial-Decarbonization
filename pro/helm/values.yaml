@@ -1,0 +1,54 @@
+replicaCount: 2
+
+image:
+  repository: himalayancarbon/nepal-decarb-pro
+  pullPolicy: IfNotPresent
+  tag: "1.0.0"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: LoadBalancer
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: nepal-decarb.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 2Gi
+  requests:
+    cpu: 500m
+    memory: 1Gi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# MQTT broker for IoT sensors
+mqtt:
+  enabled: true
+  broker: mosquitto
+
+# Persistence
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClass: standard
