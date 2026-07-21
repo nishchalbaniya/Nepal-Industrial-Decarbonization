@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -8 92.0 25.00370865083487" font-family="sans-serif">
+  <defs>
+    <linearGradient id="kilnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB6C1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="-10" y="-8" width="92.0" height="25.00370865083487" fill="white" stroke="none"/>
+  <!-- Kiln body (tilted) -->
+  <g transform="translate(0, 0)">
+    <ellipse cx="0" cy="0" rx="2.3" ry="2.3" fill="url(#kilnGrad)" stroke="black" stroke-width="2"/>
+    <ellipse cx="72.0" cy="-4.40370865083487" rx="2.3" ry="2.3" fill="url(#kilnGrad)" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="-2.3" x2="72.0" y2="-6.70370865083487" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="2.3" x2="72.0" y2="-2.1037086508348706" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="0" x2="72.0" y2="-4.40370865083487" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+    <!-- Tires -->
+    <ellipse cx="10.799999999999999" cy="-0.6605562976252305" rx="2.484" ry="2.484" fill="none" stroke="black" stroke-width="2"/>
+    <ellipse cx="61.199999999999996" cy="-3.7431523532096396" rx="2.484" ry="2.484" fill="none" stroke="black" stroke-width="2"/>
+  </g>
+  <!-- Annotations -->
+  <text x="31.0" y="-9.70370865083487" font-size="14" font-weight="bold">Rotary Kiln 5000 TPD</text>
+  <text x="31.0" y="-8.20370865083487" font-size="10">L = 72.0 m, D = 4.6 m</text>
+  <text x="31.0" y="-7.00370865083487" font-size="10">Slope 3.5° | Power 850 kW</text>
+  <text x="-9" y="3.3" font-size="9" fill="gray">Feed end</text>
+  <text x="73.0" y="-3.1037086508348706" font-size="9" fill="gray">Discharge end</text>
+  <!-- Title -->
+  <text x="30.0" y="-11.70370865083487" font-size="16" font-weight="bold">Rotary Kiln — Side View</text>
+  <text x="30.0" y="-10.70370865083487" font-size="9" fill="gray">nepal_decarb_pro v1.0</text>
+</svg>

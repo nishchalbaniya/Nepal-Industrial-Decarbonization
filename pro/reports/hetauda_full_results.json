@@ -158,7 +158,7 @@
     "annual_revenue_at_15": 846110.9354999999,
     "annual_revenue_at_30": 1692221.8709999998,
     "annual_revenue_at_50": 2820369.7849999997,
-    "timestamp": "2026-07-21T02:02:19.615130"
+    "timestamp": "2026-07-21T02:09:14.779379"
   },
   "gold_standard_pdd": {
     "project_name": "Hetauda Decarb",
@@ -195,7 +195,7 @@
     "annual_revenue_at_15": 895882.1669999999,
     "annual_revenue_at_30": 1791764.3339999998,
     "annual_revenue_at_50": 2986273.8899999997,
-    "timestamp": "2026-07-21T02:02:19.615154",
+    "timestamp": "2026-07-21T02:09:14.779404",
     "gs_methodology": "GS Methodology for Cement Sector",
     "sustainable_development_goals": [
       "SDG 7: Affordable and Clean Energy",
@@ -324,7 +324,7 @@
     ],
     "gaps": [],
     "recommendations": [],
-    "timestamp": "2026-07-21T02:02:19.615430"
+    "timestamp": "2026-07-21T02:09:14.779637"
   },
   "iso_14064_2": {
     "standard": "ISO 14064-2:2019",
@@ -406,7 +406,7 @@
     ],
     "gaps": [],
     "recommendations": [],
-    "timestamp": "2026-07-21T02:02:19.615466"
+    "timestamp": "2026-07-21T02:09:14.779677"
   },
   "iso_14064_3": {
     "standard": "ISO 14064-3:2019",
@@ -468,7 +468,7 @@
     ],
     "gaps": [],
     "recommendations": [],
-    "timestamp": "2026-07-21T02:02:19.615489"
+    "timestamp": "2026-07-21T02:09:14.779701"
   },
   "tcfd": {
     "organization": "Hetauda Cement Industries Ltd",
@@ -536,7 +536,7 @@
         "carbon_price_usd_per_t_2050": 50.0
       }
     },
-    "timestamp": "2026-07-21T02:02:19.615516"
+    "timestamp": "2026-07-21T02:09:14.779727"
   },
   "sbti": {
     "target": {
@@ -556,7 +556,7 @@
     "pathway_1_5c_2030_intensity": 553.5,
     "pathway_1_5c_2050_intensity": 45.0,
     "recommendation": "Target is aligned with 1.5\u00b0C. Required: 38.5%, achieved: 55.6%",
-    "timestamp": "2026-07-21T02:02:19.615543"
+    "timestamp": "2026-07-21T02:09:14.779754"
   },
   "gcca": {
     "plant_name": "Hetauda Cement Industries Ltd",

@@ -1,0 +1,934 @@
+{
+  "pilot": {
+    "plant": "Hetauda Cement Industries Ltd",
+    "tier2_baseline": {
+      "e_process_tco2": 511307.1,
+      "e_process_detail": {
+        "from_cao": 492633.9,
+        "from_mgo": 18673.2
+      },
+      "e_fuel_total_tco2": 346910.52,
+      "e_fuel_breakdown": {
+        "coal_bituminous_NP": 289476.0,
+        "petcoke": 56160.0,
+        "diesel": 1274.52
+      },
+      "e_electricity_tco2": 2807.74,
+      "e_whr_offset_tco2": 0.0,
+      "e_transport_tco2": 0.0,
+      "e_scope1_tco2": 858217.62,
+      "e_scope2_tco2": 2807.74,
+      "e_scope3_tco2": 0.0,
+      "e_total_tco2": 861025.36,
+      "intensity_kgco2_per_t_cement": 782.75,
+      "intensity_kgco2_per_t_clinker": 906.34,
+      "delta_vs_bat_kgco2_per_t": 82.75,
+      "delta_vs_nepal_avg_kgco2_per_t": -167.25,
+      "sec_mj_per_t_clinker": 4167.58,
+      "sec_mj_per_t_cement": 3599.27,
+      "clinker_to_cement_ratio": 0.8636363636363636,
+      "tier": "Tier 2 (IPCC 2006 mass-balance)",
+      "method_description": "IPCC 2006 Vol.3 Ch.2 mass-balance for calcination + stationary combustion"
+    },
+    "tier3_baseline": {
+      "e_process_tco2": 516706.76,
+      "e_process_detail": {
+        "from_cao_calcination": 492633.9,
+        "from_mgo_calcination": 18673.2,
+        "from_raw_mix_toc": 5399.66,
+        "precalciner_efficiency": 0.92
+      },
+      "e_fuel_total_tco2": 348300.94,
+      "e_fuel_breakdown": {
+        "coal_bituminous_NP": 290056.11,
+        "petcoke": 56272.55,
+        "diesel": 1277.07
+      },
+      "e_electricity_tco2": 2807.74,
+      "e_whr_offset_tco2": 0.0,
+      "e_transport_tco2": 0.0,
+      "e_scope1_tco2": 865007.7,
+      "e_scope2_tco2": 2807.74,
+      "e_scope3_tco2": 0.0,
+      "e_total_tco2": 867815.44,
+      "intensity_kgco2_per_t_cement": 788.92,
+      "intensity_kgco2_per_t_clinker": 913.49,
+      "delta_vs_bat_kgco2_per_t": 88.92,
+      "delta_vs_nepal_avg_kgco2_per_t": -161.08,
+      "sec_mj_per_t_clinker": 4167.58,
+      "sec_mj_per_t_cement": 3599.27,
+      "clinker_to_cement_ratio": 0.8636363636363636,
+      "tier": "Tier 3 (IPCC 2019 \u2014 full mass+energy balance with kinetics)",
+      "method_description": "IPCC 2019 Refinement Tier 3: full mass+energy balance, precalciner efficiency, raw-mix TOC, kiln-type heat demand, NOx adjustment, WHR integration"
+    },
+    "monte_carlo": {
+      "n_samples": 5000,
+      "metric": "total_emissions_tco2_per_year",
+      "mean": 861092.81,
+      "median": 860069.23,
+      "std": 25819.6,
+      "ci_50_low": 843369.64,
+      "ci_50_high": 877950.47,
+      "ci_90_low": 820063.97,
+      "ci_90_high": 905066.94,
+      "ci_95_low": 813156.19,
+      "ci_95_high": 914210.27,
+      "min": 773297.4,
+      "max": 974576.04,
+      "p10": 828563.92,
+      "p25": 843369.64,
+      "p75": 877950.47,
+      "p90": 894355.35,
+      "coefficient_of_variation": 0.03,
+      "converged": true,
+      "convergence_diagnostic": {
+        "batch_1_mean": 860408.404936,
+        "batch_2_mean": 859542.4366799999,
+        "batch_3_mean": 862795.002784,
+        "batch_4_mean": 861625.381816
+      },
+      "parameters_sampled": [
+        "clinker_production_t",
+        "cement_production_t",
+        "cao_fraction",
+        "mgo_fraction",
+        "coal_consumption",
+        "petcoke_consumption",
+        "electricity_consumption",
+        "grid_ef"
+      ],
+      "method": "Latin Hypercube Sampling",
+      "seed": 42
+    },
+    "verra_pdd": {
+      "project_name": "Hetauda Decarb",
+      "project_id": null,
+      "methodology": "VM0009 v2.0 (Cement Plant Decarbonization)",
+      "project_type": "cement",
+      "project_location": {
+        "country": "Nepal",
+        "region": "Nepal",
+        "iso": "NP"
+      },
+      "project_proponent": "Himalayan Carbon Nepal",
+      "crediting_period_start": "2026-01-01",
+      "crediting_period_end": "2035-12-31",
+      "crediting_period_years": 10,
+      "project_purpose": "Reduce GHG emissions from cement production in Nepal through decarbonization technology adoption",
+      "project_activities": [
+        "Installation of Biomass co-firing + WHR",
+        "MRV system deployment",
+        "Biomass supply chain development",
+        "Worker training and capacity building"
+      ],
+      "technology": "Biomass co-firing + WHR",
+      "baseline_description": "Baseline scenario: continuation of cement production using current technology mix (predominantly coal/petcoke for cement, traditional clamp kilns for bricks)",
+      "baseline_emissions_annual_tco2": 861025.36,
+      "project_emissions_annual_tco2": 791171.0,
+      "leakage_pct": 5.0,
+      "gross_emission_reductions_annual_tco2": 69854.35999999999,
+      "buffer_pool_pct": 15.0,
+      "buffer_deduction_annual_tco2": 9954.246299999999,
+      "net_emission_reductions_annual_tco2": 56407.395699999994,
+      "monitoring_plan": "Continuous monitoring of fuel use, electricity, production. Quarterly third-party verification. Annual recalibration. All data archived in immutable ledger.",
+      "vvb_required": "Accredited VVB (T\u00dcV, DNV, RINA, ERM CVS, etc.)",
+      "annual_revenue_at_15": 846110.9354999999,
+      "annual_revenue_at_30": 1692221.8709999998,
+      "annual_revenue_at_50": 2820369.7849999997,
+      "timestamp": "2026-07-21T02:42:18.593049"
+    },
+    "gold_standard_pdd": {
+      "project_name": "Hetauda Decarb",
+      "project_id": null,
+      "methodology": "VM0009 v2.0 (Cement Plant Decarbonization)",
+      "project_type": "cement",
+      "project_location": {
+        "country": "Nepal",
+        "region": "Nepal",
+        "iso": "NP"
+      },
+      "project_proponent": "Himalayan Carbon Nepal",
+      "crediting_period_start": "2026-01-01",
+      "crediting_period_end": "2032-12-31",
+      "crediting_period_years": 7,
+      "project_purpose": "Reduce GHG emissions from cement production in Nepal through decarbonization technology adoption",
+      "project_activities": [
+        "Installation of Biomass co-firing + WHR",
+        "MRV system deployment",
+        "Biomass supply chain development",
+        "Worker training and capacity building"
+      ],
+      "technology": "Biomass co-firing + WHR",
+      "baseline_description": "Baseline scenario: continuation of cement production using current technology mix (predominantly coal/petcoke for cement, traditional clamp kilns for bricks)",
+      "baseline_emissions_annual_tco2": 861025.36,
+      "project_emissions_annual_tco2": 791171.0,
+      "leakage_pct": 5.0,
+      "gross_emission_reductions_annual_tco2": 69854.35999999999,
+      "buffer_pool_pct": 10.0,
+      "buffer_deduction_annual_tco2": 6636.164199999999,
+      "net_emission_reductions_annual_tco2": 59725.47779999999,
+      "monitoring_plan": "Continuous monitoring of fuel use, electricity, production. Quarterly third-party verification. Annual recalibration. All data archived in immutable ledger.",
+      "vvb_required": "Accredited VVB (T\u00dcV, DNV, RINA, ERM CVS, etc.)",
+      "annual_revenue_at_15": 895882.1669999999,
+      "annual_revenue_at_30": 1791764.3339999998,
+      "annual_revenue_at_50": 2986273.8899999997,
+      "timestamp": "2026-07-21T02:42:18.593073",
+      "gs_methodology": "GS Methodology for Cement Sector",
+      "sustainable_development_goals": [
+        "SDG 7: Affordable and Clean Energy",
+        "SDG 9: Industry, Innovation and Infrastructure",
+        "SDG 12: Responsible Consumption and Production",
+        "SDG 13: Climate Action"
+      ],
+      "safeguard_principles": [
+        "Human rights (no forced labor in brick kilns)",
+        "Gender equality (women's employment in monitoring roles)",
+        "Community engagement (kiln workers' families benefit from cleaner air)",
+        "Worker safety (improved kiln technology reduces accidents)",
+        "Biodiversity (no deforestation from biomass supply)"
+      ],
+      "stakeholder_consultation": "Multi-stakeholder consultation conducted with kiln owners, workers, local government, and civil society. Free, prior, and informed consent obtained.",
+      "gs_verification_body": "T\u00dcV NORD CERT or DNV GL (illustrative)",
+      "gs_registry": "Gold Standard Registry"
+    },
+    "iso_14064_1": {
+      "standard": "ISO 14064-1:2018",
+      "pass_": true,
+      "score": 100.0,
+      "total_criteria": 20,
+      "criteria_met": 20,
+      "criteria": [
+        {
+          "id": "1.1",
+          "name": "GHG inventory boundary defined",
+          "met": true
+        },
+        {
+          "id": "1.2",
+          "name": "Reporting organization identified",
+          "met": true
+        },
+        {
+          "id": "1.3",
+          "name": "Reporting period specified",
+          "met": true
+        },
+        {
+          "id": "2.1",
+          "name": "Scope 1 emissions quantified",
+          "met": true
+        },
+        {
+          "id": "2.2",
+          "name": "Scope 2 emissions quantified",
+          "met": true
+        },
+        {
+          "id": "2.3",
+          "name": "Scope 3 emissions considered",
+          "met": true
+        },
+        {
+          "id": "3.1",
+          "name": "Direct measurement used (preferred)",
+          "met": true
+        },
+        {
+          "id": "3.2",
+          "name": "Calculation methodology documented",
+          "met": true
+        },
+        {
+          "id": "3.3",
+          "name": "Emission factors sourced and documented",
+          "met": true
+        },
+        {
+          "id": "3.4",
+          "name": "GHG removals quantified (if applicable)",
+          "met": true
+        },
+        {
+          "id": "4.1",
+          "name": "Base year selected and justified",
+          "met": true
+        },
+        {
+          "id": "4.2",
+          "name": "Recalculation policy for base year",
+          "met": true
+        },
+        {
+          "id": "5.1",
+          "name": "Uncertainty assessment performed",
+          "met": true
+        },
+        {
+          "id": "5.2",
+          "name": "Materiality threshold defined",
+          "met": true
+        },
+        {
+          "id": "6.1",
+          "name": "Information management system in place",
+          "met": true
+        },
+        {
+          "id": "6.2",
+          "name": "Internal audit performed",
+          "met": true
+        },
+        {
+          "id": "7.1",
+          "name": "External verification planned",
+          "met": true
+        },
+        {
+          "id": "7.2",
+          "name": "Verification assurance level stated",
+          "met": true
+        },
+        {
+          "id": "8.1",
+          "name": "GHG report contents complete",
+          "met": true
+        },
+        {
+          "id": "8.2",
+          "name": "Independent assurance statement included",
+          "met": true
+        }
+      ],
+      "gaps": [],
+      "recommendations": [],
+      "timestamp": "2026-07-21T02:42:18.592716"
+    },
+    "iso_14064_2": {
+      "standard": "ISO 14064-2:2019",
+      "pass_": true,
+      "score": 100.0,
+      "total_criteria": 14,
+      "criteria_met": 14,
+      "criteria": [
+        {
+          "id": "P.1",
+          "name": "Project description and boundary",
+          "met": true
+        },
+        {
+          "id": "P.2",
+          "name": "Baseline scenario identified",
+          "met": true
+        },
+        {
+          "id": "P.3",
+          "name": "Project scenario defined",
+          "met": true
+        },
+        {
+          "id": "P.4",
+          "name": "Additionality demonstrated",
+          "met": true
+        },
+        {
+          "id": "P.5",
+          "name": "Emission reduction calculation methodology",
+          "met": true
+        },
+        {
+          "id": "P.6",
+          "name": "Baseline emissions quantified",
+          "met": true
+        },
+        {
+          "id": "P.7",
+          "name": "Project emissions quantified",
+          "met": true
+        },
+        {
+          "id": "P.8",
+          "name": "Leakage assessed",
+          "met": true
+        },
+        {
+          "id": "P.9",
+          "name": "Monitoring plan in place",
+          "met": true
+        },
+        {
+          "id": "P.10",
+          "name": "Data quality assessed",
+          "met": true
+        },
+        {
+          "id": "P.11",
+          "name": "Uncertainty assessed",
+          "met": true
+        },
+        {
+          "id": "P.12",
+          "name": "Permanence addressed (if applicable)",
+          "met": true
+        },
+        {
+          "id": "P.13",
+          "name": "Verification by accredited VVB",
+          "met": true
+        },
+        {
+          "id": "P.14",
+          "name": "Validation by accredited VVB",
+          "met": true
+        }
+      ],
+      "gaps": [],
+      "recommendations": [],
+      "timestamp": "2026-07-21T02:42:18.592747"
+    },
+    "iso_14064_3": {
+      "standard": "ISO 14064-3:2019",
+      "pass_": true,
+      "score": 100.0,
+      "total_criteria": 10,
+      "criteria_met": 10,
+      "criteria": [
+        {
+          "id": "V.1",
+          "name": "Verification body accreditation documented",
+          "met": true
+        },
+        {
+          "id": "V.2",
+          "name": "Verification scope defined",
+          "met": true
+        },
+        {
+          "id": "V.3",
+          "name": "Materiality threshold applied",
+          "met": true
+        },
+        {
+          "id": "V.4",
+          "name": "Risk-based approach used",
+          "met": true
+        },
+        {
+          "id": "V.5",
+          "name": "Data and information evaluated",
+          "met": true
+        },
+        {
+          "id": "V.6",
+          "name": "GHG information system assessed",
+          "met": true
+        },
+        {
+          "id": "V.7",
+          "name": "Site visit conducted",
+          "met": true
+        },
+        {
+          "id": "V.8",
+          "name": "Verification opinion issued",
+          "met": true
+        },
+        {
+          "id": "V.9",
+          "name": "Independence of verifier confirmed",
+          "met": true
+        },
+        {
+          "id": "V.10",
+          "name": "Competence of verifier confirmed",
+          "met": true
+        }
+      ],
+      "gaps": [],
+      "recommendations": [],
+      "timestamp": "2026-07-21T02:42:18.592768"
+    },
+    "iso_50001": {
+      "pass_": true,
+      "score": 100.0,
+      "criteria": [
+        {
+          "id": "4.1",
+          "name": "Context of organization",
+          "met": true
+        },
+        {
+          "id": "4.2",
+          "name": "Leadership",
+          "met": true
+        },
+        {
+          "id": "5.1",
+          "name": "Planning \u2014 General",
+          "met": true
+        },
+        {
+          "id": "5.2",
+          "name": "Planning \u2014 Energy review",
+          "met": true
+        },
+        {
+          "id": "5.3",
+          "name": "Planning \u2014 EnPIs",
+          "met": true
+        },
+        {
+          "id": "5.4",
+          "name": "Planning \u2014 Energy baseline",
+          "met": true
+        },
+        {
+          "id": "5.5",
+          "name": "Planning \u2014 Objectives & targets",
+          "met": true
+        },
+        {
+          "id": "5.6",
+          "name": "Planning \u2014 Action plan",
+          "met": true
+        },
+        {
+          "id": "6.1",
+          "name": "Support",
+          "met": true
+        },
+        {
+          "id": "6.2",
+          "name": "Competence",
+          "met": true
+        },
+        {
+          "id": "6.3",
+          "name": "Awareness",
+          "met": true
+        },
+        {
+          "id": "6.4",
+          "name": "Communication",
+          "met": true
+        },
+        {
+          "id": "6.5",
+          "name": "Documented information",
+          "met": true
+        },
+        {
+          "id": "7.1",
+          "name": "Operation \u2014 General",
+          "met": true
+        },
+        {
+          "id": "7.2",
+          "name": "Operation \u2014 Energy planning",
+          "met": true
+        },
+        {
+          "id": "7.3",
+          "name": "Operation \u2014 Monitoring & measurement",
+          "met": true
+        },
+        {
+          "id": "8.1",
+          "name": "Performance evaluation",
+          "met": true
+        },
+        {
+          "id": "8.2",
+          "name": "Evaluation of compliance",
+          "met": true
+        },
+        {
+          "id": "8.3",
+          "name": "Internal audit",
+          "met": true
+        },
+        {
+          "id": "9.1",
+          "name": "Nonconformity & corrective action",
+          "met": true
+        },
+        {
+          "id": "9.2",
+          "name": "Management review",
+          "met": true
+        },
+        {
+          "id": "9.3",
+          "name": "Continual improvement",
+          "met": true
+        }
+      ],
+      "energy_review_complete": true,
+      "enpis_defined": [
+        "Specific energy consumption (MJ/t clinker)",
+        "Specific power consumption (kWh/t cement)",
+        "Alternative fuel substitution rate (%)",
+        "WHR generation (kWh/yr)"
+      ],
+      "energy_baseline_set": true,
+      "objectives_targets_set": true,
+      "energy_action_plan": true,
+      "monitoring_system": true,
+      "management_review": true,
+      "notes": "EnPIs: Specific energy consumption (MJ/t clinker), Specific power consumption (kWh/t cement), Alternative fuel substitution rate (%), WHR generation (kWh/yr)"
+    },
+    "iso_14001": {
+      "pass_": true,
+      "score": 100.0,
+      "criteria": [
+        {
+          "id": "4.1",
+          "name": "Context of organization",
+          "met": true
+        },
+        {
+          "id": "4.2",
+          "name": "Needs & expectations",
+          "met": true
+        },
+        {
+          "id": "4.3",
+          "name": "Scope of EMS",
+          "met": true
+        },
+        {
+          "id": "4.4",
+          "name": "EMS",
+          "met": true
+        },
+        {
+          "id": "5.1",
+          "name": "Leadership & commitment",
+          "met": true
+        },
+        {
+          "id": "5.2",
+          "name": "Environmental policy",
+          "met": true
+        },
+        {
+          "id": "5.3",
+          "name": "Roles & responsibilities",
+          "met": true
+        },
+        {
+          "id": "6.1.1",
+          "name": "Environmental aspects",
+          "met": true
+        },
+        {
+          "id": "6.1.2",
+          "name": "Compliance obligations",
+          "met": true
+        },
+        {
+          "id": "6.1.3",
+          "name": "Risks & opportunities",
+          "met": true
+        },
+        {
+          "id": "6.1.4",
+          "name": "Environmental objectives",
+          "met": true
+        },
+        {
+          "id": "6.2",
+          "name": "Planning of actions",
+          "met": true
+        },
+        {
+          "id": "7.1",
+          "name": "Resources",
+          "met": true
+        },
+        {
+          "id": "7.2",
+          "name": "Competence",
+          "met": true
+        },
+        {
+          "id": "7.3",
+          "name": "Awareness",
+          "met": true
+        },
+        {
+          "id": "7.4",
+          "name": "Communication",
+          "met": true
+        },
+        {
+          "id": "7.5",
+          "name": "Documented information",
+          "met": true
+        },
+        {
+          "id": "8.1",
+          "name": "Operational planning",
+          "met": true
+        },
+        {
+          "id": "8.2",
+          "name": "Emergency preparedness",
+          "met": true
+        },
+        {
+          "id": "9.1.1",
+          "name": "Monitoring & measurement",
+          "met": true
+        },
+        {
+          "id": "9.1.2",
+          "name": "Evaluation of compliance",
+          "met": true
+        },
+        {
+          "id": "9.2",
+          "name": "Internal audit",
+          "met": true
+        },
+        {
+          "id": "9.3",
+          "name": "Management review",
+          "met": true
+        },
+        {
+          "id": "10.1",
+          "name": "Nonconformity & corrective action",
+          "met": true
+        },
+        {
+          "id": "10.2",
+          "name": "Continual improvement",
+          "met": true
+        }
+      ],
+      "ems_documented": true,
+      "aspects_identified": [
+        "CO2 emissions (climate change)",
+        "Particulate matter (air quality)",
+        "NOx emissions (air quality)",
+        "Water consumption (water stress)",
+        "Solid waste (clinker dust, refractories)",
+        "Noise (community impact)"
+      ],
+      "legal_compliance": true,
+      "objectives_targets": true,
+      "monitoring_measurement": true,
+      "notes": "6 environmental aspects identified"
+    },
+    "tcfd": {
+      "organization": "Hetauda Cement Industries Ltd",
+      "reporting_year": 2024,
+      "governance": {
+        "board_oversight": "Board-level Sustainability Committee reviews climate risks quarterly",
+        "management_role": "Chief Sustainability Officer reports to CEO; reports to Board quarterly",
+        "expertise": "At least 2 Board members with climate/sustainability expertise"
+      },
+      "strategy": {
+        "short_term_risks": [
+          "Carbon credit revenue loss if technology shift not adopted (1-3 yr)",
+          "Stranded asset risk for inefficient kilns (3-5 yr)",
+          "Customer demand for low-carbon cement (1-3 yr)"
+        ],
+        "long_term_risks": [
+          "Carbon Border Adjustment Mechanism (CBAM) impact on exports (5-10 yr)",
+          "Nepal CO2 tax introduction (5-10 yr)",
+          "Physical climate risks: water scarcity for cooling, extreme heat"
+        ],
+        "opportunities": [
+          "Biomass co-firing: $6-20M NPV per cement plant",
+          "Brick kiln technology upgrade: $143k-477k NPV per kiln",
+          "Verra VCS / Gold Standard credit revenue: $15-50/tCO2e",
+          "LC3 / geopolymer product premium: 10-20%"
+        ]
+      },
+      "risk_management": {
+        "identification": "Annual climate risk assessment aligned with TCFD framework",
+        "integration": "Climate risks integrated into enterprise risk management (ERM)",
+        "monitoring": "KPIs reviewed monthly; targets reset annually"
+      },
+      "metrics_targets": {
+        "scope1": "858,218 tCO2e/yr",
+        "scope2": "2,808 tCO2e/yr",
+        "scope3": "0 tCO2e/yr",
+        "intensity": "783 kg CO2/t product",
+        "target_2030": "30% absolute reduction by 2030",
+        "target_2050": "Net Zero by 2050",
+        "methodology": "GHG Protocol Corporate Standard + ISO 14064-1"
+      },
+      "scope1_tco2": 858217.62,
+      "scope2_tco2": 2807.74,
+      "scope3_tco2": 0.0,
+      "intensity_kgco2_per_t_product": 782.75,
+      "target_2030_reduction_pct": 30.0,
+      "target_2050_reduction_pct": 100.0,
+      "scenarios": {
+        "1.5C-aligned (Net Zero by 2050)": {
+          "scope1_2030": 429108.81,
+          "scope1_2050": 42910.881,
+          "carbon_price_usd_per_t_2030": 100.0,
+          "carbon_price_usd_per_t_2050": 250.0
+        },
+        "Well-below 2C": {
+          "scope1_2030": 600752.3339999999,
+          "scope1_2050": 171643.524,
+          "carbon_price_usd_per_t_2030": 50.0,
+          "carbon_price_usd_per_t_2050": 150.0
+        },
+        "Business as Usual": {
+          "scope1_2030": 901128.501,
+          "scope1_2050": 815306.739,
+          "carbon_price_usd_per_t_2030": 20.0,
+          "carbon_price_usd_per_t_2050": 50.0
+        }
+      },
+      "timestamp": "2026-07-21T02:42:18.592870"
+    },
+    "sbti": {
+      "target": {
+        "target_year": 2030,
+        "absolute_target_tco2": null,
+        "intensity_target_kgco2_per_t": 400.0,
+        "base_year": 2024,
+        "base_year_tco2": 1000000.0,
+        "base_year_intensity_kgco2_per_t": 900.0,
+        "sector": "cement"
+      },
+      "method": "Sectoral Decarbonization Approach (SDA)",
+      "aligned_with_1_5c": true,
+      "required_reduction_pct": 38.5,
+      "target_reduction_pct": 55.55555555555556,
+      "gap_pct": 17.055555555555557,
+      "pathway_1_5c_2030_intensity": 553.5,
+      "pathway_1_5c_2050_intensity": 45.0,
+      "recommendation": "Target is aligned with 1.5\u00b0C. Required: 38.5%, achieved: 55.6%",
+      "timestamp": "2026-07-21T02:42:18.592901"
+    },
+    "gcca": {
+      "plant_name": "Hetauda Cement Industries Ltd",
+      "reporting_year": 2024,
+      "co2_per_t_cement": 782.8,
+      "co2_per_t_clinker": 906.3,
+      "specific_heat_consumption_mj_per_t_clinker": 4167.6,
+      "specific_power_consumption_kwh_per_t_cement": 77.3,
+      "alternative_fuel_substitution_rate_pct": 0.0,
+      "clinker_to_cement_ratio": 0.864,
+      "co2_from_fossil_fuel_pct": 40.3,
+      "co2_from_process_pct": 59.4,
+      "co2_from_electricity_pct": 0.3,
+      "gcca_benchmark_co2": 700.0,
+      "gcca_benchmark_heat": 3300.0,
+      "vs_gcca_benchmark_co2_pct": 11.8,
+      "vs_gcca_benchmark_heat_pct": 26.3
+    },
+    "pcaf": [
+      {
+        "company": "Hetauda Cement",
+        "sector": "cement",
+        "loan_amount_usd": 5000000.0,
+        "company_revenue_usd": 100000000.0,
+        "company_emissions_tco2": 1000000.0,
+        "attribution_factor": 0.05,
+        "financed_emissions_tco2": 50000.0,
+        "data_quality_score": 2,
+        "attribution_method": "Revenue"
+      }
+    ],
+    "lca": {
+      "functional_unit": "1 tonne cement",
+      "product": "OPC cement from Hetauda Cement Industries Ltd",
+      "impacts": {
+        "GWP100": 0.784,
+        "AP": 0.0021,
+        "EP": 0.0001,
+        "POCP": 0.0001,
+        "ADP": 0.0,
+        "HTP": 0.0011
+      },
+      "stage_contributions": {
+        "raw_materials": {
+          "GWP100": 0.0,
+          "AP": 0.0,
+          "EP": 0.0,
+          "POCP": 0.0,
+          "ADP": 0.0,
+          "HTP": 0.0
+        },
+        "fuel_combustion": {
+          "GWP100": 0.3171,
+          "AP": 0.002,
+          "EP": 0.0001,
+          "POCP": 0.0001,
+          "ADP": 0.0,
+          "HTP": 0.0005
+        },
+        "electricity": {
+          "GWP100": 0.002,
+          "AP": 0.0,
+          "EP": 0.0,
+          "POCP": 0.0,
+          "ADP": 0.0,
+          "HTP": 0.0006
+        },
+        "transport": {
+          "GWP100": 0.0,
+          "AP": 0.0,
+          "EP": 0.0,
+          "POCP": 0.0,
+          "ADP": 0.0,
+          "HTP": 0.0
+        },
+        "process_emissions": {
+          "GWP100": 0.4648,
+          "AP": 0.0,
+          "EP": 0.0,
+          "POCP": 0.0,
+          "ADP": 0.0,
+          "HTP": 0.0
+        }
+      },
+      "total_impact_score": 0.7874,
+      "normalized": {
+        "GWP100": 0.000167,
+        "AP": 3.7e-05,
+        "EP": 6e-06,
+        "POCP": 4e-06,
+        "ADP": 1e-06,
+        "HTP": 2e-06
+      },
+      "weighted_score": 0.1312,
+      "method": "CML 2001 + IPCC AR5",
+      "allocation": "mass",
+      "boundary": "cradle-to-gate"
+    },
+    "simulator_kiln": {
+      "t_clinker_peak_k": 2011.5062364399291,
+      "t_clinker_peak_c": 1738.356236439929,
+      "t_gas_peak_k": 2010.3647446492596,
+      "t_burning_zone_k": 2011.5062364399291,
+      "avg_conversion": 1.001507434439501,
+      "sec_mj_per_t_clinker": 2930.6516912628967,
+      "co2_calcination_t_h": 85.84624571917807,
+      "co2_fuel_t_h": 36.34972602739726,
+      "co2_total_t_h": 122.19597174657534,
+      "co2_total_kg_h": 122195.97174657533,
+      "thermal_efficiency": 0.75
+    },
+    "token_metadata": {
+      "project_name": "Hetauda Decarb",
+      "vintage_year": 2026,
+      "methodology": "VM0009 v2.0",
+      "registry": "Verra",
+      "registry_project_id": null,
+      "serial_number": "ba62199d46f6c1df",
+      "issuance_date": "2026-01-01",
+      "total_tonnes_co2": 56407.395699999994,
+      "buffer_tonnes": 0.0,
+      "issuance_hash": "b5bc5a1175678f7ad58bd8013f22de707c1bbf1baa83304df76a27f9bda709c9"
+    }
+  }
+}

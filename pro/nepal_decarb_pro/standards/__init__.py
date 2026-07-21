@@ -5,6 +5,8 @@ from nepal_decarb_pro.standards.iso_14064 import (
     check_iso_14064_part2,
     check_iso_14064_part3,
 )
+from nepal_decarb_pro.standards.iso_50001 import ISO50001Result, check_iso_50001
+from nepal_decarb_pro.standards.iso_14001 import ISO14001Result, check_iso_14001
 from nepal_decarb_pro.standards.tcfd import (
     TCFDResult,
     generate_tcfd_report,
@@ -30,6 +32,8 @@ from nepal_decarb_pro.standards.ghg_protocol import (
 
 __all__ = [
     "ISO14064Result", "check_iso_14064_part1", "check_iso_14064_part2", "check_iso_14064_part3",
+    "ISO50001Result", "check_iso_50001",
+    "ISO14001Result", "check_iso_14001",
     "TCFDResult", "generate_tcfd_report",
     "SBTiTarget", "SBTiResult", "check_sbti_target",
     "GCCAKPI", "calculate_gcca_kpis",
