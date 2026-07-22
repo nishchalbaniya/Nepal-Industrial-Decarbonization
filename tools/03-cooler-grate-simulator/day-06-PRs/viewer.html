@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Day 6 v0.6.0 — Hetauda Cooler STEP File</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+         max-width: 980px; margin: 24px auto; padding: 0 16px;
+         color: #1c1c1c; background: #fafaf7; }
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.15em; margin-top: 32px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px 0; font-size: 13px; }
+  th, td { text-align: right; padding: 4px 8px; border-bottom: 1px solid #e6e6e0; }
+  th:first-child, td:first-child { text-align: left; }
+  th { background: #efe9d8; font-weight: 600; }
+  .meta { color: #666; font-size: 12px; }
+  pre { background: #f4f0e3; padding: 12px; border-radius: 4px;
+        overflow-x: auto; font-size: 12px; line-height: 1.4; }
+  .cite { color: #555; font-size: 12px; }
+  .download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #1d6b1d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 16px 0;
+  }
+  .download-btn:hover { background: #0f4f0f; }
+  .summary-box {
+    background: #fff7d8;
+    border: 1px solid #d6c66a;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .ascii-art {
+    font-family: monospace;
+    white-space: pre;
+    background: #f4f0e3;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+    line-height: 1.0;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Day 6 v0.6.0 &mdash; Hetauda cooler 3D STEP file</h1>
+<p class="meta">
+  Generated <span id="ts"></span> &middot;
+  v0.6.0 = v0.5.0 calibrated model + FreeCAD 1.1.1 STEP export.
+  The .step file is a real ISO 10303-21 AP214 file (62 KB, 53 faces,
+  11 parts). Open it in FreeCAD, Onshape, Fusion 360, or any
+  STEP-compliant CAD viewer.
+</p>
+
+<div class="summary-box">
+  <strong>What's in the .step file:</strong>
+  <ul>
+    <li>Main cooler housing (33.2 m long x 3.9 m wide x 2.2 m tall outer; hollowed inner for the grate volume)</li>
+    <li>6 compartment partitions (vertical plates at 5.46 m intervals along the X axis)</li>
+    <li>1 sec-air duct stub (1.0 m diameter, at the kiln end)</li>
+    <li>1 exhaust duct stub (0.8 m diameter, at the cold end)</li>
+    <li>1 kiln-discharge coupling (1.5 m diameter, vertical, at the hot end)</li>
+    <li>1 clinker-discharge chute (1.2 m wide, at the cold end)</li>
+    <li>1 grate plate (full length, 0.78 m bed depth from the top of the housing)</li>
+  </ul>
+  <p class="meta">
+    The geometry is the v0.5.0 calibrated posterior: 32.8 m grate
+    length, 0.78 m bed depth, 6 compartments. This is close to the
+    real Hetauda plant geometry (~32 m grate, ~0.7 m bed, 5 compartments)
+    and is the result of the Day 5 v0.5.0 calibration on the consistent
+    synthetic Hetauda target (loss 234 -> 5.0, 98% reduction).
+  </p>
+</div>
+
+<h2>1. Download</h2>
+<p>
+  <a href="v050_cooler_assembly.step" download class="download-btn">
+    Download v050_cooler_assembly.step (62 KB)
+  </a>
+  &nbsp;&nbsp;
+  <a href="v050_cooler_assembly.json" download class="download-btn" style="background:#666">
+    Download metadata JSON (2.4 KB)
+  </a>
+</p>
+
+<h2>2. Schematic (top view, ASCII)</h2>
+<div class="ascii-art">
+                                  KILN-DISCHARGE END
+                          +---------------------------+
+                          |                           |
+            1.0 m sec-air  |     COMPARTMENT 1          |   bed depth 0.78 m
+            duct stub     |     (sec-air zone)         |
+                          |                           |
+  +-----------------------+---------------------------+----------+
+  |                       |                           |          |
+  |   COMPARTMENT 2       |   COMPARTMENT 3           |  COMP 4  |  COMP 5
+  |   (tertiary)          |   (tertiary)              |  (ter)   |  (ter)
+  |                       |                           |          |   +--- 0.8 m exhaust
+  |                       |                           |          |   |    duct stub
+  +-----------------------+---------------------------+----------+   |
+  |       COMPARTMENT 6   (exhaust zone, dust collector / WHR)   <--+
+  |                                                            |
+  +------------------------------------------------------------+
+                                              CLINKER-DISCHARGE CHUTE
+                                                          (1.2 m wide)
+</div>
+
+<h2>3. Bounding box (mm)</h2>
+<table>
+  <thead>
+    <tr><th>Axis</th><th>Length (mm)</th><th>Interpretation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>X (grate travel)</td><td id="bbox-x">33,197</td><td>32.8 m grate + 2 x 0.20 m shell thickness</td></tr>
+    <tr><td>Y (grate width)</td><td id="bbox-y">3,900</td><td>3.5 m grate + 2 x 0.20 m shell thickness</td></tr>
+    <tr><td>Z (vertical)</td><td id="bbox-z">2,200</td><td>2.0 m shell height + 0.20 m shell thickness</td></tr>
+  </tbody>
+</table>
+
+<h2>4. Calibrated geometry (Day 5 v0.5.0 posterior)</h2>
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th><th>Real Hetauda (approx)</th></tr>
+  </thead>
+  <tbody id="geo"></tbody>
+</table>
+
+<h2>5. How to open the .step file</h2>
+<h3>FreeCAD (free, open-source)</h3>
+<pre>
+File > Open > v050_cooler_assembly.step
+# Or on the command line:
+"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCADCmd.exe" -c "import FreeCAD; FreeCAD.open(r'C:\path\to\v050_cooler_assembly.step')"
+</pre>
+<h3>Onshape, Fusion 360, SolidWorks, CATIA, Inventor</h3>
+<p>All major CAD tools have native STEP import. The file uses
+ISO 10303-21 AP214 which is the most widely supported STEP
+subtype (mechanical design).</p>
+<h3>Online viewers (no install required)</h3>
+<ul>
+  <li><a href="https://3dviewer.net" target="_blank">3DViewer.net</a> &mdash; drag-and-drop STEP viewer in browser</li>
+  <li><a href="https://www.viewstl.com" target="_blank">ViewSTL.com</a> &mdash; also supports STEP</li>
+</ul>
+
+<h2>6. Citations</h2>
+<ul class="cite">
+  <li>ISO 10303-21:2016 &mdash; STEP file format (AP214 mechanical design)</li>
+  <li>Peray, K.E. &amp; Waddell, J.J. (1986). <em>The Rotary Cement Kiln</em>, 2nd ed. &sect;6.4 (cooler geometry conventions)</li>
+  <li>Mujumdar, K.S. (2007). <em>Ind. Eng. Chem. Res.</em> 46(7):2184-2192 (compartment layout)</li>
+  <li>Achenbach, E. (1995). <em>Exp. Thermal Fluid Sci.</em> 10(1):17-27 (h correlation)</li>
+  <li>ICCC 2006 &sect;2.3 (clinker emissivity, grate residence)</li>
+  <li>GCCA GNR 2022; ECRA 2022 (cooler efficiency BAT)</li>
+  <li>ASHRAE Handbook (Fundamentals) 2021 Ch. 1 (moist-air density)</li>
+  <li>JCGM 100:2008 (GUM) &mdash; uncertainty propagation in the calibration loss</li>
+  <li>Saltelli, A. et al. (2010). <em>Computer Physics Communications</em> 181:259-261 (Sobol sensitivity)</li>
+</ul>
+
+<p class="cite">
+  Mavis (orchestrator), 2026-07-22. Open-source (MIT).
+  Model: v0.5.0 Day 5 ship (commit 2aa918c). STEP export: Day 6 v0.6.0.
+</p>
+
+<script>
+const META = {
+  geometry: {
+    "grate_length_m":           32.797,
+    "bed_depth_m":              0.78,
+    "n_compartments":           6,
+    "width_m":                  3.5,
+    "shell_height_m":           2.0,
+    "shell_thickness_m":        0.20,
+    "sec_air_duct_diameter_m":  1.0,
+    "exhaust_duct_diameter_m":  0.8,
+    "kiln_coupling_diameter_m": 1.5,
+    "clinker_chute_width_m":    1.2,
+  },
+  real_hetauda: {
+    "grate_length_m":          "~32",
+    "bed_depth_m":             "~0.7",
+    "n_compartments":          "5 (Polysius design)",
+    "width_m":                 "~3.5",
+  },
+};
+
+document.getElementById("ts").textContent = new Date().toISOString();
+
+const gt = document.getElementById("geo");
+const real = META.real_hetauda;
+for (const [k, v] of Object.entries(META.geometry)) {
+  const realVal = real[k] ?? "—";
+  const vStr = typeof v === "number" ? v.toFixed(3) : v;
+  gt.insertAdjacentHTML("beforeend", `
+    <tr>
+      <td>${k}</td>
+      <td>${vStr} ${k.endsWith("_m") && !k.includes("thickness") && !k.includes("diameter") && !k.includes("width") && !k.includes("height") ? "m" : ""}</td>
+      <td>${realVal}</td>
+    </tr>`);
+}
+</script>
+</body>
+</html>
