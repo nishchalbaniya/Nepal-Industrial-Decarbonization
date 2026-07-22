@@ -74,3 +74,5 @@ reports/*.json
 *.safetensors
 *.bin
 huggingface/
+.venv_live/
+.venv_live/
