@@ -444,6 +444,38 @@ def cmd_export_step_kiln(args) -> int:
     return 0
 
 
+def cmd_export_pid_cooler(args) -> int:
+    """Export the Hetauda cooler P&ID (STEP + SVG + JSON metadata)."""
+    import subprocess
+    freecad = r"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCADCmd.exe"
+    script = Path(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-09-PRs" / "export_pid_cooler.py"
+    if not script.exists():
+        print(f"ERROR: P&ID export script not found at {script}")
+        return 1
+    out_dir = Path(args.output or ".")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cmd = [freecad, "-c", f"exec(open(r'{script}').read())"]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except FileNotFoundError:
+        print(f"ERROR: FreeCAD not found at {freecad}.")
+        return 1
+    except subprocess.TimeoutExpired:
+        print("ERROR: FreeCAD P&ID export timed out after 120s")
+        return 1
+    if r.returncode != 0:
+        print(f"ERROR: FreeCAD P&ID export failed: {r.stderr[-500:]}")
+        return 1
+    src_dir = script.parent / "cad"
+    for name in ("hetauda_cooler_pid.svg", "hetauda_cooler_pid.json", "hetauda_cooler_pid.step"):
+        src = src_dir / name
+        if src.exists():
+            dst = out_dir / name
+            dst.write_bytes(src.read_bytes())
+            print(f"  wrote {dst} ({src.stat().st_size} bytes)")
+    return 0
+
+
 def cmd_demo(args) -> int:
     """Run cooler + kiln + calibration end-to-end. The Day 7 demo."""
     out = Path(args.out or "demo-output")
@@ -599,6 +631,9 @@ def main(argv=None) -> int:
     pks = p_exp_sub.add_parser("step-kiln", help="Export Hetauda rotary kiln as STEP")
     pks.add_argument("--output", default=None, help="Output .step path")
     pks.set_defaults(func=cmd_export_step_kiln)
+    ppid = p_exp_sub.add_parser("pid-cooler", help="Export Hetauda cooler P&ID (STEP + SVG + JSON)")
+    ppid.add_argument("--output", default=".", help="Output directory")
+    ppid.set_defaults(func=cmd_export_pid_cooler)
 
     p_demo = sub.add_parser("demo", help="Run cooler + kiln + calibration end-to-end")
     p_demo.add_argument("--plant", default="hetauda")
