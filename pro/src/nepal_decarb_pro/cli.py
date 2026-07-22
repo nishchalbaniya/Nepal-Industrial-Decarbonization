@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 
 def cmd_version(args) -> int:
@@ -520,15 +520,20 @@ def cmd_install(args) -> int:
     # location (the .bat lives in <repo>/pro/dist/ so the
     # grandparent is the repo root).
     py_str = sys.executable.replace("/", "\\")
-    # .bat launcher: compute ROOT at runtime from the .bat's location
+    repo_root = Path(__file__).resolve().parent.parent.parent.parent  # pro/src/nepal_decarb_pro/cli.py
+    # .bat launcher: prefer NEPAL_DECARB_ROOT env var, else walk up from the .bat's location
     bat = dist / "nepal-decarb.bat"
     bat.write_text(
         "@echo off\r\n"
-        "REM nepal-decarb launcher (Day 11). ROOT is computed from the .bat's location.\r\n"
+        "REM nepal-decarb launcher (Day 11). NEPAL_DECARB_ROOT env var is used if set;\r\n"
+        "REM otherwise the launcher walks up from its own location to find the repo.\r\n"
         "setlocal\r\n"
+        "if defined NEPAL_DECARB_ROOT (\r\n"
+        "  set \"ROOT=%NEPAL_DECARB_ROOT%\"\r\n"
+        "  goto gotroot\r\n"
+        ")\r\n"
         "set \"BAT_DIR=%~dp0\"\r\n"
         "if \"%BAT_DIR:~-1%\"==\"\\\" set \"BAT_DIR=%BAT_DIR:~0,-1%\"\r\n"
-        "REM Walk up from <dist> to find the repo root (looks for nepal-decarb-build or nepal_decarb_pro)\r\n"
         "set \"ROOT=%BAT_DIR%\"\r\n"
         ":findroot\r\n"
         "if exist \"%ROOT%\\pro\\src\\nepal_decarb_pro\\__init__.py\" goto gotroot\r\n"
@@ -542,23 +547,28 @@ def cmd_install(args) -> int:
         "\"%PY_EXE%\" -m nepal_decarb_pro.cli %*\r\n"
         "exit /b %ERRORLEVEL%\r\n"
         ":failroot\r\n"
-        "echo [nepal-decarb] ERROR: could not find repo root from %BAT_DIR%\r\n"
+        "echo [nepal-decarb] ERROR: could not find repo root. Set NEPAL_DECARB_ROOT or run from inside the repo.\r\n"
         "exit /b 1\r\n"
     )
-    # .ps1 launcher: walk up from <PSScriptRoot> to find the repo root
+    # .ps1 launcher: prefer $env:NEPAL_DECARB_ROOT, else walk up
     ps1 = dist / "nepal-decarb.ps1"
     ps1.write_text(
-        "# nepal-decarb launcher (Day 11)\n"
-        "$here = Split-Path -Parent $MyInvocation.MyCommand.Path\n"
-        "$root = $here\n"
-        "while ($true) {\n"
-        "    if (Test-Path (Join-Path $root 'pro\\src\\nepal_decarb_pro\\__init__.py')) { break }\n"
-        "    $parent = Split-Path -Parent $root\n"
-        "    if ($parent -eq $root) {\n"
-        "        Write-Host '[nepal-decarb] ERROR: could not find repo root from' $here -ForegroundColor Red\n"
-        "        exit 1\n"
+        "# nepal-decarb launcher (Day 11). $env:NEPAL_DECARB_ROOT is used if set;\n"
+        "# otherwise the launcher walks up from its own location to find the repo.\n"
+        "if ($env:NEPAL_DECARB_ROOT -and (Test-Path (Join-Path $env:NEPAL_DECARB_ROOT 'pro\\src\\nepal_decarb_pro\\__init__.py'))) {\n"
+        "    $root = $env:NEPAL_DECARB_ROOT\n"
+        "} else {\n"
+        "    $here = Split-Path -Parent $MyInvocation.MyCommand.Path\n"
+        "    $root = $here\n"
+        "    while ($true) {\n"
+        "        if (Test-Path (Join-Path $root 'pro\\src\\nepal_decarb_pro\\__init__.py')) { break }\n"
+        "        $parent = Split-Path -Parent $root\n"
+        "        if ($parent -eq $root) {\n"
+        "            Write-Host '[nepal-decarb] ERROR: could not find repo root. Set $env:NEPAL_DECARB_ROOT or run from inside the repo.' -ForegroundColor Red\n"
+        "            exit 1\n"
+        "        }\n"
+        "        $root = $parent\n"
         "    }\n"
-        "    $root = $parent\n"
         "}\n"
         "$env:NEPAL_DECARB_ROOT = $root\n"
         f"$env:PYTHONPATH = \"$root\\pro\\src;\" +\n"
@@ -583,6 +593,167 @@ def cmd_install(args) -> int:
     print("Note: the .bat and .ps1 expect Python at:")
     print(f"  {sys.executable}")
     print("If that path changes, re-run `nepal-decarb install`.")
+    return 0
+
+
+def cmd_serve(args) -> int:
+    """Start the local FastAPI server (Day 10)."""
+    try:
+        import uvicorn
+    except ImportError:
+        print("ERROR: uvicorn not installed. Run: python -m pip install fastapi uvicorn[standard]")
+        return 1
+    from nepal_decarb_pro.server import app
+    print(f"[nepal-decarb server] http://{args.host}:{args.port}/")
+    print(f"[nepal-decarb server] API docs: http://{args.host}:{args.port}/docs")
+    uvicorn.run(app, host=args.host, port=args.port, reload=args.reload, log_level="info")
+    return 0
+
+
+def cmd_setup(args) -> int:
+    """Day 11 turnkey installer. Lays down a folder on the user's
+    Desktop + a Start Menu entry + a 'Start Server' .vbs that opens
+    the browser and runs the FastAPI server in the background. The
+    user double-clicks the shortcut and the dashboard opens."""
+    import shutil
+
+    py_str = sys.executable.replace("/", "\\")
+    home = Path(os.path.expanduser("~"))
+    desktop = home / "Desktop" / "NepalDecarb"
+    startmenu = home / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "NepalDecarb"
+    desktop.mkdir(parents=True, exist_ok=True)
+    startmenu.mkdir(parents=True, exist_ok=True)
+
+    # First, install the .bat + .ps1 into a stable dist/ next to the repo
+    dist = Path(args.dist or "pro/dist")
+    if not dist.is_absolute():
+        dist = Path.cwd() / dist
+    dist.mkdir(parents=True, exist_ok=True)
+    # Inline the install call
+    fake = type("A", (), {"dist": str(dist)})()
+    rc = cmd_install(fake)
+    if rc != 0:
+        return rc
+
+    bat_src = (dist / "nepal-decarb.bat").resolve()
+    ps1_src = (dist / "nepal-decarb.ps1").resolve()
+
+    # Copy the .bat + .ps1 into the desktop folder so the user has a
+    # direct path. Use shutil.copy2 so timestamps are preserved.
+    shutil.copy2(bat_src, desktop / "nepal-decarb.bat")
+    shutil.copy2(ps1_src, desktop / "nepal-decarb.ps1")
+    shutil.copy2(bat_src, startmenu / "nepal-decarb.bat")
+    shutil.copy2(ps1_src, startmenu / "nepal-decarb.ps1")
+
+    # Build a "Start Server" .vbs that opens a browser then starts
+    # the server in a hidden cmd window. .vbs runs without a
+    # terminal flash on Windows.
+    port = int(getattr(args, "port", 8000))
+    # Compute repo root for the env var: <dist>/.. = pro, then up one more = repo
+    repo_root = dist.resolve().parent.parent
+    vbs = desktop / "Start NepalDecarb Dashboard.vbs"
+    vbs.write_text(
+        "' NepalDecarb Dashboard launcher (Day 11)\n"
+        "' Opens the browser to the local FastAPI server, then starts\n"
+        "' the server in a hidden cmd window if not already running.\n"
+        "Set WshShell = CreateObject(\"WScript.Shell\")\n"
+        f"port = {port}\n"
+        "url = \"http://127.0.0.1:\" & port & \"/\"\n"
+        "' Set the env var so the .bat can find the repo even when\n"
+        "' the launcher is on the Desktop (one or more dirs away).\n"
+        f"WshShell.Environment(\"Process\")(\"NEPAL_DECARB_ROOT\") = \"{repo_root}\"\n"
+        f"WshShell.Environment(\"User\")(\"NEPAL_DECARB_ROOT\") = \"{repo_root}\"\n"
+        "' Now actually start the server in a hidden window\n"
+        "serveCmd = \"\"\"\"\"" + f"{bat_src}" + f"\"\"\"\" serve --host 127.0.0.1 --port {port}\"\n"
+        "WshShell.Run \"cmd /c start /min \" & Chr(34) & \"NepalDecarb Server\" & Chr(34) & \" \" & serveCmd, 0, False\n"
+        "' Wait up to 10s for the port to come up, then open the browser\n"
+        "Dim i\n"
+        "For i = 1 To 50\n"
+        "    On Error Resume Next\n"
+        "    Dim x : Set x = CreateObject(\"MSXML2.XMLHTTP\")\n"
+        "    x.open \"GET\", url & \"api/version\", False\n"
+        "    x.send\n"
+        "    If Err.Number = 0 And x.Status = 200 Then\n"
+        "        Err.Clear\n"
+        "        On Error Goto 0\n"
+        "        Exit For\n"
+        "    End If\n"
+        "    Err.Clear\n"
+        "    On Error Goto 0\n"
+        "    WScript.Sleep 200\n"
+        "Next\n"
+        "WshShell.Run url, 1, False\n"
+    )
+    shutil.copy2(vbs, startmenu / "Start NepalDecarb Dashboard.vbs")
+
+    # Build a "Run Demo" .bat that does a one-shot end-to-end demo
+    demo_bat = desktop / "Run Demo (Hetauda).bat"
+    demo_bat.write_text(
+        "@echo off\r\n"
+        "REM Day 11 -- run the end-to-end demo and open the result folder.\r\n"
+        "setlocal\r\n"
+        f'set "NEPAL_DECARB_ROOT={repo_root}"\r\n'
+        f"\"{bat_src}\" demo --plant hetauda --out \"%USERPROFILE%\\Desktop\\NepalDecarb\\demo-output\"\r\n"
+        "if errorlevel 1 (\r\n"
+        "  echo [nepal-decarb] demo failed; see output above.\r\n"
+        "  pause\r\n"
+        "  exit /b 1\r\n"
+        ")\r\n"
+        "start \"\" \"%USERPROFILE%\\Desktop\\NepalDecarb\\demo-output\"\r\n"
+    )
+    shutil.copy2(demo_bat, startmenu / "Run Demo (Hetauda).bat")
+
+    # Build an "Uninstall" .bat
+    uninstall_bat = desktop / "Uninstall NepalDecarb.bat"
+    uninstall_bat.write_text(
+        "@echo off\r\n"
+        "REM Day 11 -- uninstall NepalDecarb Desktop + Start Menu entries.\r\n"
+        "echo Removing NepalDecarb shortcuts...\r\n"
+        f'rmdir /s /q "{desktop}" 2>nul\r\n'
+        f'rmdir /s /q "{startmenu}" 2>nul\r\n'
+        "echo Done. (The Python package and repo are not removed.)\r\n"
+        "pause\r\n"
+    )
+    shutil.copy2(uninstall_bat, startmenu / "Uninstall NepalDecarb.bat")
+
+    # Build a "README" .txt on the Desktop with usage
+    readme = desktop / "README.txt"
+    readme.write_text(
+        "NepalDecarb -- Nepal Industrial Decarbonization v1.0\n"
+        "==================================================\n"
+        "\n"
+        "Quick start:\n"
+        "  1. Double-click 'Start NepalDecarb Dashboard.vbs'\n"
+        "     -> opens http://127.0.0.1:" + str(port) + "/ in your browser\n"
+        "  2. Click 'Run cooler', 'Calibrate', 'Export' from the dashboard\n"
+        "\n"
+        "Other launchers:\n"
+        "  - Run Demo (Hetauda).bat   one-shot end-to-end demo\n"
+        "  - nepal-decarb.bat         raw CLI (cmd.exe)\n"
+        "  - nepal-decarb.ps1         raw CLI (PowerShell)\n"
+        "  - Uninstall NepalDecarb.bat remove the desktop shortcuts\n"
+        "\n"
+        "All math runs locally. No data leaves this machine.\n"
+        "Repo: " + str(Path.cwd()) + "\n"
+        "Python: " + sys.executable + "\n"
+    )
+
+    print()
+    print("=" * 70)
+    print("NepalDecarb turnkey installer (Day 11) -- complete")
+    print("=" * 70)
+    print()
+    print(f"Desktop folder : {desktop}")
+    print(f"Start Menu     : {startmenu}")
+    print(f"Launchers copy : {dist}")
+    print()
+    print("Created shortcuts:")
+    for f in sorted(desktop.iterdir()):
+        print(f"  Desktop  : {f.name}")
+    for f in sorted(startmenu.iterdir()):
+        print(f"  StartMenu: {f.name}")
+    print()
+    print("Double-click 'Start NepalDecarb Dashboard.vbs' to launch.")
     return 0
 
 
@@ -643,6 +814,17 @@ def main(argv=None) -> int:
     p_install = sub.add_parser("install", help="Install as Windows entry point")
     p_install.add_argument("--dist", default="dist", help="Install directory")
     p_install.set_defaults(func=cmd_install)
+
+    p_serve = sub.add_parser("serve", help="Start the local FastAPI server (Day 10)")
+    p_serve.add_argument("--host", default="127.0.0.1")
+    p_serve.add_argument("--port", type=int, default=8000)
+    p_serve.add_argument("--reload", action="store_true")
+    p_serve.set_defaults(func=cmd_serve)
+
+    p_setup = sub.add_parser("setup", help="Day 11 turnkey installer (Desktop + Start Menu + browser launcher)")
+    p_setup.add_argument("--dist", default="pro/dist", help="Where to drop the .bat + .ps1 (relative to cwd)")
+    p_setup.add_argument("--port", type=int, default=8000, help="Port the server will listen on")
+    p_setup.set_defaults(func=cmd_setup)
 
     args = parser.parse_args(argv)
     if not hasattr(args, "func"):
