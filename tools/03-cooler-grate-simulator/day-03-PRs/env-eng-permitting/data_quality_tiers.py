@@ -461,24 +461,36 @@ cooler_module_data_quality: Dict[str, DataQualityEntry] = {
 
     "ef_cbam_default_clinker_t_co2_per_t": DataQualityEntry(
         tier=Tier.Tier1,
-        source="EU 2023/1773 Annex IV §4 (row 2523 10 00)",
+        source="EC Default values for the transitional period (JRC Dec 2023), Section 2.3, row CN 2523 10 00",
         year=2023,
-        sigma_1=None,
-        sigma_unit=None,
-        clause="EU Implementing Reg 2023/1773 Annex IV §4",
+        sigma_1=0.10,
+        sigma_unit="t CO2e/t (absolute)",
+        clause="Commission Implementing Regulation (EU) 2023/1773, Annex IV, Section 3.3 (methodology only); numerical default per EC DG TAXUD transitional-period table, 0.83 t CO2e/t direct + 0.04 t CO2e/t indirect = 0.87 t CO2e/t total for grey/white clinker CN 2523 10 00",
         note=(
-            "UNVERIFIED 2026-07-22: 0.642 t CO2/t clinker is the cited "
-            "direct-emissions default for CBAM cement clinker (CN 2523 "
-            "10 00) but the row was not re-verified by the author against "
-            "the published Annex IV table before this PR was filed. "
-            "Kabita (env-eng) flagged this in DAY-03-NEGOTIATION.md. "
-            "Do NOT commit to a Verra VM0009 v3.0 PDD or a CBAM quarterly "
-            "XML until James (carbon-markets) re-verifies the row against "
-            "the Implementing Regulation 2023/1773 published text. The "
-            "IPCC 2006 Vol.3 Ch.2 §2.3.2 stoichiometric default of 0.527 t "
-            "CO2/t clinker (with the 2019 Refinement §2.3.1 1-2% downward "
-            "CKD/bypass correction) is the safer interim value for any "
-            "claim that requires a cite."
+            "CORRECTED 2026-07-22 by James Okafor (carbon-markets) re-verification "
+            "(see reviews/JAMES-CBAM-VERIFY.md). The 0.642 t CO2/t figure cited in the "
+            "previous version of this note and in DAY-03-NEGOTIATION.md was a "
+            "training-data confabulation: it does NOT appear in 2023/1773 Annex IV, "
+            "nor in the JRC Dec 2023 transitional default table, nor in the "
+            "EC 2025/2621 definitive defaults. The correct transitional-period "
+            "default for cement clinker (CN 2523 10 00) is "
+            "**0.83 t CO2e/t direct + 0.04 t CO2e/t indirect = 0.87 t CO2e/t total**, "
+            "source: "
+            "https://taxation-customs.ec.europa.eu/system/files/2023-12/Default%20values%20transitional%20period.pdf "
+            "(Section 2.3 cement table, JRC Dec 2023 estimates). The methodology "
+            "(system boundary, 'no distinction between grey and white cement "
+            "clinker', calcination + kiln fuels) is in 2023/1773 Annex IV s3.3 "
+            "(https://eur-lex.europa.eu/eli/reg_impl/2023/1773/oj/eng); the "
+            "numerical defaults are a separate Commission publication. "
+            "For 2026+ imports the regime changes to country-specific defaults "
+            "with phased mark-ups (10/20/30%) per C(2025) 8552 final draft "
+            "(adopted XLSX at "
+            "https://taxation-customs.ec.europa.eu/document/download/"
+            "1c05d211-80cb-4aaa-8ef0-e08005a95d7e_en?filename=DVs+as+adopted_v20260204+.xlsx). "
+            "Sigma of 0.10 t CO2e/t absolute is a conservative ±12% 1-sigma "
+            "covering the 0.83 JRC estimate uncertainty and the country-specific "
+            "spread seen in the 2026+ adopted values (0.870-1.240 for grey "
+            "clinker across EU member states)."
         ),
     ),
 
