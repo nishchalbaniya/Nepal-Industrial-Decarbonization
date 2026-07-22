@@ -753,6 +753,19 @@ def cmd_setup(args) -> int:
     for f in sorted(startmenu.iterdir()):
         print(f"  StartMenu: {f.name}")
     print()
+    # Register NEPAL_DECARB_ROOT as a USER-level env var so the .bat
+    # launcher can find the repo even when invoked from a fresh
+    # cmd.exe / PowerShell where the VBS hasn't run yet.
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment",
+                            0, winreg.KEY_SET_VALUE) as k:
+            winreg.SetValueEx(k, "NEPAL_DECARB_ROOT", 0, winreg.REG_SZ, str(repo_root))
+        print(f"Registered NEPAL_DECARB_ROOT = {repo_root} (HKCU\\Environment)")
+    except Exception as e:
+        print(f"NOTE: could not register NEPAL_DECARB_ROOT in HKCU\\Environment: {e}")
+        print("      The VBS launcher still works (it sets the env var at runtime).")
+    print()
     print("Double-click 'Start NepalDecarb Dashboard.vbs' to launch.")
     return 0
 
