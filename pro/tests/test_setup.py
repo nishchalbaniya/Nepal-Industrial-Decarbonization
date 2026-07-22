@@ -58,6 +58,17 @@ class SetupTests(unittest.TestCase):
         self.assertTrue((real_desktop / "nepal-decarb.bat").exists())
         self.assertTrue((real_desktop / "nepal-decarb.ps1").exists())
         self.assertTrue((real_desktop / "README.txt").exists())
+        # Day 12 -- real Windows .lnk shortcuts, not just .vbs / .bat.
+        # Magic header byte is 0x4C ('L') per [MS-SHLLINK].
+        for lnk_name in ("NepalDecarb Dashboard.lnk",
+                         "NepalDecarb Run Demo.lnk",
+                         "NepalDecarb Uninstall.lnk"):
+            p = real_desktop / lnk_name
+            self.assertTrue(p.exists(), f"missing {p}")
+            with open(p, "rb") as f:
+                first = f.read(4)
+            self.assertEqual(first, b"\x4c\x00\x00\x00",
+                             f"{p} is not a valid Windows .lnk (header={first!r})")
 
 
 if __name__ == "__main__":

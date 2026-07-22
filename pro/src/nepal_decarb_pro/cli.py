@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -715,6 +716,58 @@ def cmd_setup(args) -> int:
         "pause\r\n"
     )
     shutil.copy2(uninstall_bat, startmenu / "Uninstall NepalDecarb.bat")
+
+    # Build real Windows .lnk shortcuts. The user double-clicks the
+    # .lnk on the Desktop and it opens the browser to the dashboard
+    # (via the VBS launcher). .lnk is what Windows shows on the
+    # Desktop; .vbs / .bat show as raw files with generic icons.
+    def _write_shortcut(target_path, lnk_path, icon_path=None, descr=""):
+        """Write a Windows .lnk shortcut using PowerShell
+        (WScript.Shell COM). Pure stdlib, no third-party deps."""
+        ps = (
+            "$s = (New-Object -ComObject WScript.Shell).CreateShortcut("
+            f"'{str(lnk_path).replace(chr(39), chr(39) + chr(39))}'"
+            ")\n"
+            f"$s.TargetPath = '{str(target_path).replace(chr(39), chr(39) + chr(39))}'\n"
+            f"$s.WorkingDirectory = '{str(desktop).replace(chr(39), chr(39) + chr(39))}'\n"
+            f"$s.WindowStyle = 7\n"
+            f"$s.Description = '{descr.replace(chr(39), chr(39) + chr(39))}'\n"
+        )
+        if icon_path is not None:
+            ps += f"$s.IconLocation = '{str(icon_path).replace(chr(39), chr(39) + chr(39))}'\n"
+        ps += "$s.Save()\n"
+        # Run powershell hidden so no console flash
+        subprocess.run(
+            ["powershell", "-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden",
+             "-Command", ps],
+            capture_output=True, text=True, timeout=15,
+        )
+
+    # The icon: reuse the FreeCAD icon if FreeCAD is installed; otherwise
+    # use the Windows shell32 default for Internet Explorer (icon index 13).
+    freecad_icon = Path(r"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCAD.exe")
+    if freecad_icon.exists():
+        default_icon = str(freecad_icon)
+    else:
+        default_icon = "%SystemRoot%\\System32\\shell32.dll,13"
+
+    dashboard_lnk = desktop / "NepalDecarb Dashboard.lnk"
+    _write_shortcut(vbs, dashboard_lnk,
+                    icon_path=default_icon,
+                    descr="NepalDecarb v1.0 - open the local dashboard")
+    shutil.copy2(dashboard_lnk, startmenu / "NepalDecarb Dashboard.lnk")
+
+    demo_lnk = desktop / "NepalDecarb Run Demo.lnk"
+    _write_shortcut(demo_bat, demo_lnk,
+                    icon_path=default_icon,
+                    descr="NepalDecarb v1.0 - run the end-to-end Hetauda demo")
+    shutil.copy2(demo_lnk, startmenu / "NepalDecarb Run Demo.lnk")
+
+    uninstall_lnk = desktop / "NepalDecarb Uninstall.lnk"
+    _write_shortcut(uninstall_bat, uninstall_lnk,
+                    icon_path=default_icon,
+                    descr="NepalDecarb v1.0 - remove the desktop shortcuts")
+    shutil.copy2(uninstall_lnk, startmenu / "NepalDecarb Uninstall.lnk")
 
     # Build a "README" .txt on the Desktop with usage
     readme = desktop / "README.txt"
