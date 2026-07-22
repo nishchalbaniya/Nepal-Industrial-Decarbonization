@@ -4,7 +4,7 @@
 **For:** Cement plant managers, brick kiln operators, MRV project developers, system integrators
 **Version:** 1.0.0
 **Date:** 2026-07-21
-**Author:** Nishchal Baniya, Himalayan Carbon Nepal
+**Author:** Nishchal Baniya, Himalayan Space Solutions
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 
 ---

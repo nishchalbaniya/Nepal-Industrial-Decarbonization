@@ -7,7 +7,7 @@
 ## A. Letter to NCMA (Nepal Cement Manufacturers Association)
 
 **To:** Chairman, NCMA
-**From:** Nishchal Baniya, Himalayan Carbon Nepal
+**From:** Nishchal Baniya, Himalayan Space Solutions
 **Re:** Free platform for all Nepali cement plants to measure and reduce emissions
 
 Dear Chairman,
@@ -47,7 +47,7 @@ I'd welcome a 30-minute meeting at your office at any time. We can demonstrate t
 Warm regards,
 
 **Nishchal Baniya**
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com
 +977-98XXXXXXXX
 
@@ -56,7 +56,7 @@ nishchal.baniya@himalayancarbonnepal.com
 ## B. Brief for Department of Environment (Government of Nepal)
 
 **To:** Joint Secretary, Climate Change Division
-**From:** Nishchal Baniya, Himalayan Carbon Nepal
+**From:** Nishchal Baniya, Himalayan Space Solutions
 **Re:** National MRV system for cement and brick industry
 
 Hon. Joint Secretary,
@@ -92,14 +92,14 @@ I'd be happy to present the platform to the Department at your convenience. The 
 Respectfully,
 
 **Nishchal Baniya**
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 
 ---
 
 ## C. Letter to a single plant manager (template, to be sent to ~50 plants)
 
 **To:** Plant Manager, [Plant Name]
-**From:** Nishchal Baniya, Himalayan Carbon Nepal
+**From:** Nishchal Baniya, Himalayan Space Solutions
 **Subject:** Free platform to measure and reduce your plant's CO₂ emissions
 
 Dear [Mr./Ms. X],
@@ -110,7 +110,7 @@ I am writing to introduce a free service that could help your plant:
 - Be ready for EU/UK carbon border adjustments
 - Get ISO 14064-1 / TCFD / SBTi certification
 
-**Who we are:** Himalayan Carbon Nepal is a non-profit building open-source decarbonization tools for Nepali industry. Our advisor is [name], formerly [role] at [organization].
+**Who we are:** Himalayan Space Solutions is a non-profit building open-source decarbonization tools for Nepali industry. Our advisor is [name], formerly [role] at [organization].
 
 **The platform in 1 minute:**
 - A web dashboard where you (and your team) enter monthly production + fuel data
@@ -131,7 +131,7 @@ Are you free next week? I'm flexible on time. Please reply with a few slots that
 Best regards,
 
 **Nishchal Baniya**
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 [phone] / [email]
 
 P.S. If you know other plant managers who might be interested, please forward this email. We'll send a $50 mobile recharge as thanks for any successful introduction.
@@ -142,13 +142,13 @@ P.S. If you know other plant managers who might be interested, please forward th
 
 **FOR IMMEDIATE RELEASE**
 
-**Himalayan Carbon Nepal launches world-class open-source decarbonization platform for Nepali cement and brick industry**
+**Himalayan Space Solutions launches world-class open-source decarbonization platform for Nepali cement and brick industry**
 
-Kathmandu, Nepal — [Date] — Himalayan Carbon Nepal today released v1.0.1 of `nepal_decarb_pro`, an open-source industrial decarbonization platform covering all 11 international standards (ISO 14064, TCFD, SBTi, GCCA, PCAF, Verra, Gold Standard, GHG Protocol, ISO 50001, ISO 14001, IPCC 2006/2019).
+Kathmandu, Nepal — [Date] — Himalayan Space Solutions today released v1.0.1 of `nepal_decarb_pro`, an open-source industrial decarbonization platform covering all 11 international standards (ISO 14064, TCFD, SBTi, GCCA, PCAF, Verra, Gold Standard, GHG Protocol, ISO 50001, ISO 14001, IPCC 2006/2019).
 
 The platform is free and open source (MIT license), bilingual (English / नेपाली), and has been verified at a 9/10 rating against international benchmarks. A pilot at Hetauda Cement Industries Ltd shows a 2024 baseline of 861,025 tCO₂/yr (783 kg CO₂/t cement) and 56,407 Verra credits/yr potential revenue.
 
-"All Nepali cement and brick plants can now measure, report, and reduce their emissions using the same rigor as the world's largest industrial decarbonization programs," said Nishchal Baniya, founder of Himalayan Carbon Nepal. "For the first time, a single Nepali operator can generate a Verra PDD, an ISO 14064-1 report, and a TCFD disclosure in an afternoon, with no external consultants."
+"All Nepali cement and brick plants can now measure, report, and reduce their emissions using the same rigor as the world's largest industrial decarbonization programs," said Nishchal Baniya, founder of Himalayan Space Solutions. "For the first time, a single Nepali operator can generate a Verra PDD, an ISO 14064-1 report, and a TCFD disclosure in an afternoon, with no external consultants."
 
 The platform is available immediately at `nepalcarbon.org.np` for any Nepali cement or brick plant. On-site onboarding is free for the first 20 plants.
 

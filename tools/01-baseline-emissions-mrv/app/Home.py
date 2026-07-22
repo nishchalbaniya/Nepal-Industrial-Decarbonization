@@ -14,7 +14,7 @@ st.title("🏭 Nepal Industrial Decarbonization Suite")
 st.subheader("Baseline Emissions & MRV Tool — Cement & Brick Industry")
 
 st.markdown("""
-**Author:** Nishchal Baniya · *Himalayan Carbon Nepal*
+**Author:** Nishchal Baniya · *Himalayan Space Solutions*
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 **Open source:** MIT License · nepal_mrv v0.1.0
 

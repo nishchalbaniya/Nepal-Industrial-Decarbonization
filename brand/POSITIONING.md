@@ -1,4 +1,4 @@
-# Brand Positioning — Himalayan Carbon Nepal
+# Brand Positioning — Himalayan Space Solutions
 
 > One page. Read this before any other marketing document. Every word of our
 > pitch deck, blog, email, and sales call should pass the test of being
@@ -123,6 +123,6 @@ brand.
 
 ---
 
-*Owner: Nishchal Baniya, Founder, Himalayan Carbon Nepal. Last updated:
+*Owner: Nishchal Baniya, Founder, Himalayan Space Solutions. Last updated:
 2026-07-22. Re-read this document every quarter and update the
 "why-now" section when the regulatory calendar moves.*

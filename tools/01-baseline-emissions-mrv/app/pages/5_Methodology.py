@@ -149,5 +149,5 @@ At $15, $30, $50/tCO₂e sensitivity.
 - Data: CC-BY-4.0
 - Documentation: CC-BY-4.0
 
-© 2026 Nishchal Baniya · Himalayan Carbon Nepal
+© 2026 Nishchal Baniya · Himalayan Space Solutions
 """)

@@ -95,7 +95,7 @@ pragma solidity ^0.8.20;
  * @notice ERC-3643 (T-REX) compliant tokenized carbon credits for Nepalese projects.
  * @dev Permissioned token with identity verification, batch retirement, and
  *      Verra/Gold Standard registry integration.
- * @author Nishchal Baniya, Himalayan Carbon Nepal
+ * @author Nishchal Baniya, Himalayan Space Solutions
  * @license MIT
  *
  * Built on OpenZeppelin Contracts v5.x with ERC-3643 extensions.

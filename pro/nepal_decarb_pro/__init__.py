@@ -23,7 +23,7 @@ contracts      : On-chain carbon credit token (Solidity)
 firmware       : ESP32 IoT sensor firmware (C++/Arduino)
 
 Author: Nishchal Baniya <nishchal.baniya@himalayancarbonnepal.com>
-Org:    Himalayan Carbon Nepal
+Org:    Himalayan Space Solutions
 License: MIT (code), CC-BY-4.0 (data & docs)
 """
 from __future__ import annotations
@@ -31,7 +31,7 @@ from __future__ import annotations
 __version__ = "1.0.0"
 __author__ = "Nishchal Baniya"
 __email__ = "nishchal.baniya@himalayancarbonnepal.com"
-__organization__ = "Himalayan Carbon Nepal"
+__organization__ = "Himalayan Space Solutions"
 __license__ = "MIT"
 
 # Lazy import pattern: top-level imports are kept light to avoid pulling

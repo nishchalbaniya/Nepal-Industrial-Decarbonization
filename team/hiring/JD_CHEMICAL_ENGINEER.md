@@ -1,7 +1,7 @@
 # Job Description: Chemical Engineer (Cement & Brick) — Part-time
 
 ## Company
-**Himalayan Carbon Nepal** — Open-source industrial decarbonization platform for Nepal's cement and brick industry. Backed by a working platform with 11 international standards, 78/78 tests, and a verified Hetauda Cement pilot (861k tCO₂/yr, $22.5M NPV).
+**Himalayan Space Solutions** — Open-source industrial decarbonization platform for Nepal's cement and brick industry. Backed by a working platform with 11 international standards, 78/78 tests, and a verified Hetauda Cement pilot (861k tCO₂/yr, $22.5M NPV).
 
 ## Role
 **Part-time Chemical Engineer (cement & brick process)** — 2-3 days/week, 6-month initial contract with option to convert to full-time after first customer.

@@ -4,7 +4,7 @@
 ### DRAFT v0.1 — for internal review and negotiation
 
 **Date:** 2026-07-22
-**From:** Nishchal Baniya, Project Director, Himalayan Carbon Nepal
+**From:** Nishchal Baniya, Project Director, Himalayan Space Solutions
 **To:** Lead Validator, TÜV SÜD South Asia (Bangalore / Delhi desk)
 
 ---
@@ -12,7 +12,7 @@
 ## COVER LETTER
 
 ```
-[Letterhead — Himalayan Carbon Nepal]
+[Letterhead — Himalayan Space Solutions]
 <<Date>>
 
 Mr./Ms. <<Lead Validator Name>>
@@ -28,7 +28,7 @@ Re: Engagement to validate the Hetauda Cement Decarbonization Project
 
 Dear <<Lead Validator>>,
 
-Himalayan Carbon Nepal ("HCN") is pleased to invite TÜV SÜD South Asia ("TÜV")
+Himalayan Space Solutions ("HCN") is pleased to invite TÜV SÜD South Asia ("TÜV")
 to provide validation services for the Hetauda Cement Decarbonization Project
 ("the Project"), a Verra VCS project located at Hetauda Cement Industries Ltd
 ("HCIL"), Hetauda, Makwanpur District, Bagmati Province, Nepal.
@@ -57,7 +57,7 @@ Sincerely,
 
 Nishchal Baniya
 Project Director
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com
 +977-<<phone>>
 ```
@@ -71,7 +71,7 @@ nishchal.baniya@himalayancarbonnepal.com
 | Item | Value |
 |---|---|
 | Project name | Hetauda Cement Decarbonization |
-| Project proponent | Himalayan Carbon Nepal |
+| Project proponent | Himalayan Space Solutions |
 | Host organization | Hetauda Cement Industries Ltd |
 | Project location | Hetauda, Makwanpur, Bagmati, Nepal (lat 27.43°N, lon 85.03°E) |
 | Project type | Cement industry — biomass co-firing + waste-heat recovery |

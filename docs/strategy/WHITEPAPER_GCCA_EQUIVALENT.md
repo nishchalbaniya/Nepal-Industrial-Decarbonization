@@ -2,7 +2,7 @@
 ### A Peer-Reviewable Methodology for Quantifying Baseline Emissions and Decarbonization Pathways in Preheater-Precalciner Dry-Process Cement Plants in the Himalayan Region
 ### Working title (for journal submission: *Journal of Cleaner Production* or *Applied Energy*)
 
-**Lead authors:** Mavis (CTO, Himalayan Carbon Nepal), Nishchal Baniya (Founder, Himalayan Carbon Nepal)
+**Lead authors:** Mavis (CTO, Himalayan Space Solutions), Nishchal Baniya (Founder, Himalayan Space Solutions)
 **Co-authors (TBD):** <<Senior academic 1 — Tribhuvan University, Kathmandu>>, <<Senior academic 2 — IIT Delhi Energy Group or ETH Zurich>>
 **Working version:** v0.1 (2026-07-22) — for internal review prior to journal submission
 **Target journal:** *Journal of Cleaner Production* (Elsevier; CiteScore 16.4, IF 11.1) or *Applied Energy* (CiteScore 19.5, IF 11.2)
@@ -318,11 +318,11 @@ All calculation code is open source (MIT license) at github.com/himalayancarbon/
 
 ### 5.5 Acknowledgements
 
-We thank the Hetauda Cement Industries Ltd management and EHS team for the plant survey data, the Cement Industry Association of Nepal (CIN) for the industry-wide data, and Tribhuvan University for the academic collaboration. This work was supported by Himalayan Carbon Nepal internal R&D and by the Nepal Climate Innovation Center (NCIC) seed grant.
+We thank the Hetauda Cement Industries Ltd management and EHS team for the plant survey data, the Cement Industry Association of Nepal (CIN) for the industry-wide data, and Tribhuvan University for the academic collaboration. This work was supported by Himalayan Space Solutions internal R&D and by the Nepal Climate Innovation Center (NCIC) seed grant.
 
 ### 5.6 Conflict of interest
 
-The authors are employees of Himalayan Carbon Nepal, which is the project developer for the Hetauda VCS project described in this paper. The methodology has been independently reviewed by TÜV SÜD South Asia (validation engagement initiated 2026-08; results pending).
+The authors are employees of Himalayan Space Solutions, which is the project developer for the Hetauda VCS project described in this paper. The methodology has been independently reviewed by TÜV SÜD South Asia (validation engagement initiated 2026-08; results pending).
 
 ---
 

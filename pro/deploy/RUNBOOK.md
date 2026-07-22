@@ -120,7 +120,7 @@ docker compose -f deploy/vps/docker-compose.yml up -d
 
 - **Primary**: [Name] — [phone] — [email]
 - **Secondary**: [Name] — [phone] — [email]
-- **Himalayan Carbon Nepal**: support@nepalcarbon.org.np
+- **Himalayan Space Solutions**: support@nepalcarbon.org.np
 - **Escalation**: [CTO name] — [phone]
 
 ## Postmortem template

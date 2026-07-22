@@ -158,5 +158,5 @@ Combined uncertainty: ~7% at 1σ for the total emissions estimate.
 
 ---
 
-*Author: Nishchal Baniya, Himalayan Carbon Nepal*
+*Author: Nishchal Baniya, Himalayan Space Solutions*
 *Version: 0.1.0 (Day 1, 2026-07-21)*

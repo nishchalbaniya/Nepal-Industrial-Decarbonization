@@ -1,7 +1,7 @@
 # Job Description: Senior Software Engineer (Full-stack) — Part-time → Full-time
 
 ## Company
-**Himalayan Carbon Nepal** — Open-source industrial decarbonization platform. 25+ Python modules, 11 standards, 78/78 tests. Going from "works on my machine" to "serves 50+ customers".
+**Himalayan Space Solutions** — Open-source industrial decarbonization platform. 25+ Python modules, 11 standards, 78/78 tests. Going from "works on my machine" to "serves 50+ customers".
 
 ## Role
 **Part-time Senior Software Engineer (full-stack, Python)** — 3-4 days/week, 6-month initial contract → full-time after Series Seed.

@@ -1,7 +1,7 @@
 # Verra VCS Validation Pack — Fill-in-the-Blank Template
 ### For: Hetauda Cement Industries Ltd — Decarbonization Project
 ### Verra Registry: `[to be assigned on pipeline publication]`
-### Author: Himalayan Carbon Nepal · Author: Mavis, CTO · Reviewer: Nishchal Baniya, Founder
+### Author: Himalayan Space Solutions · Author: Mavis, CTO · Reviewer: Nishchal Baniya, Founder
 ### Last updated: 2026-07-22
 
 > **How to use this template.** Each section has a `VVB Expectation` note that says what the
@@ -16,14 +16,14 @@
 **File:** `00_cover_letter.pdf` · **Owner:** Project Director
 
 ```
-[Letterhead — Himalayan Carbon Nepal]
+[Letterhead — Himalayan Space Solutions]
 
 To: <<VVB_NAME>> (e.g., TÜV SÜD South Asia)
 Re: Engagement to validate the <<PROJECT_NAME>> VCS Project (Methodology: <<METHOD>>)
 
 Dear <<VVB_CONTACT>>,
 
-Himalayan Carbon Nepal is pleased to submit the attached Validation Pack for the
+Himalayan Space Solutions is pleased to submit the attached Validation Pack for the
 <<PROJECT_NAME>> ("the Project"), a Verra VCS project located at <<PLANT_NAME>> in
 <<DISTRICT>>, <<COUNTRY>>. The Project applies the Verra-approved methodology
 <<METHOD>> (version <<X.Y>>) and is expected to deliver approximately

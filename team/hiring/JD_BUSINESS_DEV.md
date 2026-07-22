@@ -1,7 +1,7 @@
 # Job Description: Business Developer — Part-time → Full-time
 
 ## Company
-**Himalayan Carbon Nepal** — Open-source industrial decarbonization platform. Hetauda Cement pilot verified ($22.5M NPV at EU ETS). First 5 customers in 90 days.
+**Himalayan Space Solutions** — Open-source industrial decarbonization platform. Hetauda Cement pilot verified ($22.5M NPV at EU ETS). First 5 customers in 90 days.
 
 ## Role
 **Part-time Business Developer (B2B sales + partnerships)** — 3 days/week, 6-month initial contract → full-time after first paying customer.

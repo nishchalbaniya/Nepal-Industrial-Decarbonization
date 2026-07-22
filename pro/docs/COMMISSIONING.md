@@ -288,7 +288,7 @@ After commissioning:
 1. **Training session** for plant operators (4 hours)
 2. **Training session** for IT support (2 hours)
 3. **Handover document** with admin credentials, backup procedures
-4. **SLA agreement** with vendor (Himalayan Carbon Nepal)
+4. **SLA agreement** with vendor (Himalayan Space Solutions)
 5. **Escalation matrix** for issues
 6. **Quarterly review** schedule
 
@@ -341,7 +341,7 @@ docker-compose up -d
 
 ## 9. Support contacts
 
-- **Himalayan Carbon Nepal:** nishchal.baniya@himalayancarbonnepal.com
+- **Himalayan Space Solutions:** nishchal.baniya@himalayancarbonnepal.com
 - **GitHub issues:** https://github.com/<your-org>/nepal-decarb/issues
 - **Operator hotline:** +977-XXX-XXXX
 - **Emergency (24/7):** +977-XXX-XXXX

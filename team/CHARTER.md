@@ -1,10 +1,10 @@
-# Team Charter — Himalayan Carbon Nepal
+# Team Charter — Himalayan Space Solutions
 
 > The team building `nepal_decarb_pro`. Single source of truth for roles, responsibilities, and decisions.
 
 ## Company
 
-- **Name**: Himalayan Carbon Nepal
+- **Name**: Himalayan Space Solutions
 - **Mission**: Make every cement and brick plant in Nepal measure, reduce, and monetize their CO₂ emissions.
 - **Vision**: A net-zero industrial Nepal by 2045, starting with cement and brick.
 - **Founder**: Nishchal Baniya

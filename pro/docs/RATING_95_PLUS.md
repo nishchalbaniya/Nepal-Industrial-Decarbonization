@@ -3,7 +3,7 @@
 
 **Version:** 1.0.0
 **Date:** 2026-07-21
-**Author:** Nishchal Baniya · Himalayan Carbon Nepal
+**Author:** Nishchal Baniya · Himalayan Space Solutions
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 **Repository:** nepal-decarb-pro v1.0.0
 
@@ -227,12 +227,12 @@ is at 9.7+/10 and ready for production.
 
 ## License
 
-Code: MIT (Copyright 2026 Nishchal Baniya, Himalayan Carbon Nepal)
+Code: MIT (Copyright 2026 Nishchal Baniya, Himalayan Space Solutions)
 Data: CC-BY-4.0
 Documentation: CC-BY-4.0
 
 ## Contact
 
 Nishchal Baniya
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com

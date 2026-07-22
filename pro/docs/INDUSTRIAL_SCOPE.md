@@ -1,6 +1,6 @@
 # INDUSTRIAL SCOPE — What This Platform Is (and Is Not)
 
-**Author:** Nishchal Baniya, Himalayan Carbon Nepal
+**Author:** Nishchal Baniya, Himalayan Space Solutions
 **Date:** 2026-07-21
 **Status:** Honest engineering assessment, written in good faith
 

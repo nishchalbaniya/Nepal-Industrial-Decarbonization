@@ -1,4 +1,4 @@
-# Pitch Deck Outline — Himalayan Carbon Nepal
+# Pitch Deck Outline — Himalayan Space Solutions
 
 > 12 slides. Content only — no design. Each slide is one paragraph that
 > would fit on a slide if the speaker were telling the same story live.
@@ -9,7 +9,7 @@
 
 ## Slide 1 — Cover
 
-**Himalayan Carbon Nepal.** *The decarbonization platform built for the
+**Himalayan Space Solutions.** *The decarbonization platform built for the
 cement and brick plants that built Nepal.* `[Logo: placeholder — a single
 bold wordmark "हिमालयन कार्बन" with a small mountain glyph, plus
 "nepal_decarb_pro" subtitle in a monospace face — defer to Graphics
@@ -194,7 +194,7 @@ the next 12 months. `[3-box "what we need" / "what you get" /
 
 ## Slide 12 — Contact
 
-**Nishchal Baniya**, Founder, Himalayan Carbon Nepal.
+**Nishchal Baniya**, Founder, Himalayan Space Solutions.
 `nishchal.baniya@himalayancarbonnepal.com`. Phone + WhatsApp:
 +977-98XXXXXXXX. Live demo: `nepalcarbon.org.np`. GitHub:
 `github.com/himalayan-carbon-nepal/nepal_decarb_pro`. Office:

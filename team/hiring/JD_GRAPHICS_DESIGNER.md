@@ -1,7 +1,7 @@
 # Job Description: Graphics Designer (Brand + Pitch) — Project
 
 ## Company
-**Himalayan Carbon Nepal** — Open-source industrial decarbonization platform. Need a brand that looks as world-class as the technology.
+**Himalayan Space Solutions** — Open-source industrial decarbonization platform. Need a brand that looks as world-class as the technology.
 
 ## Role
 **Project-based Graphics Designer** — 2-week initial project (brand identity + pitch deck + marketing site visuals). After: ongoing per-asset basis.

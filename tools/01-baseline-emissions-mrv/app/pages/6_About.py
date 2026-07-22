@@ -12,7 +12,7 @@ st.markdown("""
 ### Day 1: Baseline Emissions & MRV Tool
 
 **Author:** Nishchal Baniya
-**Organization:** Himalayan Carbon Nepal
+**Organization:** Himalayan Space Solutions
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 
 ### Why I built this
@@ -69,7 +69,7 @@ credible carbon standards (Verra VCS, Gold Standard, ACR, CAR):
 ### Get in touch
 
 - **Email:** nishchal.baniya@himalayancarbonnepal.com
-- **Org:** Himalayan Carbon Nepal
+- **Org:** Himalayan Space Solutions
 
 If you operate a cement plant, brick kiln, or carbon project in Nepal —
 let's talk. This tool is open source. Use it, fork it, contribute.
@@ -79,5 +79,5 @@ let's talk. This tool is open source. Use it, fork it, contribute.
 This work is licensed under **MIT** (code) and **CC-BY-4.0** (data & docs).
 Use freely. Cite when you do.
 
-© 2026 Nishchal Baniya · Himalayan Carbon Nepal
+© 2026 Nishchal Baniya · Himalayan Space Solutions
 """)

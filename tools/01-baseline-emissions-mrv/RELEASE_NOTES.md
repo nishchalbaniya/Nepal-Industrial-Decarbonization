@@ -3,7 +3,7 @@
 **Release tag:** `v0.1.0`
 **Date:** 2026-07-21
 **Tool:** Baseline Emissions & MRV Calculator for Nepal Cement & Brick Industry
-**Author:** Nishchal Baniya · Himalayan Carbon Nepal
+**Author:** Nishchal Baniya · Himalayan Space Solutions
 **Contact:** nishchal.baniya@himalayancarbonnepal.com
 
 ## Headline numbers (Hetauda Cement Industries, baseline 2024)

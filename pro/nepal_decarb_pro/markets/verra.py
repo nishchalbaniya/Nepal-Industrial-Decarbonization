@@ -72,7 +72,7 @@ def generate_verra_pdd(
     project_annual_tco2: float,
     crediting_period_years: int = 10,
     location: str = "Nepal",
-    proponent: str = "Himalayan Carbon Nepal",
+    proponent: str = "Himalayan Space Solutions",
     leakage_pct: float = 0.05,
     buffer_pct: float = 0.15,
     technology: str = "Biomass co-firing + WHR",

@@ -32,7 +32,7 @@ def generate_gold_standard_pdd(
     project_annual_tco2: float,
     crediting_period_years: int = 7,
     location: str = "Nepal",
-    proponent: str = "Himalayan Carbon Nepal",
+    proponent: str = "Himalayan Space Solutions",
     leakage_pct: float = 0.05,
     buffer_pct: float = 0.10,            # GS uses lower buffer
     technology: str = "Biomass co-firing + WHR",

@@ -10,7 +10,7 @@
 [![Rating: 9%2F10](https://img.shields.io/badge/rating-9%2F10-gold.svg)]()
 [![Made in Nepal](https://img.shields.io/badge/made%20in-Nepal-DC143C.svg)]()
 
-**Author:** Nishchal Baniya · *Himalayan Carbon Nepal*
+**Author:** Nishchal Baniya · *Himalayan Space Solutions*
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 **License:** MIT (code) / CC-BY-4.0 (data & docs)
 
@@ -188,7 +188,7 @@ All emission factors are traceable to:
 
 ## License
 
-- Code: **MIT** (Copyright 2026 Nishchal Baniya, Himalayan Carbon Nepal)
+- Code: **MIT** (Copyright 2026 Nishchal Baniya, Himalayan Space Solutions)
 - Data: **CC-BY-4.0**
 - Documentation: **CC-BY-4.0**
 
@@ -208,5 +208,5 @@ All emission factors are traceable to:
 ## Contact
 
 **Nishchal Baniya**
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com

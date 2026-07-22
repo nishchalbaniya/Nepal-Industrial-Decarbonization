@@ -245,7 +245,7 @@ See [CITATION.cff](CITATION.cff) for the full citation metadata.
 ## 👤 Author
 
 **Nishchal Baniya**
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com
 
 ---

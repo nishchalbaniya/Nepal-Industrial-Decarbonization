@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0
 **Date:** 2026-07-21
-**Author:** Nishchal Baniya · Himalayan Carbon Nepal
+**Author:** Nishchal Baniya · Himalayan Space Solutions
 **Email:** nishchal.baniya@himalayancarbonnepal.com
 
 ---
@@ -305,12 +305,12 @@ COMPOSITE                                  9.3/10
 
 ## License
 
-Code: MIT (Nishchal Baniya, Himalayan Carbon Nepal)
+Code: MIT (Nishchal Baniya, Himalayan Space Solutions)
 Data: CC-BY-4.0
 Documentation: CC-BY-4.0
 
 ## Contact
 
 Nishchal Baniya
-Himalayan Carbon Nepal
+Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com

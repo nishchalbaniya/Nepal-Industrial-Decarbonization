@@ -153,7 +153,7 @@ def root() -> Dict:
     return {
         "name": "Nepal Industrial Decarbonization API",
         "version": "1.0.0",
-        "author": "Nishchal Baniya, Himalayan Carbon Nepal",
+        "author": "Nishchal Baniya, Himalayan Space Solutions",
         "email": "nishchal.baniya@himalayancarbonnepal.com",
         "license": "MIT",
         "standards": [

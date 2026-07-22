@@ -63,5 +63,5 @@ All emission factors are sourced from:
 See `data/emission_factors.yaml` and `data/nepali_plants.yaml` for full sources.
 
 ## Authors
-Nishchal Baniya · Himalayan Carbon Nepal
+Nishchal Baniya · Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com

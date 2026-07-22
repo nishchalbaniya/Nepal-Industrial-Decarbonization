@@ -15,7 +15,7 @@ st.subheader("Cement & Brick Industry · Open Source · 9/10 Standards")
 st.markdown("""
 **World-class decarbonization platform for Nepal's cement and brick industry.**
 
-Author: **Nishchal Baniya** · Himalayan Carbon Nepal
+Author: **Nishchal Baniya** · Himalayan Space Solutions
 Email: nishchal.baniya@himalayancarbonnepal.com
 License: MIT (code) / CC-BY-4.0 (data)
 
