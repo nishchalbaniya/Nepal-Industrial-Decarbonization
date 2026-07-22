@@ -411,6 +411,39 @@ def cmd_export_step_cooler(args) -> int:
     return 0
 
 
+def cmd_export_step_kiln(args) -> int:
+    """Export the Hetauda rotary kiln as a STEP file via FreeCAD."""
+    import subprocess
+    freecad = r"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCADCmd.exe"
+    script = Path(__file__).parent.parent.parent.parent / "tools" / "02-kiln-dynamics-simulator" / "day-08-PRs" / "export_hetauda_kiln_step.py"
+    if not script.exists():
+        print(f"ERROR: STEP export script not found at {script}")
+        return 1
+    out = Path(args.output or "hetauda_kiln_assembly.step")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        freecad, "-c",
+        f"exec(open(r'{script}').read())",
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except FileNotFoundError:
+        print(f"ERROR: FreeCAD not found at {freecad}.")
+        return 1
+    except subprocess.TimeoutExpired:
+        print("ERROR: FreeCAD export timed out after 120s")
+        return 1
+    if r.returncode != 0:
+        print(f"ERROR: FreeCAD export failed: {r.stderr[-500:]}")
+        return 1
+    src = script.parent / "cad" / "hetauda_kiln_assembly.step"
+    if src.exists() and src != out:
+        out.write_bytes(src.read_bytes())
+    print(f"  wrote {out}")
+    print(f"  file size: {out.stat().st_size} bytes")
+    return 0
+
+
 def cmd_demo(args) -> int:
     """Run cooler + kiln + calibration end-to-end. The Day 7 demo."""
     out = Path(args.out or "demo-output")
@@ -563,6 +596,9 @@ def main(argv=None) -> int:
     pcs.add_argument("--output", default=None, help="Output .step path")
     pcs.add_argument("--calibration", default="day-05", help="Calibration posterior to use (default: day-05)")
     pcs.set_defaults(func=cmd_export_step_cooler)
+    pks = p_exp_sub.add_parser("step-kiln", help="Export Hetauda rotary kiln as STEP")
+    pks.add_argument("--output", default=None, help="Output .step path")
+    pks.set_defaults(func=cmd_export_step_kiln)
 
     p_demo = sub.add_parser("demo", help="Run cooler + kiln + calibration end-to-end")
     p_demo.add_argument("--plant", default="hetauda")
