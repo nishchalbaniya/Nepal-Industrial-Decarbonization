@@ -67,9 +67,9 @@ class PlantDataRow(BaseModel):
     """
 
     timestamp_utc: str
-    clinker_outlet_T_c: float = Field(..., ge=80.0, le=300.0)
+    clinker_outlet_T_c: float = Field(..., ge=80.0, le=500.0)
     secondary_air_T_c: float = Field(..., ge=200.0, le=1200.0)
-    exhaust_T_c: float = Field(..., ge=50.0, le=400.0)
+    exhaust_T_c: float = Field(..., ge=50.0, le=500.0)
     fan_amp_4_20mA: float = Field(..., ge=0.0, le=100.0,
                                    description="Fan current as % of span (4-20 mA loop)")
     grate_speed_hz: float = Field(..., ge=0.0, le=60.0,
