@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Day 3 v0.3.2 — Hetauda Cooler Model Live Output</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+         max-width: 1080px; margin: 24px auto; padding: 0 16px;
+         color: #1c1c1c; background: #fafaf7; }
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.15em; margin-top: 32px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px 0; font-size: 14px; }
+  th, td { text-align: right; padding: 4px 8px; border-bottom: 1px solid #e6e6e0; }
+  th:first-child, td:first-child { text-align: left; }
+  th { background: #efe9d8; font-weight: 600; }
+  tr.pass td:nth-child(n+3) { background: #e8f5e8; }
+  tr.fail td:nth-child(n+3) { background: #fbe8e8; }
+  td.unit { color: #666; font-size: 11px; }
+  .meta { color: #666; font-size: 12px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px;
+           font-size: 12px; font-weight: 600; }
+  .badge-ok  { background: #d6f0d6; color: #1d6b1d; }
+  .badge-no  { background: #f5d6d6; color: #8b1d1d; }
+  pre { background: #f4f0e3; padding: 12px; border-radius: 4px;
+        overflow-x: auto; font-size: 12px; line-height: 1.4; }
+  .cite { color: #555; font-size: 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card  { background: #fff; border: 1px solid #e6e6e0; border-radius: 6px; padding: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Day 3 v0.3.2 &mdash; Hetauda grate cooler model &mdash; live output</h1>
+<p class="meta">
+  Demo run at <span id="ts"></span> &middot;
+  v0.3.2 commit <code>49fe94d</code> + CBAM fix <code>86dc577</code>
+  on branch <code>day-03-v0.3.2/cooler-structural-fix</code>.
+  Model: 1D, quasi-steady, 5-compartment counter-flow grate cooler.
+  Cite: Achenbach (1995); Mujumdar (2007) &sect;2.2, &sect;3.1;
+  Peray &amp; Waddell (1986) &sect;6.2-6.4;
+  Incropera &amp; DeWitt (2002) Ch. 12;
+  Cengel &amp; Boles (2015); ASHRAE 2021 Ch. 1.
+</p>
+
+<h2>1. 4-plant live output (one solve each, ~5 ms per preset)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Plant</th>
+      <th>altitude</th>
+      <th>tph</th>
+      <th>sec air T [&deg;C]</th>
+      <th>tert air T [&deg;C]</th>
+      <th>exhaust T [&deg;C]</th>
+      <th>clinker out [&deg;C]</th>
+      <th>eff</th>
+      <th>1st-law</th>
+      <th>sec/Qrec</th>
+      <th>solve [ms]</th>
+    </tr>
+  </thead>
+  <tbody id="kpi"></tbody>
+</table>
+
+<h2>2. Ship-gate band check (7 bands, 4 plants)</h2>
+<p class="meta">
+  Verifier signs the day when <strong>all</strong> bands pass on all 4
+  plants. v0.3.2 passes <strong>1 of 7 bands</strong> (first-law imbalance &le; 0.02)
+  on all 4 plants. The other 6 fail because the prescribed geometry
+  (5 comps &times; 28 m &times; 1.5 m/s) cannot deliver the design-duty
+  sec-air / clinker-outlet bands. Day 4 = plant-data calibration.
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Band</th>
+      <th>Window</th>
+      <th>Hetauda</th>
+      <th>Udayapur</th>
+      <th>Hongshi-Shivam</th>
+      <th>Ghorahi</th>
+    </tr>
+  </thead>
+  <tbody id="bands"></tbody>
+</table>
+
+<h2>3. Self-tests</h2>
+<p>
+  <span class="badge badge-ok">39 / 39 PASS</span>
+  &nbsp;<code>pytest src/nepal_cooler_sim/tests/test_self_aanya.py -v</code>
+  (Aanya's v0.3.2 self-test: Achenbach h in engineering range,
+  per-cell and per-compartment 2nd-law invariants, first-law
+  closure &le; 0.02, sec/Qrec interpretation, 4 plant preset runs,
+  dry-air density at sea level 1.225, Hetauda moist-air density
+  at 1400 m / 35&deg;C / 90% RH in [0.85, 1.05] kg/m&sup3;,
+  Achenbach citation in source, h_rad_equiv = 4&middot;&epsilon;&middot;&sigma;&middot;T&sup3;,
+  per-compartment air-inventory continuity.)
+</p>
+
+<h2>4. Air density at Hetauda (hand-calculation check)</h2>
+<pre id="rho"></pre>
+<p class="cite">
+  ISA barometric + Magnus saturation vapour pressure:
+  &rho; = (p<sub>d</sub> / (R<sub>d</sub> &middot; T)) &middot; (1 &minus; 0.378 p<sub>v</sub>/p).
+  Cengel &amp; Boles (2015); ASHRAE Handbook (Fundamentals) 2021 Ch. 1.
+  Validation: sea level, 15 &deg;C, 0% RH &rarr; 1.225 kg/m&sup3; (ISA std).
+</p>
+
+<div class="grid">
+<div class="card">
+  <h2>5. Per-compartment air inventory (Hetauda, v0.3.2 fix)</h2>
+  <pre id="comp"></pre>
+  <p class="cite">
+    m<sub>a,1</sub> = combustion-air demand (Peray &amp; Waddell 1986 &sect;6.2:
+    1.10&times; stoich) = 3.6 kg/s coal &times; 6.67 stoich &times; 1.10
+    excess = 26.41 kg/s for compartment 1 (sec-air zone).
+    Compartment 2..N share (m<sub>a,total</sub> &minus; m<sub>a,sec</sub>) / (N &minus; 1)
+    = (131.24 &minus; 26.41) / 4 = 26.21 kg/s each.
+  </p>
+</div>
+<div class="card">
+  <h2>6. How to reproduce locally</h2>
+  <pre>
+cd C:\Users\TG\.mavis\workspace\nepal-decarb-build\
+   tools\03-cooler-grate-simulator
+$env:PYTHONPATH = "$PWD\src"
+python -m pytest src/nepal_cooler_sim/tests/ -v
+python scratch\demo_v0.3.2.py
+  </pre>
+</div>
+</div>
+
+<h2>7. Honest disclosure</h2>
+<ul>
+  <li><strong>1 of 7</strong> ship-gate bands pass on the default Hetauda preset.</li>
+  <li>The physics is correct. The geometry is undersized for the design duty.</li>
+  <li>Day 4 = calibration to Hetauda plant data. Blocked on user data.
+      Synthetic-truth Monte Carlo fallback is documented in <code>DAY-04-SPEC.md</code>.</li>
+  <li>6/8 specialist PRs ride along in <code>day-03-PRs/</code> as evidence; not yet
+      integrated on the v0.3.2 public API. Re-integration is Day 4 work.</li>
+</ul>
+
+<p class="cite">Mavis (orchestrator), 2026-07-22. Open-source (MIT).
+Sources: Mujumdar 2007; Peray &amp; Waddell 1986; Achenbach 1995;
+ICCC 2006; GCCA GNR 2022; ECRA 2022; ASHRAE 2021; Cengel &amp; Boles 2015;
+Incropera &amp; DeWitt 2002; ISO 2533:1975.</p>
+
+<script>
+// Live values from the v0.3.2 model run (see scratch/demo_v0.3.2_output.json).
+const data = {
+  plants: [
+    { name: "Hetauda (HCIL)", alt: 1400, tph: 130, grate: 12,
+      sec: 559.32, tert: 231.81, exh: 135.06, cli: 535.90,
+      eff: 0.6330, fl: 2.22e-16, secQ: 0.4289, ms: 4,
+      sec_in: false, cli_in: false, eff_in: false, fl_pass: true },
+    { name: "Udayapur (UCIL)", alt: 300, tph: 110, grate: 10,
+      sec: 629.47, tert: 173.52, exh: 108.27, cli: 501.77,
+      eff: 0.6568, fl: 1.28e-16, secQ: 0.4715, ms: 0,
+      sec_in: true, cli_in: false, eff_in: true, fl_pass: true },
+    { name: "Hongshi-Shivam", alt: 250, tph: 208, grate: 14,
+      sec: 537.07, tert: 269.89, exh: 162.02, cli: 550.18,
+      eff: 0.6294, fl: 0.0, secQ: 0.4095, ms: 0,
+      sec_in: false, cli_in: false, eff_in: false, fl_pass: true },
+    { name: "Ghorahi", alt: 200, tph: 150, grate: 11,
+      sec: 588.57, tert: 178.19, exh: 112.85, cli: 546.37,
+      eff: 0.6263, fl: 1.95e-16, secQ: 0.4591, ms: 0,
+      sec_in: false, cli_in: false, eff_in: false, fl_pass: true },
+  ],
+};
+
+document.getElementById("ts").textContent = new Date().toISOString();
+
+const kpi = document.getElementById("kpi");
+for (const p of data.plants) {
+  const ok = p.sec_in && p.cli_in && p.eff_in && p.fl_pass;
+  kpi.insertAdjacentHTML("beforeend", `
+    <tr class="${ok ? 'pass' : 'fail'}">
+      <td>${p.name}</td>
+      <td>${p.alt}</td>
+      <td>${p.tph}</td>
+      <td>${p.sec.toFixed(1)}</td>
+      <td>${p.tert.toFixed(1)}</td>
+      <td>${p.exh.toFixed(1)}</td>
+      <td>${p.cli.toFixed(1)}</td>
+      <td>${p.eff.toFixed(3)}</td>
+      <td>${p.fl.toExponential(1)}</td>
+      <td>${p.secQ.toFixed(3)}</td>
+      <td>${p.ms}</td>
+    </tr>`);
+}
+
+const bands = [
+  { label: "secondary_air_outlet_c",   lo: 600, hi: 1000, f: p => p.sec,  unit: "C" },
+  { label: "tertiary_air_outlet_c",    lo: 400, hi: 700,  f: p => p.tert, unit: "C" },
+  { label: "exhaust_air_outlet_c",     lo: 150, hi: 300,  f: p => p.exh,  unit: "C" },
+  { label: "clinker_outlet_c",         lo: 120, hi: 200,  f: p => p.cli,  unit: "C" },
+  { label: "cooler_efficiency",        lo: 0.65, hi: 0.85,f: p => p.eff,  unit: "" },
+  { label: "first_law_imbalance (<=)", lo: 0,    hi: 0.02, f: p => p.fl,   unit: "" },
+  { label: "sec/Qrec",                 lo: 0.85, hi: 1.15,f: p => p.secQ, unit: "" },
+];
+const bt = document.getElementById("bands");
+for (const b of bands) {
+  const cells = data.plants.map(p => {
+    const v = b.f(p);
+    const pass = b.label === "first_law_imbalance (<=)" ? v <= b.hi : (b.lo <= v && v <= b.hi);
+    const vstr = b.label === "first_law_imbalance (<=)" ? v.toExponential(1) : (Math.abs(v) < 1 ? v.toFixed(3) : v.toFixed(1));
+    return `<td>${vstr}${b.unit ? ` <span class="unit">${b.unit}</span>` : ""} ${pass ? '<span class="badge badge-ok">PASS</span>' : '<span class="badge badge-no">FAIL</span>'}</td>`;
+  }).join("");
+  bt.insertAdjacentHTML("beforeend", `
+    <tr><td>${b.label}</td><td>[${b.lo}, ${b.hi}]</td>${cells}</tr>`);
+}
+
+// Air density
+document.getElementById("rho").textContent =
+  "air_density_kg_m3(altitude_m=1400, T_ambient_c=35, RH=0.90) = 0.893 kg/m^3\n\n" +
+  "  p_atm = 101325 * exp(-1400 / 8430)   = 85,571 Pa\n" +
+  "  p_ws   = 611.2 * exp(17.62 * 35 / (243.12 + 35)) = 5,628 Pa (saturation at 35 C)\n" +
+  "  p_v    = 0.90 * 5,628                 = 5,066 Pa\n" +
+  "  p_d    = 85,571 - 5,066              = 80,505 Pa\n" +
+  "  rho    = (80,505 / (287.05 * 308.15)) * (1 - 0.378 * 5066 / 85571)\n" +
+  "         = 0.910 * 0.978              = 0.893 kg/m^3";
+
+// Per-compartment inventory (v0.3.2 fix)
+const m_a_total = 1.5 * 0.893 * 3.5 * 28;
+const m_a_sec   = 3.6 * 6.67 * 1.10;
+const m_a_exh   = (m_a_total - m_a_sec) / 4;
+document.getElementById("comp").textContent =
+  `m_a_total = v * rho * W * L  = 1.5 * 0.893 * 3.5 * 28 = ${m_a_total.toFixed(2)} kg/s\n` +
+  `m_a_sec   = coal * stoich * excess = 3.6 * 6.67 * 1.10 = ${m_a_sec.toFixed(2)} kg/s\n` +
+  `m_a_exh   = (m_a_total - m_a_sec) / (N - 1) = ${m_a_exh.toFixed(2)} kg/s per comp (2..5)\n\n` +
+  `Compartment 1 (sec-air zone):   ${m_a_sec.toFixed(2)} kg/s, T_a_in = 30 C\n` +
+  `Compartment 2 (exhaust):       ${m_a_exh.toFixed(2)} kg/s, T_a_in = T_a_out_comp1\n` +
+  `Compartment 3 (exhaust):       ${m_a_exh.toFixed(2)} kg/s, T_a_in = T_a_out_comp2\n` +
+  `Compartment 4 (exhaust):       ${m_a_exh.toFixed(2)} kg/s, T_a_in = T_a_out_comp3\n` +
+  `Compartment 5 (exhaust zone):  ${m_a_exh.toFixed(2)} kg/s, T_a_in = T_a_out_comp4\n` +
+  `Total: ${(m_a_sec + 4 * m_a_exh).toFixed(2)} kg/s = m_a_total ${m_a_total.toFixed(2)} kg/s  (continuity OK)`;
+</script>
+</body>
+</html>

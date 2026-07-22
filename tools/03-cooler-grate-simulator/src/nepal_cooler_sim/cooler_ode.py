@@ -251,8 +251,13 @@ class CoolerParameters(BaseModel):
         description="Clinker T entering cooler from kiln (deg C).")
     clinker_outlet_target_c: float = Field(150.0, ge=80.0, le=300.0,
         description="Target clinker T at cooler exit (deg C). 130-180 C, BAT pushes 100+ambient.")
-    under_grate_air_temp_c: float = Field(30.0, ge=0.0, le=60.0,
-        description="Default under-grate air inlet T (deg C); used when compartments[] is empty.")
+    under_grate_air_temp_c: float = Field(30.0, ge=0.0, le=300.0,
+        description=(
+            "Default under-grate air inlet T (deg C); used when compartments[] is empty. "
+            "30 C for ambient; up to 200 C with secondary recuperator preheat (ECRA 2022 "
+            "BAT). The v0.3.0 ceiling of 60 C was an oversight; relaxed in Day 4 to "
+            "permit plant-data calibration of the recuperator-preheat parameter."
+        ))
     under_grate_air_velocity_m_s: float = Field(1.5, ge=0.3, le=5.0,
         description="Default under-grate air velocity (m/s); used when compartments[] is empty. "
                     "NOTE: this is the velocity used to compute m_a,total; the sec-air "
