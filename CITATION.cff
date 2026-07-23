@@ -5,11 +5,12 @@ authors:
     given-names: Nishchal
     email: nishchal.baniya@himalayancarbonnepal.com
     affiliation: Himalayan Space Solutions
-title: "Nepal Industrial Decarbonization Suite"
-version: 0.1.0
-date-released: 2026-07-21
+title: "Nepal Industrial Decarbonization Platform"
+version: 1.0.0
+date-released: 2026-07-23
 license: MIT
 type: software
+url: "https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization"
 keywords:
   - carbon
   - cement
@@ -19,3 +20,10 @@ keywords:
   - mrv
   - climate
   - open-source
+  - ipcc
+  - iso-14064
+  - cbam
+  - gcca
+  - monte-carlo
+  - milp
+  - nsga-ii
