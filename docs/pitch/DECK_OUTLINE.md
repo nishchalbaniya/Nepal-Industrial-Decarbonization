@@ -43,10 +43,10 @@ brick clusters highlighted, tonnes/year labelled]`
 (English / नेपाली) platform that takes a plant from zero data to a
 Verra-ready carbon credit PDD and a 100/100 ISO 14064-1 report in
 30 days, on a $20/month server, with no foreign consultants. The
-Hetauda pilot is already in production: 861,025 tCO₂/yr baseline,
+PlantA pilot is already in production: 861,025 tCO₂/yr baseline,
 783 kg CO₂/t cement intensity, 56,407 Verra credits/yr potential,
 $22.5M NPV at EU ETS $65/t. `[Screenshot of the live Streamlit
-dashboard, with Hetauda numbers visible]` Speaker notes: this is the
+dashboard, with PlantA numbers visible]` Speaker notes: this is the
 slide you leave on the screen during Q&A. One screenshot, real
 numbers, no marketing language.
 
@@ -66,10 +66,10 @@ Total time from signup to bankable report: 30 days for a full
 historical import, 1 afternoon for a current-year refresh. `[Simple
 3-block diagram: data in → engine → reports out]`
 
-## Slide 5 — Hetauda case study
+## Slide 5 — PlantA case study
 
 We proved the platform on the largest public reference we could find:
-**Hetauda Cement Industries Ltd, Makwanpur, Bagmati — installed
+**PlantA Industries Ltd, Makwanpur, Bagmati — installed
 1990, 1.1 Mt/yr capacity, dry process.** Pilot results from the
 2024 baseline: **861,025 tCO₂/yr total**, of which 511,307 tCO₂
 process emissions (from CaO and MgO calcination) and 346,911 tCO₂
@@ -80,7 +80,7 @@ biomass-cofiring + WHR project scenario, the net annual emission
 reductions are **56,407 tCO₂/yr**, which at EU ETS $65/t is **$3.67M
 revenue per year** and a **$22.5M NPV** over the 10-year Verra
 crediting period. ISO 14064-1 score: **100/100 on all 20 criteria**.
-The full PDD is in `pro/reports/hetauda_pilot_results.json`. `[3
+The full PDD is in `pro/reports/planta_pilot_results.json`. `[3
 small charts: pie of emissions sources, intensity vs benchmark, NPV
 sensitivity to carbon price]`
 
@@ -94,7 +94,7 @@ live scores: **ISO 14064-1, ISO 14064-2, ISO 14064-3, ISO 50001,
 ISO 14001, ISO 14040/14044 (LCA), TCFD, SBTi, GCCA, PCAF, GHG
 Protocol** — plus **IPCC 2006/2019** at Tier 2 and Tier 3 for the
 engine, and **Verra VCS** plus **Gold Standard** for the carbon
-markets. The Hetauda pilot scores 100/100 on every one of these
+markets. The PlantA pilot scores 100/100 on every one of these
 checkers. The 9.78/10 international rating on the platform is
 the proof that the engineering depth is there — but the real point
 of the slide is: one platform, one set of data, eleven different
@@ -137,12 +137,12 @@ methodology, and the team. `[3-column pricing table, with the
 
 ## Slide 9 — Traction
 
-We are early and we say so. **Today:** the Hetauda pilot is in
+We are early and we say so. **Today:** the PlantA pilot is in
 production on a $20/month VPS, the live demo is up at
 `nepalcarbon.org.np`, the codebase is 78/78 tests passing on 11
 standards, and the open-source release v1.0.1 is on GitHub. **In
 the pipeline:** an LOI from one of the 6 major cement plants to
-extend the Hetauda methodology to a second site; an outreach
+extend the PlantA methodology to a second site; an outreach
 letter in front of NCMA proposing a free cohort of 20 plants; a
 brief in front of the Department of Environment proposing a
 national MRV system under the NDC; an application to the World
@@ -151,7 +151,7 @@ Bank Climate Innovation Fund for the brick-kiln migration work.
 1 NCMA-cohort Enterprise deal (NPR 5M+), 1 grant-funded national
 rollout. We are not claiming hockey-stick growth. We are claiming
 a credible first customer and a clear path to 20 plants. `[Timeline
-graphic: Q3 2026 = Hetauda live; Q4 = 5 Pro; Q1 2027 = NCMA cohort;
+graphic: Q3 2026 = PlantA live; Q4 = 5 Pro; Q1 2027 = NCMA cohort;
 Q2 = national pilot]`
 
 ## Slide 10 — Team
@@ -174,11 +174,11 @@ open role with the "what we need you for in week 1" line]`
 ## Slide 11 — The ask
 
 We are raising a **NPR 25M seed round (≈ USD 190k)** to convert
-the Hetauda pilot into 5 paying Pro customers, 1 NCMA-cohort
+the PlantA pilot into 5 paying Pro customers, 1 NCMA-cohort
 Enterprise contract, and a national-pilot grant application. Use of
 funds: **40% engineering hires** (1 software, 1 environmental, 1
 data — the people who harden the platform for 50+ plants), **30%
-on-site customer success** (travel to Hetauda, Udayapur, Palpa,
+on-site customer success** (travel to PlantA, PlantB, Palpa,
 Kathmandu valley for the first 5 onboardings), **20% VVB
 partnership development** (engage TÜV NORD or DNV for the first
 independent ISO 14064-3 verification, ~$20–30k), **10% brand and

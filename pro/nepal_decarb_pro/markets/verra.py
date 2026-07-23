@@ -2,11 +2,29 @@
 Verra VCS (Verified Carbon Standard) project activity generator.
 
 Generates a Verra Project Design Document (PDD) skeleton for a cement or
-brick decarbonization project. Compatible with methodologies:
-  - AMS-III.H (Alternative waste treatment processes)
-  - VM0009 (Cement plant decarbonization)
-  - ACM0012 (Waste energy recovery)
-  - AMS-I.C (Thermal energy production with renewable energy)
+brick decarbonization project. This is a SIZING TOOL, not a submittable
+PDD. See docs/METHODOLOGY.md for the gap list against Verra VCS
+Standard v5.0 (December 2025).
+
+Compatible with the following REAL (verified) methodologies:
+  - CDM ACM0003 v9.0 (Partial substitution of fossil fuels in cement
+    or quicklime manufacture) -- active in CDM; status in Verra
+    as of 2024-2025: "Not Active" per State of CDR 2nd Edition
+    technical appendix. Re-confirm with a VVB before relying on it.
+  - CDM ACM0005 v7.1.0 (Increasing the blend in cement production)
+    -- active in CDM; applicable to clinker/SCM blend projects.
+  - Gold Standard RECH v5.0 (formerly TPDDTEC) -- applicable to
+    the BRICK sub-product (cookstove / institutional heating,
+    150 kW/unit ceiling). NOT applicable to industrial cement kilns.
+  - AMS-III.H v1.0 (Alternative waste treatment processes) --
+    small-scale thermal.
+
+The historical "VM0009 v2.0 (Cement Plant Decarbonization)" string
+that previously appeared in this module was FICTIONAL. Real VM0009
+is the Avoided Ecosystem Conversion methodology (AFOLU, sectoral
+scope 14) and has been inactivated by Verra as of February 2024.
+Removed 2026-07-23 in WP1 remediation. See docs/METHODOLOGY.md
+section 1 and reviews/GROUND_TRUTH.md.
 """
 from __future__ import annotations
 
@@ -19,10 +37,20 @@ from nepal_decarb_pro.core.brick import BrickKiln, BrickEmissionsResult
 
 
 class VerraPDD(BaseModel):
-    """Verra VCS Project Design Document (PDD) skeleton."""
+    """Verra VCS Project Design Document (PDD) skeleton.
+
+    NOTE: This is a SIZING MODEL, not a submittable PDD. The
+    `methodology` field is set to the most-applicable real
+    methodology given `project_type`, but the PDD is missing
+    additionality assessment, baseline alternative analysis,
+    stakeholder consultation, per-field monitoring tier, leakage
+    per activity, and the VVB-prepared Validation Report. See
+    docs/METHODOLOGY.md section 5 for the full gap list.
+    """
     project_name: str
     project_id: Optional[str]
     methodology: str
+    methodology_status: str  # "real" or "stub"
     project_type: str
     project_location: Dict[str, str]
     project_proponent: str
@@ -91,15 +119,29 @@ def generate_verra_pdd(
     net_issuable = net - buffer
 
     methodology_map = {
-        "cement": "VM0009 v2.0 (Cement Plant Decarbonization)",
-        "brick": "AMS-III.H v1.0 (Alternative waste treatment)",
+        "cement": (
+            "CDM ACM0003 v9.0 (Partial substitution of fossil fuels in "
+            "cement or quicklime manufacture; status in Verra: not active "
+            "per 2024-2025 listing, re-confirm with VVB)"
+        ),
+        "brick": "GS RECH v5.0 (Reduced Emissions from Cooking and Heating; "
+                 "formerly TPDDTEC; 150 kW/unit ceiling)",
     }
-    methodology = methodology_map.get(project_type, "ACM0012 v3.0")
+    methodology_status_map = {
+        "cement": "real (CDM; Verra status to be re-confirmed)",
+        "brick": "real",
+    }
+    methodology = methodology_map.get(
+        project_type,
+        "AMS-III.H v1.0 (Alternative waste treatment processes)",
+    )
+    methodology_status = methodology_status_map.get(project_type, "real")
 
     return VerraPDD(
         project_name=project_name,
         project_id=None,
         methodology=methodology,
+        methodology_status=methodology_status,
         project_type=project_type,
         project_location={"country": "Nepal", "region": location, "iso": "NP"},
         project_proponent=proponent,

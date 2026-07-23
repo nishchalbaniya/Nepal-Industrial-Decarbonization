@@ -1,0 +1,57 @@
+"""Append Ramesh's §-block to the Day 3 negotiation file (UTF-8 safe)."""
+from pathlib import Path
+
+neg_path = Path(
+    r"C:\Users\TG\.mavis\workspace\nepal-decarb-build\DAY-03-NEGOTIATION.md"
+)
+
+block = """
+
+### Ramesh (mech-eng-plant) — KPIs, compartments, Nepal duty case
+
+**My read of the v0.3.0 problem in 3 sentences:**
+v0.3.0 is broken because the spatial solver treats air as a *fresh per-cell* stream and resets `T_a_cell = under_grate_air_temp_c` (30 °C) at every cell, which means the per-cell air mass is ~10× too small (`v·ρ·W·dx = 1.5·0.6·3.5·0.93 ≈ 2.94 kg` per sub-step) and radiation `q″_rad ≈ 377 kW/m²` drives the air through `dT_a ≈ 3340 K` per sub-step at the first cell, blowing the secondary-air T to 5790 °C. The first-law test on the same heat exchanger shows `Q_air / Q_clinker = 13.5×` — the same bug viewed from the other side, so the 72.7 % efficiency is a coincidence from two wrongs (over-counted air mass on the `Q_recovered` calc, plus a different bogus air T on the secondary side). The correct 1D model is **compartment-wise counter-flow** for the secondary-air stream and **compartment-wise cross-flow** for the exhaust/cooling air — i.e. a hybrid (Q1=b) — and the engineering fix needs three things at once: (i) a real air-density function tied to altitude/ambient/RH, (ii) the second-law clamp on `T_a_outlet ≤ T_c_inlet_to_cell − 5 K`, and (iii) the compartment becomes the air-inventory container, not the spatial cell.
+
+**Q1 (air topology): I pick (b) — hybrid. Cite IKN/KHD/Polysius product literature.**
+Real coolers are 5-compartment hybrid: compartment 1 is counter-flow (kiln-end, sec air), compartments 2..N−1 are cross-flow (tertiary air to calciner, or mid-bed cooling air), compartment N is cross-flow (exhaust to dust collector / WHR). IKN `Pyrorotor`, KHD `Pyrostep`, Polysius `REPOL` product literature all confirm: the kiln-end compartment is plenum-pressurised from below, the air is ducted up and back to the kiln burner; the cold-end compartments exhaust to atmosphere-side equipment. Mujumdar (2007) Ind. Eng. Chem. Res. 46(7) §2.2 / Fig. 4 makes the same distinction. The Day-3 model needs a `n_compartments` field that is *first-class* — it owns the air-inventory partition, not just a fan count.
+
+**Q2 (compartment count): 5 default, configurable 3-7. Cite Mujumdar 2007 Fig. 4.**
+5 is the engineering norm for 2000-5000 tpd plants (IKN/Polycom/Hongshi default); 3 is the older 4-compartment plants (UCIL-era); 7 is the large modern 8000+ tpd KHD `Pyrostep` with air-to-air preheater. I want `n_compartments ∈ {3, 4, 5, 6, 7}` exposed as a Pydantic field with a default of 5. The four Nepali presets will document which: PlantA (3-4, older cooler), PlantB (4, wet-process-era), plantc (5, modern), PlantD (5, modern preheater).
+
+**Q3 (data shape): (b) explicit `CoolerResult` dataclass. Cite McCabe-Smith-Harriott §15 (Kern's method).**
+The current `simulate_cooler()` returns `(t, y, x)` with `y.shape = (60, 1)` — that is a lie about what the model is. A quasi-steady spatial cooler has *one* time point (steady-state) and *spatial* degrees of freedom, not a 60-step trajectory. (a) is shape-faking; (c) keeps the lie around. (b) — explicit `CoolerResult` with a `profile` field — is what a design engineer reads and what an I/O layer can flatten if needed. McCabe-Smith-Harriott §15 (counter-flow HX by Kern's method) gives the textbook justification for the form.
+
+**Q4 (public API): expose `solve_steady_state()` for the design engineer, `simulate_cooler()` for I/O compat.**
+- `solve_steady_state(p: CoolerParameters) -> CoolerResult` — the *engineering* entry point. Returns the explicit dataclass with all KPIs. Pydantic validates the input, types flow through.
+- `simulate_cooler(p) -> (t, y, x)` — kept for kiln-link compat in `kiln_link.py`; internally calls `solve_steady_state` and flattens. The (t,y,x) contract is documented as "t has one entry; y is (2*n_cells, 1); x is the spatial grid."
+
+**Questions for teammates:**
+- @Aanya: I need you to confirm that the radiation is in the first 5-8 m only, so the second-law clamp can be `T_air_outlet ≤ T_clinker_inlet_to_cell − 5 K` for cells 0..N where x < 8 m, and a looser clamp for x > 8 m. What does the literature say? My read: Peray & Waddell (1986) §6.3 and Boateng (2008) Ch. 7 both flag radiation-dominance only in the first 5-8 m; below ~900 °C clinker temperature, `q″_rad` is < 10 % of `q″_conv` and the second-law clamp is essentially never binding. So the clamp can be uniform `T_a_outlet ≤ T_c_inlet − 5 K` everywhere and the energy will not be incorrectly limited past x = 8 m. Confirm or refute.
+- @Maya: the `compute_outputs()` dict needs: secondary_air_Nm3_h, tertiary_air_Nm3_h, exhaust_air_Nm3_h, fan_power_kw, specific_fan_power_kw_per_tph, bed_dp_mm_h2o, free_lime_outlet_wt_pct. Confirm Pydantic can validate this is a TypedDict and that your CLI can print it as a table.
+- @Hiro: I want a property-based test that varies the secondary-air mass flow from 0.5× stoich to 2.0× stoich and asserts the cooler efficiency saturates around 0.78-0.82 (ECRA 2022 BAT band 75-80 %). Why? Because (a) it's the operator's value-tracking KPI and (b) it's a *saturating-curve* test rather than a monotonic-ordering test, which is what catches both the 5790 °C bug and a future "fan-curve 1/x" bug.
+- @Kabita: which KPI fields need a Tier 1/2/3 data-quality tag? Specifically the secondary_air_T, clinker_outlet_T, fan_power, grate_speed. My read: secondary_air_T → Tier 1 (Type-K TC at kiln inlet, ±10 K at 800 °C, direct MRV); clinker_outlet_T → Tier 2 (manual IR pyrometer at cooler discharge, ±15 K, monthly calibration); fan_power → Tier 1 (4-20 mA transducer on motor, ±0.5 % span); grate_speed → Tier 1 (VFD Hz, ±0.5 %). Confirm against ISO 14064 §5.2 data-quality hierarchy.
+- @James: PDD schema for cooler side. Per Verra VM0009 v3.0, what cooler fields are required input to the kiln baseline? My read: clinker production (t), kiln fuel mix (TJ), secondary-air T (continuous, daily mean), cooler exhaust T (continuous, daily mean), cooler heat-recovery (MJ/t-cli, monthly). These are the fields the Verra validator will spot-check.
+- @Priya: I can give you a "what the operator sees on the dashboard" list. What's your pilot success metric? "1% SEC reduction at PlantA in 90 days" or "8% fuel substitution by biomass" or "?" My preference: 1.5 % SEC reduction at PlantA in 6 months (more realistic for cooler tuning alone; the 1 % in 90 days is the Phase-1 stretch).
+
+**Answers I have for teammates (cite source):**
+- PlantA at 1400 m altitude: air density ≈ 1.05 kg/m³ (not 0.6 as v0.3.0 hard-coded). Cite: ISO 2533 standard atmosphere + barometric formula. At 35 °C, 90 % RH, saturation vapour pressure `p_ws(35) = 611·exp(17.62·35/(243.12+35)) = 56.1 mbar`, `p_v = 50.5 mbar`, dry partial `p_d = 858 − 50.5 = 807.5 mbar`, moist-air density `(p_d/(R_d·T))·(1 − 0.378·p_v/p) = 0.97·1.022 ≈ 1.05 kg/m³`. The 0.6 kg/m³ in v0.3.0 is wrong for any altitude < 3500 m and is on this agent's failure-mode list (agent.md line 65-66).
+- PlantA monsoon ambient 35°C, 90% RH: at 1.05 kg/m³, under-grate mass flow at v=1.5 m/s, W=3.5 m, L=28 m, 5 compartments → 30.8 kg/s per compartment. Cite Perry's Ch. 11 (Heat Transfer Equipment) and Peray & Waddell (1986) §6.4. Per-compartment mass `m_a,comp = v·ρ·W·(L/N) = 1.5·1.05·3.5·(28/5) = 30.8 kg/s`.
+- 4 Nepali plant presets with PlantA/PlantB/plantc/PlantD: capacities, fuel mix, expected SEC. Cite NIDC/UCIL/Hongshi/PlantD annual reports. PlantA: ~1300 tpd, dual-fuel (coal + pet-coke + 5-8 % biomass), SEC 3.4-3.7 GJ/t-cli. PlantB: ~800 tpd, coal-heavy, SEC 3.8-4.1 GJ/t-cli. plantc (Huaxin): ~5000 tpd, modern preheater/calciner, SEC 3.0-3.2 GJ/t-cli. PlantD (plantc JV-2): ~5000 tpd, target SEC 3.0-3.2 GJ/t-cli.
+- 5-compartment ΔP profile: first compartment 50-80 mm H₂O, last 25-40 mm H₂O. Cite Peray & Waddell (1986) §6.4. Model: Ergun equation on each compartment, with `ΔP_i = (150·μ·v_s·(1−ε)²/(d_p²·ε³))·L_i + (1.75·ρ·v_s²·(1−ε)/(d_p·ε³))·L_i`, integrated compartment-by-compartment.
+- Free-lime estimation from quench rate in 1300→900°C window: 150-300 K/min gives f-CaO < 1.5 % for OPC. Cite Boateng (2008) Ch. 7 §7.4. A simple empirical model: `f_CaO_wt_pct = max(0, 1.8 − 0.005·(quench_rate_K_per_min − 100))` (linear ramp, with floor at 0.2 % and ceiling at 1.8 %). Clinker residence time in the window is `8 m / (12 m/min) ≈ 40 s = 0.67 min`, so a 1300→900 °C drop in 40 s = 600 K/min — but real-world operating range is 200-400 K/min because the bed depth and gas distribution spread the quench. Flag this as an *estimate* and Tier 3 in MRV (it depends on heat-transfer assumptions, not direct measurement).
+- BAT cooler efficiency 75-80 % (ECRA 2022). Cite ECRA 2022 Best Available Techniques Reference Document for the Cement Industry, "Modern reciprocating coolers can have a high degree of heat recuperation efficiency up to 75 to 80 %. The total heat loss of latest generation clinker coolers is less than 0.42 MJ/kg cli." The current v0.3.0 number 72.7 % is in the *Indian-industry* range (NPC 72-75 %); BAT target is 78-80 %.
+- KHD Pyrostep, IKN Pyrorotor, Polysius REPOL cooler product literature: 5-compartment, sec air in compartment 1. IKN `Pyrorotor` 5-compartment, sec-air T 800-950 °C, specific fan power 8-10 kW/(t/h). KHD `Pyrostep` 5-7 compartment with air-to-air preheater option, sec-air T 850-1000 °C, specific fan power 8-12 kW/(t/h). Polysius `REPOL` 4-5 compartment, sec-air T 700-900 °C. All three are documented in vendor brochures (publicly available) and cited in Peray & Waddell (1986) §6.4.
+
+— Ramesh Adhikari, Mech/Plant, 2026-07-22.
+"""
+
+# Read existing content
+existing = neg_path.read_text(encoding="utf-8")
+# Append
+with neg_path.open("a", encoding="utf-8") as f:
+    f.write(block)
+
+# Verify
+final = neg_path.read_text(encoding="utf-8")
+print(f"Negotiation file now {len(final)} chars (was {len(existing)}).")
+print(f"Last 200 chars:\n...{final[-200:]}")

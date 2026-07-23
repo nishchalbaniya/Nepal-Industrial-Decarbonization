@@ -435,7 +435,7 @@ code.inline {
 </div>
 
 <div class="kpi-row">
-  <div class="kpi"><div class="label">Hetauda Cement baseline</div><div class="value">861,025 tCO₂/yr</div><div class="sub">783 kg CO₂/t cement · Tier 2</div></div>
+  <div class="kpi"><div class="label">PlantA baseline</div><div class="value">861,025 tCO₂/yr</div><div class="sub">783 kg CO₂/t cement · Tier 2</div></div>
   <div class="kpi"><div class="label">Tier 3 (kinetics + TOC)</div><div class="value">867,815 tCO₂/yr</div><div class="sub">789 kg CO₂/t · 0.8% higher than Tier 2</div></div>
   <div class="kpi"><div class="label">Monte Carlo 90% CI</div><div class="value">±25,820 tCO₂</div><div class="sub">5,000 samples · CoV 3% · converged</div></div>
   <div class="kpi"><div class="label">Verra credits/yr</div><div class="value">56,407</div><div class="sub">NPV $22.5M @ EU ETS $65/t</div></div>
@@ -446,19 +446,19 @@ code.inline {
 </div>
 
 <!-- ============== PILOT RUN ============== -->
-<h2>📊 <span class="num">§</span> Live Pilot Run — Hetauda Cement + Bhairahawa Brick</h2>
+<h2>📊 <span class="num">§</span> Live Pilot Run — PlantA + Bhairahawa Brick</h2>
 <p style="color:var(--fg-dim); margin-bottom: 16px;">
   This is the actual output from <code class="inline">scripts/run_pilot.py</code> running right now on the platform.
   All 15 sections complete. Click any to expand.
 </p>
 
 <div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[1] CEMENT BASELINE — Hetauda Cement Industries Ltd <span class="icon">▶</span></div>
+  <div class="head">[1] CEMENT BASELINE — PlantA Industries Ltd <span class="icon">▶</span></div>
   <div class="body">
 <pre>
 CementPlant(
-  name="Hetauda Cement Industries Ltd",
-  location="Hetauda, Makwanpur, Bagmati Province",
+  name="PlantA Industries Ltd",
+  location="PlantA, Makwanpur, Bagmati Province",
   year=2024,
   clinker_production_t=950,000,
   cement_production_t=1,100,000,
@@ -637,9 +637,9 @@ Sample — Rotary kiln 5000 TPD:
   OPEX:          $1.8M/yr
 
 CAD outputs generated:
-  - DXF (AutoCAD R12):    hetauda_kiln.dxf
-  - SVG (web-viewable):   hetauda_kiln.svg
-  - FreeCAD macro:        hetauda_kiln.FCMacro (parametric 3D)
+  - DXF (AutoCAD R12):    planta_kiln.dxf
+  - SVG (web-viewable):   planta_kiln.svg
+  - FreeCAD macro:        planta_kiln.FCMacro (parametric 3D)
 </pre>
   </div>
 </div>
@@ -699,7 +699,7 @@ CAPEX: ~$1.5M, payback 4 years
   <div class="head">[11] DIGITAL TWIN — Kalman filter + anomaly detection <span class="icon">▶</span></div>
   <div class="body">
 <pre>
-Twin state for "Hetauda":
+Twin state for "PlantA":
   Sensors tracked:  T-kiln, P-kiln, CO, NOx
   Filter:           Extended Kalman (Q=0.01, R=0.1)
 
@@ -778,10 +778,10 @@ TOKENIZATION (Solidity ERC-3643 / T-REX):
 <table>
 <thead><tr><th>Report</th><th>File</th><th>Size</th><th>Audience</th></tr></thead>
 <tbody>
-<tr><td>Executive summary</td><td>reports/hetauda_executive.pdf</td><td>3.9 KB</td><td>Plant manager</td></tr>
-<tr><td>ISO 14064-1 compliance</td><td>reports/hetauda_iso.pdf</td><td>5.0 KB</td><td>Verifier (VVB)</td></tr>
-<tr><td>Verra monitoring</td><td>reports/hetauda_verra.pdf</td><td>5.7 KB</td><td>Verra / auditor</td></tr>
-<tr><td>TCFD disclosure</td><td>reports/hetauda_tcfd.pdf</td><td>5.3 KB</td><td>Investors, banks</td></tr>
+<tr><td>Executive summary</td><td>reports/planta_executive.pdf</td><td>3.9 KB</td><td>Plant manager</td></tr>
+<tr><td>ISO 14064-1 compliance</td><td>reports/planta_iso.pdf</td><td>5.0 KB</td><td>Verifier (VVB)</td></tr>
+<tr><td>Verra monitoring</td><td>reports/planta_verra.pdf</td><td>5.7 KB</td><td>Verra / auditor</td></tr>
+<tr><td>TCFD disclosure</td><td>reports/planta_tcfd.pdf</td><td>5.3 KB</td><td>Investors, banks</td></tr>
 </tbody>
 </table>
   </div>
@@ -791,7 +791,7 @@ TOKENIZATION (Solidity ERC-3643 / T-REX):
   <div class="head">[15] JSON RESULTS <span class="icon">▶</span></div>
   <div class="body">
 <pre>
-reports/hetauda_pilot_results.json — 27,688 bytes
+reports/planta_pilot_results.json — 27,688 bytes
 
 Full machine-readable output containing every number from
 sections [1]-[14]. Suitable for:
@@ -807,19 +807,19 @@ sections [1]-[14]. Suitable for:
 <h2>🏭 <span class="num">§</span> Process Flow Diagrams (PFD + P&ID)</h2>
 <div class="image-grid">
   <div>
-    <img src="hetauda_pfd.png" alt="Cement PFD">
-    <div class="image-caption">Cement PFD — Hetauda (5-stage preheater, precalciner, grate cooler)</div>
+    <img src="planta_pfd.png" alt="Cement PFD">
+    <div class="image-caption">Cement PFD — PlantA (5-stage preheater, precalciner, grate cooler)</div>
   </div>
   <div>
     <img src="bhairahawa_pfd.png" alt="Brick PFD">
     <div class="image-caption">Brick PFD — Bhairahawa (clamp kiln, mobile chimney)</div>
   </div>
   <div>
-    <img src="hetauda_pid.png" alt="Cement P&ID">
+    <img src="planta_pid.png" alt="Cement P&ID">
     <div class="image-caption">P&ID — Kiln burning zone (ISA-style instrumentation)</div>
   </div>
   <div>
-    <img src="hetauda_kiln.svg" alt="Rotary kiln SVG">
+    <img src="planta_kiln.svg" alt="Rotary kiln SVG">
     <div class="image-caption">Rotary kiln — 3D parametric CAD (DXF / SVG / FreeCAD macro)</div>
   </div>
 </div>
@@ -952,8 +952,8 @@ sections [1]-[14]. Suitable for:
 <ol class="deployment-steps">
   <li>Run the <strong>pilot</strong> to confirm the platform works (5 min)</li>
   <li>Run the <strong>verification script</strong> to confirm all 11 endpoints are ✅ (1 min)</li>
-  <li>Onboard <strong>Hetauda Cement</strong> as your reference plant (Express, 15 min)</li>
-  <li>Generate the 5 reference reports (Executive, ISO 14064-1, Verra, TCFD, SBTi) for Hetauda (2 min)</li>
+  <li>Onboard <strong>PlantA</strong> as your reference plant (Express, 15 min)</li>
+  <li>Generate the 5 reference reports (Executive, ISO 14064-1, Verra, TCFD, SBTi) for PlantA (2 min)</li>
   <li>Onboard 2-3 more plants from the NCMA list (Express each, 15 min each)</li>
   <li>Set up <strong>Cloudflare</strong> in front of the domain (free tier, DDoS + caching)</li>
   <li>Set up <strong>SMTP</strong> for alert emails (Gmail SMTP, free)</li>

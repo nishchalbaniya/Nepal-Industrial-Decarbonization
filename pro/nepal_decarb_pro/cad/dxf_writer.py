@@ -319,7 +319,7 @@ class DxfWriter:
 # ---------------------------------------------------------------------------
 # Convenience: cement plant layout (1:100 scale, top-view)
 # ---------------------------------------------------------------------------
-def generate_plant_layout(out_path: str, plant_name: str = "Hetauda Cement",
+def generate_plant_layout(out_path: str, plant_name: str = "PlantA",
                           capacity_tpd: int = 2880) -> str:
     """Generate a 1:100-scale top-view plant layout (kiln line + mill line)."""
     dwg = DxfWriter()
@@ -397,7 +397,7 @@ def generate_plant_layout(out_path: str, plant_name: str = "Hetauda Cement",
 # ---------------------------------------------------------------------------
 # Convenience: P&ID with ISA-style instrumentation
 # ---------------------------------------------------------------------------
-def generate_pid_with_instruments(out_path: str, plant_name: str = "Hetauda Cement") -> str:
+def generate_pid_with_instruments(out_path: str, plant_name: str = "PlantA") -> str:
     """Generate a P&ID with proper ISA-5.1 instrumentation symbols."""
     dwg = DxfWriter()
     dwg.set_title_block(TitleBlock(

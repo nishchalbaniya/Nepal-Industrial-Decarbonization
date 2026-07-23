@@ -4,8 +4,8 @@ user dashboard
 topic read nepal/#
 
 # Plant sensor users (write only to their own plant's topic)
-user plant_hetauda
-topic write nepal/hetauda/#
+user plant_a
+topic write nepal/planta/#
 user plant_bhairahawa
 topic write nepal/bhairahawa/#
 

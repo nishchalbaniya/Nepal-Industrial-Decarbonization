@@ -1,0 +1,32 @@
+{
+  "cooler": {
+    "ok": true,
+    "path": "C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/05_cooler_v050_calibrated.step",
+    "size_bytes": 22700,
+    "n_objects": 11,
+    "n_solids": 10,
+    "total_faces": 41,
+    "total_edges": 91,
+    "total_vertices": 61,
+    "bounding_box_mm": [
+      36297.2,
+      3500.0,
+      2800.0
+    ]
+  },
+  "kiln": {
+    "ok": true,
+    "path": "C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_planta_kiln.step",
+    "size_bytes": 66541,
+    "n_objects": 26,
+    "n_solids": 25,
+    "total_faces": 111,
+    "total_edges": 123,
+    "total_vertices": 81,
+    "bounding_box_mm": [
+      65800.0,
+      7000.0,
+      60000.0
+    ]
+  }
+}

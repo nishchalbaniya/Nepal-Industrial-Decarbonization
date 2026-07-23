@@ -34,7 +34,7 @@ class MQTTBridge:
 
     Usage:
         bridge = MQTTBridge(broker="mqtt://localhost:1883")
-        bridge.add_sensor("kiln-temp-01", "temperature", "Hetauda", "C", "factory/kiln/temp")
+        bridge.add_sensor("kiln-temp-01", "temperature", "PlantA", "C", "factory/kiln/temp")
         bridge.on_message(lambda sensor, value, ts: print(sensor, value))
         bridge.run()
     """
@@ -122,16 +122,16 @@ def run() -> None:
     bridge.add_sensor(
         "kiln-temp-01",
         "temperature",
-        "Hetauda",
+        "PlantA",
         "C",
-        "nepal/hetauda/kiln/temperature",
+        "nepal/planta/kiln/temperature",
     )
     bridge.add_sensor(
         "co2-stack-01",
         "co2",
-        "Hetauda",
+        "PlantA",
         "ppm",
-        "nepal/hetauda/stack/co2",
+        "nepal/planta/stack/co2",
     )
     bridge.on_message(
         lambda s, v, t: print(f"[{t}] {s.sensor_id} ({s.location}): {v} {s.unit}")

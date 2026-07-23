@@ -286,6 +286,12 @@ def check_iso_14064_part3(
     opinion_issued: bool = True,
     independence_confirmed: bool = True,
     competence_confirmed: bool = True,
+    # The three previously-hardcoded criteria are now explicit parameters
+    # so the checker is a real self-assertion, not a self-asserted pass.
+    # WP2 fix; see docs/STANDARDS_COVERAGE.md section 1 row 3.
+    v2_objective_assessment: bool = True,
+    v5_evidence_evaluation: bool = True,
+    v6_verification_report: bool = True,
 ) -> ISO14064Result:
     """Check ISO 14064-3 verification & validation compliance."""
     criteria_met = []
@@ -294,11 +300,11 @@ def check_iso_14064_part3(
 
     checks = {
         "V.1": vvb_accredited,
-        "V.2": True,
+        "V.2": v2_objective_assessment,
         "V.3": materiality_applied,
         "V.4": risk_based_approach,
-        "V.5": True,
-        "V.6": True,
+        "V.5": v5_evidence_evaluation,
+        "V.6": v6_verification_report,
         "V.7": site_visit_conducted,
         "V.8": opinion_issued,
         "V.9": independence_confirmed,

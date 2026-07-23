@@ -80,7 +80,7 @@ not yet run a baseline with their own data.
 > score**. Those three are the ones your bank, your buyer, and
 > any future EU customer will ask for first.
 >
-> If your numbers look like the demo (Hetauda: 861,025 tCO₂/yr,
+> If your numbers look like the demo (PlantA: 861,025 tCO₂/yr,
 > 783 kg/t, 100/100 ISO), you are seeing the platform work.
 >
 > If you want to swap in your own data, the CSV template is
@@ -93,12 +93,12 @@ not yet run a baseline with their own data.
 
 ---
 
-## Email 3 — Day 10 — "We just published the Hetauda case study (here's what the numbers mean for you)"
+## Email 3 — Day 10 — "We just published the PlantA case study (here's what the numbers mean for you)"
 
 **Trigger:** sent Day 10 regardless of behaviour. Social proof +
 context for what is possible.
 
-**Subject:** Hetauda's $22.5M — what your plant could look like
+**Subject:** PlantA's $22.5M — what your plant could look like
 
 **Preheader:** A real case study, with the maths.
 
@@ -106,7 +106,7 @@ context for what is possible.
 
 > Hi {{first_name}},
 >
-> A quick story. We just published the Hetauda Cement case
+> A quick story. We just published the PlantA case
 > study: 861,025 tCO₂/yr baseline, 56,407 Verra credits/yr
 > potential, **$22.5M NPV at EU ETS $65/t** over a 10-year
 > crediting period. The full report is on the blog.
@@ -123,7 +123,7 @@ context for what is possible.
 >
 > Nishchal
 
-**CTA:** "Read the Hetauda case study → {{blog_url}}"
+**CTA:** "Read the PlantA case study → {{blog_url}}"
 
 ---
 

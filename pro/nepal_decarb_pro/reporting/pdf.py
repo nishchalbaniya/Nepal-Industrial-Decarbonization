@@ -172,9 +172,9 @@ def generate_verra_monitoring_report(
     r.paragraph(f"<b>Project name:</b> {project_name}")
     r.paragraph(f"<b>Host plant:</b> {plant.name} ({plant.location})")
     r.paragraph(f"<b>Reporting period:</b> FY{plant.year}")
-    r.paragraph(f"<b>Methodology:</b> Verra VCS VM0009 v2.0 (Cement Plant Decarbonization)")
+    r.paragraph(f"<b>Methodology:</b> CDM ACM0003 v9.0 (Partial substitution of fossil fuels in cement or quicklime manufacture; status in Verra: not active per 2024-2025 listing, re-confirm with VVB). See docs/METHODOLOGY.md.")
     r.paragraph(f"<b>Crediting period:</b> {crediting_period_years} years")
-    r.paragraph(f"<b>VVB:</b> Pending selection (accredited body required)")
+    r.paragraph(f"<b>VVB:</b> Pending selection (accredited body required). Note: this report is a SIZING OUTPUT, not a submittable monitoring report. Per-field tier / instrument / calibration frequency tables and the QA/QC procedure required by ISO 14064-2:2019 s5.7 are not yet implemented; see docs/METHODOLOGY.md section 5 for the full gap list.")
 
     r.heading("2. Plant Operating Data")
     data = [
@@ -241,10 +241,11 @@ def generate_verra_monitoring_report(
     r.paragraph("• GHG Protocol Corporate Standard: ✓")
     r.paragraph("• ISO 14064-1:2018: ✓ (organization-level inventory)")
     r.paragraph("• ISO 14064-2:2019: ✓ (project-level)")
-    r.paragraph("• Verra VCS VM0009 v2.0: ✓")
-    r.paragraph("• Gold Standard TPDDTEC: ✓ (alternative)")
-    r.paragraph("• TCFD: ✓ (aligned disclosure)")
-    r.paragraph("• SBTi: ✓ (1.5°C pathway validation)")
+    r.paragraph("• Verra VCS: PDD generator present (stub -- not submittable; see docs/METHODOLOGY.md section 5)")
+    r.paragraph("• CDM ACM0003 v9.0 (cement fuel-switch): named; not yet implemented as code")
+    r.paragraph("• Gold Standard RECH v5.0 (formerly TPDDTEC): applicable to brick sub-product only; not to industrial cement")
+    r.paragraph("• TCFD: aligned disclosure (aspirational; ISSB IFRS S2 supersedes 2024)")
+    r.paragraph("• SBTi: pathway multipliers in dashboard are hard-coded, not sourced from the published SBTi pathway file (flagged in STANDARDS_AUDIT.md)")
 
     r.spacer(1)
     r.small(

@@ -1,5 +1,5 @@
 """
-Full end-to-end demo: Hetauda Cement Industries decarbonization assessment.
+Full end-to-end demo: PlantA Industries decarbonization assessment.
 
 Demonstrates every module of nepal_decarb_pro v1.0:
   - Tier 2 + Tier 3 cement emissions
@@ -62,7 +62,7 @@ from nepal_decarb_pro.reporting import (
 def main() -> None:
     print("=" * 80)
     print("  Nepal Industrial Decarbonization Platform — Pro v1.0.0")
-    print("  Full Demo: Hetauda Cement Industries Ltd")
+    print("  Full Demo: PlantA Industries Ltd")
     print("=" * 80)
     print()
 
@@ -72,9 +72,9 @@ def main() -> None:
     # 1. Cement Tier 2 + Tier 3
     # ====================================================================
     print("─── 1. CEMENT BASELINE (TIER 2 + TIER 3) ───")
-    hetauda = CementPlant(
-        name="Hetauda Cement Industries Ltd",
-        location="Hetauda, Makwanpur, Bagmati Province",
+    planta = CementPlant(
+        name="PlantA Industries Ltd",
+        location="PlantA, Makwanpur, Bagmati Province",
         year=2024,
         clinker_production_t=950_000,
         cement_production_t=1_100_000,
@@ -88,11 +88,11 @@ def main() -> None:
         electricity_consumption_kwh=85_000_000,
         whr_generation_kwh=0,
     )
-    r_t2 = calculate_cement_tier2(hetauda, ef)
+    r_t2 = calculate_cement_tier2(planta, ef)
     print(f"Tier 2: {r_t2.e_total_tco2:,.0f} tCO2/yr | "
           f"Intensity {r_t2.intensity_kgco2_per_t_cement:,.0f} kg/t | "
           f"SEC {r_t2.sec_mj_per_t_clinker:,.0f} MJ/t clinker")
-    r_t3 = calculate_cement_tier3(hetauda, ef)
+    r_t3 = calculate_cement_tier3(planta, ef)
     print(f"Tier 3: {r_t3.e_total_tco2:,.0f} tCO2/yr | "
           f"Intensity {r_t3.intensity_kgco2_per_t_cement:,.0f} kg/t")
     print()
@@ -119,7 +119,7 @@ def main() -> None:
     # ====================================================================
     print("─── 3. MONTE CARLO UNCERTAINTY (3,000 SAMPLES) ───")
     spec = UncertaintySpec()
-    mc = monte_carlo_cement(hetauda, ef, spec, n_samples=3000)
+    mc = monte_carlo_cement(planta, ef, spec, n_samples=3000)
     print(f"Mean: {mc.mean:,.0f} tCO2 | Median: {mc.median:,.0f} | "
           f"Std: {mc.std:,.0f}")
     print(f"90% CI: [{mc.ci_90_low:,.0f}, {mc.ci_90_high:,.0f}] tCO2")
@@ -133,7 +133,7 @@ def main() -> None:
     print("─── 4. MILP FUEL BLEND OPTIMIZER ───")
     total_energy_gj = sum(
         fu.consumption_t * ef.fuel(fu.fuel_name).ncvc_gj_per_t
-        for fu in hetauda.fuel_use
+        for fu in planta.fuel_use
     )
     fb_cheap = optimize_fuel_blend(ef, total_energy_gj, objective="cost")
     print(f"Cheapest blend cost: ${fb_cheap.total_cost_usd:,.0f} | "
@@ -157,7 +157,7 @@ def main() -> None:
     # 6. LCA
     # ====================================================================
     print("─── 6. LCA (6 IMPACT CATEGORIES) ───")
-    lca_c = lca_cement(hetauda, ef)
+    lca_c = lca_cement(planta, ef)
     print(f"Cement LCA (per tonne): GWP={lca_c.impacts['GWP100']*1000:,.0f} kg CO2-eq | "
           f"AP={lca_c.impacts['AP']*1000:.2f} kg SO2-eq | "
           f"EP={lca_c.impacts['EP']*1000:.3f} kg PO4-eq")
@@ -173,7 +173,7 @@ def main() -> None:
     print("─── 7. CARBON MARKETS ───")
     project_emissions = 791_171
     pdd_v = generate_verra_pdd(
-        project_name="Hetauda Decarb",
+        project_name="PlantA Decarb",
         project_type="cement",
         baseline_annual_tco2=r_t2.e_total_tco2,
         project_annual_tco2=project_emissions,
@@ -183,7 +183,7 @@ def main() -> None:
           f"Annual @ $30: ${pdd_v.annual_revenue_at_30:,.0f}")
 
     pdd_gs = generate_gold_standard_pdd(
-        project_name="Hetauda Decarb",
+        project_name="PlantA Decarb",
         project_type="cement",
         baseline_annual_tco2=r_t2.e_total_tco2,
         project_annual_tco2=project_emissions,
@@ -202,7 +202,7 @@ def main() -> None:
     # ====================================================================
     print("─── 8. CARBON CREDIT TOKENIZATION ───")
     md = build_token_metadata(
-        project_name="Hetauda Decarb",
+        project_name="PlantA Decarb",
         vintage_year=2026,
         methodology="VM0009 v2.0",
         registry="Verra",
@@ -220,7 +220,7 @@ def main() -> None:
     # 9. Standards compliance
     # ====================================================================
     print("─── 9. STANDARDS COMPLIANCE ───")
-    iso1 = check_iso_14064_part1(plant=hetauda, cement_result=r_t2,
+    iso1 = check_iso_14064_part1(plant=planta, cement_result=r_t2,
                                   uncertainty_performed=True,
                                   verification_planned=True,
                                   external_audit=True)
@@ -230,7 +230,7 @@ def main() -> None:
     iso3 = check_iso_14064_part3()
     print(f"ISO 14064-3: {iso3.score:.0f}/100 | {iso3.criteria_met}/{iso3.total_criteria} criteria")
 
-    tcfd = generate_tcfd_report(plant=hetauda, cement_result=r_t2)
+    tcfd = generate_tcfd_report(plant=planta, cement_result=r_t2)
     print(f"TCFD: {tcfd.scope1_tco2:,.0f} tCO2 Scope 1 | 3 scenarios analyzed")
 
     sbti = SBTiTarget(target_year=2030, intensity_target_kgco2_per_t=400,
@@ -241,13 +241,13 @@ def main() -> None:
           f"required {sbti_r.required_reduction_pct:.0f}% | "
           f"{'✓ aligned' if sbti_r.aligned_with_1_5c else '✗ not aligned'}")
 
-    gcca = calculate_gcca_kpis(hetauda, r_t2, ef)
+    gcca = calculate_gcca_kpis(planta, r_t2, ef)
     print(f"GCCA KPIs: CO2/t {gcca.co2_per_t_cement:.0f} | "
           f"AF sub rate {gcca.alternative_fuel_substitution_rate_pct:.1f}% | "
           f"CtC ratio {gcca.clinker_to_cement_ratio:.2f}")
 
     loans = [{
-        "company": "Hetauda Cement", "sector": "cement",
+        "company": "PlantA", "sector": "cement",
         "loan_amount_usd": 5_000_000, "company_revenue_usd": 100_000_000,
         "company_emissions_tco2": 1_000_000, "data_quality_score": 2,
     }]
@@ -262,16 +262,16 @@ def main() -> None:
     print("─── 10. PDF REPORTS ───")
     out_dir = Path(__file__).parent.parent / "reports"
     out_dir.mkdir(parents=True, exist_ok=True)
-    summary = generate_executive_summary(hetauda, r_t2, out_dir / "hetauda_executive_summary.pdf")
+    summary = generate_executive_summary(planta, r_t2, out_dir / "planta_executive_summary.pdf")
     print(f"Executive summary: {summary}")
     verra = generate_verra_monitoring_report(
-        hetauda, r_t2, project_emissions,
-        "Hetauda Cement Decarbonization",
-        out_dir / "hetauda_verra_monitoring_report.pdf",
+        planta, r_t2, project_emissions,
+        "PlantA Decarbonization",
+        out_dir / "planta_verra_monitoring_report.pdf",
     )
     print(f"Verra monitoring report: {verra}")
-    iso = generate_iso_14064_report(hetauda, r_t2, iso1,
-                                     out_dir / "hetauda_iso_14064_report.pdf")
+    iso = generate_iso_14064_report(planta, r_t2, iso1,
+                                     out_dir / "planta_iso_14064_report.pdf")
     print(f"ISO 14064-1 report: {iso}")
     print()
 
@@ -295,7 +295,7 @@ def main() -> None:
         "lca_cement": lca_c.model_dump(),
         "token_metadata": md.model_dump(),
     }
-    out_json = out_dir / "hetauda_full_results.json"
+    out_json = out_dir / "planta_full_results.json"
     out_json.write_text(json.dumps(results, indent=2, default=str))
     print(f"JSON results: {out_json}")
     print()

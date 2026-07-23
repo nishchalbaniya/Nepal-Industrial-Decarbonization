@@ -6,7 +6,7 @@
 **Author:** Nishchal Baniya · Himalayan Space Solutions
 **Contact:** nishchal.baniya@himalayancarbonnepal.com
 
-## Headline numbers (Hetauda Cement Industries, baseline 2024)
+## Headline numbers (PlantA Industries, baseline 2024)
 
 | Indicator | Value |
 |---|---|
@@ -19,7 +19,7 @@
 | vs Nepal avg (~950) | -177 kg CO₂/t (better than average) |
 | SEC | 4,168 MJ/t clinker |
 
-## Hetauda project scenario (biomass 20% + WHR 22 GWh/yr)
+## PlantA project scenario (biomass 20% + WHR 22 GWh/yr)
 
 | Indicator | Value |
 |---|---|

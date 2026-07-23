@@ -14,7 +14,7 @@
 This guide covers deploying `nepal_decarb_pro` v1.0.0 for a **pilot project** at a
 cement plant or brick kiln in Nepal. The pilot can be:
 
-- **Single-plant pilot:** one cement plant (e.g., Hetauda) or one brick cluster
+- **Single-plant pilot:** one cement plant (e.g., PlantA) or one brick cluster
 - **Sector pilot:** all plants in one Nepali province
 - **Carbon credit pilot:** one project submitted to Verra/Gold Standard
 
@@ -120,7 +120,7 @@ MQTT_BROKER=mqtt://localhost:1883
 MQTT_USERNAME=plant
 MQTT_PASSWORD=***
 LOG_LEVEL=INFO
-PLANT_NAME=Hetauda Cement Industries Ltd
+PLANT_NAME=PlantA Industries Ltd
 TENANT_ID=default
 ```
 
@@ -152,7 +152,7 @@ Payload format:
 - [ ] FastAPI returning 200 on `/health`
 - [ ] Database created and tenants seeded
 - [ ] Initial API token issued
-- [ ] First cement plant data loaded (Hetauda or your plant)
+- [ ] First cement plant data loaded (PlantA or your plant)
 - [ ] First baseline calculation run and verified
 - [ ] ISO 14064-1 compliance check run
 - [ ] PDF report generated and reviewed

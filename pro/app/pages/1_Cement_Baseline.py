@@ -18,24 +18,24 @@ st.set_page_config(page_title="Cement Baseline", page_icon="🏭", layout="wide"
 st.title("🏭 Cement Plant Baseline — Tier 2 + Tier 3")
 
 presets = {
-    "Hetauda Cement": dict(
-        name="Hetauda Cement Industries Ltd",
-        location="Hetauda, Makwanpur",
+    "PlantA": dict(
+        name="PlantA Industries Ltd",
+        location="PlantA, Makwanpur",
         year=2024, clinker_t=950_000, cement_t=1_100_000,
         cao=0.66, mgo=0.018,
         coal_t=120_000, petcoke_t=18_000, diesel_t=400,
         elec_kwh=85_000_000, whr_kwh=0,
     ),
-    "Udayapur Cement": dict(
-        name="Udayapur Cement Industries Ltd",
-        location="Udayapur",
+    "PlantB": dict(
+        name="PlantB Industries Ltd",
+        location="PlantB",
         year=2024, clinker_t=1_800_000, cement_t=2_100_000,
         cao=0.65, mgo=0.020,
         coal_t=235_000, petcoke_t=32_000, diesel_t=600,
         elec_kwh=160_000_000, whr_kwh=0,
     ),
     "Hongshi (Nawalparasi)": dict(
-        name="Hongshi Shivam Cement",
+        name="plantc Cement",
         location="Nawalparasi",
         year=2024, clinker_t=3_200_000, cement_t=3_800_000,
         cao=0.66, mgo=0.015,

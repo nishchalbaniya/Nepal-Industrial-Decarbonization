@@ -23,13 +23,13 @@ meta:
 plants:
   # --- Tier 1: large integrated plants (with on-site kilns) ---
 
-  - id: hetauda
-    name: Hetauda Cement Industries Ltd
+  - id: planta
+    name: PlantA Industries Ltd
     operator: "Government of Nepal (Himal Cement Group)"
     location:
       district: Makwanpur
       province: Bagmati
-      city: Hetauda
+      city: PlantA
     plant_type: integrated
     capacity_tpd: 2880
     annual_production_t: 950_000
@@ -39,13 +39,13 @@ plants:
     public_emissions_tco2_yr: 850_000       # typical range 800k-900k
     grid_connection_kv: 132
     notes: "Oldest and largest public-sector plant. Wet process inefficient. Planned conversion to dry process."
-    source: "Hetauda Cement annual report 2023/24"
+    source: "PlantA annual report 2023/24"
 
-  - id: udayapur
-    name: Udayapur Cement Industries Ltd
+  - id: plantb
+    name: PlantB Industries Ltd
     operator: "Government of Nepal (Himal Cement Group)"
     location:
-      district: Udayapur
+      district: PlantB
       province: Koshi
       city: Gaighat
     plant_type: integrated
@@ -56,11 +56,11 @@ plants:
     modernization_year: 2019
     public_emissions_tco2_yr: 320_000
     grid_connection_kv: 132
-    notes: "Public-sector; smaller than Hetauda. KHD technology."
-    source: "Udayapur Cement annual report 2023/24"
+    notes: "Public-sector; smaller than PlantA. KHD technology."
+    source: "PlantB annual report 2023/24"
 
-  - id: hongshi_shivam
-    name: Hongshi-Shivam Cement Pvt Ltd
+  - id: plantc
+    name: plantc Cement Pvt Ltd
     operator: "Sino-Nepalese JV (Hongshi Group, China)"
     location:
       district: Dhading
@@ -75,7 +75,7 @@ plants:
     public_emissions_tco2_yr: 870_000
     grid_connection_kv: 220
     notes: "Largest private-sector integrated plant. 2.44 Mt/yr. Modern technology."
-    source: "Hongshi-Shivam company disclosure 2023"
+    source: "plantc company disclosure 2023"
 
   - id: arghakhanchi
     name: Arghakhanchi Cement Pvt Ltd
@@ -119,7 +119,7 @@ plants:
     location:
       district: Makwanpur
       province: Bagmati
-      city: Hetauda
+      city: PlantA
     plant_type: integrated
     capacity_tpd: 1000
     annual_production_t: 330_000
@@ -128,7 +128,7 @@ plants:
     modernization_year: 2010
     public_emissions_tco2_yr: 290_000
     grid_connection_kv: 132
-    notes: "First private-sector integrated plant. Located near Hetauda limestone."
+    notes: "First private-sector integrated plant. Located near PlantA limestone."
     source: "Shivam Cement AR 2023"
 
   - id: ghorai_cement

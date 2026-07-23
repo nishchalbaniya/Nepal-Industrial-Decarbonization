@@ -16,10 +16,10 @@ def ef():
 
 
 @pytest.fixture
-def hetauda():
+def planta():
     ef = default_factors()
     plant = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),
@@ -30,8 +30,8 @@ def hetauda():
     return plant, calculate_cement_tier2(plant, ef)
 
 
-def test_iso_14064_1(hetauda):
-    plant, result = hetauda
+def test_iso_14064_1(planta):
+    plant, result = planta
     r = check_iso_14064_part1(plant=plant, cement_result=result)
     assert r.score > 70
     assert r.standard == "ISO 14064-1:2018"
@@ -59,8 +59,8 @@ def test_iso_14064_3():
     assert r.score > 80
 
 
-def test_tcfd_report(hetauda):
-    plant, result = hetauda
+def test_tcfd_report(planta):
+    plant, result = planta
     tcfd = generate_tcfd_report(plant=plant, cement_result=result)
     assert tcfd.scope1_tco2 > 0
     assert len(tcfd.scenarios) >= 3
@@ -79,8 +79,8 @@ def test_sbti_target():
     assert r.target_reduction_pct > 0
 
 
-def test_gcca_kpis(hetauda, ef):
-    plant, result = hetauda
+def test_gcca_kpis(planta, ef):
+    plant, result = planta
     kpi = calculate_gcca_kpis(plant, result, ef)
     assert kpi.co2_per_t_cement > 500
     assert 0.6 < kpi.clinker_to_cement_ratio < 1.0
@@ -88,7 +88,7 @@ def test_gcca_kpis(hetauda, ef):
 
 def test_pcaf_financed():
     loans = [{
-        "company": "Hetauda Cement",
+        "company": "PlantA",
         "sector": "cement",
         "loan_amount_usd": 5_000_000,
         "company_revenue_usd": 100_000_000,
@@ -103,15 +103,15 @@ def test_pcaf_financed():
     assert abs(r[0].financed_emissions_tco2 - 50_000) < 1
 
 
-def test_ghg_protocol_scope_check(hetauda):
-    plant, result = hetauda
+def test_ghg_protocol_scope_check(planta):
+    plant, result = planta
     r = check_scope_completeness(cement_result=result)
     assert r.score > 80
     assert all(c["pass"] for c in r.checks[:3])
 
 
-def test_significance_check(hetauda):
-    plant, result = hetauda
+def test_significance_check(planta):
+    plant, result = planta
     sig = check_significance(
         result.e_scope1_tco2, result.e_scope2_tco2, result.e_scope3_tco2,
     )

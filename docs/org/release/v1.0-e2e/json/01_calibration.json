@@ -1,0 +1,51 @@
+{
+  "loss_prior": 233.71694638193492,
+  "loss_posterior": 4.998230143653508,
+  "rmse": {
+    "sec_air_K": 10.203291520843322,
+    "clinker_K": 0.6976838288827594,
+    "exhaust_K": 23.960936040760544
+  },
+  "posterior": {
+    "grate_speed_m_min": 9.743215626622595,
+    "under_grate_air_velocity_m_s": 4.0,
+    "recuperator_preheat_c": 89.84949089504438,
+    "coal_rate_kg_s": 2.5,
+    "secondary_air_excess_factor": 1.5880934302924885,
+    "emissivity": 0.95,
+    "void_fraction": 0.55,
+    "grate_length_m": 32.79719035835959,
+    "bed_depth_m": 0.7837392834273071,
+    "n_compartments": 5.5727472023352576
+  },
+  "posterior_kpis": {
+    "secondary_air_outlet_c": 715.2250834791566,
+    "secondary_air_outlet_k": 988.3750834791566,
+    "tertiary_air_outlet_c": 189.99977254437542,
+    "exhaust_air_outlet_c": 149.3385222925728,
+    "clinker_outlet_c": 350.9813578377839,
+    "cooler_efficiency": 0.7668489386489773,
+    "first_law_imbalance": 1.82926575290682e-16,
+    "fan_power_kw": 9833.271626364929,
+    "bed_pressure_drop_mm_h2o": 9434.012143823355,
+    "free_lime_outlet_wt_pct": 0.05,
+    "secondary_air_mass_flow_nm3_h": 73730.2773553427,
+    "secondary_air_recovered_gj_per_t_clinker": 0.43728791245326276,
+    "mj_per_t_cli_recovered": 1101.4695742703268,
+    "specific_fan_power_kw_per_tph": 75.64055097203791,
+    "secondary_air_stoich_ratio": 1.5880934302924885,
+    "clinker_quench_rate_k_per_min": 518.5007587305965,
+    "residence_time_s": 201.96940075149584,
+    "heat_in_kw": 51868.48175347223,
+    "heat_out_kw": 12093.191571488198,
+    "heat_recovered_kw": 39775.290181984026,
+    "secondary_air_recovered_kw": 15790.952394145601,
+    "air_recovered_kw_total": 39775.29018198403,
+    "sec_recovered_over_heat_recovered": 0.39700407770495705,
+    "m_a_total_kg_s": 424.37763204921583,
+    "m_a_sec_kg_s": 26.481457950127247,
+    "m_a_exhaust_total_kg_s": 397.89617409908857
+  },
+  "n_bands_pass": 3,
+  "n_bands_total": 6
+}

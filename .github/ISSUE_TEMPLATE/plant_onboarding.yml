@@ -7,7 +7,7 @@ body:
     id: plant_name
     attributes:
       label: Plant name
-      placeholder: "Hetauda Cement Industries Ltd"
+      placeholder: "PlantA Industries Ltd"
     validations:
       required: true
   - type: dropdown

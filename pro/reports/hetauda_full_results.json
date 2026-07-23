@@ -124,7 +124,7 @@
     "seed": 42
   },
   "verra_pdd": {
-    "project_name": "Hetauda Decarb",
+    "project_name": "PlantA Decarb",
     "project_id": null,
     "methodology": "VM0009 v2.0 (Cement Plant Decarbonization)",
     "project_type": "cement",
@@ -161,7 +161,7 @@
     "timestamp": "2026-07-21T02:09:14.779379"
   },
   "gold_standard_pdd": {
-    "project_name": "Hetauda Decarb",
+    "project_name": "PlantA Decarb",
     "project_id": null,
     "methodology": "VM0009 v2.0 (Cement Plant Decarbonization)",
     "project_type": "cement",
@@ -471,7 +471,7 @@
     "timestamp": "2026-07-21T02:09:14.779701"
   },
   "tcfd": {
-    "organization": "Hetauda Cement Industries Ltd",
+    "organization": "PlantA Industries Ltd",
     "reporting_year": 2024,
     "governance": {
       "board_oversight": "Board-level Sustainability Committee reviews climate risks quarterly",
@@ -559,7 +559,7 @@
     "timestamp": "2026-07-21T02:09:14.779754"
   },
   "gcca": {
-    "plant_name": "Hetauda Cement Industries Ltd",
+    "plant_name": "PlantA Industries Ltd",
     "reporting_year": 2024,
     "co2_per_t_cement": 782.8,
     "co2_per_t_clinker": 906.3,
@@ -577,7 +577,7 @@
   },
   "pcaf": [
     {
-      "company": "Hetauda Cement",
+      "company": "PlantA",
       "sector": "cement",
       "loan_amount_usd": 5000000.0,
       "company_revenue_usd": 100000000.0,
@@ -590,7 +590,7 @@
   ],
   "lca_cement": {
     "functional_unit": "1 tonne cement",
-    "product": "OPC cement from Hetauda Cement Industries Ltd",
+    "product": "OPC cement from PlantA Industries Ltd",
     "impacts": {
       "GWP100": 0.784,
       "AP": 0.0021,
@@ -656,7 +656,7 @@
     "boundary": "cradle-to-gate"
   },
   "token_metadata": {
-    "project_name": "Hetauda Decarb",
+    "project_name": "PlantA Decarb",
     "vintage_year": 2026,
     "methodology": "VM0009 v2.0",
     "registry": "Verra",

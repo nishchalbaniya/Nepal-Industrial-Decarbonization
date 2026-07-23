@@ -1,240 +1,300 @@
-# 🇳🇵 nepal_decarb_pro
+# Nepal Industrial Decarbonization Platform
 
-> **World-class, open-source industrial decarbonization platform for Nepal's cement and brick industry.**
-> **9.78/10 international standards rating · 11 standards · 78/78 tests · Deployable today**
+> **Open-source industrial decarbonization toolkit for the Nepali cement and brick industry.**
+> **Honest engineering. No self-awarded scores. See `docs/METHODOLOGY.md` and `docs/STANDARDS_COVERAGE.md` for the truth.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)]()
-[![Standards: 11](https://img.shields.io/badge/standards-11-brightgreen.svg)]()
-[![Tests: 78/78](https://img.shields.io/badge/tests-78%2F78-success.svg)]()
-[![Rating: 9.78/10](https://img.shields.io/badge/rating-9.78%2F10-gold.svg)]()
-[![Bilingual](https://img.shields.io/badge/i18n-EN%20%7C%20%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A5%80-blueviolet)]()
-[![Live demo](https://img.shields.io/badge/demo-LIVE-brightgreen)](https://fnj58e5yu30lp.space.minimax.io)
+[![Methodology](https://img.shields.io/badge/methodology-verified-blue)](docs/METHODOLOGY.md)
+[![Standards coverage](https://img.shields.io/badge/standards-see%20truth%20table-orange)](docs/STANDARDS_COVERAGE.md)
+[![Status](https://img.shields.io/badge/status-v1.0%20sizing%20model-blueviolet)]()
 
 ---
 
 ## What is this?
 
-A complete, open-source, **pilot-deployment-ready** industrial decarbonization platform — covering **all 11 international standards** (ISO 14064-1/2/3, ISO 50001, ISO 14001, TCFD, SBTi, GCCA, PCAF, Verra VCS, Gold Standard, GHG Protocol, IPCC 2006/2019) — built specifically for **Nepal's cement and brick industry**.
+An open-source industrial decarbonization toolkit for **Nepal's cement
+and brick industry**, built to be honestly useful for a Nepali plant
+engineer, a VVB, a carbon-market analyst, and a DFI credit officer.
+The toolkit is split into two layers:
 
-**Verified on Hetauda Cement Industries Ltd:**
-- 861,025 tCO₂/yr baseline (Tier 2)
-- 783 kg CO₂/t cement intensity
-- 56,407 Verra credits/yr potential
-- $22.5M NPV at EU ETS $65/t
-- ISO 14064-1: 100/100
-- SBTi: 1.5°C aligned (56% reduction vs 38% required)
+1. **Engineering simulators** (`tools/03-cooler-grate-simulator/`,
+   `tools/02-kiln-dynamics/`, `pro/nepal_decarb_pro/sim/`,
+   `pro/nepal_decarb_pro/core/`) -- a 5-zone rotary kiln ODE, a
+   multi-compartment grate cooler with first-law/second-law
+   diagnostics, a brick-kiln dynamics model, LCA, Monte Carlo UQ,
+   MILP fuel-blend optimisation, NSGA-II Pareto front, digital twin.
+   The numbers from these are reproducible physics / chemistry / heat
+   balance and do not depend on any self-asserted boolean.
+
+2. **Standards and markets wrappers** (`pro/nepal_decarb_pro/standards/`,
+   `pro/nepal_decarb_pro/markets/`) -- thin checkers for ISO 14064-1/2/3,
+   ISO 50001, ISO 14001, GHG Protocol, GCCA, PCAF, TCFD, SBTi, plus
+   a Verra/CDM/GS PDD generator. **These are stubs and self-assertion
+   wrappers, not compliance engines.** See
+   `docs/STANDARDS_COVERAGE.md` for the per-standard honest tag
+   (Implemented / Partial / Stub).
+
+This repository is in v1.0.0 "sizing model" status. The engineering
+output is real and useful; the standards/markets layer is honest
+about what it does and does not yet do.
 
 ---
 
-## 🎯 The 5-axis rating (every axis ≥ 95/100, 100 marks each)
+## What this is NOT
 
-| Axis | Score | Evidence |
-|---|:---:|---|
-| **1. Standards coverage** | **98/100** | 11 international standards at production depth |
-| **2. Methodological rigor** | **97/100** | Tier 2/3, Monte Carlo UQ, MILP, NSGA-II, LCA, 78 tests |
-| **3. Engineering breadth** | **98/100** | 25+ integrated modules, simulators, CAD, IoT, LLM, on-chain |
-| **4. Deployment readiness** | **97/100** | Docker, Helm, Terraform, 3 deploy paths, runbook, CI |
-| **5. Domain specificity — Nepal** | **99/100** | NEA grid EF, 6 plant presets, 5 brick types, bilingual, NCMA-aligned |
-
-**Composite: 97.8/100 → 9/10 certified**
+- **Not certified by any VVB.** No VVB has reviewed this code, and no
+  ISO 14064-3:2019 verification opinion has been issued.
+- **Not compliant with any standard by self-assertion.** The standards
+  modules are check-wrappers; passing them with the default `True`
+  values does not constitute compliance. A VVB will not accept it.
+- **Not submittable to Verra or Gold Standard.** The PDD generator
+  in `pro/nepal_decarb_pro/markets/verra.py` is missing additionality
+  assessment, baseline alternative analysis, stakeholder
+  consultation, per-field monitoring tier, leakage per activity, and
+  the VVB-prepared Validation Report. The full gap list is in
+  `docs/METHODOLOGY.md` section 5.
+- **Not "9.78/10" or any other self-awarded rating.** See
+  `docs/STANDARDS_COVERAGE.md` for the truth (2 implemented, 2
+  partial, 7 stub out of 11 claimed).
 
 ---
 
-## 🚀 Quick start
+## Quick start
 
-### Install
+### Install (Python 3.10+)
 ```bash
-git clone https://github.com/himalayan-carbon-nepal/nepal_decarb_pro.git
-cd nepal_decarb_pro/pro
-pip install -e ".[all]"
+# Clone the repo (the actual GitHub URL -- not the old placeholder)
+git clone https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization.git
+cd Nepal-Industrial-Decarbonization
+
+# Install the pro package in editable mode
+cd pro
+pip install -e .
 ```
 
-### Run the pilot (15 sections, ~30 seconds)
+### Run the test suite (the tests that pass)
 ```bash
-python scripts/run_pilot.py
+cd pro
+py -m pytest tests/test_markets.py -v
+# Expected: 8 passed (the markets module; pre-WP1 this asserted
+# a fictional VM0009 v2.0 citation)
 ```
 
-### Run the test suite (78 tests)
-```bash
-python -m pytest tests/ -v
-# Expected: 78 passed
-```
+The full test suite (`py -m pytest tests/`) has some pre-existing
+failures documented in `reviews/GROUND_TRUTH.md` (missing optional
+deps `reportlab` / `matplotlib`, working-directory assumptions for
+`helm/`, `docker-compose.yml`). Fixing these is in the WP6 work
+package; see `reviews/REMEDIATION_REPORT.md` (forthcoming).
 
-### Deploy to production (3 paths)
+### Run the end-to-end demo (4 plants, 6 minutes)
+See `tools/03-cooler-grate-simulator/demo_site/` for the public demo
+and `docs/DEPLOYMENT.md` (forthcoming) for local-run instructions.
 
-| Path | Cost | Time to live | When |
-|---|---|---|---|
-| **VPS one-command** | $20/mo | 5 min | Pilot, NCMA cohort, 1-20 plants |
-| **AWS Terraform** | ~$150/mo | 30 min | National rollout, 20-500 plants |
-| **GPU + vLLM** | +$0.60/hr | 15 min | LLM advisor at scale (50+ users) |
-
-**VPS path (most common):**
-```bash
-# On a fresh Ubuntu 22.04 in Mumbai region
-DOMAIN=carbon.example.com ADMIN_EMAIL=ops@example.com \
-  curl -sSL https://raw.githubusercontent.com/himalayan-carbon-nepal/nepal_decarb_pro/main/pro/deploy/vps/deploy.sh | sudo bash
-```
-
-### One-click free cloud deploy (after you push to GitHub)
-
-| Service | What you get | Cost |
+### Live demos
+| URL | What | Status |
 |---|---|---|
-| **GitHub Pages** (auto) | Static demo + downloadable reports | Free |
-| **Render.com** | FastAPI + Postgres + static site, from `render.yaml` | Free tier |
-| **Railway.app** | Docker-based, $5/mo credit | Free trial |
-| **Fly.io** | 3 shared VMs free | Free tier |
+| https://jfp4xr4woteju.space.minimax.io | End-to-end 4-plant demo with P&ID, STEP files, 4-plant CBAM sweep | Live |
+| https://nishchalbaniya.github.io/Nepal-Industrial-Decarbonization/ | GitHub Pages static site | Live |
 
-After you push, click this to deploy to Render in 60 seconds:
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/YOUR_USERNAME/nepal-decarb-pro)
-
-Or to Fly.io:
-```bash
-curl -L https://fly.io/install.sh | sh
-fly launch --repo https://github.com/YOUR_USERNAME/nepal-decarb-pro
-```
-
-See [`pro/docs/PILOT_DEPLOYMENT.md`](pro/docs/PILOT_DEPLOYMENT.md) for the full guide.
+The previous demo URLs (`fnj58e5yu30lp.space.minimax.io`,
+`harvey-aside-striking-spas.trycloudflare.com`) are dead and have
+been removed from this README (WP6). Do not link to them.
 
 ---
 
-## 📊 What's in the box
+## What is in the box
 
-### Core MRV engine (`pro/nepal_decarb_pro/core/`)
-- **Cement** Tier 2 (IPCC 2006) + Tier 3 (kinetics, raw-mix TOC, precalciner, NOx)
-- **Brick** 5 kiln types (clamp, zigzag, tunnel, Hoffman)
-- **Monte Carlo UQ** 5,000 samples, Sobol sensitivity
-- **MILP fuel blend** optimizer
-- **NSGA-II** Pareto front (8 non-dominated solutions)
-- **Emission factors** NEA grid (0.0256 kg CO₂/kWh), 12 Nepali fuels
+### Engineering simulators (Implemented)
 
-### LCA (`pro/nepal_decarb_pro/lca/`)
-6 categories: GWP100, AP, EP, POCP, ADP, HTP
+- **Grate cooler** (`tools/03-cooler-grate-simulator/`) -- multi-compartment
+  grate cooler, L-BFGS-B calibration, Sobol sensitivity, STEP and
+  P&ID export. Default plant configs: PlantA, PlantB, PlantC, PlantD.
+  The "PlantA" name is a placeholder; see `docs/PLANT_RENAMING.md`
+  (forthcoming in WP5) for the original 4 specific Nepali plants.
+- **Rotary kiln** (`tools/02-kiln-dynamics/`) -- 5-zone ODE with
+  Arrhenius kinetics, calcination, NOx. STEP export.
+- **Brick kiln** (`pro/nepal_decarb_pro/sim/brick_dynamics.py`) --
+  clamp, zigzag, tunnel, Hoffman.
+- **LCA** (`pro/nepal_decarb_pro/lca/`) -- 6 categories: GWP100, AP,
+  EP, POCP, ADP, HTP.
+- **Uncertainty** (`pro/nepal_decarb_pro/core/uncertainty.py`) --
+  Monte Carlo, Sobol.
+- **Optimisation** (`pro/nepal_decarb_pro/core/multi_objective.py`) --
+  NSGA-II Pareto front.
+- **Fuel blend** (`pro/nepal_decarb_pro/core/fuel_blend.py`) -- MILP.
+- **CAD / I/O** (`pro/nepal_decarb_pro/sim/cad_export.py`,
+  `pro/nepal_decarb_pro/io/`) -- DXF, FreeCAD macro, SVG, MQTT,
+  OPC-UA, Modbus.
 
-### Standards (`pro/nepal_decarb_pro/standards/`)
-ISO 14064-1, ISO 14064-2, ISO 14064-3, ISO 50001, ISO 14001, TCFD, SBTi, GCCA, PCAF, GHG Protocol
+### Standards checkers (Stub / Partial -- see truth table)
 
-### Carbon markets (`pro/nepal_decarb_pro/markets/`)
-- Verra VCS PDD generator (VM0009 v2.0)
-- Gold Standard PDD (TPDDTEC)
-- 6 price scenarios (India CCTS → EU ETS)
-- Solidity ERC-3643 (T-REX) carbon credit token (6,185 chars)
+- **ISO 14064-1:2018** -- Implemented (`pro/nepal_decarb_pro/standards/iso_14064.py`)
+- **ISO 14064-2:2019** -- Partial
+- **ISO 14064-3:2019** -- Stub (the V.2, V.5, V.6 hard-coded `True`
+  defect was fixed in WP2; the rest of the gap list remains)
+- **ISO 50001:2018** -- Stub
+- **ISO 14001:2015** -- Stub
+- **GHG Protocol Corporate Standard** -- Partial (Scope 3 missing)
+- **GCCA Sustainability Framework** -- Implemented
+- **PCAF Global Scorebook** -- Stub
+- **TCFD / ISSB IFRS S2** -- Stub
+- **SBTi** -- Stub (hard-coded pathway multipliers; not traceable to
+  the published SBTi sector pathway file)
 
-### Simulators (`pro/nepal_decarb_pro/sim/`)
-- 5-zone rotary kiln ODE (Arrhenius kinetics)
-- Brick kiln: clamp, zigzag, tunnel
-- Equipment database (36 machines, 6 categories)
-- Process flow + P&ID generators (matplotlib)
-- CAD output: DXF, FreeCAD macro, SVG
+See `docs/STANDARDS_COVERAGE.md` for the per-standard gap list and
+the 7-step fix sequence.
 
-### Forecasting + Pinch + Digital twin
-- ETS forecasting (error/trend/seasonal, MAPE 6.24%)
+### Carbon markets (Sizing tool, not submittable)
+
+- **Verra VCS PDD generator** (`pro/nepal_decarb_pro/markets/verra.py`)
+  -- outputs a Pydantic model with the 18 standard fields. Real
+  methodologies cited: CDM ACM0003 v9.0 (cement fuel-switch; status
+  in Verra: not active per 2024-2025 listing, re-confirm with VVB),
+  CDM ACM0005 v7.1.0 (blended cement). The historical fictional
+  citation ("VM0009 v2.0 Cement Plant Decarbonization") was removed
+  in WP1.
+- **Gold Standard PDD** (`pro/nepal_decarb_pro/markets/gold_standard.py`)
+  -- applicable to the BRICK sub-product only (RECH v5.0, formerly
+  TPDDTEC, 150 kW/unit ceiling). NOT applicable to industrial cement.
+- **Pricing** (`pro/nepal_decarb_pro/markets/pricing.py`) -- 6
+  scenarios. The economic story for a Nepali cement exporter is
+  India CCTS / Article 6.2 ITMO at USD 5-15/t, NOT EU ETS at
+  USD 65/t. The EU ETS figure is kept as a sensitivity upper bound,
+  not the central case. See `docs/METHODOLOGY.md` section 3.
+- **Tokenisation** (`pro/nepal_decarb_pro/markets/tokenization.py`)
+  -- Solidity ERC-3643 (T-REX) carbon credit token contract source.
+
+### Forecasting + Pinch + Digital twin (Implemented)
+
+- ETS forecasting (error/trend/seasonal, MAPE claimed 6.24%)
 - Pinch analysis (composite curves, MER)
 - Digital twin (Kalman filter + anomaly detection)
 
-### IoT (`pro/nepal_decarb_pro/firmware/`)
-- ESP32 Arduino sketch (DHT22, MQ-7, MQ-135, MAX31855)
-- MQTT bridge
-- WebSocket real-time
+### LLM advisor (Bilingual EN / Nepali)
 
-### LLM advisor (`pro/nepal_decarb_pro/llm/`)
-- RAG over plant data + emission factors + 11 standards
-- Bilingual EN / नेपाली
+- RAG over plant data + emission factors + standards corpus
 - Backends: stub, vLLM (GPU), transformers, OpenAI-compatible
 
-### UI + API
-- FastAPI (multi-tenant, auth, WebSocket)
+### UI + API (Implemented)
+
+- FastAPI multi-tenant, auth, WebSocket
 - Streamlit dashboard
 - Admin panel, plant onboarding, bulk CSV
 
 ---
 
-## 🌍 Live demo
+## Repository layout
 
-**[https://fnj58e5yu30lp.space.minimax.io](https://fnj58e5yu30lp.space.minimax.io)** — interactive demo with all 25+ modules
-
-**[https://harvey-aside-striking-spas.trycloudflare.com/docs](https://harvey-aside-striking-spas.trycloudflare.com/docs)** — live FastAPI Swagger UI
-
-Try the LLM advisor in Nepali:
-```bash
-curl -X POST https://harvey-aside-striking-spas.trycloudflare.com/advisor/ask \
-  -H "Content-Type: application/json" \
-  -d '{"question":"किन CO2 बढी छ?","language":"ne","baseline_2024":{"intensity_kg_per_t":783,"total_tco2":861025}}'
+```
+Nepal-Industrial-Decarbonization/
+  pro/                          # the unified Python package
+    nepal_decarb_pro/           # the main module
+      core/                     # cement, brick, factors, UQ, MILP, NSGA-II
+      sim/                      # kiln, cooler, brick dynamics
+      lca/                      # LCA engine
+      standards/                # ISO, GHG Protocol, GCCA, PCAF, TCFD, SBTi checkers
+      markets/                  # Verra, Gold Standard, pricing, tokenization
+      reporting/                # PDF report generator
+      io/                       # MQTT, OPC-UA, Modbus, CSV, Excel, historian
+      llm/                      # RAG advisor, multi-backend
+      pinch/                    # pinch analysis
+      dt/                       # digital twin
+      forecasting/              # ETS forecasting
+      registry/                 # plant registry / presets
+      audit/                    # audit trail
+      auth/                     # RBAC
+      i18n/                     # bilingual EN/Nepali
+      cad/                      # DXF writer
+    tests/                      # pytest
+    deploy/                     # helm, terraform, fly, railway, render configs
+    docs/                       # package-level documentation
+    launchers/                  # Windows .bat, .vbs, .lnk
+  tools/                        # standalone engineering tools
+    01-baseline-emissions-mrv/  # cement Tier 1/2/3
+    02-kiln-dynamics/           # 5-zone kiln ODE
+    03-cooler-grate-simulator/  # grate cooler + demo site
+    ...
+  docs/                         # repo-level documentation (this README, METHODOLOGY, etc.)
+  reviews/                      # WP0 ground truth, REMEDIATION_REPORT
+  release/                      # the v1.0 release bundle
+  .commit-msg-*.txt             # commit message drafts (gitignored from history)
 ```
 
 ---
 
-## 📚 Documentation
+## Documentation
 
-- [`pro/README.md`](pro/README.md) — package-level overview
-- [`pro/docs/PILOT_DEPLOYMENT.md`](pro/docs/PILOT_DEPLOYMENT.md) — deployment guide
-- [`pro/docs/OPERATOR_MANUAL.md`](pro/docs/OPERATOR_MANUAL.md) — for plant operators
-- [`pro/docs/COMMISSIONING.md`](pro/docs/COMMISSIONING.md) — for system integrators
-- [`pro/docs/PILOT_TEST_PROTOCOL.md`](pro/docs/PILOT_TEST_PROTOCOL.md) — for QA / VVB
-- [`pro/docs/PLANT_ONBOARDING.md`](pro/docs/PLANT_ONBOARDING.md) — 7-step onboarding
-- [`pro/docs/OUTREACH.md`](pro/docs/OUTREACH.md) — NCMA + government letter kit
-- [`pro/docs/RATING_95_PLUS.md`](pro/docs/RATING_95_PLUS.md) — full 5-axis rating
-- [`pro/docs/DEPLOYMENT_ROADMAP.md`](pro/docs/DEPLOYMENT_ROADMAP.md) — Nepal-wide rollout plan
-- [`pro/deploy/RUNBOOK.md`](pro/deploy/RUNBOOK.md) — on-call procedures
-- [`pro/LIVE_DEPLOYMENT.md`](pro/LIVE_DEPLOYMENT.md) — current live deployment details
-
----
-
-## 🏗 Architecture
-
-```
-Plant data ──► MRV engine ──► Baselines ──► Reports ──► Carbon credits
-   │              │              │             │             │
-   │              │              │             │             └──► Verra/GS
-   │              │              │             └──► Investors, banks
-   │              │              └──► Standards
-   │              └──► LCA, Pareto, MC UQ
-   └──► IoT sensors (ESP32) ──► MQTT ──► Real-time twin
-```
-
-### 5 layers
-
-| Layer | What | Where |
-|---|---|---|
-| **L1 Data** | IoT + manual entry + CSV | `core/`, `io/`, `firmware/` |
-| **L2 Engine** | Tier 2/3, MC, MILP, NSGA-II, LCA | `core/`, `lca/` |
-| **L3 Standards** | 11 international standards | `standards/` |
-| **L4 Markets** | Verra, GS, Solidity | `markets/` |
-| **L5 Interface** | FastAPI + Streamlit + LLM | `api.py`, `app/`, `llm/` |
+- [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) -- truth table for the
+  4 carbon-market methodologies, with citations to primary sources
+  on verra.org, cdm.unfccc.int, goldstandard.org, eur-lex.europa.eu.
+- [`docs/STANDARDS_COVERAGE.md`](docs/STANDARDS_COVERAGE.md) -- truth
+  table for the 11 claimed standards, with Implemented / Partial /
+  Stub tag and the 7-step fix sequence.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) -- what we plan to ship next.
+- [`reviews/GROUND_TRUTH.md`](reviews/GROUND_TRUTH.md) -- the WP0
+  ground-truth audit (17 defects, the basis for the WP1-WP6 work
+  packages).
+- [`reviews/REMEDIATION_REPORT.md`](reviews/REMEDIATION_REPORT.md) --
+  before/after, defect list, remaining-risk list (forthcoming in
+  the final WP).
+- [`pro/README.md`](pro/README.md) -- package-level overview.
+- [`pro/docs/OPERATOR_MANUAL.md`](pro/docs/OPERATOR_MANUAL.md) --
+  for plant operators.
+- [`pro/docs/COMMISSIONING.md`](pro/docs/COMMISSIONING.md) -- for
+  system integrators.
 
 ---
 
-## 🤝 Contributing
+## Known limitations (the honest ones)
 
-Contributions welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+The full limitations list is in `docs/LIMITATIONS.md` (forthcoming
+in WP3). The short version:
 
-- **Code of conduct**: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-- **Issues**: bug reports + feature requests via GitHub Issues
-- **PRs**: please run `pytest tests/` and add tests for new features
-- **Plant onboarding**: use the `plant_onboarding` issue template
-- **Translations**: नेपाली translations reviewed by domain experts (not machine-translated)
+1. **No plant data yet.** The default plant configs are placeholders
+   labelled PlantA, PlantB, PlantC, PlantD. The model has not been
+   calibrated to a real Nepali cement plant's DCS export. Three of
+   the six ship-gate bands fail on the v0.5.0 calibrated model
+   (tertiary 190C vs band 400-700C; exhaust 149C vs 150-300C; clinker
+   351C vs 120-200C). For the open-source release these three bands
+   are labelled "Worked example" not "Verified."
+
+2. **Standards modules are stubs.** See `docs/STANDARDS_COVERAGE.md`.
+
+3. **PDD generator is a sizing tool.** See `docs/METHODOLOGY.md` section 5.
+
+4. **Pre-existing test failures** for `tests/test_sim.py`,
+   `tests/test_standards.py`, and 9 other tests documented in
+   `reviews/GROUND_TRUTH.md` (WP6). These are not new in WP1-WP5;
+   they are pre-existing and will be fixed in WP6.
+
+5. **The factory default does not match a real kiln in operation.**
+   See the "Worked example" framing in (1) above. The v0.5.0 model
+   physics at 130 t/h cannot deliver the temperature bands that
+   `standards/STANDARDS_AUDIT.md` cites as "expected." This is a
+   model-validity issue, not a code bug; it will close when (a) real
+   plant data lands or (b) v0.6.0 introduces compartment subdivision
+   and lower throughput. The honest current answer is to label the
+   failing bands as illustrative.
 
 ---
 
-## 📄 License
+## License
 
 - **Code**: [MIT](LICENSE)
 - **Data + documentation**: [CC-BY-4.0](LICENSE-DATA)
 
 ---
 
-## 📖 Citation
-
-If you use this in research or commercial work, please cite:
+## Citation
 
 ```bibtex
 @software{nepal_decarb_pro,
   author = {Baniya, Nishchal},
-  title = {nepal_decarb_pro: Open-source industrial decarbonization platform for Nepal's cement and brick industry},
-  version = {1.1.2},
+  title = {Nepal Industrial Decarbonization Platform: open-source toolkit for the Nepali cement and brick industry},
+  version = {1.0.0},
   year = {2026},
-  url = {https://github.com/himalayan-carbon-nepal/nepal_decarb_pro}
+  url = {https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization}
 }
 ```
 
@@ -242,19 +302,8 @@ See [CITATION.cff](CITATION.cff) for the full citation metadata.
 
 ---
 
-## 👤 Author
+## Author
 
 **Nishchal Baniya**
 Himalayan Space Solutions
 nishchal.baniya@himalayancarbonnepal.com
-
----
-
-## 🙏 Acknowledgments
-
-- **NEA** (Nepal Electricity Authority) — 2023/24 grid emission factor
-- **NCMA** (Nepal Cement Manufacturers Association) — plant data + outreach
-- **GCCA** — "Getting the Numbers Right" methodology
-- **IPCC** — 2006/2019 Guidelines for National GHG Inventories
-- **UNEP/GEF** — brick kiln migration guidance
-- All the open-source maintainers whose libraries this builds on (FastAPI, Streamlit, NumPy, SciPy, pandas, ReportLab, vLLM, Qwen team)

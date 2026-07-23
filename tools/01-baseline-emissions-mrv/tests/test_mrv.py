@@ -7,7 +7,7 @@ from nepal_mrv.brick import BrickKiln
 
 def test_cement_project_reduces_emissions():
     baseline = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),
@@ -16,7 +16,7 @@ def test_cement_project_reduces_emissions():
         electricity_consumption_kwh=85_000_000,
     )
     project = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=96_000),

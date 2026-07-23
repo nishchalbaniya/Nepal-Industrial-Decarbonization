@@ -1,21 +1,32 @@
-# LIVE DEPLOYMENT — current session
+# LIVE DEPLOYMENT — ARCHIVED (WP6 cleanup)
 
-> Real, running deployment created in this session. URL expires when sandbox session ends.
+> **STATUS (2026-07-23):** The URLs in this document no longer exist.
+> The `space.minimax.io` and `trycloudflare.com` URLs were session
+> deployments that expired when the sandbox session ended. The
+> historical content below is kept for reference.
+>
+> **Current live demos:**
+> - End-to-end 4-plant demo: https://jfp4xr4woteju.space.minimax.io
+> - GitHub Pages (keeper): https://nishchalbaniya.github.io/Nepal-Industrial-Decarbonization/
+>
+> **Removed in WP6:** `fnj58e5yu30lp.space.minimax.io` (dead),
+> `harvey-aside-striking-spas.trycloudflare.com` (dead). Do not link
+> to them from the README or any external copy.
 
-## Public URLs
+## Public URLs (historical, no longer active)
 
 | Service | URL | Status |
 |---|---|---|
-| **Public demo site** | https://fnj58e5yu30lp.space.minimax.io | 🟢 LIVE |
-| **Live API (FastAPI)** | https://harvey-aside-striking-spas.trycloudflare.com | 🟢 LIVE |
-| API health | https://harvey-aside-striking-spas.trycloudflare.com/health | 🟢 200 |
-| Swagger docs | https://harvey-aside-striking-spas.trycloudflare.com/docs | 🟢 200 |
-| Hetauda baseline | https://harvey-aside-striking-spas.trycloudflare.com/pilot | 🟢 200 |
-| Standards | https://harvey-aside-striking-spas.trycloudflare.com/standards | 🟢 200 |
-| Kiln simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/kiln | 🟢 200 |
-| Brick simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/brick | 🟢 200 |
-| CAD parameters | https://harvey-aside-striking-spas.trycloudflare.com/cad/kiln | 🟢 200 |
-| LLM advisor | https://harvey-aside-striking-spas.trycloudflare.com/advisor/ask (POST) | 🟢 200 |
+| **Public demo site** (v1, expired) | https://fnj58e5yu30lp.space.minimax.io | DEAD |
+| **Live API (FastAPI)** (v1, expired) | https://harvey-aside-striking-spas.trycloudflare.com | DEAD |
+| API health | https://harvey-aside-striking-spas.trycloudflare.com/health | DEAD |
+| Swagger docs | https://harvey-aside-striking-spas.trycloudflare.com/docs | DEAD |
+| PlantA baseline | https://harvey-aside-striking-spas.trycloudflare.com/pilot | DEAD |
+| Standards | https://harvey-aside-striking-spas.trycloudflare.com/standards | DEAD |
+| Kiln simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/kiln | DEAD |
+| Brick simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/brick | DEAD |
+| CAD parameters | https://harvey-aside-striking-spas.trycloudflare.com/cad/kiln | DEAD |
+| LLM advisor | https://harvey-aside-striking-spas.trycloudflare.com/advisor/ask (POST) | DEAD |
 
 ## How it was deployed (this session)
 

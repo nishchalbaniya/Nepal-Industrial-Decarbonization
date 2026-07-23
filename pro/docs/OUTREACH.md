@@ -19,7 +19,7 @@ Nepal's cement industry emits ~6 million tonnes of CO₂ per year (rough estimat
 
 We built a **world-class, open-source, free platform** to help Nepali cement plants measure their emissions, comply with 11 international standards (ISO 14064, TCFD, SBTi, GCCA, PCAF, Verra, Gold Standard), and access carbon credit revenue.
 
-**Key numbers from our pilot at Hetauda Cement (Hetauda Cement Industries Ltd):**
+**Key numbers from our pilot at PlantA (PlantA Industries Ltd):**
 - 861,025 tCO₂/yr baseline
 - 783 kg CO₂/t cement intensity (vs. 700 global average)
 - 56,407 Verra credits/yr potential
@@ -35,7 +35,7 @@ We built a **world-class, open-source, free platform** to help Nepali cement pla
 **What we need from NCMA:**
 - Endorsement letter (joint press release)
 - Email introduction to member plants
-- One member to serve as pilot reference (suggest Hetauda Cement)
+- One member to serve as pilot reference (suggest PlantA)
 
 **What we need from member plants:**
 - Designate one person to receive training (4 hours)
@@ -70,7 +70,7 @@ We've built an open-source, IPCC-aligned, ISO 14064-compliant MRV platform that 
 3. **Audit-ready**: every data point timestamped, attributed, immutable audit trail
 4. **Bilingual**: English + नेपाली
 5. **Free & open source** (MIT license) — no vendor lock-in for the government
-6. **Already proven**: Hetauda Cement pilot shows 861,025 tCO₂/yr, fully ISO 14064-1 compliant at 100/100
+6. **Already proven**: PlantA pilot shows 861,025 tCO₂/yr, fully ISO 14064-1 compliant at 100/100
 
 **What we're proposing:**
 - A pilot deployment for 10 plants in 2026
@@ -146,7 +146,7 @@ P.S. If you know other plant managers who might be interested, please forward th
 
 Kathmandu, Nepal — [Date] — Himalayan Space Solutions today released v1.0.1 of `nepal_decarb_pro`, an open-source industrial decarbonization platform covering all 11 international standards (ISO 14064, TCFD, SBTi, GCCA, PCAF, Verra, Gold Standard, GHG Protocol, ISO 50001, ISO 14001, IPCC 2006/2019).
 
-The platform is free and open source (MIT license), bilingual (English / नेपाली), and has been verified at a 9/10 rating against international benchmarks. A pilot at Hetauda Cement Industries Ltd shows a 2024 baseline of 861,025 tCO₂/yr (783 kg CO₂/t cement) and 56,407 Verra credits/yr potential revenue.
+The platform is free and open source (MIT license), bilingual (English / नेपाली), and has been verified at a 9/10 rating against international benchmarks. A pilot at PlantA Industries Ltd shows a 2024 baseline of 861,025 tCO₂/yr (783 kg CO₂/t cement) and 56,407 Verra credits/yr potential revenue.
 
 "All Nepali cement and brick plants can now measure, report, and reduce their emissions using the same rigor as the world's largest industrial decarbonization programs," said Nishchal Baniya, founder of Himalayan Space Solutions. "For the first time, a single Nepali operator can generate a Verra PDD, an ISO 14064-1 report, and a TCFD disclosure in an afternoon, with no external consultants."
 

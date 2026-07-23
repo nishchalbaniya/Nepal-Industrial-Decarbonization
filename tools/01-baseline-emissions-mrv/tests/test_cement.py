@@ -10,9 +10,9 @@ def ef():
 
 
 def test_basic_cement_plant(ef):
-    """Hetauda-style: 950k t clinker, 1.1M t cement, coal+petcoke+diesel."""
+    """PlantA-style: 950k t clinker, 1.1M t cement, coal+petcoke+diesel."""
     plant = CementPlant(
-        name="Test Plant", location="Hetauda", year=2024,
+        name="Test Plant", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),

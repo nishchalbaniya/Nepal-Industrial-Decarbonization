@@ -11,16 +11,41 @@ Used for:
 """
 from __future__ import annotations
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Rectangle, Circle
+# WP6: matplotlib is an optional dependency. Import it lazily so the
+# module can be loaded (and the rest of the sim package can be used)
+# on a minimal install. Functions in this module that need matplotlib
+# check the global `_MATPLOTLIB_AVAILABLE` flag and raise a clear
+# ImportError if matplotlib is not installed.
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
+    from matplotlib.patches import (
+        FancyArrowPatch, FancyBboxPatch, Rectangle, Circle,
+    )
+    _MATPLOTLIB_AVAILABLE = True
+    _MATPLOTLIB_IMPORT_ERROR = None
+except ImportError as _e:
+    _MATPLOTLIB_AVAILABLE = False
+    _MATPLOTLIB_IMPORT_ERROR = _e
+
 import numpy as np
 from pathlib import Path
 from typing import List, Optional, Dict, Tuple
 
 from nepal_decarb_pro.sim.equipment_specs import Equipment, EQUIPMENT_DATABASE
+
+
+def _require_matplotlib():
+    """Raise a clear ImportError if matplotlib is not installed."""
+    if not _MATPLOTLIB_AVAILABLE:
+        raise ImportError(
+            "matplotlib is required for the PFD/P&ID generator "
+            "(nepal_decarb_pro.sim.process_flows). Install it with: "
+            "pip install matplotlib. (WP6 -- this dependency is optional "
+            "because the core sim modules do not require it.)"
+        ) from _MATPLOTLIB_IMPORT_ERROR
 
 
 def _draw_box(ax, x, y, w, h, label, color="#E8F4F8", text_color="black", fontsize=9):
@@ -63,6 +88,7 @@ def generate_pfd_cement(out_path: Path, capacity_tpd: int = 5000) -> Path:
     Returns:
         Path to saved file
     """
+    _require_matplotlib()
     fig, ax = plt.subplots(figsize=(20, 12))
     ax.set_xlim(0, 20)
     ax.set_ylim(0, 12)
@@ -182,6 +208,7 @@ def generate_pfd_brick(out_path: Path, kiln_type: str = "zigzag", capacity_M: fl
         kiln_type: 'clamp_traditional', 'hoffman', 'zigzag', 'tunnel', 'vertical_shaft'
         capacity_M: Capacity in million bricks per year
     """
+    _require_matplotlib()
     fig, ax = plt.subplots(figsize=(18, 10))
     ax.set_xlim(0, 18)
     ax.set_ylim(0, 10)
@@ -258,6 +285,7 @@ def generate_pfd_brick(out_path: Path, kiln_type: str = "zigzag", capacity_M: fl
 
 def generate_pid_cement(out_path: Path) -> Path:
     """Generate a simplified P&ID (Piping & Instrumentation Diagram)."""
+    _require_matplotlib()
     fig, ax = plt.subplots(figsize=(20, 14))
     ax.set_xlim(0, 20)
     ax.set_ylim(0, 14)

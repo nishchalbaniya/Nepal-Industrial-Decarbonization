@@ -32,10 +32,10 @@
 curl -X POST https://nepalcarbon.org.np/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "info@hetauda-cement.com.np",
+    "email": "info@planta-cement.com.np",
     "password": "StrongP@ss123",
-    "full_name": "Hetauda Cement Manager",
-    "tenant_name": "Hetauda Cement Industries Ltd",
+    "full_name": "PlantA Manager",
+    "tenant_name": "PlantA Industries Ltd",
     "language": "en"
   }'
 ```
@@ -45,7 +45,7 @@ Response:
 {
   "user_id": "...",
   "tenant_id": "...",
-  "tenant_slug": "hetauda-cement",
+  "tenant_slug": "planta-cement",
   "verification_url": "..."
 }
 ```
@@ -57,7 +57,7 @@ Response:
 ### Via Web UI
 1. From dashboard, click "+ Add Plant"
 2. Fill in:
-   - Plant name: `Hetauda Cement Industries Ltd`
+   - Plant name: `PlantA Industries Ltd`
    - Plant type: dropdown — `cement_dry` / `cement_wet` / `brick_clamp` / `brick_zigzag` / `brick_tunnel` / `brick_hoffman`
    - Location: province (Bagmati), district (Makwanpur), lat/lng (auto from dropdown)
    - Capacity: 1,100,000 t/yr (cement)
@@ -72,7 +72,7 @@ curl -X POST https://nepalcarbon.org.np/api/v1/plants \
   -H "Authorization: Bearer $JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Hetauda Cement Industries Ltd",
+    "name": "PlantA Industries Ltd",
     "plant_type": "cement_dry",
     "province": "Bagmati",
     "district": "Makwanpur",
@@ -212,7 +212,7 @@ curl -O https://nepalcarbon.org.np/templates/bulk_onboarding.csv
 CSV format:
 ```csv
 tenant_name,plant_name,plant_type,province,district,capacity_t,installed_year,main_fuel,manager_email
-Hetauda Cement,Hetauda Main Plant,cement_dry,Bagmati,Makwanpur,1100000,1990,coal_bituminous_NP,info@hetauda.com.np
+PlantA,PlantA Main Plant,cement_dry,Bagmati,Makwanpur,1100000,1990,coal_bituminous_NP,info@planta.com.np
 Shree Cement,Unit 1,cement_dry,Bagmati,Kathmandu,250000,2012,coal_bituminous_NP,unit1@shreecement.com
 ...
 ```

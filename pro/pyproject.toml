@@ -118,10 +118,10 @@ nepal-decarb-api = "nepal_decarb_pro.api:run"
 nepal-decarb-mqtt = "nepal_decarb_pro.io.mqtt_bridge:run"
 
 [project.urls]
-Homepage = "https://github.com/himalayancarbon/nepal-decarb"
-Documentation = "https://nepal-decarb.readthedocs.io"
-Repository = "https://github.com/himalayancarbon/nepal-decarb"
-Issues = "https://github.com/himalayancarbon/nepal-decarb/issues"
+Homepage = "https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization"
+Documentation = "https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/tree/main/docs"
+Repository = "https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization"
+Issues = "https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

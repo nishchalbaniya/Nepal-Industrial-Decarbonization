@@ -1,5 +1,5 @@
 # VVB Engagement Letter — Draft
-### For: Engagement of TÜV SÜD South Asia (or comparable VVB) for Verra VCS Validation of the Hetauda Cement Decarbonization Project
+### For: Engagement of TÜV SÜD South Asia (or comparable VVB) for Verra VCS Validation of the PlantA Decarbonization Project
 ### Based on the IETA Model Contract for GHG Validation/Verification Engagements
 ### DRAFT v0.1 — for internal review and negotiation
 
@@ -22,16 +22,16 @@ TÜV SÜD South Asia Private Limited
 <<Address Line 2>>
 Bangalore / Gurugram, India
 
-Re: Engagement to validate the Hetauda Cement Decarbonization Project
+Re: Engagement to validate the PlantA Decarbonization Project
     (Verra VCS, Methodologies: AMS-III.H + ACM0010)
     Engagement Reference: HCN-2026-VCS-001
 
 Dear <<Lead Validator>>,
 
 Himalayan Space Solutions ("HCN") is pleased to invite TÜV SÜD South Asia ("TÜV")
-to provide validation services for the Hetauda Cement Decarbonization Project
-("the Project"), a Verra VCS project located at Hetauda Cement Industries Ltd
-("HCIL"), Hetauda, Makwanpur District, Bagmati Province, Nepal.
+to provide validation services for the PlantA Decarbonization Project
+("the Project"), a Verra VCS project located at PlantA Industries Ltd
+("NIDC"), PlantA, Makwanpur District, Bagmati Province, Nepal.
 
 The Project applies a combination of two Verra-approved methodologies:
   (a) AMS-III.H v1.0 — Alternative waste treatment processes (for the
@@ -70,10 +70,10 @@ nishchal.baniya@himalayancarbonnepal.com
 
 | Item | Value |
 |---|---|
-| Project name | Hetauda Cement Decarbonization |
+| Project name | PlantA Decarbonization |
 | Project proponent | Himalayan Space Solutions |
-| Host organization | Hetauda Cement Industries Ltd |
-| Project location | Hetauda, Makwanpur, Bagmati, Nepal (lat 27.43°N, lon 85.03°E) |
+| Host organization | PlantA Industries Ltd |
+| Project location | PlantA, Makwanpur, Bagmati, Nepal (lat 27.43°N, lon 85.03°E) |
 | Project type | Cement industry — biomass co-firing + waste-heat recovery |
 | Methodology(ies) | AMS-III.H v1.0 + ACM0010 v3.0 |
 | Sectoral scope | 05 (Mineral industry) + 01 (Energy industries / renewable) |
@@ -86,7 +86,7 @@ nishchal.baniya@himalayancarbonnepal.com
 | Stage | Description | Timeline | Fee (USD) |
 |---|---|---|---|
 | **Stage 1: Pre-validation gap analysis** | Desktop review of the PDD and supporting documentation. Issue a written gap analysis report identifying any missing or weak sections. | 10 working days from receipt of complete pack | $5,000–$8,000 |
-| **Stage 2: Full validation** | Detailed validation per ISO 14064-3:2019 and VCS Standard v4.6, including one site visit to Hetauda. Issue draft Validation Report, address CARs/CLs, issue final Validation Report. | 60 working days from end of Stage 1 | $20,000–$30,000 |
+| **Stage 2: Full validation** | Detailed validation per ISO 14064-3:2019 and VCS Standard v4.6, including one site visit to PlantA. Issue draft Validation Report, address CARs/CLs, issue final Validation Report. | 60 working days from end of Stage 1 | $20,000–$30,000 |
 | **Stage 3: First verification (separate engagement)** | Verification of the first monitoring report and issuance request. | 30 working days | $12,000–$18,000 |
 | **Stage 4: Subsequent verifications (5 cycles, separate engagements)** | Verification of monitoring reports for monitoring years 2–10. | 30 working days each | $12,000–$18,000 each |
 
@@ -144,11 +144,11 @@ The validation shall be performed in accordance with:
 
 ### A.7 Materiality threshold
 
-The materiality threshold for the validation shall be **5% of the gross annual emission reductions** (e.g., for Hetauda: 5% × 70,000 = 3,500 tCO₂/yr). Misstatements below this threshold are aggregated and reported as a single item. Misstatements above this threshold require individual resolution.
+The materiality threshold for the validation shall be **5% of the gross annual emission reductions** (e.g., for PlantA: 5% × 70,000 = 3,500 tCO₂/yr). Misstatements below this threshold are aggregated and reported as a single item. Misstatements above this threshold require individual resolution.
 
 ### A.8 Site visit
 
-A 2-day site visit to Hetauda Cement Industries Ltd is mandatory. TÜV SÜD shall:
+A 2-day site visit to PlantA Industries Ltd is mandatory. TÜV SÜD shall:
 - Walk the plant perimeter
 - Inspect the kilns, preheater, and (where constructed) the WHR and biomass systems
 - Interview plant management, chief engineer, EHS officer, and HCN project team
@@ -156,7 +156,7 @@ A 2-day site visit to Hetauda Cement Industries Ltd is mandatory. TÜV SÜD shal
 - Hold an open findings meeting at the end of the visit
 
 HCN shall provide:
-- Travel and accommodation (Hetauda is 4–5 hours by road from Kathmandu; nearest airport is Simara, then 1 hour by road)
+- Travel and accommodation (PlantA is 4–5 hours by road from Kathmandu; nearest airport is Simara, then 1 hour by road)
 - Plant access, escort, and safety PPE
 - Conference room and document review facilities
 - 1-day pre-visit document review (recommended)

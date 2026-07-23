@@ -121,7 +121,7 @@ def test_full_standards_scorecard():
 
     ef = default_factors()
     plant = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),
@@ -157,7 +157,7 @@ def test_full_standards_scorecard():
     scores["GCCA"] = 100  # all 7 KPIs always computed
 
     loans = [{
-        "company": "Hetauda", "sector": "cement",
+        "company": "PlantA", "sector": "cement",
         "loan_amount_usd": 5_000_000, "company_revenue_usd": 100_000_000,
         "company_emissions_tco2": 1_000_000, "data_quality_score": 2,
     }]
@@ -203,10 +203,14 @@ def test_cement_project_full_lifecycle():
         crediting_period_years=10,
     )
     assert pdd.net_emission_reductions_annual_tco2 > 0
+    assert "VM0009" not in pdd.methodology, (
+        "VM0009 is the Avoided Ecosystem Conversion methodology, not a "
+        "cement methodology. Use ACM0003 or ACM0005."
+    )
 
     # Tokenize
     md = build_token_metadata(
-        project_name="Test", vintage_year=2026, methodology="VM0009",
+        project_name="Test", vintage_year=2026, methodology="ACM0003",
         registry="Verra", total_tonnes_co2=pdd.net_emission_reductions_annual_tco2,
     )
     assert md.issuance_hash != ""

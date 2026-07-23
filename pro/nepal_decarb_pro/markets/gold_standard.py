@@ -2,9 +2,16 @@
 Gold Standard project document generator.
 
 Compatible with:
-  - TPDDTEC (Technologies and Practices to Displace Decentralised Thermal Energy)
-  - GS TPDDTEC Brick kiln conversion
-  - GS Methodology for Cement Plant Decarbonization
+  - GS RECH v5.0 (formerly TPDDTEC -- Reduced Emissions from Cooking
+    and Heating; cookstoves / institutional heating up to 150 kW/unit).
+    APPLICABLE to the BRICK sub-product (when brick kilns are
+    displaced by cleaner thermal technologies). NOT applicable to
+    industrial cement kilns.
+  - The previous docstring claimed "GS Methodology for Cement Plant
+    Decarbonization" was a Gold Standard methodology. FICTIONAL.
+    Gold Standard does not publish a cement methodology. Removed
+    2026-07-23 in WP1 remediation. See docs/METHODOLOGY.md and
+    reviews/GROUND_TRUTH.md (defect WP1-2).
 """
 from __future__ import annotations
 
@@ -39,7 +46,9 @@ def generate_gold_standard_pdd(
     vintage_year: Optional[int] = None,
 ) -> GoldStandardPDD:
     """
-    Generate a Gold Standard PDD skeleton.
+    Generate a Gold Standard PDD skeleton. The Gold Standard framework
+    is currently applicable to the BRICK sub-product (RECH v5.0); for
+    CEMENT projects use the Verra/CDM framework instead.
     """
     base = generate_verra_pdd(
         project_name=project_name,
@@ -56,10 +65,14 @@ def generate_gold_standard_pdd(
     )
 
     gs_map = {
-        "brick": "GS TPDDTEC v2.0 (Brick kiln conversion)",
-        "cement": "GS Methodology for Cement Sector",
+        "brick": "GS RECH v5.0 (Reduced Emissions from Cooking and Heating; formerly TPDDTEC; 150 kW/unit ceiling)",
+        # Cement: Gold Standard has no published cement methodology.
+        # Fall back to the CDM citation; never invent a GS code.
     }
-    gs_meth = gs_map.get(project_type, "GS TPDDTEC")
+    gs_meth = gs_map.get(
+        project_type,
+        "GS RECH v5.0 (cookstove/institutional heating; not applicable to industrial cement)",
+    )
 
     # SDGs typically claimed
     sdgs = [

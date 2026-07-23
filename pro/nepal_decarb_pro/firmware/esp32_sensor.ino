@@ -44,7 +44,7 @@ const int   MQTT_PORT     = 1883;
 const char* MQTT_USER     = "plant-sensor";
 const char* MQTT_PASS     = "your-mqtt-pass";
 
-const char* PLANT_ID = "hetauda";
+const char* PLANT_ID = "planta";
 const char* KILN_ID  = "kiln-1";
 
 // Pin definitions

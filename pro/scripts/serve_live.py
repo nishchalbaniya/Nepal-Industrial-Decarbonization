@@ -24,7 +24,7 @@ def root():
             "/advisor/example-questions", "/advisor/ask",
             "/cad/kiln", "/simulator/kiln", "/simulator/brick",
         ],
-        "plant_verified": "Hetauda Cement Industries Ltd",
+        "plant_verified": "PlantA Industries Ltd",
         "baseline_2024_tco2": 861025,
         "intensity_kg_per_t": 783,
         "verra_credits_yr": 56407,
@@ -44,7 +44,7 @@ def health():
 @app.get("/pilot")
 def pilot():
     return {
-        "cement_hetauda": {
+        "cement_planta": {
             "tier2_tco2_yr": 861025,
             "tier3_tco2_yr": 867815,
             "intensity_kg_per_t": 783,
@@ -113,9 +113,9 @@ def cad_kiln():
         "vendor": ["FLSmidth", "KHD", "Polysius"],
         "capex_usd": 14200000, "opex_usd_yr": 1800000,
         "outputs": {
-            "dxf": "hetauda_kiln.dxf (AutoCAD R12)",
-            "svg": "hetauda_kiln.svg (web-viewable)",
-            "freecad_macro": "hetauda_kiln.FCMacro (parametric 3D)",
+            "dxf": "planta_kiln.dxf (AutoCAD R12)",
+            "svg": "planta_kiln.svg (web-viewable)",
+            "freecad_macro": "planta_kiln.FCMacro (parametric 3D)",
         },
     }
 

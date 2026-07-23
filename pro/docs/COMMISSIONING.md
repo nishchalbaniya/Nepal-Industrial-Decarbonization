@@ -141,7 +141,7 @@ sqlite3 /var/lib/nepal-decarb/nepal_decarb.db ".tables"
 curl -X POST http://localhost:8000/tenants \
     -H "Content-Type: application/json" \
     -d '{
-      "name": "Hetauda Cement Industries Ltd",
+      "name": "PlantA Industries Ltd",
       "industry": "cement",
       "country": "Nepal"
     }'
@@ -149,7 +149,7 @@ curl -X POST http://localhost:8000/tenants \
 # Get an API token
 curl -X POST http://localhost:8000/auth/token \
     -H "Content-Type: application/json" \
-    -d '{"tenant_id": "hetauda-cement", "user_id": "admin"}'
+    -d '{"tenant_id": "planta-cement", "user_id": "admin"}'
 ```
 
 ---

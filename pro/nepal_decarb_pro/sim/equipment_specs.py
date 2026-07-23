@@ -160,7 +160,7 @@ EQUIPMENT_DATABASE: Dict[str, Equipment] = {
     ),
     "rotary_kiln_2000tpd": Equipment(
         equipment_id="rotary_kiln_2000tpd",
-        name="Rotary Kiln 2000 TPD (Hetauda-class)",
+        name="Rotary Kiln 2000 TPD (PlantA-class)",
         category="kiln", subcategory="rotary",
         capacity_basis="clinker", capacity_value=2000, capacity_unit="t/d",
         length_m=58, diameter_m=3.6, height_m=0, weight_t=950,

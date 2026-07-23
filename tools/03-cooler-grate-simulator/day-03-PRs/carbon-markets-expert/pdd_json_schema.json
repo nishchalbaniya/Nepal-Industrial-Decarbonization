@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nepal-decarb.example.com/schemas/cooler-pdd-1.0.0.json",
+  "title": "CoolerModulePDD",
+  "description": "JSON Schema for the cooler module fields required by the Verra VM0009 v3.0 kiln PDD. Owner: James Okafor (carbon-markets-expert). Methodology: Verra VM0009 v3.0 (2023-Q4). Registry: Verra VCS Program Guide v4.5 (2024-Q2). Generated: 2026-07-22.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "project_description",
+    "baseline",
+    "project",
+    "monitoring",
+    "sanity",
+    "duty_case"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "description": "Provenance and audit-trail block. Verra VCS Program Guide v4.5 §3.6 (PDD completion).",
+      "additionalProperties": false,
+      "required": [
+        "pdd_schema_version",
+        "generator_version",
+        "generated_at_utc",
+        "sha256_of_inputs"
+      ],
+      "properties": {
+        "pdd_schema_version": {
+          "type": "string",
+          "const": "1.0.0",
+          "description": "Version of this PDD JSON schema. Bump on backward-incompatible changes."
+        },
+        "generator_version": {
+          "type": "string",
+          "pattern": "^nepal_cooler_sim-[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "description": "Version of the nepal_cooler_sim package that generated this PDD JSON."
+        },
+        "generated_at_utc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp at which the PDD JSON was generated."
+        },
+        "sha256_of_inputs": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "SHA-256 hash of the canonicalised input parameters, for audit-trail integrity."
+        }
+      }
+    },
+    "project_description": {
+      "type": "object",
+      "description": "PDD §A.1–A.4 (Project Description). Verra VCS Program Guide v4.5 §3.1.",
+      "additionalProperties": false,
+      "required": [
+        "plant_name",
+        "plant_location",
+        "clinker_capacity_tpd",
+        "cooler_technology",
+        "cooler_n_compartments"
+      ],
+      "properties": {
+        "plant_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Plant name as registered. Example: 'PlantA Industries Ltd (NIDC) Line 2'."
+        },
+        "plant_location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["latitude", "longitude", "altitude_m"],
+          "properties": {
+            "latitude": { "type": "number", "minimum": -90, "maximum": 90, "description": "Decimal degrees, WGS84." },
+            "longitude": { "type": "number", "minimum": -180, "maximum": 180, "description": "Decimal degrees, WGS84." },
+            "altitude_m": { "type": "number", "minimum": 0, "maximum": 5000, "description": "Plant altitude above sea level in metres. Cengel & Boles 2015 (ISA barometric). PlantA = 1400 m." }
+          }
+        },
+        "clinker_capacity_tpd": {
+          "type": "number",
+          "minimum": 100,
+          "maximum": 15000,
+          "description": "Nameplate clinker capacity in tonnes per day. PlantA 130 t/h ≈ 3120 tpd."
+        },
+        "cooler_technology": {
+          "type": "string",
+          "enum": ["grate", "rotary", "planetary"],
+          "description": "Cooler type. 'grate' is the dominant technology for modern Nepali / Indian plants."
+        },
+        "cooler_n_compartments": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 7,
+          "description": "Number of compartments in the grate cooler. Default 5 (IKN/Polycom/Hongshi). Peray & Waddell 1986 §6.4."
+        },
+        "cooler_manufacturer": {
+          "type": "string",
+          "description": "Cooler OEM. Free-text. Examples: 'IKN Pyrorotor', 'KHD Pyrostep', 'Polysius REPOL'."
+        }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "description": "PDD §B.1–B.5 (Baseline Determination). Verra VM0009 v3.0 §5.2–5.3. All values are HISTORICAL (3-year average pre-project) from operator DCS export, NOT modeled.",
+      "additionalProperties": false,
+      "required": [
+        "cooler_efficiency",
+        "secondary_air_outlet_c",
+        "secondary_air_mass_flow_kg_s",
+        "clinker_outlet_c",
+        "coal_flow_kg_s"
+      ],
+      "properties": {
+        "cooler_efficiency": {
+          "type": "number",
+          "minimum": 0.40,
+          "maximum": 0.85,
+          "description": "Baseline cooler heat-recovery efficiency as a fraction. Typical Nepali / Indian baseline: 0.65–0.72. GCCA GNR 2022; ECRA 2022. BAT: 0.75–0.80."
+        },
+        "secondary_air_outlet_c": {
+          "type": "number",
+          "minimum": 400,
+          "maximum": 1100,
+          "description": "Baseline secondary-air temperature in °C (3-year historical average). Peray & Waddell 1986 §6.4."
+        },
+        "secondary_air_mass_flow_kg_s": {
+          "type": "number",
+          "minimum": 5,
+          "maximum": 200,
+          "description": "Baseline secondary-air mass flow in kg/s (3-year historical average). For 130 t/h clinker, ~38 kg/s at 1.05–1.15× stoich. Peray & Waddell 1986 §6.2."
+        },
+        "clinker_outlet_c": {
+          "type": "number",
+          "minimum": 80,
+          "maximum": 350,
+          "description": "Baseline clinker-outlet temperature in °C (3-year historical). ECRA 2022 BAT < 100 °C above ambient; typical 150–250 °C."
+        },
+        "coal_flow_kg_s": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Baseline kiln-coal mass flow in kg/s (3-year historical). Used in the kiln baseline equation. VM0009 v3.0 §5.3."
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "description": "PDD §C.1–C.5 (Project Scenario). Verra VM0009 v3.0 §5.3 + §6.2. Frequency: continuous (1-min average, 1-h logged, daily reported, monthly aggregated).",
+      "additionalProperties": false,
+      "required": [
+        "cooler_efficiency",
+        "secondary_air_outlet_c",
+        "secondary_air_outlet_k",
+        "secondary_air_mass_flow_kg_s",
+        "tertiary_air_outlet_c",
+        "exhaust_air_outlet_c",
+        "clinker_outlet_c",
+        "bed_pressure_drop_mm_h2o",
+        "fan_power_kw",
+        "secondary_air_recovered_kw",
+        "secondary_air_recovered_gj_per_t_clinker",
+        "first_law_imbalance",
+        "cooler_loss_mj_per_t_cli"
+      ],
+      "properties": {
+        "cooler_efficiency": {
+          "type": "number",
+          "minimum": 0.40,
+          "maximum": 0.85,
+          "description": "Project cooler heat-recovery efficiency as a fraction (daily computed). Ship-gate: 0.65–0.85. GCCA GNR 2022; ECRA 2022."
+        },
+        "secondary_air_outlet_c": {
+          "type": "number",
+          "minimum": 400,
+          "maximum": 1100,
+          "description": "Project secondary-air temperature in °C. Ship-gate: 600–1000 °C at PlantA. Peray & Waddell 1986 §6.4."
+        },
+        "secondary_air_outlet_k": {
+          "type": "number",
+          "minimum": 673.15,
+          "maximum": 1373.15,
+          "description": "Project secondary-air temperature in Kelvin (= secondary_air_outlet_c + 273.15). The kiln model takes Kelvin. VM0009 v3.0 §5.3."
+        },
+        "secondary_air_mass_flow_kg_s": {
+          "type": "number",
+          "minimum": 5,
+          "maximum": 200,
+          "description": "Project secondary-air mass flow in kg/s. For 130 t/h clinker, default 38 kg/s at 1.05–1.15× stoich. Peray & Waddell 1986 §6.2."
+        },
+        "tertiary_air_outlet_c": {
+          "type": "number",
+          "minimum": 300,
+          "maximum": 900,
+          "description": "Project tertiary-air temperature in °C (compartments 2..N-1 flow-weighted mean). Ship-gate: 400–700 °C. Peray & Waddell 1986 §6.4."
+        },
+        "exhaust_air_outlet_c": {
+          "type": "number",
+          "minimum": 100,
+          "maximum": 400,
+          "description": "Project exhaust-air temperature in °C (compartment N). Ship-gate: 150–300 °C. Peray & Waddell 1986 §6.4."
+        },
+        "clinker_outlet_c": {
+          "type": "number",
+          "minimum": 80,
+          "maximum": 350,
+          "description": "Project clinker-outlet temperature in °C. Ship-gate: 120–200 °C (target 150 ± 30). ECRA 2022."
+        },
+        "bed_pressure_drop_mm_h2o": {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 150,
+          "description": "Project under-grate bed pressure drop in mm H₂O. First compartment 50–80, last 25–40 mm H₂O. Peray & Waddell 1986 §6.4."
+        },
+        "fan_power_kw": {
+          "type": "number",
+          "minimum": 50,
+          "maximum": 5000,
+          "description": "Project total cooler fan power in kW. KHD Pyrostep benchmark: 8–12 kW per t/h of clinker. For 130 t/h PlantA, ~1000–1500 kW total."
+        },
+        "secondary_air_recovered_kw": {
+          "type": "number",
+          "minimum": 1000,
+          "maximum": 50000,
+          "description": "Project heat recovered in secondary air in kW. Must match clinker-side heat recovered within 2 % (first-law balance). VM0009 v3.0 §6.2."
+        },
+        "secondary_air_recovered_gj_per_t_clinker": {
+          "type": "number",
+          "minimum": 0.10,
+          "maximum": 0.60,
+          "description": "Project specific secondary-air heat recovery in GJ/t-cli. Peray & Waddell 1986 §6.4 benchmark: 0.30–0.45."
+        },
+        "first_law_imbalance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.05,
+          "description": "First-law energy balance residual as a fraction of Q_in. Ship-gate: ≤ 0.02. VM0009 v3.0 §6.2."
+        },
+        "cooler_loss_mj_per_t_cli": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1000.0,
+          "description": "Project total cooler heat loss in MJ/t-cli. ECRA 2022 BAT ceiling: 0.42 MJ/kg-cli = 420 MJ/t-cli."
+        }
+      }
+    },
+    "monitoring": {
+      "type": "object",
+      "description": "PDD §D.1–D.6 (Monitoring Plan). Verra VM0009 v3.0 §6.2 + ISO 14064-2 §5.7.",
+      "additionalProperties": false,
+      "required": [
+        "instrument_cooler_outlet_T",
+        "uncertainty_cooler_outlet_T",
+        "calibration_frequency_cooler_outlet_T",
+        "instrument_secondary_air_flow",
+        "uncertainty_secondary_air_flow",
+        "data_custodian",
+        "qa_qc_procedure",
+        "frequency_data_logging"
+      ],
+      "properties": {
+        "instrument_cooler_outlet_T": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Instrument description for cooler-outlet T. e.g. 'Type-K thermocouple, class 1, 0-1100 °C, shielded'."
+        },
+        "uncertainty_cooler_outlet_T": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 50,
+          "description": "Expanded uncertainty (k=2) of cooler-outlet T in K. Typical ±10 K at 800 °C for Type-K class 1."
+        },
+        "calibration_frequency_cooler_outlet_T": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Calibration frequency. e.g. 'quarterly single-point against NIST-traceable portable TC; annual re-cal'."
+        },
+        "instrument_secondary_air_flow": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Instrument description for secondary-air flow. e.g. 'orifice plate per ISO 5167' or 'thermal mass flowmeter'."
+        },
+        "uncertainty_secondary_air_flow": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.10,
+          "description": "Relative expanded uncertainty (k=2) of secondary-air flow as a fraction. Typical ±0.02 (2 % of reading)."
+        },
+        "data_custodian": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Owner of the monitoring data. e.g. 'Plant DCS / control room; daily export to MRV database'."
+        },
+        "qa_qc_procedure": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Reference to QA/QC procedure. e.g. 'see data_quality_spec.md (Kabita, env-eng-permitting); ISO 14064-2 §5.7'."
+        },
+        "frequency_data_logging": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Data logging and reporting cadence. e.g. '1-min average, 1-h logged, daily reported, monthly aggregated'."
+        }
+      }
+    },
+    "sanity": {
+      "type": "object",
+      "description": "Sanity / diagnostic block (NOT in the PDD directly; present in monitoring_report.json). A red flag here triggers a verification site visit.",
+      "additionalProperties": false,
+      "required": [
+        "air_above_clinker",
+        "first_law_imbalance",
+        "sec_air_in_realistic_band",
+        "clinker_outlet_in_realistic_band",
+        "efficiency_in_realistic_band"
+      ],
+      "properties": {
+        "air_above_clinker": {
+          "type": "boolean",
+          "description": "False = second-law invariant satisfied. True = violation. Mujumdar 2007 §3.1."
+        },
+        "first_law_imbalance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.05,
+          "description": "First-law imbalance as a fraction. ≤ 0.02 passes. VM0009 v3.0 §6.2."
+        },
+        "sec_air_in_realistic_band": {
+          "type": "boolean",
+          "description": "True if secondary_air_outlet_c ∈ [600, 1000] °C for default PlantA preset. Peray & Waddell 1986 §6.4."
+        },
+        "clinker_outlet_in_realistic_band": {
+          "type": "boolean",
+          "description": "True if clinker_outlet_c ∈ [120, 200] °C. ECRA 2022."
+        },
+        "efficiency_in_realistic_band": {
+          "type": "boolean",
+          "description": "True if cooler_efficiency ∈ [0.65, 0.85]. GCCA GNR 2022."
+        }
+      }
+    },
+    "duty_case": {
+      "type": "object",
+      "description": "Nepal duty-case block (mandatory for NIDC / UCIL plants). Cengel & Boles 2015; NIDC plant documents. Verra VCS Program Guide v4.5 §3.1 (operating conditions must be stated).",
+      "additionalProperties": false,
+      "required": [
+        "altitude_m",
+        "ambient_t_c",
+        "ambient_rh",
+        "air_density_kg_m3",
+        "p_atm_mbar",
+        "design_mcr_pct"
+      ],
+      "properties": {
+        "altitude_m": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5000,
+          "description": "Plant altitude in metres. PlantA = 1400; PlantB ≈ 300."
+        },
+        "ambient_t_c": {
+          "type": "number",
+          "minimum": -20,
+          "maximum": 55,
+          "description": "Ambient design-day temperature in °C. PlantA May design day = 35 °C."
+        },
+        "ambient_rh": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Ambient design-day relative humidity as a fraction. PlantA monsoon = 0.90."
+        },
+        "air_density_kg_m3": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1.5,
+          "description": "Computed moist-air density at altitude / T / RH in kg/m³. PlantA (1400 m, 35 °C, 90 % RH) ≈ 1.05. Cengel & Boles 2015. The v0.3.0 hard-coded 0.6 kg/m³ is wrong at any altitude < 3500 m — Ramesh's §5.1 fix."
+        },
+        "p_atm_mbar": {
+          "type": "number",
+          "minimum": 500,
+          "maximum": 1100,
+          "description": "Barometric pressure in mbar. PlantA ≈ 858 mbar. ISA barometric formula."
+        },
+        "design_mcr_pct": {
+          "type": "number",
+          "minimum": 50,
+          "maximum": 110,
+          "description": "Maximum continuous rating design point as a percentage. Typically 100 % MCR. Per ASME PTC 38."
+        },
+        "note": {
+          "type": "string",
+          "description": "Free-text note on the duty case. e.g. 'PlantA May design day; air density at 1400 m / 35 °C / 90 % RH'."
+        }
+      }
+    }
+  }
+}
