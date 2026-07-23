@@ -1,0 +1,42 @@
+{
+  "secondary_air_outlet_c": 559.3155453240248,
+  "secondary_air_outlet_k": 832.4655453240248,
+  "tertiary_air_outlet_c": 231.8098647438737,
+  "exhaust_air_outlet_c": 135.05570630903702,
+  "clinker_outlet_c": 535.9040575459751,
+  "cooler_efficiency": 0.6330373204791391,
+  "first_law_imbalance": 2.2207416815526304e-16,
+  "fan_power_kw": 1000.4177398852773,
+  "bed_pressure_drop_mm_h2o": 2498.3074019063342,
+  "free_lime_outlet_wt_pct": 0.05,
+  "secondary_air_mass_flow_nm3_h": 73540.23201856151,
+  "secondary_air_recovered_gj_per_t_clinker": 0.3890996847293897,
+  "mj_per_t_cli_recovered": 907.3007395767262,
+  "specific_fan_power_kw_per_tph": 7.6955210760405945,
+  "secondary_air_stoich_ratio": 1.1,
+  "clinker_quench_rate_k_per_min": 486.7717373376916,
+  "residence_time_s": 140.0,
+  "heat_in_kw": 51756.25000000001,
+  "heat_out_kw": 18992.612181951557,
+  "heat_recovered_kw": 32763.637818048446,
+  "secondary_air_recovered_kw": 14050.821948561295,
+  "air_recovered_kw_total": 32763.637818048453,
+  "sec_recovered_over_heat_recovered": 0.4288541469842871,
+  "m_a_total_kg_s": 131.24136333513303,
+  "m_a_sec_kg_s": 26.413200000000003,
+  "m_a_exhaust_total_kg_s": 104.82816333513303,
+  "duty_case": {
+    "altitude_m": 1400.0,
+    "ambient_t_c": 35.0,
+    "ambient_rh": 0.9,
+    "air_density_kg_m3": 0.8927983900349188,
+    "design_mcr_pct": 100,
+    "note": "site at 1400 m, 35 C, RH=0.90; moist-air density from ISA barometric formula (Cengel & Boles 2015)"
+  },
+  "sanity": {
+    "air_above_clinker": false,
+    "first_law_imbalance": 2.2207416815526304e-16,
+    "sec_air_in_realistic_band": false,
+    "clinker_outlet_in_realistic_band": false
+  }
+}

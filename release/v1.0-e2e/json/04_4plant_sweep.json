@@ -1,0 +1,222 @@
+{
+  "plants": {
+    "hetauda": {
+      "altitude_m": 1400.0,
+      "throughput_t_h": 130.0,
+      "annual_t": 1029600.0,
+      "cooler": {
+        "secondary_air_outlet_c": 559.3,
+        "tertiary_air_outlet_c": 231.8,
+        "exhaust_air_outlet_c": 135.1,
+        "clinker_outlet_c": 535.9,
+        "cooler_efficiency": 0.633,
+        "first_law_imbalance": 2.22e-16,
+        "mj_per_t_cli_recovered": 907.3
+      },
+      "kiln": {
+        "t_burning_zone_c": 8070.1,
+        "thermal_efficiency": 0.72,
+        "sec_mj_per_t_clinker": 3269.2,
+        "co2_intensity_kg_per_t_clinker": 964.0
+      },
+      "cbam": {
+        "direct_t_co2e_t": 0.83,
+        "indirect_t_co2e_t": 0.04,
+        "total_t_co2e_t": 0.87,
+        "annual_kt_co2e": 895.8,
+        "cbam_price_eur_t": 80,
+        "annual_cbam_cost_eur": 62344339.0
+      },
+      "fuel_savings": {
+        "current_sec_mj_t": 3269.2,
+        "baseline_sec_mj_t": 3269,
+        "improvement_pct": 0,
+        "annual_fuel_savings_usd": -4.0
+      },
+      "ship_gate_pass": {
+        "secondary_air_outlet_c": false,
+        "tertiary_air_outlet_c": false,
+        "exhaust_air_outlet_c": false,
+        "clinker_outlet_c": false,
+        "cooler_efficiency": false,
+        "first_law_imbalance": true
+      },
+      "n_bands_pass": 1,
+      "n_bands_total": 6
+    },
+    "udayapur": {
+      "altitude_m": 300.0,
+      "throughput_t_h": 110.0,
+      "annual_t": 871200.0,
+      "cooler": {
+        "secondary_air_outlet_c": 629.5,
+        "tertiary_air_outlet_c": 173.5,
+        "exhaust_air_outlet_c": 108.3,
+        "clinker_outlet_c": 501.8,
+        "cooler_efficiency": 0.657,
+        "first_law_imbalance": 1.28e-16,
+        "mj_per_t_cli_recovered": 932.6
+      },
+      "kiln": {
+        "t_burning_zone_c": 7732.4,
+        "thermal_efficiency": 0.75,
+        "sec_mj_per_t_clinker": 2931.0,
+        "co2_intensity_kg_per_t_clinker": 932.0
+      },
+      "cbam": {
+        "direct_t_co2e_t": 0.83,
+        "indirect_t_co2e_t": 0.04,
+        "total_t_co2e_t": 0.87,
+        "annual_kt_co2e": 757.9,
+        "cbam_price_eur_t": 80,
+        "annual_cbam_cost_eur": 52752902.0
+      },
+      "fuel_savings": {
+        "current_sec_mj_t": 2931.0,
+        "baseline_sec_mj_t": 3269,
+        "improvement_pct": 10.3,
+        "annual_fuel_savings_usd": 4417.0
+      },
+      "ship_gate_pass": {
+        "secondary_air_outlet_c": true,
+        "tertiary_air_outlet_c": false,
+        "exhaust_air_outlet_c": false,
+        "clinker_outlet_c": false,
+        "cooler_efficiency": true,
+        "first_law_imbalance": true
+      },
+      "n_bands_pass": 3,
+      "n_bands_total": 6
+    },
+    "hongshi-shivam": {
+      "altitude_m": 250.0,
+      "throughput_t_h": 208.0,
+      "annual_t": 1647360.0,
+      "cooler": {
+        "secondary_air_outlet_c": 537.1,
+        "tertiary_air_outlet_c": 269.9,
+        "exhaust_air_outlet_c": 162.0,
+        "clinker_outlet_c": 550.2,
+        "cooler_efficiency": 0.629,
+        "first_law_imbalance": 0.0,
+        "mj_per_t_cli_recovered": 913.3
+      },
+      "kiln": {
+        "t_burning_zone_c": 7028.6,
+        "thermal_efficiency": 0.82,
+        "sec_mj_per_t_clinker": 2514.8,
+        "co2_intensity_kg_per_t_clinker": 892.6
+      },
+      "cbam": {
+        "direct_t_co2e_t": 0.83,
+        "indirect_t_co2e_t": 0.04,
+        "total_t_co2e_t": 0.87,
+        "annual_kt_co2e": 1433.2,
+        "cbam_price_eur_t": 80,
+        "annual_cbam_cost_eur": 99750943.0
+      },
+      "fuel_savings": {
+        "current_sec_mj_t": 2514.8,
+        "baseline_sec_mj_t": 3269,
+        "improvement_pct": 23.1,
+        "annual_fuel_savings_usd": 18637.0
+      },
+      "ship_gate_pass": {
+        "secondary_air_outlet_c": false,
+        "tertiary_air_outlet_c": false,
+        "exhaust_air_outlet_c": true,
+        "clinker_outlet_c": false,
+        "cooler_efficiency": false,
+        "first_law_imbalance": true
+      },
+      "n_bands_pass": 2,
+      "n_bands_total": 6
+    },
+    "ghorahi": {
+      "altitude_m": 200.0,
+      "throughput_t_h": 150.0,
+      "annual_t": 1188000.0,
+      "cooler": {
+        "secondary_air_outlet_c": 588.6,
+        "tertiary_air_outlet_c": 178.2,
+        "exhaust_air_outlet_c": 112.9,
+        "clinker_outlet_c": 546.4,
+        "cooler_efficiency": 0.626,
+        "first_law_imbalance": 1.95e-16,
+        "mj_per_t_cli_recovered": 896.3
+      },
+      "kiln": {
+        "t_burning_zone_c": 8348.0,
+        "thermal_efficiency": 0.74,
+        "sec_mj_per_t_clinker": 2860.6,
+        "co2_intensity_kg_per_t_clinker": 925.4
+      },
+      "cbam": {
+        "direct_t_co2e_t": 0.83,
+        "indirect_t_co2e_t": 0.04,
+        "total_t_co2e_t": 0.87,
+        "annual_kt_co2e": 1033.6,
+        "cbam_price_eur_t": 80,
+        "annual_cbam_cost_eur": 71935776.0
+      },
+      "fuel_savings": {
+        "current_sec_mj_t": 2860.6,
+        "baseline_sec_mj_t": 3269,
+        "improvement_pct": 12.5,
+        "annual_fuel_savings_usd": 7278.0
+      },
+      "ship_gate_pass": {
+        "secondary_air_outlet_c": false,
+        "tertiary_air_outlet_c": false,
+        "exhaust_air_outlet_c": false,
+        "clinker_outlet_c": false,
+        "cooler_efficiency": false,
+        "first_law_imbalance": true
+      },
+      "n_bands_pass": 1,
+      "n_bands_total": 6
+    }
+  },
+  "summary": {
+    "n_plants": 4,
+    "n_total_pass": 7,
+    "n_total_bands": 24,
+    "total_annual_throughput_t": 4736160.0,
+    "total_annual_co2e_kt": 4120.5,
+    "band_definition": {
+      "secondary_air_outlet_c": [
+        600,
+        1000
+      ],
+      "tertiary_air_outlet_c": [
+        400,
+        700
+      ],
+      "exhaust_air_outlet_c": [
+        150,
+        300
+      ],
+      "clinker_outlet_c": [
+        120,
+        200
+      ],
+      "cooler_efficiency": [
+        0.65,
+        0.85
+      ],
+      "first_law_imbalance": [
+        0,
+        0.02
+      ]
+    }
+  },
+  "notes": {
+    "calibration": "v0.5.0 default preset (not plant-specific; see calibrate cooler --target csv)",
+    "cbam_source": "EC DG TAXUD 'Default values for the transitional period' Dec 2023 (JRC), Section 2.3 cement table",
+    "cbam_direct": "0.83 t CO2e/t clinker for grey/white clinker (CN 2523 10 00)",
+    "cbam_indirect": "0.04 t CO2e/t clinker (electricity at 2023 Nepal grid factor ~0.02 t/MWh)",
+    "cbam_2026+": "Country-specific values with 10/20/30% mark-up (Implementing Reg 2025/2621)",
+    "sec_baseline": "3269 MJ/t per Cement Sustainability Initiative 2018 (Getting the Numbers Right)",
+    "ship_gate_failing_bands_honest": "3/6 bands fail on default-preset v0.5.0 Hetauda model (tertiary, exhaust, clinker). Unblocked with real plant data or v0.6.0 model changes."
+  }
+}
