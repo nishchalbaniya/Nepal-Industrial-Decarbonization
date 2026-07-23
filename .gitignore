@@ -16,6 +16,9 @@ dist/
 build/
 src/*.egg-info/
 
+# Filter-repo backups (left by git filter-repo when scrubbing credentials)
+.git.backup/
+
 # IDE
 .idea/
 .vscode/
