@@ -61,9 +61,9 @@ Section 3.3 (Cement clinker):
 
 URL: <https://eur-lex.europa.eu/eli/reg_impl/2023/1773/oj/eng>
 
-## What changes for 2026+ (definitive period, for Hetauda's pilot)
+## What changes for 2026+ (definitive period, for PlantA's pilot)
 
-If Hetauda starts shipping clinker to the EU in 2026 or later, the
+If PlantA starts shipping clinker to the EU in 2026 or later, the
 CBAM regime is different. The transitional JRC defaults (0.83) are
 replaced by country-specific defaults with phased mark-ups:
 
@@ -74,7 +74,7 @@ replaced by country-specific defaults with phased mark-ups:
 The country-specific values for grey clinker (CN 2523 10 00)
 in the adopted XLSX range 0.870 to 1.240 t CO2e/t direct across
 EU member states. Nepal is not in the EU, so the relevant number
-for Hetauda exports is the *rest-of-world* default; that row needs
+for PlantA exports is the *rest-of-world* default; that row needs
 a separate check before any 2026+ pilot PDD.
 
 Source: EC adopted XLSX, *DVs as adopted_v20260204+*:

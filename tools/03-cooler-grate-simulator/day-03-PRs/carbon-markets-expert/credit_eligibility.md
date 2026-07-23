@@ -36,7 +36,7 @@ The chain of reasoning that a verifier will follow:
 3. **Emission reduction.** The difference `Q_baseline − Q_project` × annual clinker production × coal emission factor = the annual tCO₂e that can be issued as Verra credits.
 4. **What the cooler fields do in the PDD.** The cooler is **instrumented** in the project scenario. Its outputs (secondary-air T, mass flow, cooler efficiency, exhaust-air T) are reported in the **monitoring report** and feed the kiln baseline equation. The **cooler efficiency is not the credit metric**; it is a **diagnostic** that helps the verifier confirm the kiln baseline is realistic.
 
-> **Concretely:** if `secondary_air_outlet_c` is 600 °C in the project and 580 °C in the baseline (because the project cooler is 1 % more efficient), the kiln coal saving is on the order of **0.5–1.5 % of total coal**. For a 130 t/h Hetauda-class plant firing 100 kg coal/t-cli, that is ~130–400 kg coal/h saved, or ~400–1200 tCO₂e/yr at a 0.085 coal-EF. At a $5/tCO₂e voluntary price, that is **$2 000–6 000 per year per plant** — a small but real credit stream, gated entirely on the data quality of the cooler monitoring report.
+> **Concretely:** if `secondary_air_outlet_c` is 600 °C in the project and 580 °C in the baseline (because the project cooler is 1 % more efficient), the kiln coal saving is on the order of **0.5–1.5 % of total coal**. For a 130 t/h PlantA-class plant firing 100 kg coal/t-cli, that is ~130–400 kg coal/h saved, or ~400–1200 tCO₂e/yr at a 0.085 coal-EF. At a $5/tCO₂e voluntary price, that is **$2 000–6 000 per year per plant** — a small but real credit stream, gated entirely on the data quality of the cooler monitoring report.
 
 ---
 
@@ -109,13 +109,13 @@ For a Nepali cement project:
 
 | Item | Owner | Citation |
 |---|---|---|
-| `secondary_air_outlet_c` in [600, 1000] °C for default Hetauda | Aanya | Peray & Waddell 1986 §6.4; GCCA GNR 2022 |
+| `secondary_air_outlet_c` in [600, 1000] °C for default PlantA | Aanya | Peray & Waddell 1986 §6.4; GCCA GNR 2022 |
 | `cooler_efficiency` ∈ [0.65, 0.85] | Aanya + Ramesh | ECRA 2022; GCCA GNR 2022 |
 | `secondary_air_mass_flow_kg_s` ≈ 38 kg/s (1.05–1.15× stoich) for 130 t/h clinker | Aanya | Peray & Waddell 1986 §6.2; stoichiometry |
 | First-law imbalance ≤ 2 % | Hiro | Verra VM0009 v3.0 §6.2 QA/QC |
 | Second-law invariant (T_air ≤ T_clinker − 5 K) | Hiro | Mujumdar 2007 §3.1 |
 | Energy balance closure < 2 % of Q_in | Hiro | Verra VM0009 v3.0 §6.2 |
-| All 4 plant presets run without error | Aanya + Ramesh | Ramesh's Nepal duty-case (Hetauda altitude) |
+| All 4 plant presets run without error | Aanya + Ramesh | Ramesh's Nepal duty-case (PlantA altitude) |
 | PDD JSON schema in `pdd_json_schema.json` | James (this PR) | Verra VM0009 v3.0 §5.3 + §6.2 |
 | Monitoring plan in `data_quality_spec.md` | Kabita | ISO 14064-2 §5.7 |
 | Additionality story in PDD | Priya (pilot contract) | Verra VCS Program Guide v4.5 §2.3 |

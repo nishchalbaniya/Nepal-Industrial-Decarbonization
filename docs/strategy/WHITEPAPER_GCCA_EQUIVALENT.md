@@ -13,7 +13,7 @@
 
 ## Abstract (200 words)
 
-We present a methodology for quantifying baseline GHG emissions and decarbonization pathways at preheater-precalciner dry-process cement plants in the Himalayan region, with application to a 0.95 Mt clinker/yr plant in Hetauda, Nepal. The methodology is a Tier 2 + Tier 3 mass-and-energy balance following IPCC 2006 Vol.3 Ch.2 and the 2019 Refinement, calibrated to Nepali fuel mix (Indian bituminous coal, petcoke, rice husk, sawdust) and the Nepal Electricity Authority 2023/24 grid emission factor of 0.0256 kg CO₂/kWh (95% renewable, 22.5% T&D loss). The Tier 3 enhancement adds raw-mix total-organic-carbon, precalciner efficiency, kiln-type-specific heat demand, and waste-heat recovery (WHR) optimization. Uncertainty is quantified by Latin Hypercube Monte Carlo sampling (5,000 samples; convergence diagnostic in §4). The methodology is applied to two decarbonization pathways — biomass co-firing (rice husk, 20% energy basis) and WHR (22 GWh/yr) — yielding a combined reduction of 70,000 tCO₂/yr gross, 56,000 tCO₂/yr net after leakage and buffer pool. The methodology is shown to be GCCA-equivalent (matches the GCCA "Getting the Numbers Right" 2022 global dataset within 5%) and is Verra VCS- and Gold Standard-compatible. We compare against published plant-level data from Hetauda, Udayapur, and Hongshi Shivam (Nepal) and against the GCCA India 2022 dataset (n = 137 plants). The methodology is implemented as open-source software (nepal_decarb_pro v1.0) and is reproducible from the published input data and the cited emission factor sources.
+We present a methodology for quantifying baseline GHG emissions and decarbonization pathways at preheater-precalciner dry-process cement plants in the Himalayan region, with application to a 0.95 Mt clinker/yr plant in PlantA, Nepal. The methodology is a Tier 2 + Tier 3 mass-and-energy balance following IPCC 2006 Vol.3 Ch.2 and the 2019 Refinement, calibrated to Nepali fuel mix (Indian bituminous coal, petcoke, rice husk, sawdust) and the Nepal Electricity Authority 2023/24 grid emission factor of 0.0256 kg CO₂/kWh (95% renewable, 22.5% T&D loss). The Tier 3 enhancement adds raw-mix total-organic-carbon, precalciner efficiency, kiln-type-specific heat demand, and waste-heat recovery (WHR) optimization. Uncertainty is quantified by Latin Hypercube Monte Carlo sampling (5,000 samples; convergence diagnostic in §4). The methodology is applied to two decarbonization pathways — biomass co-firing (rice husk, 20% energy basis) and WHR (22 GWh/yr) — yielding a combined reduction of 70,000 tCO₂/yr gross, 56,000 tCO₂/yr net after leakage and buffer pool. The methodology is shown to be GCCA-equivalent (matches the GCCA "Getting the Numbers Right" 2022 global dataset within 5%) and is Verra VCS- and Gold Standard-compatible. We compare against published plant-level data from PlantA, PlantB, and plantc (Nepal) and against the GCCA India 2022 dataset (n = 137 plants). The methodology is implemented as open-source software (nepal_decarb_pro v1.0) and is reproducible from the published input data and the cited emission factor sources.
 
 **Keywords:** cement decarbonization, Nepal, Tier 3, Monte Carlo, GCCA, Verra VCS, biomass co-firing, waste-heat recovery
 
@@ -23,7 +23,7 @@ We present a methodology for quantifying baseline GHG emissions and decarbonizat
 
 ### 1.1 Cement industry in Nepal and South Asia
 
-Nepal's cement industry emitted an estimated 5.2 MtCO₂ in 2023 from 6.2 Mt clinker and 9.5 Mt cement production (DCSI, 2023). Per-capita cement consumption has tripled in the last decade as post-earthquake reconstruction continues and infrastructure development accelerates. The industry is dominated by 6 large preheater-precalciner dry-process plants (Hetauda, Udayapur, Hongshi Shivam, Shree, Ghorahi, Araniko) with combined clinker capacity of ~9 Mt/yr, plus a network of grinding units that import clinker. The fuel mix is dominated by imported Indian bituminous coal (~120,000–180,000 t/yr per plant) and petroleum coke (~15,000–25,000 t/yr per plant), with negligible alternative fuel substitution as of 2023.
+Nepal's cement industry emitted an estimated 5.2 MtCO₂ in 2023 from 6.2 Mt clinker and 9.5 Mt cement production (DCSI, 2023). Per-capita cement consumption has tripled in the last decade as post-earthquake reconstruction continues and infrastructure development accelerates. The industry is dominated by 6 large preheater-precalciner dry-process plants (PlantA, PlantB, plantc, Shree, PlantD, Araniko) with combined clinker capacity of ~9 Mt/yr, plus a network of grinding units that import clinker. The fuel mix is dominated by imported Indian bituminous coal (~120,000–180,000 t/yr per plant) and petroleum coke (~15,000–25,000 t/yr per plant), with negligible alternative fuel substitution as of 2023.
 
 ### 1.2 Why a Nepal-specific methodology?
 
@@ -39,9 +39,9 @@ Nepal does not have a domestic carbon tax, emission performance standard, or cap
 
 We present a methodology that is:
 1. GCCA-equivalent at the global mean (≤ 5% deviation from GCCA dataset).
-2. Verra VCS / Gold Standard compatible (can be cited as `ACM0010 + AMS-III.H` for a Hetauda-class project).
+2. Verra VCS / Gold Standard compatible (can be cited as `ACM0010 + AMS-III.H` for a PlantA-class project).
 3. Implemented as open-source software and reproducible from published data.
-4. Validated against plant-level measurements at Hetauda, Udayapur, and Hongshi Shivam (Nepal).
+4. Validated against plant-level measurements at PlantA, PlantB, and plantc (Nepal).
 5. Uncertainty-quantified via Monte Carlo LHS with a published convergence diagnostic.
 
 ---
@@ -69,7 +69,7 @@ where:
 - $r_{CaO}$ = stoichiometric ratio of CO₂ to CaO = 44.01 / 56.08 = 0.7857 t CO₂ / t CaO
 - $r_{MgO}$ = stoichiometric ratio of CO₂ to MgO = 44.01 / 40.30 = 1.092 t CO₂ / t MgO
 
-For Hetauda (m = 950,000 t/yr, x_CaO = 0.65, x_MgO = 0.015): E_process = 511,307 tCO₂/yr.
+For PlantA (m = 950,000 t/yr, x_CaO = 0.65, x_MgO = 0.015): E_process = 511,307 tCO₂/yr.
 
 ### 2.3 Tier 2 fuel combustion (cement)
 
@@ -82,13 +82,13 @@ where:
 - $NCV_i$ = net calorific value of fuel i (GJ/t)
 - $EF_{i,fossil}$ = fossil-CO₂ emission factor of fuel i, after subtracting biogenic fraction (kg CO₂/GJ)
 
-For Hetauda: E_fuel = 346,911 tCO₂/yr (coal 289,476 + petcoke 56,160 + diesel 1,275).
+For PlantA: E_fuel = 346,911 tCO₂/yr (coal 289,476 + petcoke 56,160 + diesel 1,275).
 
 ### 2.4 Tier 3 enhancement
 
 The Tier 3 enhancement adds:
 
-1. **Raw-mix Total Organic Carbon (TOC)**: a 0.10% mass fraction of organic carbon in the raw mix (typical for Nepali limestone with marine-origin impurities) contributes 5,400 tCO₂/yr at Hetauda.
+1. **Raw-mix Total Organic Carbon (TOC)**: a 0.10% mass fraction of organic carbon in the raw mix (typical for Nepali limestone with marine-origin impurities) contributes 5,400 tCO₂/yr at PlantA.
 
 2. **Precalciner efficiency**: a 92% degree of calcination is typical for a 5-stage preheater-precalciner; lower efficiency would shift calcination load to the rotary kiln and increase fuel consumption.
 
@@ -100,7 +100,7 @@ The Tier 3 enhancement adds:
 
 6. **Kiln-type-specific heat demand**: 3,800 MJ/t clinker for a 5-stage preheater-precalciner dry process, vs. 6,000 for a long-dry, 4,500 for a preheater, 7,500 for a wet-process. (Source: WBCSD Cement Sustainability Initiative, 2017; EU BREF 2013.)
 
-For Hetauda: Tier 3 total = 867,815 tCO₂/yr (vs. Tier 2 = 861,025 tCO₂/yr), a 0.79% difference.
+For PlantA: Tier 3 total = 867,815 tCO₂/yr (vs. Tier 2 = 861,025 tCO₂/yr), a 0.79% difference.
 
 ### 2.5 Scope 2 (electricity) calculation
 
@@ -111,7 +111,7 @@ where:
 - $EF_{grid}$ = combined margin grid emission factor (0.0256 kg CO₂/kWh for NEA 2023/24)
 - $T\&D_{loss}$ = transmission and distribution loss fraction (0.225 for NEA 2023/24)
 
-For Hetauda: E_elec = 85,000,000 × 0.0256 × 1.290 = 2,808 tCO₂/yr.
+For PlantA: E_elec = 85,000,000 × 0.0256 × 1.290 = 2,808 tCO₂/yr.
 
 ### 2.6 Scope 3 (transport) calculation
 
@@ -122,7 +122,7 @@ where:
 - $d_i$ = distance transported (km)
 - $EF_{truck,i}$ = emission factor for truck transport (0.062 kg CO₂ / t·km, DEFRA 2024 + IPCC 2006 default)
 
-In the Hetauda case study, Scope 3 is reported as zero in the current HCN implementation because the plant has not yet provided Scope 3 transport distances. The methodology *requires* the data; the *current* implementation reports the data gap. This is a known limitation, see §5.3.
+In the PlantA case study, Scope 3 is reported as zero in the current HCN implementation because the plant has not yet provided Scope 3 transport distances. The methodology *requires* the data; the *current* implementation reports the data gap. This is a known limitation, see §5.3.
 
 ### 2.7 Monte Carlo uncertainty quantification
 
@@ -139,17 +139,17 @@ Uncertainty is quantified by Latin Hypercube Sampling (LHS) Monte Carlo, with 5,
 | Electricity consumption (kWh/yr) | 4.0 | NEA metering class 0.5 |
 | Grid EF (kg CO₂/kWh) | 19.5 | NEA 2023/24 + CDM ACM0012 |
 
-The 5,000-sample result for Hetauda: mean = 861,093 tCO₂/yr, median = 860,069, std = 25,820, 95% CI = [813,156, 914,210] tCO₂/yr. Coefficient of variation = 3.0%. Convergence: 4-batch batch-means are within 0.5% of overall mean (converged).
+The 5,000-sample result for PlantA: mean = 861,093 tCO₂/yr, median = 860,069, std = 25,820, 95% CI = [813,156, 914,210] tCO₂/yr. Coefficient of variation = 3.0%. Convergence: 4-batch batch-means are within 0.5% of overall mean (converged).
 
 ### 2.8 Decarbonization pathway: biomass co-firing
 
-The Tier 2 + 3 baseline emissions are projected under a "biomass co-firing" project scenario, in which 20% (energy basis) of coal/petcoke is replaced by rice husk and sawdust, sourced from the Tarai rice-milling industry. The substitution is limited to 20% by technical constraints (clinker quality at higher substitution; pre-drying capacity at the plant; biomass supply chain in Hetauda district). Rice husk has NCV = 13.4 GJ/t and is treated as biogenic (0 fossil CO₂); sawdust has NCV = 16.0 GJ/t and is treated as biogenic. Co-firing 20% energy basis reduces fuel combustion emissions by ~17% (the energy content is replaced, but the biomass is biogenic so no fossil CO₂ is emitted; the small difference is from changes in kiln thermal balance).
+The Tier 2 + 3 baseline emissions are projected under a "biomass co-firing" project scenario, in which 20% (energy basis) of coal/petcoke is replaced by rice husk and sawdust, sourced from the Tarai rice-milling industry. The substitution is limited to 20% by technical constraints (clinker quality at higher substitution; pre-drying capacity at the plant; biomass supply chain in PlantA district). Rice husk has NCV = 13.4 GJ/t and is treated as biogenic (0 fossil CO₂); sawdust has NCV = 16.0 GJ/t and is treated as biogenic. Co-firing 20% energy basis reduces fuel combustion emissions by ~17% (the energy content is replaced, but the biomass is biogenic so no fossil CO₂ is emitted; the small difference is from changes in kiln thermal balance).
 
-For Hetauda: 17% × 346,911 = 58,975 tCO₂/yr reduction from biomass co-firing.
+For PlantA: 17% × 346,911 = 58,975 tCO₂/yr reduction from biomass co-firing.
 
 ### 2.9 Decarbonization pathway: WHR
 
-WHR electricity is generated from kiln exhaust (typically 320–400°C at the preheater exit) by an organic Rankine cycle (ORC) turbine or a steam Rankine cycle. For a 5-stage preheater-precalciner with 3,800 MJ/t clinker heat demand, the recoverable heat is ~1.2 GJ/t clinker, of which ~30% can be converted to electricity, yielding ~0.10 MWh/t clinker. At Hetauda (950,000 t/yr clinker), this is 95,000 MWh/yr. Of this, ~70% is consumed by the WHR system itself (induced-draft fan, pumps, controls), so net grid export is ~22,000 MWh/yr. This displaces NEA grid electricity at 0.0256 × 1.290 = 0.0330 kg CO₂/kWh, yielding 22,000 × 0.0330 = 726 tCO₂/yr reduction (Scope 2).
+WHR electricity is generated from kiln exhaust (typically 320–400°C at the preheater exit) by an organic Rankine cycle (ORC) turbine or a steam Rankine cycle. For a 5-stage preheater-precalciner with 3,800 MJ/t clinker heat demand, the recoverable heat is ~1.2 GJ/t clinker, of which ~30% can be converted to electricity, yielding ~0.10 MWh/t clinker. At PlantA (950,000 t/yr clinker), this is 95,000 MWh/yr. Of this, ~70% is consumed by the WHR system itself (induced-draft fan, pumps, controls), so net grid export is ~22,000 MWh/yr. This displaces NEA grid electricity at 0.0256 × 1.290 = 0.0330 kg CO₂/kWh, yielding 22,000 × 0.0330 = 726 tCO₂/yr reduction (Scope 2).
 
 ### 2.10 Combined decarbonization and Verra calculation
 
@@ -172,7 +172,7 @@ The methodology is implemented as open-source software (`nepal_decarb_pro` v1.0,
 
 ## 3. Results (1,500 words)
 
-### 3.1 Hetauda baseline (Tier 2)
+### 3.1 PlantA baseline (Tier 2)
 
 | Component | tCO₂/yr | % |
 |---|---|---|
@@ -199,24 +199,24 @@ The Tier 3 result is 0.79% higher than Tier 2, dominated by the TOC contribution
 
 ### 3.3 Comparison with GCCA dataset
 
-The Hetauda Tier 2 intensity of 783 kg CO₂/t cement is +11.8% above the GCCA global benchmark of 700 kg/t (GCCA, 2022). This is consistent with the Nepali industry being ~12% more emissions-intensive than the global mean (driven by the fuel mix: higher petcoke share, lower alternative fuel share, no WHR). The Hetauda SEC of 4,168 MJ/t clinker is +26.3% above the GCCA global benchmark of 3,300 MJ/t. Again, consistent with the Nepali industry being below the global BAT but in line with the South Asian regional mean.
+The PlantA Tier 2 intensity of 783 kg CO₂/t cement is +11.8% above the GCCA global benchmark of 700 kg/t (GCCA, 2022). This is consistent with the Nepali industry being ~12% more emissions-intensive than the global mean (driven by the fuel mix: higher petcoke share, lower alternative fuel share, no WHR). The PlantA SEC of 4,168 MJ/t clinker is +26.3% above the GCCA global benchmark of 3,300 MJ/t. Again, consistent with the Nepali industry being below the global BAT but in line with the South Asian regional mean.
 
 ### 3.4 Comparison with Nepali plant-level data
 
 | Plant | Capacity (Mt clinker/yr) | Reported intensity (kg CO₂/t cement) | This methodology (Tier 2) | Δ (%) |
 |---|---|---|---|---|
-| Hetauda | 0.95 | 783 (plant survey 2024) | 783 | 0.0% |
-| Udayapur | 2.20 | ~770 (industry estimate) | 758 | -1.5% |
-| Hongshi Shivam | 4.00 | ~700 (industry estimate) | 715 | +2.1% |
+| PlantA | 0.95 | 783 (plant survey 2024) | 783 | 0.0% |
+| PlantB | 2.20 | ~770 (industry estimate) | 758 | -1.5% |
+| plantc | 4.00 | ~700 (industry estimate) | 715 | +2.1% |
 | Shree | 1.50 | n/a | 798 | n/a |
-| Ghorahi | 1.50 | n/a | 805 | n/a |
+| PlantD | 1.50 | n/a | 805 | n/a |
 | Araniko | 0.75 | n/a | 825 | n/a |
 
-The methodology matches the Hetauda and Udayapur plant-level data within 1.5% and is within 2% of the Hongshi Shivam estimate. This is strong validation.
+The methodology matches the PlantA and PlantB plant-level data within 1.5% and is within 2% of the plantc estimate. This is strong validation.
 
 ### 3.5 Monte Carlo uncertainty
 
-For Hetauda, the 5,000-sample Monte Carlo yields:
+For PlantA, the 5,000-sample Monte Carlo yields:
 - Mean: 861,093 tCO₂/yr
 - Median: 860,069 tCO₂/yr
 - Std: 25,820 tCO₂/yr
@@ -246,7 +246,7 @@ The combined pathway is dominated by biomass co-firing; WHR is small in absolute
 
 ### 4.1 GCCA-equivalence
 
-The methodology produces Hetauda Tier 2 intensity of 783 kg CO₂/t cement, which is +11.8% above the GCCA global benchmark of 700. We argue this is the correct relative position for a Nepali plant: above global mean, below regional BAT (Hongshi Shivam at ~700), and consistent with the GCCA "Getting the Numbers Right" 2022 dataset for South Asia (mean ~820, p25 ~740, p75 ~890 for the regional subset).
+The methodology produces PlantA Tier 2 intensity of 783 kg CO₂/t cement, which is +11.8% above the GCCA global benchmark of 700. We argue this is the correct relative position for a Nepali plant: above global mean, below regional BAT (plantc at ~700), and consistent with the GCCA "Getting the Numbers Right" 2022 dataset for South Asia (mean ~820, p25 ~740, p75 ~890 for the regional subset).
 
 The methodology can be tuned to GCCA-equivalent by applying the Nepali-specific adjustment factors documented in §2 (fuel mix, grid EF, T&D loss, kiln type, raw-mix chemistry). When applied to the GCCA India 2022 dataset (n = 137 plants), the methodology reproduces the GCCA-aggregated intensity within 4.7% (this validation is a future work item; see §5.5).
 
@@ -258,7 +258,7 @@ The methodology is compatible with two Verra-approved methodologies, depending o
 
 The methodology is also compatible with Gold Standard `TPDDTEC` (Technologies and Practices to Displace Decentralised Thermal Energy) for the brick-kiln component, but this is a separate publication (see §5.6).
 
-A combined application (`AMS-III.H` + `ACM0010`) for a Hetauda-class project is feasible and has been used for similar projects in India (e.g., the Ultratech VCS projects in 2017–2019). However, the application requires careful delineation of the two components in the PDD to avoid double counting.
+A combined application (`AMS-III.H` + `ACM0010`) for a PlantA-class project is feasible and has been used for similar projects in India (e.g., the Ultratech VCS projects in 2017–2019). However, the application requires careful delineation of the two components in the PDD to avoid double counting.
 
 ### 4.3 Monte Carlo UQ: novelties and limitations
 
@@ -271,7 +271,7 @@ Limitations:
 
 ### 4.4 Comparison with prior art
 
-| Reference | Region | Method | Result for Hetauda (kg CO₂/t cement) |
+| Reference | Region | Method | Result for PlantA (kg CO₂/t cement) |
 |---|---|---|---|
 | GCCA 2022 GTNR | Global | Plant survey | n/a (Nepali plant not in GCCA dataset) |
 | WBCSD CSI 2017 | Global | Plant survey + Tier 2 | ~810 (regional interpolation) |
@@ -283,7 +283,7 @@ Our result is in the middle of the range reported by the prior art, and within 5
 
 ### 4.5 Limitations
 
-1. **Scope 3 is not implemented.** The Hetauda case study reports Scope 3 as zero due to data unavailability. The methodology is set up to compute Scope 3 (Cat 1, 3, 4, 9, 10 of GHG Protocol Scope 3 Standard) but lacks the input data.
+1. **Scope 3 is not implemented.** The PlantA case study reports Scope 3 as zero due to data unavailability. The methodology is set up to compute Scope 3 (Cat 1, 3, 4, 9, 10 of GHG Protocol Scope 3 Standard) but lacks the input data.
 2. **No CEMS reconciliation.** The methodology uses a Tier 2 / Tier 3 calculation, not direct measurement. A Tier 4 CEMS-based reconciliation is a future work item.
 3. **No real-time forecasting.** The forecast for the 10-year crediting period is a linear extrapolation. A more rigorous approach (e.g., Sarimax-based forecasting of NEA grid EF) is a future work item.
 4. **Single LCA method (CML 2001).** The methodology does not include ReCiPe, USEtox, or other impact assessment methods.
@@ -294,11 +294,11 @@ Our result is in the middle of the range reported by the prior art, and within 5
 
 ### 5.1 Conclusions
 
-We have presented a Tier 2 + Tier 3 methodology for quantifying baseline GHG emissions and decarbonization pathways at preheater-precalciner dry-process cement plants in the Himalayan region. The methodology is GCCA-equivalent (±5% at the global mean), Verra / Gold Standard compatible, open-source, and reproducible. Applied to the Hetauda plant, the methodology yields 783 kg CO₂/t cement (Tier 2) and 789 kg CO₂/t cement (Tier 3), which is consistent with the published plant-level data (±2%) and with the regional mean (770–810 kg CO₂/t cement for South Asian preheater-precalciner plants). The decarbonization pathway (biomass co-firing + WHR) reduces emissions by ~70,000 tCO₂/yr gross and 56,000 tCO₂/yr net after leakage and buffer, equivalent to a 6.5–8.1% reduction in the plant's footprint.
+We have presented a Tier 2 + Tier 3 methodology for quantifying baseline GHG emissions and decarbonization pathways at preheater-precalciner dry-process cement plants in the Himalayan region. The methodology is GCCA-equivalent (±5% at the global mean), Verra / Gold Standard compatible, open-source, and reproducible. Applied to the PlantA plant, the methodology yields 783 kg CO₂/t cement (Tier 2) and 789 kg CO₂/t cement (Tier 3), which is consistent with the published plant-level data (±2%) and with the regional mean (770–810 kg CO₂/t cement for South Asian preheater-precalciner plants). The decarbonization pathway (biomass co-firing + WHR) reduces emissions by ~70,000 tCO₂/yr gross and 56,000 tCO₂/yr net after leakage and buffer, equivalent to a 6.5–8.1% reduction in the plant's footprint.
 
 ### 5.2 Future work
 
-1. **Tier 4 CEMS reconciliation** at Hetauda, in partnership with the plant EHS team.
+1. **Tier 4 CEMS reconciliation** at PlantA, in partnership with the plant EHS team.
 2. **Scope 3 implementation** (Cat 1, 3, 4, 9, 10) once plant-level transport data is collected.
 3. **Cross-validation against the GCCA India 2022 dataset** (n = 137 plants) to demonstrate GCCA-equivalence formally.
 4. **AR6 GWP migration** in alignment with ISO 14064-1:2025.
@@ -307,22 +307,22 @@ We have presented a Tier 2 + Tier 3 methodology for quantifying baseline GHG emi
 
 ### 5.3 Reproducibility
 
-All calculation code is open source (MIT license) at github.com/himalayancarbon/nepal-decarb-pro. The Hetauda case study is reproducible from the plant data in `data/nepal_plants.yaml` and the emission factors in `data/emission_factors.yaml`, with the platform version v1.0 (git SHA on Zenodo).
+All calculation code is open source (MIT license) at github.com/himalayancarbon/nepal-decarb-pro. The PlantA case study is reproducible from the plant data in `data/nepal_plants.yaml` and the emission factors in `data/emission_factors.yaml`, with the platform version v1.0 (git SHA on Zenodo).
 
 ### 5.4 Data availability
 
 - Plant-level data: `data/nepal_plants.yaml` (CC-BY-4.0)
 - Emission factors: `data/emission_factors.yaml` (CC-BY-4.0)
-- Hetauda pilot results: `reports/hetauda_pilot_results.json` (CC-BY-4.0)
+- PlantA pilot results: `reports/planta_pilot_results.json` (CC-BY-4.0)
 - Software: github.com/himalayancarbon/nepal-decarb-pro (MIT)
 
 ### 5.5 Acknowledgements
 
-We thank the Hetauda Cement Industries Ltd management and EHS team for the plant survey data, the Cement Industry Association of Nepal (CIN) for the industry-wide data, and Tribhuvan University for the academic collaboration. This work was supported by Himalayan Space Solutions internal R&D and by the Nepal Climate Innovation Center (NCIC) seed grant.
+We thank the PlantA Industries Ltd management and EHS team for the plant survey data, the Cement Industry Association of Nepal (CIN) for the industry-wide data, and Tribhuvan University for the academic collaboration. This work was supported by Himalayan Space Solutions internal R&D and by the Nepal Climate Innovation Center (NCIC) seed grant.
 
 ### 5.6 Conflict of interest
 
-The authors are employees of Himalayan Space Solutions, which is the project developer for the Hetauda VCS project described in this paper. The methodology has been independently reviewed by TÜV SÜD South Asia (validation engagement initiated 2026-08; results pending).
+The authors are employees of Himalayan Space Solutions, which is the project developer for the PlantA VCS project described in this paper. The methodology has been independently reviewed by TÜV SÜD South Asia (validation engagement initiated 2026-08; results pending).
 
 ---
 

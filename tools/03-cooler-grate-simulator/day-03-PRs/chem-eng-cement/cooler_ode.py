@@ -32,7 +32,7 @@ m_a,1 = v · rho · W · L_comp (the hydraulic slice for that compartment
 length), which is the *wrong* air stream for the secondary-air
 compartment — the real sec-air flow is set by kiln-burner stoichiometry
 and is independent of the compartment's hydraulic area. The v0.3.1
-value was ~28 kg/s for Hetauda; the correct value is m_a,sec = 26-38
+value was ~28 kg/s for PlantA; the correct value is m_a,sec = 26-38
 kg/s depending on the excess-air factor (Peray & Waddell 1986 §6.2:
 1.05-1.15× stoich; the v0.3.2 default is 1.10).
 
@@ -144,7 +144,7 @@ def air_density_kg_m3(altitude_m: float, T_ambient_c: float, RH: float = 0.5) ->
         rho = (p_d / (R_d T_k)) * (1 - 0.378 p_v / p)
 
     Validates: at sea level, 15 C, 0% RH -> 1.225 kg/m^3 (ISA std).
-               at 1400 m, 35 C, 90% RH -> ~0.95 kg/m^3 (Hetauda May design,
+               at 1400 m, 35 C, 90% RH -> ~0.95 kg/m^3 (PlantA May design,
                note: the actual value depends on the formula used; the
                v0.3.0 verification at 1400 m / 35 C / 90% RH gives
                approximately 0.89-0.95 kg/m^3).
@@ -296,20 +296,20 @@ class CoolerParameters(BaseModel):
         description=(
             "Excess-air factor for the secondary-air stream (dimensionless). "
             "Real kiln burners run at 1.05-1.15x stoich (Peray & Waddell 1986 "
-            "§6.2). The v0.3.2 default is 1.10 (mid-band). The Hetauda spec "
+            "§6.2). The v0.3.2 default is 1.10 (mid-band). The PlantA spec "
             "of ~38 kg/s corresponds to ~1.58x stoich (which is higher than "
             "the typical operating range; use 1.10 for engineering-honest "
             "results)."
         ),
     )
 
-    # ---- Site conditions (Ramesh's review §5 — Hetauda duty case) ----
+    # ---- Site conditions (Ramesh's review §5 — PlantA duty case) ----
     altitude_m: float = Field(1400.0, ge=0.0, le=4000.0,
-        description="Site altitude (m). Hetauda 1400 m, Udayapur ~300 m.")
+        description="Site altitude (m). PlantA 1400 m, PlantB ~300 m.")
     ambient_t_c: float = Field(35.0, ge=-20.0, le=55.0,
-        description="Ambient design-day T (deg C). Hetauda May design: 35 C.")
+        description="Ambient design-day T (deg C). PlantA May design: 35 C.")
     ambient_rh: float = Field(0.60, ge=0.0, le=1.0,
-        description="Ambient design-day relative humidity (0-1). Hetauda May design: 0.90.")
+        description="Ambient design-day relative humidity (0-1). PlantA May design: 0.90.")
 
     # ---- Simulation ----
     t_end_s: float = Field(1800.0, ge=60.0, le=7200.0,
@@ -372,7 +372,7 @@ class CoolerParameters(BaseModel):
         """Peray & Waddell (1986) §6.2: m_a,sec = coal_rate × coal_stoich × excess_factor.
 
         The 1.05-1.15× stoich range is the real operating range. The v0.3.2
-        default is 1.10 (mid-band). The Hetauda spec of ~38 kg/s requires
+        default is 1.10 (mid-band). The PlantA spec of ~38 kg/s requires
         ~1.58× stoich, which is above the normal range; the engineering-honest
         default is 1.10 giving ~26 kg/s for 3.6 kg/s coal × 6.67 stoich.
         """

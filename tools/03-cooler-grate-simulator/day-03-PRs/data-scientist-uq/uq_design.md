@@ -22,7 +22,7 @@ cooler model in Day 3 v0.3.1. It is the UQ companion to my v0.3.0 review
 The headline deliverable for Day 3 v0.3.1 is a **Sobol sensitivity
 analysis on the top-3 inputs**, with the 5 new tests from
 `reviews/hiro-day-03-review.md` §2 written *and confirmed to FAIL against
-v0.3.0*. The MC propagation and the Hetauda calibration are Day 4 / Day 15
+v0.3.0*. The MC propagation and the PlantA calibration are Day 4 / Day 15
 deliverables (digital twin) — the design here is what we will run, not
 what we will run today.
 
@@ -37,9 +37,9 @@ are not equally important. The 5 that matter for UQ are:
 
 | Input | Nominal | Range (ge..le) | Source of uncertainty | UQ tier |
 |---|---|---|---|---|
-| `clinker_inlet_t_c` | 1400 °C | [900, 1600] | Kiln burner T logs, pyrometer noise ±15 K | Tier 1 (Hetauda logs) |
-| `under_grate_air_velocity_m_s` | 1.5 m/s | [0.3, 5.0] | Filter loading, VFD setpoint, ±10% | Tier 1 (Hetauda VFD Hz) |
-| `grate_speed_m_min` | 12 m/min | [1.0, 30.0] | Operator VFD, ±10% | Tier 1 (Hetauda VFD Hz) |
+| `clinker_inlet_t_c` | 1400 °C | [900, 1600] | Kiln burner T logs, pyrometer noise ±15 K | Tier 1 (PlantA logs) |
+| `under_grate_air_velocity_m_s` | 1.5 m/s | [0.3, 5.0] | Filter loading, VFD setpoint, ±10% | Tier 1 (PlantA VFD Hz) |
+| `grate_speed_m_min` | 12 m/min | [1.0, 30.0] | Operator VFD, ±10% | Tier 1 (PlantA VFD Hz) |
 | `cp_clinker_kj_kg_k` | 1.05 kJ/kg·K | [0.8, 1.5] | Literature ±5% | Tier 2 (literature) |
 | `clinker_diameter_m` | 0.025 m | [0.005, 0.10] | Sieve data, ±20% | Tier 3 (no data) |
 
@@ -82,18 +82,18 @@ unreadable.
 ### 3.3 Top-3 inputs (decided in v0.3.0 review §3)
 
 1. **Clinker inlet T** — biggest absolute lever, kiln-coupled, and the
-   one we have least plant data on (Hetauda's kiln-burner T logs are
+   one we have least plant data on (PlantA's kiln-burner T logs are
    noisy). Cited: Aanya v0.3.0 review §3 (clinker inlet T sets the
    enthalpy budget).
 2. **Air velocity** — operator-controllable, large uncertainty band
    from filter loading, and the variable that exposes the cross-flow vs
    counter-flow modelling choice the team is debating today.
-3. **Grate speed** — operator-controllable, Hetauda logs it directly
+3. **Grate speed** — operator-controllable, PlantA logs it directly
    (VFD Hz), and the (grate × air) interaction is the physically
    interesting second-order term.
 
 Skip `cp` for Day 3 (cp is in the noise compared to plant variability)
-and `d` (Day 4 once we have sieve data from Hetauda).
+and `d` (Day 4 once we have sieve data from PlantA).
 
 ### 3.4 Expected total-order index magnitudes (prior)
 
@@ -148,7 +148,7 @@ gate.
 
 ### 5.1 Calibration target
 
-**Hetauda plant data, monthly `clinker_outlet_T` and `sec_air_T`.**
+**PlantA plant data, monthly `clinker_outlet_T` and `sec_air_T`.**
 
 Why these two variables (cite v0.3.0 review §4):
 - They are the only plant-measurable variables that are (a) directly
@@ -190,7 +190,7 @@ Per Hiro v0.3.0 review §5 (the 6-point validation discipline):
    is honest.
 5. **State validation, not just scalar validation.** Where plant data
    permit, plot predicted T(x) profile against any profile measurement
-   (rare; Hetauda likely has only single-point). If only single-point,
+   (rare; PlantA likely has only single-point). If only single-point,
    do a "model-up to plant measurement" comparison on a scatter plot
    with identity line, not a time-series overlay.
 6. **Document the sample size.** For the MC error bars: `1.96·σ/√N`.
@@ -221,7 +221,7 @@ across outputs of different scales.
 | Sobol N=1024 plan (this doc) | Written | `day-03-PRs/data-scientist-uq/uq_design.md` |
 | Sobol notebook execution | **Day 4** (need v0.3.1 model first) | TBD |
 | MC propagation | **Day 4 / Day 15** | TBD |
-| Hetauda calibration | **Day 4 / Day 15** (need plant data) | TBD |
+| PlantA calibration | **Day 4 / Day 15** (need plant data) | TBD |
 | Validation protocol on hold-out | **Day 4 / Day 15** | TBD |
 
 ---

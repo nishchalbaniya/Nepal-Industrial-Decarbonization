@@ -8,7 +8,7 @@ engineering schematic for process control. It shows:
     outlet, clinker outlet) as labelled arrows
   - The instrumentation (TI, PI, FT, FI tags) per ISA-5.1
 
-The Hetauda cooler P&ID includes:
+The PlantA cooler P&ID includes:
   - 1 cooler housing (outline only)
   - 4 process streams with arrows and labels:
     - Clinker inlet (from kiln, ~1400 C)
@@ -142,8 +142,8 @@ def render_svg(pid_data: dict, out_path: Path) -> str:
         '  </style>',
         # Title block
         '  <rect x="20" y="20" width="960" height="50" fill="white" stroke="#1c1c1c" stroke-width="1"/>',
-        '  <text x="40" y="50" class="title">Hetauda Cement Industries Ltd. &mdash; Clinker Cooler P&amp;ID</text>',
-        '  <text x="800" y="50" class="label-small">Drawing: HCIL-CLR-PID-001 Rev A</text>',
+        '  <text x="40" y="50" class="title">PlantA Industries Ltd. &mdash; Clinker Cooler P&amp;ID</text>',
+        '  <text x="800" y="50" class="label-small">Drawing: NIDC-CLR-PID-001 Rev A</text>',
         '  <text x="40" y="65" class="label-small">v0.5.0 calibrated (Day 5 ship, commit 2aa918c)</text>',
         '  <text x="800" y="65" class="label-small">Date: 2026-07-22</text>',
         # Grid
@@ -162,7 +162,7 @@ def render_svg(pid_data: dict, out_path: Path) -> str:
     svg.append(f'  <text x="{cx}" y="{cy-30}" class="label" text-anchor="middle">CLINKER COOLER</text>')
     svg.append(f'  <text x="{cx}" y="{cy-12}" class="label-small" text-anchor="middle">5 compartments, 32.8 m grate, 0.78 m bed</text>')
     svg.append(f'  <text x="{cx}" y="{cy+5}" class="label-small" text-anchor="middle">130 t/h clinker, 1400 m altitude</text>')
-    svg.append(f'  <text x="{cx}" y="{cy+22}" class="label-small" text-anchor="middle">Hetauda, Nepal</text>')
+    svg.append(f'  <text x="{cx}" y="{cy+22}" class="label-small" text-anchor="middle">PlantA, Nepal</text>')
 
     # Process streams (ISA-5.1 style: thick line + arrow + label)
     # 1. Clinker inlet (top-left, from kiln, 1400 C)
@@ -232,7 +232,7 @@ def render_svg(pid_data: dict, out_path: Path) -> str:
     svg.append('  <text x="710" y="605" class="label-small">Process stream (labelled arrow)</text>')
     svg.append('  <text x="710" y="620" class="label-small">Process equipment (housing)</text>')
     svg.append('  <text x="710" y="635" class="label-small">Instrument (ISA-5.1 circle)</text>')
-    svg.append('  <text x="710" y="660" class="label-small" font-style="italic">HCIL-CLR-PID-001 Rev A</text>')
+    svg.append('  <text x="710" y="660" class="label-small" font-style="italic">NIDC-CLR-PID-001 Rev A</text>')
     svg.append('  <text x="710" y="673" class="label-small" font-style="italic">Cite: ISA-5.1-2009, ISA-5.3-1983</text>')
 
     # Footer
@@ -264,7 +264,7 @@ def main():
         parts = build_pid_geometry()
         FreeCAD.ActiveDocument.recompute()
         # Export the formal P&ID as a FreeCAD document + as STEP
-        freecad_step = out_dir / "hetauda_cooler_pid.step"
+        freecad_step = out_dir / "planta_cooler_pid.step"
         try:
             import Import
             fused = FreeCAD.ActiveDocument.addObject("Part::MultiFuse", "PidAssembly")
@@ -278,16 +278,16 @@ def main():
 
     # 2. Render the browser-friendly SVG (no FreeCAD needed for this part)
     pid_data = {}
-    svg_content = render_svg(pid_data, out_dir / "hetauda_cooler_pid.svg")
-    (out_dir / "hetauda_cooler_pid.svg").write_text(svg_content, encoding="utf-8")
+    svg_content = render_svg(pid_data, out_dir / "planta_cooler_pid.svg")
+    (out_dir / "planta_cooler_pid.svg").write_text(svg_content, encoding="utf-8")
 
     # 3. Write the metadata JSON
     meta = {
         "model": "v0.9.0 cooler P&ID (Day 9 ship)",
-        "drawing_number": "HCIL-CLR-PID-001 Rev A",
+        "drawing_number": "NIDC-CLR-PID-001 Rev A",
         "calibration_source": "Day 5 v0.5.0 commit 2aa918c",
-        "free_geometry_step": "hetauda_cooler_pid.step",
-        "browser_svg": "hetauda_cooler_pid.svg",
+        "free_geometry_step": "planta_cooler_pid.step",
+        "browser_svg": "planta_cooler_pid.svg",
         "citations": [
             "ISA-5.1-2009 Instrumentation Symbols and Identification",
             "ISA-5.3-1983 Instrument Tag Conventions",
@@ -314,12 +314,12 @@ def main():
             {"id": "S6", "name": "Under-grate air in (from PA fan)", "T_c": 120, "m_kg_s": 159, "direction": "in"},
         ],
     }
-    (out_dir / "hetauda_cooler_pid.json").write_text(json.dumps(meta, indent=2, default=str))
+    (out_dir / "planta_cooler_pid.json").write_text(json.dumps(meta, indent=2, default=str))
 
-    print(f"wrote {out_dir}/hetauda_cooler_pid.svg")
-    print(f"wrote {out_dir}/hetauda_cooler_pid.json")
-    if (out_dir / "hetauda_cooler_pid.step").exists():
-        print(f"wrote {out_dir}/hetauda_cooler_pid.step")
+    print(f"wrote {out_dir}/planta_cooler_pid.svg")
+    print(f"wrote {out_dir}/planta_cooler_pid.json")
+    if (out_dir / "planta_cooler_pid.step").exists():
+        print(f"wrote {out_dir}/planta_cooler_pid.step")
     print()
     print(f"  drawing: {meta['drawing_number']}")
     print(f"  instrument tags: {len(meta['instrument_tags'])}")

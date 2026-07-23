@@ -86,7 +86,7 @@ Ask your admin for:
 
 ```bash
 nepal-decarb cement \
-    --name "Hetauda Cement Industries Ltd" \
+    --name "PlantA Industries Ltd" \
     --year 2026 --clinker-t 32000 --cement-t 37000 \
     --coal-t 4000 --petcoke-t 600 --elec-kwh 2900000
 ```

@@ -200,14 +200,14 @@ clinker_ratio:
 # Source: Industry reports, MOICS, plant websites, field visits
 # =========================================================================
 nepali_cement_plants:
-  hetauda_cement_industries_ltd:
-    location: "Hetauda, Makwanpur"
+  planta_cement_industries_ltd:
+    location: "PlantA, Makwanpur"
     capacity_t_yr: 1200000
     kiln_technology: "Dry process, 5-stage preheater with precalciner"
     coal_source: "Imported (India)"
     commissioned: 1983
-  udayapur_cement_industries_ltd:
-    location: "Udayapur"
+  plantb_cement_industries_ltd:
+    location: "PlantB"
     capacity_t_yr: 2200000
     kiln_technology: "Dry process, 5-stage preheater with precalciner"
     coal_source: "Imported (India)"
@@ -217,7 +217,7 @@ nepali_cement_plants:
     capacity_t_yr: 1500000
     kiln_technology: "Dry process, preheater"
     coal_source: "Imported (India)"
-  hongshi_shivam_cement:
+  plantc_cement:
     location: "Nawalparasi"
     capacity_t_yr: 4000000
     kiln_technology: "Dry process, 2 lines"
@@ -227,8 +227,8 @@ nepali_cement_plants:
     location: "Kathmandu valley (grinding)"
     capacity_t_yr: 800000
     kiln_technology: "Grinding unit, clinker import"
-  ghorahi_cement:
-    location: "Ghorahi, Dang"
+  plantd_cement:
+    location: "PlantD, Dang"
     capacity_t_yr: 1500000
     kiln_technology: "Dry process, preheater"
   araniko_cement:

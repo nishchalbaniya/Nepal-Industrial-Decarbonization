@@ -15,10 +15,10 @@ This file runs the v0.3.2 model against:
      computed as the *air-side total* (Q_air_total) over Q_clinker.
      (See DAY-03-NEGOTIATION.md Aanya v0.3.2 §-block for the
      interpretation; this is the spec ship gate.)
-  6. The 4 plant presets (Hetauda, Udayapur, Hongshi-Shivam, Ghorahi) all
+  6. The 4 plant presets (PlantA, PlantB, plantc, PlantD) all
      run and produce physically-consistent KPIs.
   7. The dry-air density at sea level, ISA std, matches 1.225 kg/m^3.
-  8. The Hetauda moist-air density at 1400 m, 35 C, 90% RH is in the
+  8. The PlantA moist-air density at 1400 m, 35 C, 90% RH is in the
      band 0.85-1.05 kg/m^3 (catches the v0.3.0 rho=0.6 fudge).
   9. The Achenbach citation is in the docstring of convective_htc_cooler
      (catches the v0.3.0 misleading-comment bug, Fix F).
@@ -81,7 +81,7 @@ try:
         achenbach_h_at_re1000,
     )
     from nepal_cooler_sim.plants import (
-        hetauda, udayapur, hongshi_shivam, ghorahi, PRESETS,
+        planta, plantb, plantc, plantd, PRESETS,
     )
 except ImportError:  # pragma: no cover — direct-invocation path
     from cooler_ode import (
@@ -108,7 +108,7 @@ except ImportError:  # pragma: no cover — direct-invocation path
         check_second_law_compartments,
         achenbach_h_at_re1000,
     )
-    from plants import hetauda, udayapur, hongshi_shivam, ghorahi, PRESETS
+    from plants import planta, plantb, plantc, plantd, PRESETS
 
 
 # ---------------------------------------------------------------------------
@@ -192,7 +192,7 @@ def test_achenbach_citation_in_docstring():
 
 
 # ---------------------------------------------------------------------------
-# 2. Air density: sea-level std AND Hetauda duty case
+# 2. Air density: sea-level std AND PlantA duty case
 # ---------------------------------------------------------------------------
 def test_air_density_sea_level_isa():
     """ISA std: 15 C, 0% RH, 0 m -> 1.225 kg/m^3 (within 1%)."""
@@ -203,15 +203,15 @@ def test_air_density_sea_level_isa():
     )
 
 
-def test_air_density_hetauda_duty_case():
-    """Hetauda May design day: 1400 m, 35 C, 90% RH -> ~0.95 kg/m^3
+def test_air_density_planta_duty_case():
+    """PlantA May design day: 1400 m, 35 C, 90% RH -> ~0.95 kg/m^3
     (vs. the v0.3.0 hard-coded 0.6, which was 1.58x wrong).
     ISA barometric at 1400 m: p = 858 mbar. Dry air 35 C: 0.97.
     Moist air at 90% RH: ~0.95 (slightly less than dry).
     """
     rho = air_density_kg_m3(altitude_m=1400.0, T_ambient_c=35.0, RH=0.90)
     assert 0.85 < rho < 1.05, (
-        f"Hetauda air density = {rho:.3f} kg/m^3 outside [0.85, 1.05]. "
+        f"PlantA air density = {rho:.3f} kg/m^3 outside [0.85, 1.05]. "
         f"v0.3.0 used 0.6; this PR uses ISA barometric + Magnus form. "
         f"Perry's 9e eq. 2-66. (Note: Ramesh's review §5.1 had a small "
         f"arithmetic error in the moist-air formula; the correct value "
@@ -227,7 +227,7 @@ def test_second_law_per_cell_default_preset():
     at 1304 C. With the compartment counter-flow + per-cell clamp,
     T_air(x) <= T_clinker(x) - 5 K everywhere along the bed.
     """
-    p = hetauda()
+    p = planta()
     state = solve_steady_state(p)
     diff = state.t_air_c - (state.t_clinker_c - 5.0)
     worst = float(diff.max()) if diff.size > 0 else 0.0
@@ -239,7 +239,7 @@ def test_second_law_per_cell_default_preset():
 
 def test_second_law_per_compartment_default_preset():
     """Mujumdar 2007 §3.1: T_a,out,i <= T_c,in,i - 5 K per compartment."""
-    p = hetauda()
+    p = planta()
     state = solve_steady_state(p)
     violations = check_second_law_compartments(state)
     assert violations == [], (
@@ -259,7 +259,7 @@ def test_first_law_closure_default_preset():
     McCabe-Smith-Harriott 7e Ch. 15 (energy balance closure on a 1-1
     counter-flow HX solved with effectiveness-NTU).
     """
-    p = hetauda()
+    p = planta()
     state = solve_steady_state(p)
     assert state.first_law_imbalance <= 0.02, (
         f"First-law imbalance = {state.first_law_imbalance:.4f} > 0.02. "
@@ -284,7 +284,7 @@ def test_air_total_over_heat_recovered_in_band():
     a self-consistent air-side / clinker-side closure, so the ratio is
     in [0.85, 1.15].
     """
-    p = hetauda()
+    p = planta()
     state = solve_steady_state(p)
     # Compute the air-side total in the same way the model does.
     Q_air_total_kw = 0.0
@@ -309,12 +309,12 @@ def test_compartment_1_air_mass_flow_set_by_combustion_demand():
     1.15x stoich combustion air for the kiln coal), NOT by the
     compartment's hydraulic area.
 
-    For Hetauda defaults (coal=3.6 kg/s, stoich=6.67, excess=1.10):
+    For PlantA defaults (coal=3.6 kg/s, stoich=6.67, excess=1.10):
         m_a,sec = 3.6 × 6.67 × 1.10 = 26.4 kg/s
     The v0.3.1 code gave m_a,1 = v · rho · W · L_comp ≈ 28 kg/s
     (the hydraulic area), which is the wrong air stream.
     """
-    p = hetauda()
+    p = planta()
     m_a_sec_expected = 3.6 * 6.67 * 1.10  # 26.4 kg/s
     m_a_sec_actual = p.compartment_air_mass_flow_kg_s(0)
     assert abs(m_a_sec_actual - m_a_sec_expected) < 0.5, (
@@ -334,7 +334,7 @@ def test_compartment_air_inventory_sums_to_total():
     m_a,total (continuity). Without this, the air-side and clinker-side
     energy balances cannot close.
     """
-    p = hetauda()
+    p = planta()
     m_a_total = p.total_under_grate_air_mass_flow_kg_s()
     m_a_sum = sum(p.compartment_air_mass_flow_kg_s(i)
                   for i in range(p.n_compartments))
@@ -443,7 +443,7 @@ def test_simulate_cooler_returns_correct_shape():
     The exact shape is (2 * n_comp * n_per_comp, 1) where
     n_per_comp = max(3, n_spatial_nodes // n_comp).
     """
-    p = hetauda()
+    p = planta()
     t, y, x = simulate_cooler(p)
     assert t.shape == (1,), f"t.shape = {t.shape}, expected (1,)"
     n_per_comp = max(3, p.n_spatial_nodes // p.n_compartments)
@@ -469,7 +469,7 @@ def test_simulate_cooler_returns_correct_shape():
 #    reset T_a every cell and took max(T_air) as sec air).
 # ---------------------------------------------------------------------------
 def test_more_air_lowers_secondary_air_T_in_realistic_band():
-    p_base = hetauda()
+    p_base = planta()
     s_low = solve_steady_state(p_base)
     # Bump *every* compartment's air velocity, not just the default.
     new_comps = []
@@ -542,7 +542,7 @@ def test_free_lime_proxy_in_opc_band():
     *only* meaningful when the clinker actually cools into the
     1300-900 C window; the test asserts the bound, not the value.
     """
-    p = hetauda()
+    p = planta()
     state = solve_steady_state(p)
     assert 0.0 <= state.free_lime_outlet_wt_pct <= 2.5, (
         f"Free-lime = {state.free_lime_outlet_wt_pct:.2f} % outside "
@@ -555,7 +555,7 @@ def test_free_lime_proxy_in_opc_band():
 # 11. Per-compartment air inventory is non-zero and physical
 # ---------------------------------------------------------------------------
 def test_compartment_inventory_physical():
-    p = hetauda()
+    p = planta()
     inv = build_compartment_inventory(p)
     assert len(inv) == p.n_compartments
     for c in inv:

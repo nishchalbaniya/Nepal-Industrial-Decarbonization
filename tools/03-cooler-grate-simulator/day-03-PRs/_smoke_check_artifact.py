@@ -110,7 +110,7 @@ def main() -> int:
 
     rc = c.main(["presets"])
     print(f"CLI presets -> rc={rc}")
-    rc = c.main(["diagnose", "--preset", "hetauda", "--human"])
+    rc = c.main(["diagnose", "--preset", "planta", "--human"])
     print(f"CLI diagnose --human -> rc={rc}")
 
     print("ALL PR SMOKE TESTS PASS")

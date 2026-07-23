@@ -37,10 +37,10 @@ from nepal_cooler_sim import (
 # ---------------------------------------------------------------------------
 # Plant preset parameters (4 Nepali plants). These are baseline configs
 # that Ramesh will refine with altitude / RH / duty-case fields.
-# Cite: Aanya's plants.py (to be built in v0.3.1); Ramesh §5.4 (Hetauda).
+# Cite: Aanya's plants.py (to be built in v0.3.1); Ramesh §5.4 (PlantA).
 # ---------------------------------------------------------------------------
 
-HETAUDA_PRESET = dict(
+PLANT_A_PRESET = dict(
     length_m=28.0,
     width_m=3.5,
     bed_depth_m=0.70,
@@ -57,18 +57,18 @@ HETAUDA_PRESET = dict(
     t_end_s=1800.0,
 )
 
-UDAYAPUR_PRESET = dict(HETAUDA_PRESET)  # UCIL is at ~300 m, similar duty
+PLANT_B_PRESET = dict(PLANT_A_PRESET)  # PlantB is at ~300 m, similar duty
 
 # 5000-tpd class, larger grate
-HONGSHI_SHIVAM_PRESET = dict(
-    HETAUDA_PRESET,
+PLANT_C_PRESET = dict(
+    PLANT_A_PRESET,
     length_m=32.0,
     width_m=3.8,
     grate_speed_m_min=14.0,
     clinker_throughput_t_h=208.0,
 )
 
-GHORAHI_PRESET = dict(HETAUDA_PRESET)
+PLANT_D_PRESET = dict(PLANT_A_PRESET)
 
 
 # ---------------------------------------------------------------------------
@@ -123,10 +123,10 @@ def test_default_preset_cooler_efficiency_in_band():
 @pytest.mark.parametrize(
     "preset_name,preset_kwargs",
     [
-        ("hetauda", HETAUDA_PRESET),
-        ("udayapur", UDAYAPUR_PRESET),
-        ("hongshi_shivam", HONGSHI_SHIVAM_PRESET),
-        ("ghorahi", GHORAHI_PRESET),
+        ("planta", PLANT_A_PRESET),
+        ("plantb", PLANT_B_PRESET),
+        ("plantc", PLANT_C_PRESET),
+        ("plantd", PLANT_D_PRESET),
     ],
 )
 def test_preset_secondary_air_in_band(preset_name, preset_kwargs):
@@ -142,10 +142,10 @@ def test_preset_secondary_air_in_band(preset_name, preset_kwargs):
 @pytest.mark.parametrize(
     "preset_name,preset_kwargs",
     [
-        ("hetauda", HETAUDA_PRESET),
-        ("udayapur", UDAYAPUR_PRESET),
-        ("hongshi_shivam", HONGSHI_SHIVAM_PRESET),
-        ("ghorahi", GHORAHI_PRESET),
+        ("planta", PLANT_A_PRESET),
+        ("plantb", PLANT_B_PRESET),
+        ("plantc", PLANT_C_PRESET),
+        ("plantd", PLANT_D_PRESET),
     ],
 )
 def test_preset_clinker_outlet_in_band(preset_name, preset_kwargs):
@@ -160,10 +160,10 @@ def test_preset_clinker_outlet_in_band(preset_name, preset_kwargs):
 @pytest.mark.parametrize(
     "preset_name,preset_kwargs",
     [
-        ("hetauda", HETAUDA_PRESET),
-        ("udayapur", UDAYAPUR_PRESET),
-        ("hongshi_shivam", HONGSHI_SHIVAM_PRESET),
-        ("ghorahi", GHORAHI_PRESET),
+        ("planta", PLANT_A_PRESET),
+        ("plantb", PLANT_B_PRESET),
+        ("plantc", PLANT_C_PRESET),
+        ("plantd", PLANT_D_PRESET),
     ],
 )
 def test_preset_heat_in_kw_finite_and_positive(preset_name, preset_kwargs):
@@ -179,7 +179,7 @@ def test_preset_heat_in_kw_finite_and_positive(preset_name, preset_kwargs):
     # And it must be in a plausible engineering range:
     # For 130 t/h at 1400 C inlet, 30 C ref, cp=1.05 kJ/kg/K:
     #   Q_in = (130/3.6) * 1.05 * (1400-30) = 36.1 * 1.05 * 1370 = 51,946 kW
-    # For 208 t/h (Hongshi-Shivam 5000-tpd class):
+    # For 208 t/h (plantc 5000-tpd class):
     #   Q_in = (208/3.6) * 1.05 * 1370 = 83,113 kW
     # Cite: heat balance, first law.
     if "hongshi" in preset_name:
@@ -192,11 +192,11 @@ def test_preset_heat_in_kw_finite_and_positive(preset_name, preset_kwargs):
 # Per-preset fragility: tighter bands for the v0.3.0 5790 C bug
 # ---------------------------------------------------------------------------
 
-def test_hetauda_secondary_air_does_not_exceed_1100c():
-    """Hard ceiling at 1100 C for Hetauda.
+def test_planta_secondary_air_does_not_exceed_1100c():
+    """Hard ceiling at 1100 C for PlantA.
     v0.3.0 result: 5790.6 C — REJECTS. Cite: Peray & Waddell §6.4.
     """
-    p = CoolerParameters(**HETAUDA_PRESET)
+    p = CoolerParameters(**PLANT_A_PRESET)
     state = run_to_steady_state(p, max_t_s=1800.0)
     assert state.secondary_air_outlet_c <= 1100.0, (
         f"secondary_air_outlet_c = {state.secondary_air_outlet_c:.1f} C "

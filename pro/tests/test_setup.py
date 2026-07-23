@@ -53,7 +53,7 @@ class SetupTests(unittest.TestCase):
         # they exist (we don't tear them down, so this is best-effort).
         real_desktop = Path(os.path.expanduser("~")) / "Desktop" / "NepalDecarb"
         self.assertTrue((real_desktop / "Start NepalDecarb Dashboard.vbs").exists())
-        self.assertTrue((real_desktop / "Run Demo (Hetauda).bat").exists())
+        self.assertTrue((real_desktop / "Run Demo (PlantA).bat").exists())
         self.assertTrue((real_desktop / "Uninstall NepalDecarb.bat").exists())
         self.assertTrue((real_desktop / "nepal-decarb.bat").exists())
         self.assertTrue((real_desktop / "nepal-decarb.ps1").exists())

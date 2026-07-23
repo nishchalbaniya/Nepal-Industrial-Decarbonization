@@ -5,11 +5,11 @@ Usage examples:
 
     nepal-kiln-sim plants --list
     nepal-kiln-sim fuels --list
-    nepal-kiln-sim run --plant hetauda --fuel coal_bituminous_NP --out ./out
-    nepal-kiln-sim sensitivity --plant hetauda --factor fuel_rate_t_h --values 8,10,12,14
-    nepal-kiln-sim calibrate --plant hetauda --sec 3850 --co2-intensity 880
-    nepal-kiln-sim export-matlab --plant hetauda --out ./matlab
-    nepal-kiln-sim export-octave --plant hetauda --out ./matlab
+    nepal-kiln-sim run --plant planta --fuel coal_bituminous_NP --out ./out
+    nepal-kiln-sim sensitivity --plant planta --factor fuel_rate_t_h --values 8,10,12,14
+    nepal-kiln-sim calibrate --plant planta --sec 3850 --co2-intensity 880
+    nepal-kiln-sim export-matlab --plant planta --out ./matlab
+    nepal-kiln-sim export-octave --plant planta --out ./matlab
 """
 from __future__ import annotations
 

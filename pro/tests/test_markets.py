@@ -8,7 +8,7 @@ from nepal_decarb_pro.markets.tokenization import build_token_metadata, generate
 
 def test_verra_pdd():
     pdd = generate_verra_pdd(
-        project_name="Hetauda Decarb",
+        project_name="PlantA Decarb",
         project_type="cement",
         baseline_annual_tco2=861_000,
         project_annual_tco2=791_000,
@@ -51,7 +51,7 @@ def test_revenue_scenarios():
 
 def test_token_metadata():
     md = build_token_metadata(
-        project_name="Hetauda Decarb",
+        project_name="PlantA Decarb",
         vintage_year=2024,
         methodology="VM0009",
         registry="Verra",

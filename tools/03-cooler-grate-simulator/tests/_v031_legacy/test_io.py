@@ -59,13 +59,13 @@ def test_cli_presets_listed():
 
 def test_cli_run_preset():
     parser = build_parser()
-    args = parser.parse_args(["run", "--preset", "udayapur"])
+    args = parser.parse_args(["run", "--preset", "plantb"])
     rc = args.func(args)
     assert rc == 0
 
 
 def test_cli_coupled():
     parser = build_parser()
-    args = parser.parse_args(["coupled", "--preset", "hetauda_small"])
+    args = parser.parse_args(["coupled", "--preset", "planta_small"])
     rc = args.func(args)
     assert rc == 0

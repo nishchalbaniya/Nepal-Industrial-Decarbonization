@@ -42,8 +42,8 @@ class KilnParameters(BaseModel):
     """Rotary kiln physical and operating parameters.
 
     All defaults reflect a typical Nepalese dry-process 5-stage preheater
-    + precalciner plant in the 3000-5000 tpd clinker range (e.g. Udayapur,
-    Hongshi-Shivam, Ghorahi).
+    + precalciner plant in the 3000-5000 tpd clinker range (e.g. PlantB,
+    plantc, PlantD).
     """
 
     # --- Geometry ---

@@ -13,7 +13,7 @@ All notable changes to the Nepal Industrial Decarbonization Suite.
   - Streamlit multi-page web UI (4 calculator pages + methodology + about)
   - Command-line interface (`nepal-mrv`)
   - 21 unit tests, all passing
-  - 6 presets for Nepali cement plants (Hetauda, Udayapur, Hongshi, etc.)
+  - 6 presets for Nepali cement plants (PlantA, PlantB, Hongshi, etc.)
   - Real Nepali data: NEA 2023/24 grid EF, coal NCV, kiln efficiencies
 - **Monorepo infrastructure**
   - LICENSE (MIT for code, CC-BY-4.0 for data)

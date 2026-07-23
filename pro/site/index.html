@@ -211,9 +211,9 @@ footer { margin-top: 32px; padding: 16px 0; border-top: 1px solid var(--border);
 
 <h2>🏭 Process flows & CAD (auto-generated)</h2>
 <div class="imgs">
-  <div><img class="full" src="hetauda_pfd.png"><div class="img-cap">Cement PFD — Hetauda (5-stage preheater, precalciner, grate cooler)</div></div>
+  <div><img class="full" src="planta_pfd.png"><div class="img-cap">Cement PFD — PlantA (5-stage preheater, precalciner, grate cooler)</div></div>
   <div><img class="full" src="bhairahahwa_pfd.png"><div class="img-cap">Brick PFD — Bhairahawa (clamp kiln)</div></div>
-  <div><img class="full" src="hetauda_pid.png"><div class="img-cap">P&ID — ISA-style instrumentation</div></div>
+  <div><img class="full" src="planta_pid.png"><div class="img-cap">P&ID — ISA-style instrumentation</div></div>
 </div>
 
 <h2>📊 Standards compliance (all 11 passing)</h2>
@@ -293,8 +293,8 @@ async function loadAll() {
     show("r-cad", cad);
 
     // KPI cards
-    document.getElementById("k-tco2").textContent = (pilot.cement_hetauda.tier2_tco2_yr/1000).toFixed(0) + "k tCO₂/yr";
-    document.getElementById("k-int").textContent = pilot.cement_hetauda.intensity_kg_per_t + " kg CO₂/t";
+    document.getElementById("k-tco2").textContent = (pilot.cement_planta.tier2_tco2_yr/1000).toFixed(0) + "k tCO₂/yr";
+    document.getElementById("k-int").textContent = pilot.cement_planta.intensity_kg_per_t + " kg CO₂/t";
     document.getElementById("k-mc").textContent = "±" + (pilot.monte_carlo.std/1000).toFixed(0) + "k";
     document.getElementById("k-verra").textContent = pilot.verra_credits_yr.toLocaleString();
     document.getElementById("k-npv").textContent = "NPV $" + (pilot.npv_eu_ets_65/1e6).toFixed(1) + "M @ EU ETS";

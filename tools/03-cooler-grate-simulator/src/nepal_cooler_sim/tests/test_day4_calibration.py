@@ -5,7 +5,7 @@ monotonicity tests miss":
 
 1. test_optimizer_converges_on_synthetic:
    The L-BFGS-B optimizer converges in <100 function evals on
-   the synthetic Hetauda target.
+   the synthetic PlantA target.
 2. test_calibration_reduces_loss:
    The posterior loss is strictly less than the prior loss.
 3. test_posterior_within_parameter_bounds:
@@ -51,7 +51,7 @@ from nepal_cooler_sim.cooler_ode import (
 
 HERE = Path(__file__).parent
 PROJECT_ROOT = HERE.parent.parent.parent  # tests/ -> nepal_cooler_sim/ -> src/ -> 03-cooler-grate-simulator/
-SYNTHETIC_DATA = PROJECT_ROOT / "day-04-PRs" / "data" / "synthetic_hetauda_shift_4h.csv"
+SYNTHETIC_DATA = PROJECT_ROOT / "day-04-PRs" / "data" / "synthetic_planta_shift_4h.csv"
 
 
 # ---------------------------------------------------------------------------

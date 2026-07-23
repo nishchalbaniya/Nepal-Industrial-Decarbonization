@@ -46,20 +46,20 @@ pip install -e .
 nepal-kiln-sim plants --list
 nepal-kiln-sim fuels --list
 
-# CLI: run a Hetauda simulation with 30% rice husk substitution
-nepal-kiln-sim run --plant hetauda --out ./out
+# CLI: run a PlantA simulation with 30% rice husk substitution
+nepal-kiln-sim run --plant planta --out ./out
 
 # Streamlit UI
 streamlit run app/Home.py
 
 # Sensitivity sweep
-nepal-kiln-sim sensitivity --plant hetauda --factor fuel_rate_t_h --values 8,10,12,14
+nepal-kiln-sim sensitivity --plant planta --factor fuel_rate_t_h --values 8,10,12,14
 
 # Calibrate to plant data
-nepal-kiln-sim calibrate --plant hetauda --sec 3850 --co2-intensity 880
+nepal-kiln-sim calibrate --plant planta --sec 3850 --co2-intensity 880
 
 # Export MATLAB / Octave scripts for cross-language validation
-nepal-kiln-sim export --plant udayapur --format both --out ./matlab_export
+nepal-kiln-sim export --plant plantb --format both --out ./matlab_export
 ```
 
 ---
@@ -72,8 +72,8 @@ from nepal_kiln_sim import (
     PLANT_PRESETS, get_fuel, compute_blend_ef, compute_flame_temperature,
 )
 
-# Use the Hetauda preset
-p = PLANT_PRESETS["hetauda"].parameters
+# Use the PlantA preset
+p = PLANT_PRESETS["planta"].parameters
 
 # Override the fuel and run
 p = p.model_copy(update={"fuel_type": "biomass_rice_husk", "fuel_rate_t_h": 14.0})
@@ -97,10 +97,10 @@ print(f"Natural gas flame T: {t_flame:.0f} K")  # ~2300 K
 
 | Key | Plant | Capacity (t/yr) | SEC (MJ/t) |
 |---|---|---|---|
-| `hetauda` | HCIL Hetauda | 1,200,000 | ~3850 |
-| `udayapur` | UCIL Udayapur | 2,200,000 | ~3700 |
-| `hongshi_shivam` | Hongshi-Shivam (Nawalparasi) | 4,000,000 | ~3200 |
-| `ghorahi` | Ghorahi Cement (Dang) | 1,500,000 | ~3600 |
+| `planta` | NIDC PlantA | 1,200,000 | ~3850 |
+| `plantb` | UCIL PlantB | 2,200,000 | ~3700 |
+| `plantc` | plantc (Nawalparasi) | 4,000,000 | ~3200 |
+| `plantd` | PlantD (Dang) | 1,500,000 | ~3600 |
 | `reference_5000tpd` | Chinese dry-process BAT | 5,000,000 | ~3200 |
 | `legacy_wet_1000tpd` | Wet process worst-quintile | 1,000,000 | ~5500 |
 
@@ -162,7 +162,7 @@ port; we provide templates and the driver. Used for:
 - Boateng, A.A. (2008). *Rotary Kilns: Transport Phenomena and Transport Processes.*
 - Mujumdar & Ranade (2006). Simulation of rotary cement kilns. *Ind. Eng. Chem. Res.* 45(9).
 - Nepali plant annual reports 2022/23
-- Field surveys 2024 (Hetauda, Udayapur, Hongshi-Shivam)
+- Field surveys 2024 (PlantA, PlantB, plantc)
 
 ---
 

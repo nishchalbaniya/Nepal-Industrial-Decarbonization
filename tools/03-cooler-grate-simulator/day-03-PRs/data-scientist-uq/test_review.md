@@ -239,7 +239,7 @@ specifies:
   `grate_speed_m_min`.
 - Use `numpy.Generator` (`np.random.default_rng()`) for reproducibility,
   not `np.random.seed` (legacy, NEP 19 deprecates new uses).
-- Hetauda calibration target: monthly `clinker_outlet_T` (RMSE ≤ 15 K)
+- PlantA calibration target: monthly `clinker_outlet_T` (RMSE ≤ 15 K)
   and `sec_air_T` (RMSE ≤ 20 K).
 - Train/test split by time (months 1-9 train, 10-12 test). Cite: EPA
   2009 + Roberts 2017.

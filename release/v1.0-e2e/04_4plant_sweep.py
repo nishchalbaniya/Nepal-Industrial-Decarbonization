@@ -16,18 +16,18 @@ for p in (str(_REPO / "pro" / "src"),
 import nepal_cooler_sim
 import nepal_kiln_sim
 
-PLANTS = ["hetauda", "udayapur", "hongshi-shivam", "ghorahi"]
+PLANTS = ["planta", "plantb", "plantc", "plantd"]
 COOLER_PRESETS = {
-    "hetauda":       nepal_cooler_sim.hetauda,
-    "udayapur":      nepal_cooler_sim.udayapur,
-    "hongshi-shivam": nepal_cooler_sim.hongshi_shivam,
-    "ghorahi":       nepal_cooler_sim.ghorahi,
+    "planta":       nepal_cooler_sim.planta,
+    "plantb":      nepal_cooler_sim.plantb,
+    "plantc": nepal_cooler_sim.plantc,
+    "plantd":       nepal_cooler_sim.plantd,
 }
 KILN_PRESETS = {
-    "hetauda":       "hetauda",
-    "udayapur":      "udayapur",
-    "hongshi-shivam": "hongshi_shivam",
-    "ghorahi":       "ghorahi",
+    "planta":       "planta",
+    "plantb":      "plantb",
+    "plantc": "plantc",
+    "plantd":       "plantd",
 }
 
 # ship-gate bands
@@ -126,7 +126,7 @@ results["notes"] = {
     "cbam_indirect": "0.04 t CO2e/t clinker (electricity at 2023 Nepal grid factor ~0.02 t/MWh)",
     "cbam_2026+": "Country-specific values with 10/20/30% mark-up (Implementing Reg 2025/2621)",
     "sec_baseline": "3269 MJ/t per Cement Sustainability Initiative 2018 (Getting the Numbers Right)",
-    "ship_gate_failing_bands_honest": "3/6 bands fail on default-preset v0.5.0 Hetauda model (tertiary, exhaust, clinker). Unblocked with real plant data or v0.6.0 model changes.",
+    "ship_gate_failing_bands_honest": "3/6 bands fail on default-preset v0.5.0 PlantA model (tertiary, exhaust, clinker). Unblocked with real plant data or v0.6.0 model changes.",
 }
 
 out_path = _HERE / "json" / "04_4plant_sweep.json"

@@ -40,7 +40,7 @@ We use a structured rubric across **5 axes**:
 ### 1.1 IPCC 2006 Guidelines — Tier 2 & Tier 3
 **Coverage:** ✅ Tier 2 (mass-balance) and Tier 3 (kinetics, raw-mix TOC, pre-calciner, kiln-type heat demand, NOx adjustment)
 **Source module:** `core/cement.py`
-**Test coverage:** `tests/test_core.py::test_cement_tier2_hetauda`, `test_cement_tier3`
+**Test coverage:** `tests/test_core.py::test_cement_tier2_planta`, `test_cement_tier3`
 **Rating: 10/10**
 
 ### 1.2 IPCC 2019 Refinement
@@ -57,7 +57,7 @@ We use a structured rubric across **5 axes**:
 **Coverage:** ✅ All 20 criteria checkable
 **Source module:** `standards/iso_14064.py::check_iso_14064_part1`
 **Test:** `tests/test_standards.py::test_iso_14064_1`
-**Live score for Hetauda: 100/100**
+**Live score for PlantA: 100/100**
 **Rating: 10/10**
 
 ### 1.5 ISO 14064-2:2019 — Project-level
@@ -81,7 +81,7 @@ We use a structured rubric across **5 axes**:
 ### 1.8 SBTi — Science Based Targets initiative
 **Coverage:** ✅ SDA pathway for cement and brick sectors, 1.5°C validation
 **Source module:** `standards/sbti.py`
-**Test:** `test_sbti_target` (Hetauda scenario: 56% reduction > 38% required = aligned)
+**Test:** `test_sbti_target` (PlantA scenario: 56% reduction > 38% required = aligned)
 **Rating: 10/10**
 
 ### 1.9 GCCA Sustainability Framework
@@ -105,7 +105,7 @@ We use a structured rubric across **5 axes**:
 ### 1.12 ISO 14040/14044 — Life Cycle Assessment
 **Coverage:** ✅ 6 impact categories (GWP100, AP, EP, POCP, ADP, HTP), cradle-to-gate
 **Source module:** `lca/`
-**Test:** `test_lca_cement_opc` (Hetauda: 784 kg CO2-eq/t)
+**Test:** `test_lca_cement_opc` (PlantA: 784 kg CO2-eq/t)
 **Rating: 9/10** (could add 15+ more impact categories with ReCiPe or USEtox full)
 
 ### 1.13 ISO 50001 — Energy Management (informational)
@@ -133,7 +133,7 @@ We use a structured rubric across **5 axes**:
 **Rating: 10/10**
 
 ### 2.3 Validation
-- ⚠️ Cross-validated against published Nepali plant data (Hetauda 783 kg/t, Udayapur ~770)
+- ⚠️ Cross-validated against published Nepali plant data (PlantA 783 kg/t, PlantB ~770)
 - ❌ Not yet validated against real plant CEMS data (would need partner access)
 **Rating: 7/10** (validation deferred to deployment)
 
@@ -198,7 +198,7 @@ We use a structured rubric across **5 axes**:
 ## 5. Domain Specificity — Nepal Adaptation (10/10)
 
 - ✅ NEA 2023/24 grid emission factor (0.0256 kg CO2/kWh, hydro-dominated)
-- ✅ 6 Nepali cement plant presets (Hetauda, Udayapur, Hongshi, Shree, Ghorahi, Araniko)
+- ✅ 6 Nepali cement plant presets (PlantA, PlantB, Hongshi, Shree, PlantD, Araniko)
 - ✅ 5 brick kiln types calibrated to Nepali field data
 - ✅ Nepali coal EF (Indian bituminous, Dhansiri)
 - ✅ Real Nepali biomass availability (rice husk, sawdust)

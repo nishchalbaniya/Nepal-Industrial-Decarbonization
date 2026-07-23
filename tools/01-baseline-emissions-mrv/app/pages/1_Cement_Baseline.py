@@ -30,21 +30,21 @@ with st.sidebar:
     st.header("Plant inputs")
     preset = st.selectbox(
         "Load preset",
-        ["Custom", "Hetauda Cement", "Udayapur Cement", "Hongshi (Nawalparasi)", "Ghorahi Cement"],
+        ["Custom", "PlantA", "PlantB", "Hongshi (Nawalparasi)", "plantd"],
     )
     presets = {
-        "Hetauda Cement": dict(
-            name="Hetauda Cement Industries Ltd",
-            location="Hetauda, Makwanpur",
+        "PlantA": dict(
+            name="PlantA Industries Ltd",
+            location="PlantA, Makwanpur",
             year=2024,
             clinker_t=950_000, cement_t=1_100_000,
             cao=0.66, mgo=0.018,
             coal_t=120_000, petcoke_t=18_000, diesel_t=400,
             elec_kwh=85_000_000,
         ),
-        "Udayapur Cement": dict(
-            name="Udayapur Cement Industries Ltd",
-            location="Udayapur",
+        "PlantB": dict(
+            name="PlantB Industries Ltd",
+            location="PlantB",
             year=2024,
             clinker_t=1_800_000, cement_t=2_100_000,
             cao=0.65, mgo=0.020,
@@ -52,7 +52,7 @@ with st.sidebar:
             elec_kwh=160_000_000,
         ),
         "Hongshi (Nawalparasi)": dict(
-            name="Hongshi Shivam Cement",
+            name="plantc Cement",
             location="Nawalparasi",
             year=2024,
             clinker_t=3_200_000, cement_t=3_800_000,
@@ -60,9 +60,9 @@ with st.sidebar:
             coal_t=420_000, petcoke_t=55_000, diesel_t=900,
             elec_kwh=290_000_000,
         ),
-        "Ghorahi Cement": dict(
-            name="Ghorahi Cement",
-            location="Ghorahi, Dang",
+        "plantd": dict(
+            name="plantd",
+            location="PlantD, Dang",
             year=2024,
             clinker_t=1_200_000, cement_t=1_400_000,
             cao=0.65, mgo=0.020,

@@ -1,7 +1,7 @@
 # NepalDecarb v1.0 — End-to-End Demo + Deploy & Sell Walkthrough
 
 **Date:** 2026-07-23
-**For:** Hetauda Cement Industries Ltd (HCIL) + investors + engineering reviewers
+**For:** PlantA Industries Ltd (NIDC) + investors + engineering reviewers
 **Built with:** FreeCAD 1.1, Python 3.12, NumPy, SciPy, Pydantic, FastAPI
 **License:** MIT (open source, free to use, modify, redistribute)
 
@@ -26,16 +26,16 @@ generated, and how to sell it.
 demo-e2e/
 ├── json/
 │   ├── 01_calibration.json            v0.5.0 cooler calibration result
-│   ├── 02_cooler_hetauda.json         v0.3.2 default Hetauda cooler KPIs
-│   ├── 03_kiln_hetauda.json           v0.2.0 Hetauda kiln KPIs
-│   ├── 04_4plant_sweep.json           Hetauda + Udayapur + Hongshi + Ghorahi
+│   ├── 02_cooler_planta.json         v0.3.2 default PlantA cooler KPIs
+│   ├── 03_kiln_planta.json           v0.2.0 PlantA kiln KPIs
+│   ├── 04_4plant_sweep.json           PlantA + PlantB + Hongshi + PlantD
 │   └── 08_verify_report.json          FreeCAD re-open verification
 ├── cad/
 │   ├── 05_cooler_v050_calibrated.step   22.7 KB, 11 parts, 36.3m x 3.5m x 2.8m
-│   └── 06_hetauda_kiln.step             66.5 KB, 17 parts, 65.8m x 7m x 60m
+│   └── 06_planta_kiln.step             66.5 KB, 17 parts, 65.8m x 7m x 60m
 ├── pid/
-│   ├── 07_hetauda_cooler_pid.svg        10.4 KB, ISA-5.1 P&ID
-│   └── 07_hetauda_cooler_pid.json       5.6 KB, instrument + stream metadata
+│   ├── 07_planta_cooler_pid.svg        10.4 KB, ISA-5.1 P&ID
+│   └── 07_planta_cooler_pid.json       5.6 KB, instrument + stream metadata
 ├── 04_4plant_sweep.py                  the sweep script
 ├── 05_export_cooler_step.py            cooler STEP export (via FreeCAD)
 ├── 06_export_kiln_step.py              kiln STEP export (via FreeCAD)
@@ -67,16 +67,16 @@ python -m nepal_decarb_pro.cli calibrate cooler --target synthetic --out ./json
 - RMSE: sec_air 10.2 K, clinker 0.7 K, exhaust 24.0 K
 - Posterior: 32.8 m grate, 0.78 m bed, 6 compartments
 
-### Step 2: Run cooler on Hetauda preset (2 seconds)
+### Step 2: Run cooler on PlantA preset (2 seconds)
 
 ```bash
-python -m nepal_decarb_pro.cli run cooler --plant hetauda --out ./json
+python -m nepal_decarb_pro.cli run cooler --plant planta --out ./json
 ```
 
-### Step 3: Run kiln on Hetauda preset (2 seconds)
+### Step 3: Run kiln on PlantA preset (2 seconds)
 
 ```bash
-python -m nepal_decarb_pro.cli run kiln --plant hetauda --out ./json
+python -m nepal_decarb_pro.cli run kiln --plant planta --out ./json
 ```
 
 ### Step 4: 4-plant sweep (5 seconds)
@@ -117,10 +117,10 @@ python demo-e2e/09_save_verify.py
 
 | Plant | t/h | Annual kt | CBAM kt CO2e/yr | Ship-gate |
 |-------|-----|-----------|------------------|-----------|
-| Hetauda (Himalayan) | 130 | 1,030 | 896 | 1/6 |
-| Udayapur (Himalayan) | 110 | 871 | 758 | 3/6 |
-| Hongshi-Shivam (CN) | 208 | 1,647 | 1,433 | 2/6 |
-| Ghorahi (Shivam) | 150 | 1,188 | 1,034 | 1/6 |
+| PlantA (Himalayan) | 130 | 1,030 | 896 | 1/6 |
+| PlantB (Himalayan) | 110 | 871 | 758 | 3/6 |
+| plantc (CN) | 208 | 1,647 | 1,433 | 2/6 |
+| PlantD (Shivam) | 150 | 1,188 | 1,034 | 1/6 |
 | **Total** | **598** | **4,736** | **4,120** | - |
 
 CBAM exposure at €80/t CO2 = **€330M / year** across just 4 plants.
@@ -204,7 +204,7 @@ Annual software license (if $200k/yr × 4 plants = $800k): **ROI = 35×**
 > capital changes."
 
 **Evidence:** `05_cooler_v050_calibrated.step` (open in
-FreeCAD to see the geometry), `07_hetauda_cooler_pid.svg`
+FreeCAD to see the geometry), `07_planta_cooler_pid.svg`
 (open in browser to see the controls)
 
 ### Pitch 3: "Show the auditor" (the engineering stack)
@@ -222,10 +222,10 @@ patch zip (`day-07-12-patches.zip`), all 102 tests in
 ## 6. HONEST DISCLOSURES (what's NOT done)
 
 1. **3 of 6 ship-gate bands fail** on the v0.5.0 calibrated
-   Hetauda model (tertiary 190°C, exhaust 149°C, clinker
+   PlantA model (tertiary 190°C, exhaust 149°C, clinker
    351°C). The model physics at 130 t/h can't deliver all
    3 simultaneously. Unblock needs:
-   - (a) real Hetauda plant data (CSV with 4h shifts), OR
+   - (a) real PlantA plant data (CSV with 4h shifts), OR
    - (b) v0.6.0 model changes (compartment subdivision or
      lower-throughput operation)
 
@@ -243,7 +243,7 @@ patch zip (`day-07-12-patches.zip`), all 102 tests in
 
 5. **No pilot commercial terms yet** — this is engineering
    readiness, not commercial readiness. Need:
-   - 90-day Hetauda pilot MoU (Rina/CCO to draft)
+   - 90-day PlantA pilot MoU (Rina/CCO to draft)
    - VMD0053 methodology deviation request (James to draft)
    - 50-plant platform ARR model (Priya to refine)
 
@@ -251,15 +251,15 @@ patch zip (`day-07-12-patches.zip`), all 102 tests in
 
 ## 7. NEXT STEPS (the "what now" slide)
 
-1. **Send Hetauda plant data** (4-hour shift CSV) →
+1. **Send PlantA plant data** (4-hour shift CSV) →
    I re-run calibration, see if bands unlock.
 2. **Open `05_cooler_v050_calibrated.step` in FreeCAD** →
    you see the exact geometry the calibration produced.
-3. **Open `07_hetauda_cooler_pid.svg` in a browser** →
+3. **Open `07_planta_cooler_pid.svg` in a browser** →
    you see the P&ID with all 8 instrument loops.
 4. **Double-click `Desktop\NepalDecarb Dashboard.lnk`** →
    you get the browser dashboard at localhost:8000.
-5. **Rina (CCO) drafts Hetauda MoU** → James drafts
+5. **Rina (CCO) drafts PlantA MoU** → James drafts
    VMD0053 letter → Priya refines ARR model.
 6. **Octave UAC click-through** → kiln cross-language
    check runs.
@@ -302,7 +302,7 @@ no support contract, no pilot MoU, no insurance, no formal
 accreditation, no ISO 9001 process. To sell this, you need
 the items in section 7 (steps 1-7).
 
-**Time-to-pilot-cash:** 90 days from Hetauda plant data
+**Time-to-pilot-cash:** 90 days from PlantA plant data
 drop + MoU signature. The engineering is done.
 
 ---

@@ -4,8 +4,8 @@
 **Audit date:** 2026-07-22
 **Auditor:** Senior Environmental Engineer (ISO 14064-1/2/3, Verra VCS, Gold Standard, TCFD, SBTi, GCCA, PCAF)
 **Subject:** `nepal_decarb_pro` v1.0 — 11 standards modules + Verra/GS PDD generators
-**Engagement context:** Hetauda Cement Industries Ltd is intended to enter Verra validation within Q4 2026.
-**Source of evidence:** `pro/nepal_decarb_pro/standards/*.py`, `pro/nepal_decarb_pro/markets/{verra,gold_standard}.py`, `pro/reports/hetauda_pilot_results.json`, `pro/nepal_decarb_pro/data/emission_factors.yaml`, `pro/nepal_decarb_pro/core/{cement,brick,factors,uncertainty}.py`, `docs/RATING_95_PLUS.md`.
+**Engagement context:** PlantA Industries Ltd is intended to enter Verra validation within Q4 2026.
+**Source of evidence:** `pro/nepal_decarb_pro/standards/*.py`, `pro/nepal_decarb_pro/markets/{verra,gold_standard}.py`, `pro/reports/planta_pilot_results.json`, `pro/nepal_decarb_pro/data/emission_factors.yaml`, `pro/nepal_decarb_pro/core/{cement,brick,factors,uncertainty}.py`, `docs/RATING_95_PLUS.md`.
 
 ---
 
@@ -13,7 +13,7 @@
 
 **Verdict: CONDITIONAL — Not VVB-ready as-shipped. High risk of validation rejection on a real Verra VCS submission.**
 
-The engineering is genuinely good for a Tier 2/3 inventory engine. The Tier 2 mass-balance, Tier 3 kinetics enhancement, Monte Carlo UQ, and the 5,000-sample Hetauda result (783 kg CO₂/t cement) are credible and roughly aligned with the published GCCA / literature range (770–810 kg/t for preheater-precalciner dry-process kilns in South Asia). That is the *good news*, and it is meaningful.
+The engineering is genuinely good for a Tier 2/3 inventory engine. The Tier 2 mass-balance, Tier 3 kinetics enhancement, Monte Carlo UQ, and the 5,000-sample PlantA result (783 kg CO₂/t cement) are credible and roughly aligned with the published GCCA / literature range (770–810 kg/t for preheater-precalciner dry-process kilns in South Asia). That is the *good news*, and it is meaningful.
 
 The **bad news** is that what the docs call "VCS-ready" is, from a VVB perspective, a **PDD skeleton with 22 boolean flags standing in for the entire ISO 14064 / Verra evidence trail**. Specifically:
 
@@ -42,7 +42,7 @@ The audit below is brutally honest on each axis. **C** = Coverage, **K** = Corre
 | 7 | **SBTi** | M | L | L | M | Pathway percentages (38.5% by 2030, 95% by 2050) are **not from the SBTi sector pathway** files. SBTi published Cement Pathway v1 (2023) and 1.5°C-aligned reductions must be derived from SDA. A 5% pa linear extrapolation is incorrect. Recommendation: replace with SBTi-published endpoint and re-derive. |
 | 8 | **GCCA** | H | H | M | H | Real calc, real decomposition. Benchmark is 700 kg/t cement and 3,300 MJ/t clinker — these are GCCA "Getting the Numbers Right" 2022 global averages, but they should be *labeled as global* not as "BAT." The "BAT" label invites pushback from a VVB expecting EU BREF 2013 BAT-AEL (which is 660–770 kg/t for dry preheater-precalciner). |
 | 9 | **PCAF** | H | H | M | H | Clean attribution logic (Revenue / EVIC / Physical), DQ 1–5 honored. Missing: explicit option to use *outstanding* debt vs *project finance* (PCAF Part A §2.2.3) and a clear note on PCAF 2024 updated Global Scorebook. |
-| 10 | **GHG Protocol** | M | M | M | M | Scope-completeness check is fine. Significance is fine. Missing: a real **base-year recalculation policy** document and a **Scope 3 category list** (1–15) with at least a screening for relevance. Today Scope 3 is hard-coded to zero in the Hetauda result (`e_scope3_tco2: 0.0`), which is a red flag. |
+| 10 | **GHG Protocol** | M | M | M | M | Scope-completeness check is fine. Significance is fine. Missing: a real **base-year recalculation policy** document and a **Scope 3 category list** (1–15) with at least a screening for relevance. Today Scope 3 is hard-coded to zero in the PlantA result (`e_scope3_tco2: 0.0`), which is a red flag. |
 | 11 | **Verra VCS** (PDD) | L | L | L | L | PDD is 18 Pydantic fields, mostly scalars. The `baseline_description` is a single string. `monitoring_plan` is one sentence. No §A project boundary diagram, no §B baseline alternative analysis, no §B common practice, no §C additionality assessment, no §C prior consideration, no §C regulatory surplus, no §D leakage per activity, no §F monitoring frequency table, no §F QA/QC, no §F sampling plan, no §F data archive policy, no §G stakeholder consultation. **`methodology: "VM0009 v2.0"` is fictional — not a real Verra methodology**. |
 
 **Verdict by axis:**
@@ -56,7 +56,7 @@ The pattern is clear: the **calculations are good; the evidence trail is not**. 
 
 ---
 
-## 3. Verra VCS Deep-Dive (Hetauda)
+## 3. Verra VCS Deep-Dive (PlantA)
 
 ### 3.1 Is the PDD complete enough for VM0009 v2.0?
 
@@ -86,17 +86,17 @@ The current `baseline_description` is one sentence: *"Baseline scenario: continu
 - A **documented selection of the most plausible baseline** citing the Verra Combined Tool and project-specific evidence.
 - A **baseline emissions calculation** with EF table, formula, and Monte Carlo UQ.
 
-For Hetauda specifically, I would propose:
+For PlantA specifically, I would propose:
 - **Baseline**: continue 100% coal/petcoke dry-process preheater-precalciner, 5-stage, current 950,000 t/yr clinker, 1,100,000 t/yr cement, 22.5% T&D, NEA combined margin 0.0256 kg CO₂/kWh, 783 kg CO₂/t cement × 1.1M t = 861,000 tCO₂/yr. **This is what the platform already produces and is defensible.**
 - **Project alternative**: add rice husk co-firing (20% energy basis) + WHR (22 GWh/yr) → 791,000 tCO₂/yr, 70,000 tCO₂/yr gross reduction, ~56,000 tCO₂/yr net after leakage and buffer.
 
 ### 3.3 Is the additionality demonstration solid?
 
-**No additionality demonstration exists in the platform.** A Verra-compliant additionality assessment for Hetauda would require, at minimum:
+**No additionality demonstration exists in the platform.** A Verra-compliant additionality assessment for PlantA would require, at minimum:
 
 - **Investment analysis** (mandatory for ACM-class): NPV of project with and without carbon revenue, IRR vs Cement Industry Association of Nepal (CIN) WACC of 12–15%. Show that the project is *not* financially attractive without carbon revenue (i.e., negative NPV at the hurdle rate).
-- **Barrier test** (if investment test is inconclusive): e.g., the biomass supply chain in the Hetauda district is not yet developed; the kiln-side infrastructure (biomass pre-drying, dosing system) requires capex the plant has not budgeted.
-- **Common-practice test**: Hetauda Cement is the only Nepali plant to install WHR + biomass co-firing to date. Cite the FNCCI / DCSI surveys.
+- **Barrier test** (if investment test is inconclusive): e.g., the biomass supply chain in the PlantA district is not yet developed; the kiln-side infrastructure (biomass pre-drying, dosing system) requires capex the plant has not budgeted.
+- **Common-practice test**: PlantA is the only Nepali plant to install WHR + biomass co-firing to date. Cite the FNCCI / DCSI surveys.
 - **Prior consideration**: the PDD must be published on the Verra pipeline *before* project implementation begins. We need a published "Pipeline" date and proof that the capex commitment was made after that date.
 
 The current PDD has *zero* of these. Add an `AdditionalityAssessment` Pydantic model with `investment_analysis_xlsx`, `barrier_test_narrative`, `common_practice_table`, `prior_consideration_evidence`, all referenced as `Path` attachments.
@@ -130,7 +130,7 @@ A Verra-acceptable Validation Report must contain:
 5. **Findings by PDD section** with a CAR (Corrective Action Request) / CL (Clarification) / FAR (Forward Action Request) tracker
 6. **Risk-based assessment** (likelihood × impact for each material misstatement)
 7. **Sampling plan** (if any)
-8. **Site-visit report** (Hetauda: 1–2 days minimum)
+8. **Site-visit report** (PlantA: 1–2 days minimum)
 9. **Materiality threshold** (typically 5% for VCS voluntary)
 10. **Conclusion and VVB opinion** (signed)
 11. **Appendices**: PDD, monitoring plan, additionality narrative, baseline alternative table, EF source table, calculation spreadsheet, stakeholder consultation log.
@@ -150,7 +150,7 @@ The platform should provide a `VRGenerator` that, given a `VerraPDD` + attachmen
 | 5 | **Audit trail not wired into calculations** | CRITICAL | `io/database.py`, all calculators | Mavis | 1 week — emit `AuditEntry(action="CALCULATE", details={input_hash, output_hash, code_version})` from every calc |
 | 6 | **ISO 14064-1 self-asserts 7/20 criteria as `True`** | HIGH | `standards/iso_14064.py` | Mavis | 3 days — replace with evidence-pointer booleans that fail closed |
 | 7 | **SBTi pathway percentages are not from SBTi files** | HIGH | `standards/sbti.py` | Mavis | 3 days — replace hard-coded 38.5% with SBTi-published 2030 endpoint (522 kg/t for cement, SDA method) |
-| 8 | **Scope 3 hard-coded to zero in Hetauda result** | HIGH | `core/cement.py`, `reports/` | Mavis + plant | 1 week — implement Cat 1, 3, 4, 9, 10 minimum; report explicitly when zero |
+| 8 | **Scope 3 hard-coded to zero in PlantA result** | HIGH | `core/cement.py`, `reports/` | Mavis + plant | 1 week — implement Cat 1, 3, 4, 9, 10 minimum; report explicitly when zero |
 | 9 | **TCFD scenarios use arbitrary multipliers, labeled as quantitative** | MEDIUM | `standards/tcfd.py` | Mavis | 2 days — add `qualitative=True` flag and a forward-looking scenario methodology note |
 | 10 | **Verra buffer pool contribution is a flat 15%** | MEDIUM | `markets/verra.py` | Mavis | 2 days — implement Verra AFOLU Non-Permanence Risk Tool (or a non-AFOLU equivalent for industry: 5–15% depending on reversal risk) |
 
@@ -162,7 +162,7 @@ Bonus (not in top 10 but high-impact): **GWP values are AR5 (100-year)**, not AR
 
 To establish credibility and pre-empt VVB questions, we should publish **two peer-reviewed methodology papers** before validation:
 
-1. **"A Tier 3 mass+energy balance for preheater-precalciner dry-process cement kilns in the Himalayan region, with application to Hetauda, Nepal"** — target *Journal of Cleaner Production* or *Applied Energy*. Co-author with a Nepali academic (Tribhuvan University, Kathmandu University) and a recognized cement-engineering academic (e.g., IIT Delhi Energy Group or ETH Zurich Particle Technology Lab). Establishes the Tier 3 methodology in peer-reviewed literature. Lead author: Mavis + external co-authors.
+1. **"A Tier 3 mass+energy balance for preheater-precalciner dry-process cement kilns in the Himalayan region, with application to PlantA, Nepal"** — target *Journal of Cleaner Production* or *Applied Energy*. Co-author with a Nepali academic (Tribhuvan University, Kathmandu University) and a recognized cement-engineering academic (e.g., IIT Delhi Energy Group or ETH Zurich Particle Technology Lab). Establishes the Tier 3 methodology in peer-reviewed literature. Lead author: Mavis + external co-authors.
 2. **"Comparative baseline additionality assessment for biomass co-firing and waste-heat recovery in a South Asian cement plant: a Verra VCS case study"** — target *Energy Policy* or *Climate Policy*. Documents the additionality methodology (investment analysis + barrier test + common practice). Establishes the NPV/IRR assumptions for the cement sector in Nepal. Lead author: senior methodologist + Mavis.
 
 These papers will take 4–6 months each. They are not blocking the first VVB submission but they are blocking *scale* — once we have 5+ projects, we need literature support to defend methodology choices.
@@ -184,7 +184,7 @@ These papers will take 4–6 months each. They are not blocking the first VVB su
 
 ---
 
-## 7. 90-Day Plan to Get Hetauda Through Full VVB Validation
+## 7. 90-Day Plan to Get PlantA Through Full VVB Validation
 
 ### Days 0–14: Foundations
 - Day 0: Engage TÜV SÜD South Asia. Sign NDA. Commission pre-validation gap analysis.
@@ -197,7 +197,7 @@ These papers will take 4–6 months each. They are not blocking the first VVB su
 - Day 22–28: Build `AdditionalityAssessment` module: investment analysis spreadsheet (NPV, IRR, sensitivity), barrier test narrative, common-practice table, prior-consideration evidence.
 - Day 29–35: Build `BaselineAlternatives` module: 3+ alternative emissions trajectories, documented assumptions (fuel prices, NEA grid EF, capacity utilization), justification for selected baseline.
 - Day 36–42: Build `MonitoringPlan` module: structured parameter table (parameter, source, frequency, responsible party, uncertainty), data archive (5 years post-issuance), QA/QC procedures (calibration schedule, sample retention, internal audit).
-- Day 43–45: Stakeholder consultation (1–2 days, in Hetauda district, with kiln workers, plant management, local government, civil society). Document minutes + signed attendance + photos.
+- Day 43–45: Stakeholder consultation (1–2 days, in PlantA district, with kiln workers, plant management, local government, civil society). Document minutes + signed attendance + photos.
 
 ### Days 46–60: VVB Pre-Validation
 - Day 46–50: Submit PDD v2 to TÜV SÜD for pre-validation review. Expect 3–5 rounds of CARs/CLs.
@@ -205,11 +205,11 @@ These papers will take 4–6 months each. They are not blocking the first VVB su
 
 ### Days 61–75: Internal Verification (ISO 14064-3 Stage 1)
 - Day 61–65: Internal audit of the GHG information system. Document the data flow from MQTT sensor → SQLite → calculation → PDD.
-- Day 66–70: Materiality assessment. For Hetauda, set materiality at 5% of gross emission reductions (i.e., 3,500 tCO₂/yr).
+- Day 66–70: Materiality assessment. For PlantA, set materiality at 5% of gross emission reductions (i.e., 3,500 tCO₂/yr).
 - Day 71–75: Risk-based assessment. Likelihood × impact matrix for each material misstatement source.
 
 ### Days 76–90: VVB Validation & PDD Publication
-- Day 76–82: TÜV SÜD site visit (Hetauda, 2 days minimum). Document in `SiteVisitReport.pdf`.
+- Day 76–82: TÜV SÜD site visit (PlantA, 2 days minimum). Document in `SiteVisitReport.pdf`.
 - Day 83–88: TÜV SÜD issues draft Validation Report. We respond.
 - Day 89: TÜV SÜD issues final Validation Report.
 - Day 90: PDD + VR + supporting docs submitted to Verra pipeline. Public comment (30 days) begins.
@@ -240,7 +240,7 @@ This is **aggressive but feasible** if we start today and accept a $40–60k spe
 The validation pack is a single ZIP file (~50–200 MB) sent to the VVB. Required contents:
 
 - [ ] **Cover letter** (signed by HCN project director)
-- [ ] **PDD v2** (`PDD_Hetauda_Decarb_v2.0.pdf` + `.docx` for review markup)
+- [ ] **PDD v2** (`PDD_PlantA_Decarb_v2.0.pdf` + `.docx` for review markup)
 - [ ] **Validation Report draft** (we draft, VVB edits)
 - [ ] **Monitoring Plan v2** (parameter table, frequencies, QA/QC, archive policy)
 - [ ] **Additionality Assessment** (investment analysis `.xlsx`, barrier test narrative `.pdf`, common-practice table `.pdf`, prior-consideration evidence)

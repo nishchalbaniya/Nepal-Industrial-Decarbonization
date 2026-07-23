@@ -471,11 +471,11 @@ if __name__ == "__main__":
 
     # Simulate three calculations
     entry1 = log.append(
-        tenant_id="hetauda_cement",
+        tenant_id="planta_cement",
         user_id="mavis",
         action="CALCULATE",
         entity_type="cement_calculation_tier2",
-        entity_id="hetauda_2024_baseline",
+        entity_id="planta_2024_baseline",
         details={"note": "First calculation"},
         input_obj={"clinker_t": 950_000, "cement_t": 1_100_000, "coal_t": 120_000},
         output_obj={"e_total_tco2": 861_025.36, "intensity_kgco2_per_t_cement": 782.75},
@@ -483,11 +483,11 @@ if __name__ == "__main__":
     print(f"Entry 1: {entry1.entry_id} hash={entry1.entry_hash[:16]}...")
 
     entry2 = log.append(
-        tenant_id="hetauda_cement",
+        tenant_id="planta_cement",
         user_id="mavis",
         action="CALCULATE",
         entity_type="monte_carlo_cement",
-        entity_id="hetauda_2024_baseline_5k_samples",
+        entity_id="planta_2024_baseline_5k_samples",
         details={"note": "Second calculation"},
         input_obj={"n_samples": 5000, "seed": 42},
         output_obj={"mean": 861092.81, "ci_95_low": 813156.19, "ci_95_high": 914210.27},
@@ -496,29 +496,29 @@ if __name__ == "__main__":
     assert entry2.prev_hash == entry1.entry_hash, "Chain linkage broken!"
 
     entry3 = log.append(
-        tenant_id="hetauda_cement",
+        tenant_id="planta_cement",
         user_id="mavis",
         action="CALCULATE",
         entity_type="verra_pdd",
-        entity_id="hetauda_2024_pdd",
+        entity_id="planta_2024_pdd",
         details={"note": "Third calculation"},
-        input_obj={"project_name": "Hetauda Decarb"},
+        input_obj={"project_name": "PlantA Decarb"},
         output_obj={"net_emission_reductions_annual_tco2": 56407.40},
     )
     print(f"Entry 3: {entry3.entry_id} prev_hash={entry3.prev_hash[:16]}... hash={entry3.entry_hash[:16]}...")
     assert entry3.prev_hash == entry2.entry_hash, "Chain linkage broken!"
 
     # Verify the chain
-    verification = log.verify_chain(tenant_id="hetauda_cement")
+    verification = log.verify_chain(tenant_id="planta_cement")
     print(f"\nChain verification: valid={verification['valid']}, n_entries={verification['n_entries']}")
     assert verification["valid"], f"Chain verification failed: {verification['errors']}"
 
     # Export to CSV
-    csv_path = log.export_to_csv(Path("/tmp/audit_demo.csv"), tenant_id="hetauda_cement")
+    csv_path = log.export_to_csv(Path("/tmp/audit_demo.csv"), tenant_id="planta_cement")
     print(f"Audit trail exported to: {csv_path}")
 
     # Demonstrate the decorator
-    @audit_trail(entity_type="demo_addition", tenant_id="hetauda_cement", user_id="mavis")
+    @audit_trail(entity_type="demo_addition", tenant_id="planta_cement", user_id="mavis")
     def add(a: int, b: int) -> int:
         return a + b
 

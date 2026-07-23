@@ -47,7 +47,7 @@ example = {
         "sha256_of_inputs": "a" * 64,
     },
     "project_description": {
-        "plant_name": "Hetauda Cement Industries Ltd",
+        "plant_name": "PlantA Industries Ltd",
         "plant_location": {"latitude": 27.43, "longitude": 85.03, "altitude_m": 1400.0},
         "clinker_capacity_tpd": 3120.0,
         "cooler_technology": "grate",
@@ -100,7 +100,7 @@ example = {
         "air_density_kg_m3": 1.05,
         "p_atm_mbar": 858.0,
         "design_mcr_pct": 100.0,
-        "note": "Hetauda May design day",
+        "note": "PlantA May design day",
     },
 }
 

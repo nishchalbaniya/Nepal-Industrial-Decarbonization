@@ -79,14 +79,14 @@ class DutyCase(BaseModel):
 
     Mandatory in every output block (API 617 / HEI / Peray §6.4 discipline):
     a cooler commissioned at sea level will not deliver the design
-    heat duty in Hetauda's monsoon design day. This block is the answer
+    heat duty in PlantA's monsoon design day. This block is the answer
     to the question "what ambient were these KPIs computed at?"
     """
     altitude_m: float = Field(
         1400.0, ge=0.0, le=4000.0,
         description="Plant altitude above mean sea level (m). "
-                    "Hetauda 1400 m, Udayapur 300 m, Hongshi-Shivam "
-                    "Sarlahi 80 m, Ghorahi 200 m."
+                    "PlantA 1400 m, PlantB 300 m, plantc "
+                    "Sarlahi 80 m, PlantD 200 m."
     )
     ambient_t_c: float = Field(
         35.0, ge=-30.0, le=55.0,

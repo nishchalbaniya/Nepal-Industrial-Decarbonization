@@ -3,7 +3,7 @@ nepal-cooler-sim CLI — v0.3.1.
 
 Subcommands
 -----------
-* ``presets``    — list the cooler presets (Hetauda, Udayapur, etc.)
+* ``presets``    — list the cooler presets (PlantA, PlantB, etc.)
 * ``run``        — solve a single cooler steady state and print KPIs
 * ``coupled``    — kiln-cooler coupled iteration
 * ``sensitivity`` — one-at-a-time sensitivity sweep
@@ -69,20 +69,20 @@ except ImportError:  # pragma: no cover — smoke-test path
     )
 
 # ---------------------------------------------------------------------------
-# Presets — Hetauda duty case (Ramesh §5), Udayapur (lower altitude),
-# Hongshi-Shivam-class 5000 tpd, Ghorahi.
+# Presets — PlantA duty case (Ramesh §5), PlantB (lower altitude),
+# plantc-class 5000 tpd, PlantD.
 # ---------------------------------------------------------------------------
 
 PRESETS: dict[str, dict[str, Any]] = {
-    "hetauda": dict(
+    "planta": dict(
         length_m=20.0, width_m=2.5, n_compartments=4,
         bed_depth_m=0.55, grate_speed_m_min=10.0,
         clinker_inlet_t_c=1380.0, clinker_outlet_t_c=180.0,
         under_grate_air_velocity_m_s=1.3,
-        under_grate_air_temp_c=35.0,        # Hetauda May design day
+        under_grate_air_temp_c=35.0,        # PlantA May design day
         clinker_throughput_t_h=66.0,
     ),
-    "udayapur": dict(
+    "plantb": dict(
         length_m=26.0, width_m=3.2, n_compartments=5,
         bed_depth_m=0.65, grate_speed_m_min=12.0,
         clinker_inlet_t_c=1400.0, clinker_outlet_t_c=160.0,
@@ -90,7 +90,7 @@ PRESETS: dict[str, dict[str, Any]] = {
         under_grate_air_temp_c=33.0,
         clinker_throughput_t_h=113.0,
     ),
-    "hongshi_shivam": dict(
+    "plantc": dict(
         length_m=32.0, width_m=4.0, n_compartments=6,
         bed_depth_m=0.80, grate_speed_m_min=14.0,
         clinker_inlet_t_c=1400.0, clinker_outlet_t_c=150.0,
@@ -98,7 +98,7 @@ PRESETS: dict[str, dict[str, Any]] = {
         under_grate_air_temp_c=30.0,
         clinker_throughput_t_h=210.0,
     ),
-    "ghorahi": dict(
+    "plantd": dict(
         length_m=24.0, width_m=3.0, n_compartments=5,
         bed_depth_m=0.60, grate_speed_m_min=11.0,
         clinker_inlet_t_c=1390.0, clinker_outlet_t_c=170.0,
@@ -115,7 +115,7 @@ PRESETS: dict[str, dict[str, Any]] = {
         under_grate_air_temp_c=35.0,
         clinker_throughput_t_h=210.0,
     ),
-    "hetauda_small": dict(
+    "planta_small": dict(
         length_m=20.0, width_m=2.5, n_compartments=4,
         bed_depth_m=0.55, grate_speed_m_min=10.0,
         clinker_inlet_t_c=1380.0, clinker_outlet_t_c=180.0,

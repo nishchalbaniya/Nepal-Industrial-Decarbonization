@@ -12,7 +12,7 @@
 
 v0.3.0 was broken at first-law and rejected by three independent reviewers (Aanya on physics, Hiro on UQ, me on plant engineering). The headline number (efficiency 72.7 %) was a coincidence of two wrongs. v0.3.1 fixes the root cause (radiation runaway + fresh-air-per-cell + hard-coded density) and adds the operator KPI block that the spec required. This document is the evidence-anchored change list — each v0.3.0 finding, the v0.3.1 fix, the file/line that does it, and the test that locks it in.
 
-**v0.3.0 headline metrics vs v0.3.1 expected (Hetauda design day, 5-comp, default 130 t/h):**
+**v0.3.0 headline metrics vs v0.3.1 expected (PlantA design day, 5-comp, default 130 t/h):**
 
 | KPI | v0.3.0 actual | v0.3.0 band | v0.3.1 expected | v0.3.1 band | Status |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 | `bed_dp_total_mm_h2o` | (not reported) | 200-400 | 250-350 | 200-400 | NEW (Ergun equation) |
 | `free_lime_outlet_wt_pct` | (not reported) | 0.2-1.8 | 0.4-1.0 | 0.2-1.8 | NEW (Boateng §7.4) |
 | `duty_case` block | absent | mandatory | present | mandatory | NEW in v0.3.1 |
-| `air_density_kg_m3` (Hetauda) | 0.6 (hard-coded) | ≈ 0.95 | 0.95 | 0.93-0.96 | FIXED (ASHRAE 2021) |
+| `air_density_kg_m3` (PlantA) | 0.6 (hard-coded) | ≈ 0.95 | 0.95 | 0.93-0.96 | FIXED (ASHRAE 2021) |
 | `n_compartments` first-class | passive (fan count) | first-class | first-class | first-class | FIXED |
 
 ---
@@ -42,9 +42,9 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 - The 0.6 kg/m³ hard-coded density makes the air mass *under-predicted by 1.6×*, so the kiln side also over-reports heat recovered (using a different bad number). Two wrongs → 72.7 % efficiency.
 
 **v0.3.1 fix (PATCHES A + B + C of the v0.3.0 review):**
-- **Compartment-wise counter-flow solver** replaces the per-cell fresh-air reset. Each compartment has its own air inventory (`m_a,comp = v·ρ·W·L/N = 1.5·0.95·3.5·5.6 = 27.9 kg/s` at Hetauda design day). 9.5× more air mass per "exchanger" than v0.3.0 per-cell, so radiation cannot blow the air T past the clinker T.
+- **Compartment-wise counter-flow solver** replaces the per-cell fresh-air reset. Each compartment has its own air inventory (`m_a,comp = v·ρ·W·L/N = 1.5·0.95·3.5·5.6 = 27.9 kg/s` at PlantA design day). 9.5× more air mass per "exchanger" than v0.3.0 per-cell, so radiation cannot blow the air T past the clinker T.
 - **Second-law clamp** on `T_a_outlet ≤ T_c_inlet_to_cell − 5 K` (per the spec). This is a physics guardrail, not a fudge.
-- **Air density from altitude/ambient/RH** via `air_density_kg_m3()` in `outputs.py` (ASHRAE 2021 Ch. 1 partial-pressure sum). 0.95 kg/m³ at Hetauda design day — verified against ISO 2533.
+- **Air density from altitude/ambient/RH** via `air_density_kg_m3()` in `outputs.py` (ASHRAE 2021 Ch. 1 partial-pressure sum). 0.95 kg/m³ at PlantA design day — verified against ISO 2533.
 - **First-law imbalance** is now a first-class output in the sanity block; tested by Hiro's `test_energy_balance_closure` to be < 0.02.
 
 **Files / line refs:**
@@ -69,7 +69,7 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 - `CompartmentParameters` carries per-compartment `inlet_air_t_c`, `air_mass_flow_kg_s`, `is_secondary`, `is_exhaust`.
 - API accepts uniform-distribution helper for backward compat with the smoke test.
 - Default = 5 (IKN/Polycom/Hongshi default).
-- Configurable 3-7 (UCIL 3, HCIL 4, modern 5, large 6-7 with air-to-air preheater).
+- Configurable 3-7 (UCIL 3, NIDC 4, modern 5, large 6-7 with air-to-air preheater).
 
 **Files / line refs:**
 - Aanya's `compartments.py` (compartment-wise counter-flow solver).
@@ -155,18 +155,18 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 
 ---
 
-## 6. v0.3.0 finding: Nepal duty case (Hetauda) cannot run
+## 6. v0.3.0 finding: Nepal duty case (PlantA) cannot run
 
-**v0.3.0 evidence:** The model hard-codes `air_density_kg_m3 = 0.6` (lines 198 and 280 of `cooler_ode.py`). At Hetauda's 1400 m / 35 °C / 90 % RH design day, the *real* value is **0.95 kg/m³** (ASHRAE 2021 Ch. 1 partial-pressure sum). The 0.6 figure is wrong for any altitude under ~3500 m and is on this agent's failure-mode list (`agent.md` line 65-66).
+**v0.3.0 evidence:** The model hard-codes `air_density_kg_m3 = 0.6` (lines 198 and 280 of `cooler_ode.py`). At PlantA's 1400 m / 35 °C / 90 % RH design day, the *real* value is **0.95 kg/m³** (ASHRAE 2021 Ch. 1 partial-pressure sum). The 0.6 figure is wrong for any altitude under ~3500 m and is on this agent's failure-mode list (`agent.md` line 65-66).
 
 **v0.3.1 fix:**
 - `air_density_kg_m3(altitude_m, T_c, RH)` function in `outputs.py` (no more hard-coded constant).
 - `DutyCase` Pydantic model: `altitude_m`, `ambient_t_c`, `ambient_rh`, `design_mcr_pct`.
 - `duty_case` block is a first-class field in `CoolerResult` and `CoolerKPIs`.
 - CLI flags `--altitude-m`, `--ambient-t-c`, `--ambient-rh` (Maya's `cli.py`).
-- Four plant presets populated: Hetauda (1400 m, 35 °C, 90 % RH, 0.95 kg/m³), Udayapur (300 m, 25 °C, 65 % RH, 1.13 kg/m³), Hongshi-Shivam (80 m, 40 °C, 70 % RH, 1.09 kg/m³), Ghorahi (200 m, 32 °C, 80 % RH, 1.11 kg/m³).
+- Four plant presets populated: PlantA (1400 m, 35 °C, 90 % RH, 0.95 kg/m³), PlantB (300 m, 25 °C, 65 % RH, 1.13 kg/m³), plantc (80 m, 40 °C, 70 % RH, 1.09 kg/m³), PlantD (200 m, 32 °C, 80 % RH, 1.11 kg/m³).
 
-**What this changes in the engineering numbers (Hetauda, 100 % MCR, 130 t/h):**
+**What this changes in the engineering numbers (PlantA, 100 % MCR, 130 t/h):**
 
 | Quantity | v0.3.0 (0.6 kg/m³) | v0.3.1 (0.95 kg/m³) | Δ | Source |
 |---|---|---|---|---|
@@ -183,7 +183,7 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 - `plant_equipment.md` (per-plant block).
 - Aanya's `plants.py` (4 preset dicts).
 
-**Status:** FIXED. v0.3.1 runs the Hetauda design day correctly. The fan-power penalty at altitude is the most important single engineering number in this PR.
+**Status:** FIXED. v0.3.1 runs the PlantA design day correctly. The fan-power penalty at altitude is the most important single engineering number in this PR.
 
 ---
 
@@ -241,7 +241,7 @@ The spec says Day 9 is the 2D drawing. Day-3 lists the symbols and flows; Day-9 
 
 Each Day-3 ship-gate item in `DAY-03-SPEC.md` is testable from this PR + Aanya's + Hiro's:
 
-- [x] `secondary_air_outlet_c ∈ [600, 1000] °C` for default Hetauda preset — expected 800-900 °C after Aanya's fix; tested by Hiro's `test_secondary_air_within_realistic_envelope`.
+- [x] `secondary_air_outlet_c ∈ [600, 1000] °C` for default PlantA preset — expected 800-900 °C after Aanya's fix; tested by Hiro's `test_secondary_air_within_realistic_envelope`.
 - [x] `tertiary_air_outlet_c ∈ [400, 700] °C` — expected 500-600 °C.
 - [x] `exhaust_air_outlet_c ∈ [150, 300] °C` — expected 180-220 °C.
 - [x] `clinker_outlet_c ∈ [120, 200] °C` (target 150 ± 30) — expected 130-170 °C.
@@ -264,7 +264,7 @@ Each Day-3 ship-gate item in `DAY-03-SPEC.md` is testable from this PR + Aanya's
 2. **2D P&ID drawing** — Day 9 per spec.
 3. **Fan vendor RFQ package** — Day 10 per spec.
 4. **Cycle-time-dependent model** (clinker is a moving packed bed, not a plug flow) — the 1D quasi-steady model is the right level for Day 3; transient is Day 14.
-5. **Hetauda monthly data calibration** — depends on real plant DCS export; Day 4 once Maya's CSV/JSON I/O is stable.
+5. **PlantA monthly data calibration** — depends on real plant DCS export; Day 4 once Maya's CSV/JSON I/O is stable.
 6. **Free-lime physics-based model** (vs empirical quench-rate correlation) — the empirical form is in the right band (Boateng §7.4), but the physics-based model needs C₃S / C₂S kinetic constants. Day 4 with Aanya.
 
 ---

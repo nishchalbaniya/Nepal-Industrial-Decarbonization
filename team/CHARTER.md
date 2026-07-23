@@ -57,7 +57,7 @@ Nishchal Baniya
 - Owns: cement/brick domain accuracy, customer credibility, white paper
 - Week 1: Audit cement model accuracy (Tier 2/3) vs. NEA/ICEM data
 - Week 2: Audit brick kiln model vs. UNEP/GEF reference
-- Week 3: Co-author "Hetauda Cement Decarbonization" technical paper
+- Week 3: Co-author "PlantA Decarbonization" technical paper
 - Week 4: Customer-facing FAQ + technical FAQ
 
 ### Business Developer

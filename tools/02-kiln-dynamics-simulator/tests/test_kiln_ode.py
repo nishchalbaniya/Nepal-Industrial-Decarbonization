@@ -86,8 +86,8 @@ def test_invalid_geometry_rejected():
 # Simulator
 # ---------------------------------------------------------------------------
 
-def test_simulate_runs_hetauda():
-    p = PLANT_PRESETS["hetauda"].parameters
+def test_simulate_runs_planta():
+    p = PLANT_PRESETS["planta"].parameters
     t, y, x = simulate_kiln(p, t_end_s=120.0, n_time_points=10)
     assert t.shape == (10,)
     assert y.shape == (6 * p.n_zones, 10)
@@ -95,7 +95,7 @@ def test_simulate_runs_hetauda():
 
 
 def test_steady_state_reaches_physically_reasonable_burning_zone():
-    p = PLANT_PRESETS["udayapur"].parameters
+    p = PLANT_PRESETS["plantb"].parameters
     state = run_to_steady_state(p, max_t_s=600.0)
     # Burning zone should be 1300-1700 K (well above calcination, well below melt)
     T_burning = state.t_solid_k[-1]
@@ -103,7 +103,7 @@ def test_steady_state_reaches_physically_reasonable_burning_zone():
 
 
 def test_outputs_contain_required_kpis():
-    p = PLANT_PRESETS["hetauda"].parameters
+    p = PLANT_PRESETS["planta"].parameters
     state = run_to_steady_state(p, max_t_s=300.0)
     outs = compute_outputs(state, p)
     required = [
@@ -117,7 +117,7 @@ def test_outputs_contain_required_kpis():
 
 
 def test_biomass_lowers_co2_intensity():
-    p_coal = PLANT_PRESETS["hetauda"].parameters
+    p_coal = PLANT_PRESETS["planta"].parameters
     p_bio = p_coal.model_copy(update={"fuel_type": "biomass_rice_husk"})
     s_coal = run_to_steady_state(p_coal, max_t_s=300.0)
     s_bio = run_to_steady_state(p_bio, max_t_s=300.0)

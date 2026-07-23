@@ -3,14 +3,14 @@
 <g transform="translate(740,570)">
 <rect width="250" height="120" fill="#fff" stroke="#333" stroke-width="1"/>
 <text x="10" y="20" font-size="13" font-weight="bold">HCIL-CLR-PID-001 Rev A</text>
-<text x="10" y="40" font-size="10">Plant: Hetauda</text>
-<text x="10" y="55" font-size="10">Client: Himalayan Carbon Nepal / Hetau</text>
+<text x="10" y="40" font-size="10">Plant: PlantA (generic — configure per deployment)</text>
+<text x="10" y="55" font-size="10">Client: Generic cement plant (configur</text>
 <text x="10" y="70" font-size="10">Date: 2026-07-22</text>
 <text x="10" y="85" font-size="10">Scale: NTS | Sheet: 1 of 1</text>
 <text x="10" y="100" font-size="10">Units: SI (mm, C, kPa, kg/s, Nm3/h)</text>
 <text x="10" y="115" font-size="9" fill="#666">Designed: Mavis / nepal-decarb v1.0</text>
 </g>
-<text x="20" y="30" font-size="18" font-weight="bold">Hetauda Cooler P&amp;ID</text>
+<text x="20" y="30" font-size="18" font-weight="bold">PlantA Cooler P&amp;ID</text>
 <text x="20" y="48" font-size="11" fill="#555">Hetauda Cement Cooler -- Piping & Instrumentation Diagram</text>
 <text x="20" y="62" font-size="10" fill="#666">Per ISA-5.1 / ISA-5.3 | ISA-5.1 (instrumentation symbols), ISA-5.3 (P&ID)</text>
 <g id="cooler">

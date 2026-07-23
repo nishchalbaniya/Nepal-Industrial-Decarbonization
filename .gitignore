@@ -48,3 +48,7 @@ Manifest.toml
 *.tar.gz
 *.pdf
 !docs/**/*.pdf
+
+# Local git credential file (was accidentally tracked in Day 14 rename, fixed)
+REDACTED-CREDENTIAL
+

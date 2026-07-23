@@ -4,10 +4,10 @@ debugging. Not part of the PR.
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cooler_ode import solve_steady_state
-from plants import hetauda
+from plants import planta
 import numpy as np
 
-p = hetauda()
+p = planta()
 state = solve_steady_state(p)
 print("compartments:")
 for c in state.compartments:

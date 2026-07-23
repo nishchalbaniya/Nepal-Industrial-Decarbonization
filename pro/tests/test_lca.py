@@ -21,7 +21,7 @@ def test_cf_loaded():
 
 def test_lca_cement_opc(ef):
     plant = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),
@@ -31,7 +31,7 @@ def test_lca_cement_opc(ef):
     )
     r = lca_cement(plant, ef)
     # GWP per tonne cement (functional unit = 1 tonne cement)
-    # Result is in t CO2-eq/t cement. Hetauda should be ~0.77 t = 770 kg.
+    # Result is in t CO2-eq/t cement. PlantA should be ~0.77 t = 770 kg.
     assert r.impacts["GWP100"] > 0.6   # > 600 kg CO2/t
     assert r.impacts["GWP100"] < 1.5   # < 1500 kg CO2/t
     assert "raw_materials" in r.stage_contributions

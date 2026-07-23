@@ -12,20 +12,20 @@
 This is the v1.0 cut of the Nepal Industrial Decarbonization
 product. It is the result of 12 days of work (Day 1 baseline MRV
 + Days 2-12 incremental builds) on a 4-plant Nepali cement
-platform: Hetauda (Himalayan Carbon flagship), Udayapur,
-Hongshi-Shivam, and Ghorahi.
+platform: PlantA (Himalayan Carbon flagship), PlantB,
+plantc, and PlantD.
 
 ### Engineering deliverables (all in `release/v1.0-e2e/`)
 
 - **Cooler STEP file** — 22.7 KB, 11 parts, 36.3m × 3.5m × 2.8m
   bounding box, ISO 10303-21 AP214, opens in FreeCAD / Onshape /
   Fusion 360 / 3dviewer.net
-- **Hetauda kiln STEP file** — 66.5 KB, 17 parts, 65.8m × 7m ×
+- **PlantA kiln STEP file** — 66.5 KB, 17 parts, 65.8m × 7m ×
   60m, 4 tire-and-roller stations, primary burner, preheater
   tower, girth gear
 - **Cooler P&ID** — 10.4 KB SVG per ISA-5.1, 8 instrument tags
   (TI-1101..1105, PI-1101, FT-1101, SC-1101), 6 process streams,
-  drawing number HCIL-CLR-PID-001 Rev A
+  drawing number NIDC-CLR-PID-001 Rev A
 - **Calibration JSON** — v0.5.0 L-BFGS-B posterior (10 parameters,
   loss 233.72 → 5.00, RMSE sec_air 10.2 K / clinker 0.7 K /
   exhaust 24.0 K)
@@ -84,10 +84,10 @@ You get:
 ## Honest disclosure: what this v1.0 is NOT
 
 1. **3 of 6 ship-gate bands still fail** on the v0.5.0 calibrated
-   Hetauda model (tertiary 190°C, exhaust 149°C, clinker 351°C).
+   PlantA model (tertiary 190°C, exhaust 149°C, clinker 351°C).
    The model physics at 130 t/h cannot deliver all 3
    simultaneously. Unblock requires either:
-   - (a) real Hetauda plant data (CSV with 4h shifts — see
+   - (a) real PlantA plant data (CSV with 4h shifts — see
      `tools/03-cooler-grate-simulator/day-04-PRs/data/` for the
      column spec), OR
    - (b) v0.6.0 model changes (compartment subdivision within
@@ -95,7 +95,7 @@ You get:
 
 2. **No LLM advisor yet** (Day 14, deferred).
 
-3. **Calibration was on synthetic data, not real Hetauda.** The
+3. **Calibration was on synthetic data, not real PlantA.** The
    calibration framework is real and the gradient is in the right
    direction; the numbers will change when real plant data is
    used.
@@ -104,7 +104,7 @@ You get:
    the Octave installer still on screen, not yet clicked through.
 
 5. **No commercial pilot terms** — engineering readiness, not
-   commercial readiness. To sell: Rina drafts Hetauda MoU, James
+   commercial readiness. To sell: Rina drafts PlantA MoU, James
    drafts VMD0053 methodology deviation request, Priya refines
    50-plant ARR model.
 
@@ -146,7 +146,7 @@ f9b58d2 feat(tools/02 + pro): Day 8 v0.8.0 -- kiln STEP export
 2aa918c feat(tools/03): Day 5 v0.5.0 -- operating-handle freedom
 83b0533 feat(tools/03): Day 4 v0.4.0 -- L-BFGS-B calibration
 86dc577 fix(tools/03): CBAM 0.642 -> 0.83 t CO2e/t (James re-verify)
-d8aea52 docs: Day 4 spec -- cooler calibration to Hetauda plant data
+d8aea52 docs: Day 4 spec -- cooler calibration to PlantA plant data
 49fe94d feat(tools/03): cooler grate simulator v0.3.2
 5742b8d feat(tools/02): kiln dynamics simulator -- Day 2/20
 ```

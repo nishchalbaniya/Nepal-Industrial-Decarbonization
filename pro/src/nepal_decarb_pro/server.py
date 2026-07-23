@@ -80,13 +80,13 @@ class CoolerOverride(BaseModel):
 
 
 class CoolerRunRequest(BaseModel):
-    plant: str = Field("hetauda")
+    plant: str = Field("planta")
     out: Optional[str] = None
     overrides: Optional[CoolerOverride] = None
 
 
 class KilnRunRequest(BaseModel):
-    plant: str = Field("hetauda")
+    plant: str = Field("planta")
     fuel: Optional[str] = None
     out: Optional[str] = None
 
@@ -128,10 +128,10 @@ def _import_kiln():
 def _run_cooler(req: CoolerRunRequest) -> Dict[str, Any]:
     sim = _import_cooler()
     presets = {
-        "hetauda": sim.hetauda,
-        "udayapur": sim.udayapur,
-        "hongshi-shivam": sim.hongshi_shivam,
-        "ghorahi": sim.ghorahi,
+        "planta": sim.planta,
+        "plantb": sim.plantb,
+        "plantc": sim.plantc,
+        "plantd": sim.plantd,
     }
     if req.plant not in presets:
         raise HTTPException(400, f"unknown plant {req.plant!r}; available={list(presets)}")
@@ -179,9 +179,9 @@ def _run_calibration(req: CoolerCalibrateRequest) -> Dict[str, Any]:
     sim = _import_cooler()
     import nepal_cooler_sim.calibration  # ensure submodule is loaded
     if req.target == "synthetic":
-        target_path = _COOLER_SRC.parent / "day-04-PRs" / "data" / "synthetic_hetauda_v050_shift_4h.csv"
+        target_path = _COOLER_SRC.parent / "day-04-PRs" / "data" / "synthetic_planta_v050_shift_4h.csv"
     elif req.target == "synthetic-legacy":
-        target_path = _COOLER_SRC.parent / "day-04-PRs" / "data" / "synthetic_hetauda_shift_4h.csv"
+        target_path = _COOLER_SRC.parent / "day-04-PRs" / "data" / "synthetic_planta_shift_4h.csv"
     else:
         target_path = Path(req.csv) if req.csv else None
     if target_path is None:
@@ -248,13 +248,13 @@ def _export_step_cooler(req: ExportStepCoolerRequest) -> Dict[str, Any]:
 
 
 def _export_step_kiln(req: ExportStepKilnRequest) -> Dict[str, Any]:
-    script = _KILN_SRC.parent / "day-08-PRs" / "export_hetauda_kiln_step.py"
+    script = _KILN_SRC.parent / "day-08-PRs" / "export_planta_kiln_step.py"
     if not script.exists():
         raise HTTPException(404, f"kiln STEP export script not found at {script}")
-    out = Path(req.output or (DEFAULT_OUT_DIR / "hetauda_kiln_assembly.step"))
+    out = Path(req.output or (DEFAULT_OUT_DIR / "planta_kiln_assembly.step"))
     out.parent.mkdir(parents=True, exist_ok=True)
     info = _freecad_export(script, script.parent / "cad")
-    src = script.parent / "cad" / "hetauda_kiln_assembly.step"
+    src = script.parent / "cad" / "planta_kiln_assembly.step"
     if src.exists():
         out.write_bytes(src.read_bytes())
     return {"ok": True, "path": str(out), "size_bytes": out.stat().st_size if out.exists() else 0, **info}
@@ -267,7 +267,7 @@ def _export_pid(req: ExportPidRequest) -> Dict[str, Any]:
     out_dir = Path(req.output or DEFAULT_OUT_DIR)
     info = _freecad_export(script, script.parent / "cad")
     written = []
-    for name in ("hetauda_cooler_pid.svg", "hetauda_cooler_pid.json", "hetauda_cooler_pid.step"):
+    for name in ("planta_cooler_pid.svg", "planta_cooler_pid.json", "planta_cooler_pid.step"):
         src = script.parent / "cad" / name
         if src.exists():
             dst = out_dir / name
@@ -332,7 +332,7 @@ def api_status() -> Dict[str, Any]:
 
 @app.get("/api/plants")
 def api_plants() -> Dict[str, Any]:
-    out = {"cooler": ["hetauda", "udayapur", "hongshi-shivam", "ghorahi"]}
+    out = {"cooler": ["planta", "plantb", "plantc", "plantd"]}
     try:
         sim = _import_kiln()
         out["kiln"] = list(sim.PLANT_PRESETS)
@@ -398,7 +398,7 @@ def api_artifact_download(name: str):
 
 @app.get("/api/pid-svg")
 def api_pid_svg() -> Response:
-    p = DEFAULT_OUT_DIR / "hetauda_cooler_pid.svg"
+    p = DEFAULT_OUT_DIR / "planta_cooler_pid.svg"
     if not p.exists():
         raise HTTPException(404, f"not found: {p}. POST /api/cooler/export-pid first.")
     return Response(content=p.read_bytes(), media_type="image/svg+xml")
@@ -484,10 +484,10 @@ _INDEX_HTML = """<!doctype html>
       <h2>Run cooler</h2>
       <label>Plant preset</label>
       <select id="cooler-plant">
-        <option value="hetauda">hetauda</option>
-        <option value="udayapur">udayapur</option>
-        <option value="hongshi-shivam">hongshi-shivam</option>
-        <option value="ghorahi">ghorahi</option>
+        <option value="planta">planta</option>
+        <option value="plantb">plantb</option>
+        <option value="plantc">plantc</option>
+        <option value="plantd">plantd</option>
       </select>
       <div style="margin-top:8px"><button class="primary" onclick="runCooler()">Run cooler</button></div>
     </section>
@@ -496,7 +496,7 @@ _INDEX_HTML = """<!doctype html>
       <h2>Run kiln</h2>
       <label>Plant preset</label>
       <select id="kiln-plant">
-        <option value="hetauda">hetauda</option>
+        <option value="planta">planta</option>
       </select>
       <label style="margin-top:8px">Fuel key (optional)</label>
       <input id="kiln-fuel" type="text" placeholder="leave blank for default">
@@ -536,7 +536,7 @@ _INDEX_HTML = """<!doctype html>
     </section>
 
     <section class="card" style="margin-top:16px">
-      <h2>P&amp;ID (Hetauda cooler, ISA-5.1)</h2>
+      <h2>P&amp;ID (PlantA cooler, ISA-5.1)</h2>
       <div id="pid-svg-host">-- click "P&amp;ID" then refresh --</div>
     </section>
 

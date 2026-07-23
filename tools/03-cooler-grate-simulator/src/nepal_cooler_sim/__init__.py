@@ -22,17 +22,17 @@ What changed v0.3.1 -> v0.3.2
    §2.2 Fig. 2 prescribes.
 3. Moist-air density is computed from the ISA barometric formula with
    Magnus-form saturation vapour pressure (Cengel & Boles 2015).
-   Hetauda at 1400 m / 35 °C / 90% RH: 0.95 kg/m^3 (was hard-coded
+   PlantA at 1400 m / 35 °C / 90% RH: 0.95 kg/m^3 (was hard-coded
    0.6 in v0.3.0; 1.05 was the upper-bound estimate in v0.3.1).
 4. First-law imbalance |Q_recovered - Q_air| / Q_in is now <= 0.02
-   on the default Hetauda preset (was 4× in v0.3.1).
+   on the default PlantA preset (was 4× in v0.3.1).
 
 Honest disclosure (read this before claiming "ship")
 -----------------------------------------------------
 The 6 ship-gate bands defined in ``DAY-03-SPEC.md`` (secondary-air
 600-1000 °C, tertiary 400-700 °C, exhaust 150-300 °C, clinker-outlet
 120-200 °C, cooler efficiency 0.65-0.85, first-law <= 0.02) are NOT
-all met on the default Hetauda preset. Only the first-law band and
+all met on the default PlantA preset. Only the first-law band and
 the second-law invariant pass; the other bands fail because the
 *prescribed geometry* (5 compartments × 28 m × 1.5 m/s) cannot deliver
 the design-duty sec air (560 °C vs the 600 °C band floor) or the
@@ -40,7 +40,7 @@ clinker-outlet (532 °C vs the 200 °C band ceiling). The physical
 ceiling at this geometry is ~ 1310 K air-side dT at 38 kg/s sec-air
 and 52 MW clinker enthalpy drop. The Day 4 calibration work item
 (see ``DAY-04-SPEC.md``, to be written) introduces plant-data
-calibration (Hetauda clinker-outlet T time series, sec-air T time
+calibration (PlantA clinker-outlet T time series, sec-air T time
 series) and operating-handle freedom (air velocity, grate speed,
 recuperator preheat) to bring the bands into spec.
 
@@ -50,10 +50,10 @@ Public API
 ...     CoolerParameters, CoolerState,
 ...     solve_steady_state, compute_outputs, simulate_cooler,
 ...     achenbach_nu, wakao_nu, effective_htc_cooler,
-...     air_density_kg_m3, hetauda, udayapur, hongshi_shivam, ghorahi,
+...     air_density_kg_m3, planta, plantb, plantc, plantd,
 ... )
 >>> from nepal_cooler_sim.compartments import build_compartment_inventory
->>> p = hetauda()
+>>> p = planta()
 >>> s = solve_steady_state(p)
 >>> o = compute_outputs(s, p)
 >>> o["secondary_air_outlet_c"], o["clinker_outlet_c"], o["cooler_efficiency"]
@@ -114,10 +114,10 @@ from .compartments import (
     achenbach_h_at_re1000,
 )
 from .plants import (
-    hetauda,
-    udayapur,
-    hongshi_shivam,
-    ghorahi,
+    planta,
+    plantb,
+    plantc,
+    plantd,
     PRESETS,
 )
 
@@ -155,6 +155,6 @@ __all__ = [
     "check_second_law_compartments",
     "achenbach_h_at_re1000",
     # Plant presets
-    "hetauda", "udayapur", "hongshi_shivam", "ghorahi", "PRESETS",
+    "planta", "plantb", "plantc", "plantd", "PRESETS",
     "__version__",
 ]

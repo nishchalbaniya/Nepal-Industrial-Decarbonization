@@ -1,5 +1,5 @@
 """
-Day 12 demo -- P&ID export for the Hetauda cooler. Pure SVG, no
+Day 12 demo -- P&ID export for the PlantA cooler. Pure SVG, no
 FreeCAD needed (the day-09 script uses FreeCAD's TechDraw but for
 a sellable deliverable we want a clean browser-friendly SVG).
 """
@@ -11,16 +11,16 @@ OUT_DIR = Path("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/pid")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Read the cooler KPIs we just computed
-with open("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/json/02_cooler_hetauda.json", encoding="utf-8") as f:
+with open("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/json/02_cooler_planta.json", encoding="utf-8") as f:
     cooler = json.load(f)
 
 # P&ID metadata per ISA-5.1
 DRAWING = {
-    "drawing_no":  "HCIL-CLR-PID-001",
+    "drawing_no":  "NIDC-CLR-PID-001",
     "revision":    "A",
-    "title":       "Hetauda Cement Cooler -- Piping & Instrumentation Diagram",
-    "client":      "Himalayan Carbon Nepal / Hetauda Cement Industries Ltd",
-    "plant":       "Hetauda",
+    "title":       "PlantA Cooler -- Piping & Instrumentation Diagram",
+    "client":      "Himalayan Carbon Nepal / PlantA Industries Ltd",
+    "plant":       "PlantA",
     "designed_by": "Mavis / nepal-decarb v1.0",
     "checked_by":  "Verifier (independent)",
     "approved_by": "CTO Vikram (ADR-001)",
@@ -72,7 +72,7 @@ svg.append(f'<text x="10" y="115" font-size="9" fill="#666">Designed: {DRAWING["
 svg.append('</g>')
 
 # Header
-svg.append(f'<text x="20" y="30" font-size="18" font-weight="bold">Hetauda Cooler P&amp;ID</text>')
+svg.append(f'<text x="20" y="30" font-size="18" font-weight="bold">PlantA Cooler P&amp;ID</text>')
 svg.append(f'<text x="20" y="48" font-size="11" fill="#555">{DRAWING["title"]}</text>')
 svg.append(f'<text x="20" y="62" font-size="10" fill="#666">Per ISA-5.1 / ISA-5.3 | {DRAWING["standard"]}</text>')
 
@@ -192,14 +192,14 @@ svg.append('</g>')
 svg.append(f'<g transform="translate(20, {H-30})">')
 svg.append(f'<text x="0" y="0" font-size="9" fill="#666">'
            f'Instruments: 8 ISA-5.1 loops. Drawing {DRAWING["drawing_no"]} Rev {DRAWING["revision"]}. '
-           f'Source: cooler v0.5.0 calibrated model (Hetauda 130 t/h, 1400 m altitude). '
+           f'Source: cooler v0.5.0 calibrated model (PlantA 130 t/h, 1400 m altitude). '
            f'First-law energy balance: 1.8e-16. License: MIT.</text>')
 svg.append('</g>')
 
 svg.append('</svg>')
 
 # Write
-out_svg = OUT_DIR / "07_hetauda_cooler_pid.svg"
+out_svg = OUT_DIR / "07_planta_cooler_pid.svg"
 out_svg.write_text("\n".join(svg), encoding="utf-8")
 
 # Also write JSON metadata
@@ -216,7 +216,7 @@ metadata = {
     "cooler_kpis_used": cooler,
     "citation": "ISA-5.1-2009 (Instrumentation Symbols and Identification), ISA-5.3-1983 (Graphic Symbols for P&ID)",
 }
-out_json = OUT_DIR / "07_hetauda_cooler_pid.json"
+out_json = OUT_DIR / "07_planta_cooler_pid.json"
 out_json.write_text(json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8")
 
 # STEP-side P&ID: just copy the SVG body to a freehand STEP-like

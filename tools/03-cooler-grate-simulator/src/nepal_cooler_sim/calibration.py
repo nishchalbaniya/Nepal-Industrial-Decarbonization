@@ -1,6 +1,6 @@
 """Day 4 (v0.4.0) -- plant-data calibration framework.
 
-This module consumes a Hetauda operating shift's plant data (CSV)
+This module consumes a PlantA operating shift's plant data (CSV)
 and calibrates the v0.3.2 model parameters against it. Implements:
 
   1. Pydantic v2 data-shape contract (PlantDataRow, PlantDataShift).
@@ -54,7 +54,7 @@ from .cooler_ode import (
 # Plant-data row schema
 # ---------------------------------------------------------------------------
 class PlantDataRow(BaseModel):
-    """One minute of Hetauda cooler operating data.
+    """One minute of PlantA cooler operating data.
 
     Cite:
     - Peray & Waddell (1986) s6.4 (sec-air and exhaust instrument
@@ -79,7 +79,7 @@ class PlantDataRow(BaseModel):
 
 
 class PlantDataShift(BaseModel):
-    """A 4-hour Hetauda operating shift.
+    """A 4-hour PlantA operating shift.
 
     `n_rows` is the row count after filtering (rows with NaN, rows
     flagged as fault, rows outside the 4-h steady-state window).
@@ -165,21 +165,21 @@ CALIBRATION_PARAMETERS: List[CalibrationParameter] = [
     CalibrationParameter(
         name="recuperator_preheat_c",
         lo=0.0, hi=200.0, prior=0.0, unit="K",
-        cite="Plant-specific. No recuperator at Hetauda baseline. "
+        cite="Plant-specific. No recuperator at PlantA baseline. "
              "Modern Polysius REPOL recovers 100-150 K via secondary "
              "recuperator (ECRA 2022 BAT).",
     ),
     CalibrationParameter(
         name="coal_rate_kg_s",
         lo=2.5, hi=5.0, prior=3.6, unit="kg/s",
-        cite="HCIL spec: 100 kg-coal/t-cli at 130 t/h = 3.6 kg/s. "
+        cite="NIDC spec: 100 kg-coal/t-cli at 130 t/h = 3.6 kg/s. "
              "ECRA 2022: modern BAT 80-90 kg-coal/t-cli = 2.9-3.3 kg/s.",
     ),
     CalibrationParameter(
         name="secondary_air_excess_factor",
         lo=1.0, hi=2.0, prior=1.10, unit="dimensionless",
         cite="Peray & Waddell 1986 s6.2: 1.05-1.15x stoich typical; "
-             "Hetauda spec 1.58x stoich is the high end.",
+             "PlantA spec 1.58x stoich is the high end.",
     ),
     CalibrationParameter(
         name="emissivity",
@@ -525,7 +525,7 @@ def sobol_sensitivity(
 # CSV loader
 # ---------------------------------------------------------------------------
 def load_plant_data(csv_path: Path) -> PlantDataShift:
-    """Load a Hetauda plant-data CSV and return a typed PlantDataShift."""
+    """Load a PlantA plant-data CSV and return a typed PlantDataShift."""
     rows: List[PlantDataRow] = []
     with csv_path.open(encoding="utf-8") as f:
         rdr = csv.DictReader(f)

@@ -35,7 +35,7 @@ def test_default_bounds_cover_tunable_space():
 
 def test_calibrate_empty_observed_is_trivial_success():
     """With no observed KPIs, there's nothing to fit — should 'succeed' trivially."""
-    p = PLANT_PRESETS["hetauda"].parameters
+    p = PLANT_PRESETS["planta"].parameters
     result = calibrate_to_plant(
         p, observed={},
         tunable=["arrhenius_a"],
@@ -47,7 +47,7 @@ def test_calibrate_empty_observed_is_trivial_success():
 
 
 def test_calibrate_unknown_tunable_skipped():
-    p = PLANT_PRESETS["hetauda"].parameters
+    p = PLANT_PRESETS["planta"].parameters
     result = calibrate_to_plant(
         p, {"sec_mj_per_t_clinker": 4000.0},
         tunable=["nonexistent_param"],
@@ -58,16 +58,16 @@ def test_calibrate_unknown_tunable_skipped():
 
 @pytest.mark.slow
 def test_calibrate_de_converges_to_synthetic_plant():
-    """Slow: ~30 s. Convergence check on a synthetic Hetauda target."""
+    """Slow: ~30 s. Convergence check on a synthetic PlantA target."""
     from nepal_kiln_sim.kiln_ode import run_to_steady_state, compute_outputs
-    p_target = PLANT_PRESETS["hetauda"].parameters
+    p_target = PLANT_PRESETS["planta"].parameters
     state = run_to_steady_state(p_target, max_t_s=180.0)
     obs = compute_outputs(state, p_target)
     observed = {
         "sec_mj_per_t_clinker": obs["sec_mj_per_t_clinker"],
         "co2_intensity_kg_per_t_clinker": obs["co2_intensity_kg_per_t_clinker"],
     }
-    p_start = PLANT_PRESETS["udayapur"].parameters
+    p_start = PLANT_PRESETS["plantb"].parameters
     result = calibrate_to_plant(
         p_start, observed,
         tunable=["arrhenius_a", "precalciner_degree"],

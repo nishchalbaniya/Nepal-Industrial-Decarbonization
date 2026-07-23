@@ -17,7 +17,7 @@
 
 A complete, open-source, **pilot-deployment-ready** industrial decarbonization platform — covering **all 11 international standards** (ISO 14064-1/2/3, ISO 50001, ISO 14001, TCFD, SBTi, GCCA, PCAF, Verra VCS, Gold Standard, GHG Protocol, IPCC 2006/2019) — built specifically for **Nepal's cement and brick industry**.
 
-**Verified on Hetauda Cement Industries Ltd:**
+**Verified on PlantA Industries Ltd:**
 - 861,025 tCO₂/yr baseline (Tier 2)
 - 783 kg CO₂/t cement intensity
 - 56,407 Verra credits/yr potential

@@ -10,19 +10,19 @@
 
 **Measure, certify, and monetize your cement plant's CO₂ — for free.**
 
-Ten words. Verb-led. Outcome-led. Free is the hook. If a Hetauda plant manager
+Ten words. Verb-led. Outcome-led. Free is the hook. If a PlantA plant manager
 remembers nothing else, they should remember this sentence.
 
 ## The three-sentence elevator pitch (for cold emails)
 
-> Hetauda Cement just turned 861,025 tonnes of CO₂ a year into a **$22.5M
+> PlantA just turned 861,025 tonnes of CO₂ a year into a **$22.5M
 > carbon asset** — in 30 days, on a free, open-source platform built and
 > run from Kathmandu. We help Nepali cement and brick plants measure their
 > emissions to all **11 international standards** (ISO 14064, Verra, Gold
 > Standard, TCFD, SBTi, GCCA, PCAF), generate a Verra carbon credit PDD,
 > and pass any bank or EU audit — without flying in a foreign consultant.
 > The first **20 plants get free on-site onboarding** from the same Nepali
-> engineering team that already did Hetauda.
+> engineering team that already did PlantA.
 
 Three sentences. Concrete numbers. Verifiable. The kind of email a plant
 manager actually forwards to the owner.
@@ -36,7 +36,7 @@ monetising theirs. He built `nepal_decarb_pro` himself — an open-source
 (MIT) platform that scored **9.78/10 against international standards**,
 with **78/78 tests passing** and a **live demo running in Kathmandu**. No
 foreign co-founder, no VC money, no offshore team. The proof is in the
-Hetauda pilot: a real plant, real data, real numbers.
+PlantA pilot: a real plant, real data, real numbers.
 
 **The market timing.** Three forces are hitting Nepali industry at once in
 2026–2027: (1) **EU CBAM** is in its definitive phase — imported cement
@@ -50,9 +50,9 @@ wins the next decade of contracts. None of them are ready today. We are.
 ## Who we are for (be specific, name the people)
 
 - **Plant managers and owners of the 6 large Nepali cement plants** —
-  Hetauda Cement Industries Ltd, Udayapur Cement, Hongshi (Shivam Cement),
-  Shree Cement, Ghorahi Cement, Araniko Cement. If you run a kiln in
-  Makwanpur, Udayapur, Palpa, or Kathmandu valley, this is for you.
+  PlantA Industries Ltd, PlantB, Hongshi (Shivam Cement),
+  Shree Cement, PlantD, Araniko Cement. If you run a kiln in
+  Makwanpur, PlantB, Palpa, or Kathmandu valley, this is for you.
 - **Brick kiln owners and cooperative leaders** running any of Nepal's
   ~1,200 active kilns — especially the 70%+ still using traditional
   clamp technology.
@@ -87,12 +87,12 @@ wins the next decade of contracts. None of them are ready today. We are.
 
 1. **Technical-but-warm.** Cite the standard, name the equation, then
    translate it into what it means for the plant manager's job.
-2. **Specific-not-vague.** "861,025 tCO₂/yr at Hetauda", not
+2. **Specific-not-vague.** "861,025 tCO₂/yr at PlantA", not
    "millions of tonnes". Every claim has a number or a name.
 3. **Bilingual-first.** Every English sentence is paired with a Nepali
    version written by a Nepali domain expert — never machine-translated.
    The default language of the platform is the user's choice.
-4. **No-greenwashing.** We publish the bad numbers too. Hetauda is
+4. **No-greenwashing.** We publish the bad numbers too. PlantA is
    **12% above the GCCA global benchmark** at 783 kg CO₂/t cement. We
    say so. Trust is the asset.
 5. **Nepal-first.** Built in Kathmandu, by a Nepali engineer, for Nepali
@@ -118,7 +118,7 @@ rating, the 11 standards, the 78/78 tests, the open-source license —
 exists to make the buyer believe that $22.5M number.
 
 If the customer only remembers one thing, it is: **a free, Nepali-built
-platform can put $22.5M on the Hetauda balance sheet.** That is the
+platform can put $22.5M on the PlantA balance sheet.** That is the
 brand.
 
 ---

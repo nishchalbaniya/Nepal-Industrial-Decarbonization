@@ -30,8 +30,8 @@ Every field the cooler emits to the PDD is grouped below by PDD section. The ful
 | `plant_name` | string | — | once | operator input | Verra VCS Program Guide v4.5 §3.1 |
 | `plant_location.latitude` | float | degrees | once | operator input | Verra VCS Program Guide v4.5 §3.1 |
 | `plant_location.longitude` | float | degrees | once | operator input | Verra VCS Program Guide v4.5 §3.1 |
-| `plant_location.altitude_m` | float | m | once | operator input (Hetauda: 1400 m) | Cengel & Boles 2015 (ISA barometric) |
-| `clinker_capacity_tpd` | float | t/day | once | operator input (Hetauda: ~3 100 tpd for the 130 t/h line) | Verra VCS Program Guide v4.5 §3.1 |
+| `plant_location.altitude_m` | float | m | once | operator input (PlantA: 1400 m) | Cengel & Boles 2015 (ISA barometric) |
+| `clinker_capacity_tpd` | float | t/day | once | operator input (PlantA: ~3 100 tpd for the 130 t/h line) | Verra VCS Program Guide v4.5 §3.1 |
 | `cooler_technology` | enum | — | once | "grate" / "rotary" / "planetary" | Verra VM0009 v3.0 §A.4 |
 | `cooler_n_compartments` | int | — | once | operator input (default 5) | Peray & Waddell 1986 §6.4 |
 | `cooler_manufacturer` | string | — | once | IKN / KHD / Polysius / other | Verra VM0009 v3.0 §A.4 |
@@ -87,17 +87,17 @@ These are not in the PDD directly; they are in the `monitoring_report.json` that
 |---|---|---|---|---|
 | `sanity.air_above_clinker` | bool | — | `False` (second-law invariant) | Mujumdar 2007 §3.1 |
 | `sanity.first_law_imbalance` | float | fraction | ≤ 0.02 | VM0009 v3.0 §6.2 |
-| `sanity.sec_air_in_realistic_band` | bool | — | `True` (600–1000 °C for default Hetauda) | Peray & Waddell 1986 §6.4 |
+| `sanity.sec_air_in_realistic_band` | bool | — | `True` (600–1000 °C for default PlantA) | Peray & Waddell 1986 §6.4 |
 | `sanity.clinker_outlet_in_realistic_band` | bool | — | `True` (120–200 °C) | ECRA 2022 |
 | `sanity.efficiency_in_realistic_band` | bool | — | `True` (0.65–0.85) | GCCA GNR 2022 |
 
-### 2.6 Nepal duty case (mandatory for HCIL / UCIL)
+### 2.6 Nepal duty case (mandatory for NIDC / UCIL)
 
-| Field | Type | Unit | Value (Hetauda) | Citation |
+| Field | Type | Unit | Value (PlantA) | Citation |
 |---|---|---|---|---|
 | `duty_case.altitude_m` | float | m | 1400 | Cengel & Boles 2015 |
-| `duty_case.ambient_t_c` | float | °C | 35 (May design day) | HCIL plant documents |
-| `duty_case.ambient_rh` | float | fraction | 0.90 (monsoon) | HCIL plant documents |
+| `duty_case.ambient_t_c` | float | °C | 35 (May design day) | NIDC plant documents |
+| `duty_case.ambient_rh` | float | fraction | 0.90 (monsoon) | NIDC plant documents |
 | `duty_case.air_density_kg_m3` | float | kg/m³ | 1.05 (computed, not 0.6) | Cengel & Boles 2015 + Ramesh §5.1 |
 | `duty_case.p_atm_mbar` | float | mbar | 858 | ISA barometric formula |
 

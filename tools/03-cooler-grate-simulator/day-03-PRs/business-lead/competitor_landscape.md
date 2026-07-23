@@ -76,7 +76,7 @@ These are the platforms the plant *already has*. The buyer for these is the plan
 | **Verra-grade audit trail** | ❌ No | ⚠️ Possible (not public) | N/A | ✅ `duty_case` block + round-trip CSV/JSON + energy balance closure ≤ 2 %. Kabita, please confirm. |
 | **EU CBAM data path** | ⚠️ Possible via OEM | ⚠️ Possible | ⚠️ Reference docs | ✅ Compatible — per-KPI reporting in MJ/t-cli per GCCA `cl_PM2`. |
 | **Pilot at $50K for 90 days** | ❌ No (enterprise only) | ❌ No (enterprise only) | N/A | ✅ Yes. 3 checkpoints, defined success metrics, defined renewal. |
-| **Nepal / South Asia duty case** | ❌ Not a target market | ❌ Not a target market | ⚠️ IFC covers it | ✅ Hetauda 1400 m / 35 °C / 90 % RH preset. Ramesh §5. |
+| **Nepal / South Asia duty case** | ❌ Not a target market | ❌ Not a target market | ⚠️ IFC covers it | ✅ PlantA 1400 m / 35 °C / 90 % RH preset. Ramesh §5. |
 | **First-law imbalance ≤ 2 %** | Unknown | Unknown | N/A | ✅ Enforced + tested (Hiro §2.2). |
 | **Refutation tests (Sobol, property-based)** | Unknown | Unknown | N/A | ✅ Hiro §2.3–2.5. N=1024 base, ~8192 model evals. |
 | **Open test suite, publish failures** | ❌ | ❌ | N/A | ✅ 5 new diagnostic tests; first 3 fail against v0.3.0 by construction. |
@@ -100,7 +100,7 @@ These are the platforms the plant *already has*. The buyer for these is the plan
 1. **Don't compete on "AI" or "digital twin."** Carbon Re and iFactory own that vocabulary. The plant hears "another AI digital twin" and rolls eyes.
 2. **Compete on "1 % SEC reduction, here are the 3 actions, here is the verified measurement."** That's the audit-trail pitch. APC can't do it. AI startups can't do it publicly. Advisory tools can't do it operationally.
 3. **Compete on price.** $50K pilot + $50K–75K/yr license is 5–10× cheaper than the enterprise SaaS. For a Nepali plant, that's the entire conversation.
-4. **Compete on Nepal duty case.** No one else is doing Hetauda 1400 m / 35 °C / 90 % RH. No one else has the HCIL preset.
+4. **Compete on Nepal duty case.** No one else is doing PlantA 1400 m / 35 °C / 90 % RH. No one else has the NIDC preset.
 5. **Don't name the competitors in the customer-facing material.** The buyer doesn't care who else is in the space. The buyer cares about the SEC delta, the payback, and the risk. Name the *outcome*, not the *vendor*.
 
 ---

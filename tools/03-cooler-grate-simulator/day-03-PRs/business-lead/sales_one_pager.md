@@ -30,7 +30,7 @@ A 1D compartment-wise grate cooler simulator, calibrated to your plant's DCS exp
 We don't claim "we built it and it works." We name the bugs we caught and what we did about them. This is the proof:
 
 - **Bug found**: secondary-air T of 5790 °C in v0.3.0 — a textbook second-law violation (Aanya, `AANYA-DAY-03-REVIEW.md`). Unphysical. Would have failed a Verra validation in 5 minutes.
-- **Fix in v0.3.1**: second-law clamp `T_a ≤ T_c − 5 K`; air topology moved to per-compartment counter-flow; sec-air now lands in the engineering band [600, 1000] °C for a Hetauda 1400 m / 35 °C / 90 % RH design day (Aanya, Ramesh).
+- **Fix in v0.3.1**: second-law clamp `T_a ≤ T_c − 5 K`; air topology moved to per-compartment counter-flow; sec-air now lands in the engineering band [600, 1000] °C for a PlantA 1400 m / 35 °C / 90 % RH design day (Aanya, Ramesh).
 - **Bug found**: 13.5× first-law imbalance in v0.3.0 — air-side heat recovery vs clinker-side heat recovery disagreed by 13.5× (Ramesh, `DAY-03-RAMESH-REVIEW.md`). Hard reject.
 - **Fix in v0.3.1**: per-compartment counter-flow solver with compartment-level air mass; the two sides of the heat exchanger now agree within 5 %.
 - **Bug found**: tests passed for the wrong reason. v0.3.0's `efficiency ∈ [0.4, 0.95]` band was too loose to catch a 5790 °C air stream; monotonicity tests didn't catch a runaway second-law violation (Hiro, `hiro-day-03-review.md`).
@@ -39,7 +39,7 @@ We don't claim "we built it and it works." We name the bugs we caught and what w
 
 ## The payback
 
-1 % SEC reduction on a 3000-tpd plant = ~$337K/yr in fuel. 4 % = ~$1.35M/yr. Our price = 1–5 % of that = **$15K–75K/yr per plant** (Hetauda-class: $25K–$50K; Hongshi-class: $15K–$25K). 5 plants = $75K–$375K ARR. 50-plant regional platform = $1.25M–$2.5M ARR. See `pricing_math.md` for the line-by-line.
+1 % SEC reduction on a 3000-tpd plant = ~$337K/yr in fuel. 4 % = ~$1.35M/yr. Our price = 1–5 % of that = **$15K–75K/yr per plant** (PlantA-class: $25K–$50K; Hongshi-class: $15K–$25K). 5 plants = $75K–$375K ARR. 50-plant regional platform = $1.25M–$2.5M ARR. See `pricing_math.md` for the line-by-line.
 
 The pilot at $50K for 90 days pays back if the plant finds 0.15 % of SEC reduction over the 90-day window *and acts on it for 1 year*. The historical record (ECRA, IEA, WBCSD/CSI) says plants find 1–4 %; the question is whether they act.
 
@@ -53,11 +53,11 @@ If the project doesn't credit at Verra (12–18 month process), we don't refund 
 
 ## The path to scale
 
-One plant in Nepal is a study. Five in the region is a product. Fifty is a platform. The wedge is a Hetauda-class legacy plant where the easy 1–3 % SEC reduction is sitting on the table. The first 3 customers are the *learning investment*, not the *revenue investment*. Revenue is in customer #4 through #50.
+One plant in Nepal is a study. Five in the region is a product. Fifty is a platform. The wedge is a PlantA-class legacy plant where the easy 1–3 % SEC reduction is sitting on the table. The first 3 customers are the *learning investment*, not the *revenue investment*. Revenue is in customer #4 through #50.
 
 ## The next commitment (not "would you use it?" — "will you sign?")
 
-If you are the CFO, COO, or Plant Engineer of a Nepali cement plant, the next commitment is a 30-day scoping call. The scoping call produces a 1-page pilot scope, a price ($50K for 90 days at Hetauda-class), and a 3-checkpoint renewal path. If you won't sign the scoping call, the answer is no, no matter what you say. We won't build a feature for a customer who isn't going to buy.
+If you are the CFO, COO, or Plant Engineer of a Nepali cement plant, the next commitment is a 30-day scoping call. The scoping call produces a 1-page pilot scope, a price ($50K for 90 days at PlantA-class), and a 3-checkpoint renewal path. If you won't sign the scoping call, the answer is no, no matter what you say. We won't build a feature for a customer who isn't going to buy.
 
 Contact: Priya Karki, Founder, Nepal Industrial Decarbonization Suite.
 
@@ -66,7 +66,7 @@ Contact: Priya Karki, Founder, Nepal Industrial Decarbonization Suite.
 ## Sources cited (proof)
 
 1. **Aanya's Day 3 review** (`tools/03-cooler-grate-simulator/reviews/AANYA-DAY-03-REVIEW.md`) — radiation runaway diagnosis, Achenbach attribution, cross-flow vs counter-flow recommendation, KPI gaps.
-2. **Ramesh's Day 3 review** (`reviews/DAY-03-RAMESH-REVIEW.md`) — first-law imbalance 13.5×, compartment design, Nepal duty case (Hetauda 1400 m / 35 °C / 90 % RH).
+2. **Ramesh's Day 3 review** (`reviews/DAY-03-RAMESH-REVIEW.md`) — first-law imbalance 13.5×, compartment design, Nepal duty case (PlantA 1400 m / 35 °C / 90 % RH).
 3. **Hiro's Day 3 review** (`reviews/hiro-day-03-review.md`) — test fragility, second-law invariant, Sobol design, property-based sweep recommendation.
 4. **Mujumdar, K.S. (2007)**, "Mathematical Modeling of a Grate Cooler for Cement Clinker Cooling," *Ind. Eng. Chem. Res.* 46(7), 2184–2192 — compartment counter-flow formulation.
 5. **Peray, K.E. & Waddell, J.J. (1986)**, *The Rotary Cement Kiln*, 2nd ed., Ch. 6 §6.4 — secondary-air T 600–900 °C, GJ/t benchmarks 0.30–0.45.

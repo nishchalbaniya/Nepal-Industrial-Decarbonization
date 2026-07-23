@@ -55,21 +55,21 @@ class ServerSmokeTests(unittest.TestCase):
         body = r.json()
         self.assertIn("cooler", body)
         self.assertIn("kiln", body)
-        self.assertIn("hetauda", body["cooler"])
+        self.assertIn("planta", body["cooler"])
 
     def test_cooler_run(self):
-        r = self.client.post("/api/cooler/run", json={"plant": "hetauda"})
+        r = self.client.post("/api/cooler/run", json={"plant": "planta"})
         self.assertEqual(r.status_code, 200, r.text)
         body = r.json()
         self.assertTrue(body["ok"])
         out = body["outputs"]
-        # expected v0.3.2 default-preset numbers (Hetauda)
+        # expected v0.3.2 default-preset numbers (PlantA)
         self.assertAlmostEqual(out["secondary_air_outlet_c"], 559.3, delta=2.0)
         self.assertAlmostEqual(out["first_law_imbalance"], 0.0, delta=1e-9)
         self.assertGreater(out["cooler_efficiency"], 0.5)
 
     def test_kiln_run(self):
-        r = self.client.post("/api/kiln/run", json={"plant": "hetauda"})
+        r = self.client.post("/api/kiln/run", json={"plant": "planta"})
         self.assertEqual(r.status_code, 200, r.text)
         body = r.json()
         self.assertTrue(body["ok"])

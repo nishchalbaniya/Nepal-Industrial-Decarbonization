@@ -46,7 +46,7 @@ def main():
     meta = {
         "model": "v0.5.0 calibrated cooler (Day 5 ship)",
         "calibration_source": "Day 5 v0.5.0 iterative two-stage L-BFGS-B (commit 2aa918c)",
-        "calibration_target": "consistent synthetic Hetauda shift (synthetic_hetauda_v050_shift_4h.csv)",
+        "calibration_target": "consistent synthetic PlantA shift (synthetic_planta_v050_shift_4h.csv)",
         "calibration_loss_prior": 233.72,
         "calibration_loss_posterior": 5.00,
         "calibration_rmse_sec_air_K": 10.2,

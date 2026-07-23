@@ -10,7 +10,7 @@
 | **Live API (FastAPI)** | https://harvey-aside-striking-spas.trycloudflare.com | 🟢 LIVE |
 | API health | https://harvey-aside-striking-spas.trycloudflare.com/health | 🟢 200 |
 | Swagger docs | https://harvey-aside-striking-spas.trycloudflare.com/docs | 🟢 200 |
-| Hetauda baseline | https://harvey-aside-striking-spas.trycloudflare.com/pilot | 🟢 200 |
+| PlantA baseline | https://harvey-aside-striking-spas.trycloudflare.com/pilot | 🟢 200 |
 | Standards | https://harvey-aside-striking-spas.trycloudflare.com/standards | 🟢 200 |
 | Kiln simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/kiln | 🟢 200 |
 | Brick simulator | https://harvey-aside-striking-spas.trycloudflare.com/simulator/brick | 🟢 200 |

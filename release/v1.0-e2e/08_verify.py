@@ -11,7 +11,7 @@ import FreeCAD
 import Import
 
 COOLER = "C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/05_cooler_v050_calibrated.step"
-KILN   = "C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_hetauda_kiln.step"
+KILN   = "C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_planta_kiln.step"
 
 def inspect(path):
     Import.open(path)

@@ -4,10 +4,10 @@ Not part of the PR.
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cooler_ode import _solve_compartment
-from plants import hetauda
+from plants import planta
 import numpy as np
 
-p = hetauda()
+p = planta()
 comps = p.effective_compartments()
 comp = comps[0]
 rho_air = p.air_density_kg_m3()

@@ -27,7 +27,7 @@ If we get 50% of cement plants onboarded = 3 Mt CO₂/yr under management, 200,0
 ### Phase 0 — Soft launch (Month 1-2)
 - Deploy to a $20/mo Hetzner VPS in Mumbai
 - Single domain (nepalcarbon.org.np or similar)
-- Onboard Hetauda Cement (already verified) as reference
+- Onboard PlantA (already verified) as reference
 - Onboard 5 friendly plants (NCMA intro)
 - Total: 6 plants, ~3 Mt CO₂/yr under management
 
@@ -159,7 +159,7 @@ If we get 50% of cement plants onboarded = 3 Mt CO₂/yr under management, 200,0
 3. **Bilingual** (EN/NE) — removes the language barrier
 4. **Standards-compliant** (11 standards) — makes it a no-brainer for verifiers
 5. **Carbon credit revenue** — gives the plant a financial reason to participate
-6. **Already proven** at Hetauda Cement — removes the "will it work?" objection
+6. **Already proven** at PlantA — removes the "will it work?" objection
 7. **Built for Nepal** (Nepali fuels, NEA grid EF, NCMA integration) — not a Western tool retrofitted
 
 The only question is execution speed. Let's go.

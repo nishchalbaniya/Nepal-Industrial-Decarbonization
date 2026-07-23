@@ -66,7 +66,7 @@ DEFAULT_CALIBRATION = {
     "altitude_m": 1400.0,
 }
 
-# Other engineering defaults (not calibrated; Hetauda site)
+# Other engineering defaults (not calibrated; PlantA site)
 SITE_DEFAULTS = dict(
     width_m=3.5,                 # grate width
     shell_height_m=2.0,           # total cooler housing height

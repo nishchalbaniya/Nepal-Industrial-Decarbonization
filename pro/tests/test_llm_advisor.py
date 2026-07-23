@@ -9,9 +9,9 @@ from nepal_decarb_pro.llm.advisor import answer_question, AdvisorContext
 @pytest.fixture
 def ctx_en():
     return AdvisorContext(
-        plant_name="Hetauda Cement Industries Ltd",
+        plant_name="PlantA Industries Ltd",
         plant_type="cement_dry",
-        plant_location="Hetauda, Makwanpur",
+        plant_location="PlantA, Makwanpur",
         baseline_2024={"intensity_kg_per_t": 783, "total_tco2": 861025, "clinker_ratio": 0.85},
         intensity_history=[
             {"month": "2024-01", "intensity_kg_per_t": 800},

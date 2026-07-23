@@ -20,7 +20,7 @@ from nepal_kiln_sim.plants import PLANT_PRESETS
 
 
 def test_csv_round_trip(tmp_path):
-    p = PLANT_PRESETS["hetauda"].parameters
+    p = PLANT_PRESETS["planta"].parameters
     t, y, x = simulate_kiln(p, t_end_s=60.0, n_time_points=5)
     path = save_results_csv(str(tmp_path / "traj.csv"), t, y, x, p)
     assert Path(path).exists()
@@ -31,7 +31,7 @@ def test_csv_round_trip(tmp_path):
 
 
 def test_json_contains_outputs(tmp_path):
-    p = PLANT_PRESETS["udayapur"].parameters
+    p = PLANT_PRESETS["plantb"].parameters
     state = run_to_steady_state(p, max_t_s=180.0)
     outs = compute_outputs(state, p)
     path = save_results_json(str(tmp_path / "out.json"), state, p, outs)
@@ -43,7 +43,7 @@ def test_json_contains_outputs(tmp_path):
 
 
 def test_pickle_round_trip(tmp_path):
-    p = PLANT_PRESETS["hetauda"].parameters
+    p = PLANT_PRESETS["planta"].parameters
     state = run_to_steady_state(p, max_t_s=120.0)
     t, y, x = simulate_kiln(p, t_end_s=120.0)
     path = save_state_pickle(str(tmp_path / "s.pkl"), state, t, y, p)
@@ -61,7 +61,7 @@ def test_matlab_export(tmp_path):
 
 
 def test_octave_export(tmp_path):
-    p = PLANT_PRESETS["udayapur"].parameters
+    p = PLANT_PRESETS["plantb"].parameters
     path = export_octave_script(str(tmp_path / "kiln.m"), p)
     text = Path(path).read_text()
     assert "odepkg" in text

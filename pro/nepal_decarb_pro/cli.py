@@ -23,8 +23,8 @@ def cli() -> None:
 
 
 @cli.command()
-@click.option("--name", default="Hetauda Cement Industries Ltd")
-@click.option("--location", default="Hetauda, Makwanpur")
+@click.option("--name", default="PlantA Industries Ltd")
+@click.option("--location", default="PlantA, Makwanpur")
 @click.option("--year", default=2024, type=int)
 @click.option("--clinker-t", required=True, type=float)
 @click.option("--cement-t", required=True, type=float)

@@ -17,21 +17,21 @@ def test_all_presets_load():
 
 
 def test_preset_keys():
-    expected = {"hetauda", "udayapur", "hongshi_shivam", "ghorahi",
+    expected = {"planta", "plantb", "plantc", "plantd",
                 "reference_5000tpd", "legacy_wet_1000tpd"}
     assert set(PLANT_PRESETS.keys()) >= expected
 
 
-def test_hetauda_in_range():
-    p = PLANT_PRESETS["hetauda"].parameters
+def test_planta_in_range():
+    p = PLANT_PRESETS["planta"].parameters
     assert 50.0 <= p.length_m <= 80.0
     assert 3.0 <= p.diameter_m <= 5.0
     assert 5.0 <= p.fuel_rate_t_h <= 15.0
 
 
-def test_hongshi_more_capacity_than_hetauda():
-    a = PLANT_PRESETS["hongshi_shivam"].parameters
-    b = PLANT_PRESETS["hetauda"].parameters
+def test_hongshi_more_capacity_than_planta():
+    a = PLANT_PRESETS["plantc"].parameters
+    b = PLANT_PRESETS["planta"].parameters
     assert a.raw_meal_throughput_t_h > b.raw_meal_throughput_t_h
 
 

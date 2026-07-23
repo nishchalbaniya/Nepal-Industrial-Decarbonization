@@ -34,7 +34,7 @@ def cli() -> None:
 
 @cli.command()
 @click.option("--name", default="Nepali Cement Plant")
-@click.option("--location", default="Hetauda")
+@click.option("--location", default="PlantA")
 @click.option("--year", default=2024, type=int)
 @click.option("--clinker-t", required=True, type=float, help="Clinker production t/yr")
 @click.option("--cement-t", required=True, type=float, help="Cement production t/yr")

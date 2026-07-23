@@ -1,5 +1,5 @@
 # Verra VCS Validation Pack — Fill-in-the-Blank Template
-### For: Hetauda Cement Industries Ltd — Decarbonization Project
+### For: PlantA Industries Ltd — Decarbonization Project
 ### Verra Registry: `[to be assigned on pipeline publication]`
 ### Author: Himalayan Space Solutions · Author: Mavis, CTO · Reviewer: Nishchal Baniya, Founder
 ### Last updated: 2026-07-22
@@ -112,10 +112,10 @@ Sincerely,
 - **§C.3 Barrier test:**
   - **Investment barrier:** HCN has secured 60% of capex from NRB Green Finance Facility; balance is dependent on forward carbon revenue.
   - **Technological barrier:** No Nepali plant has integrated rice husk pre-drying + WHR; vendor (Loesche, FLSmidth) is foreign with limited local service.
-  - **Institutional barrier:** Biomass supply chain is not yet developed in the Hetauda district; we are creating it.
+  - **Institutional barrier:** Biomass supply chain is not yet developed in the PlantA district; we are creating it.
   - Narrative: `01F_barrier_test.pdf`
 - **§C.4 Common practice test:**
-  - Survey of 6 Nepali cement plants (Hetauda, Udayapur, Hongshi, Shree, Ghorahi, Araniko) — none have biomass + WHR.
+  - Survey of 6 Nepali cement plants (PlantA, PlantB, Hongshi, Shree, PlantD, Araniko) — none have biomass + WHR.
   - Table: `01D_common_practice.xlsx`
 - **§C.5 Prior consideration:**
   - Pipeline publication date: `<<YYYY-MM-DD>>`
@@ -134,7 +134,7 @@ Sincerely,
   - Activity 2 (WHR): no market displacement, no leakage. Estimated leakage: `<<0%>>`.
   - Aggregate leakage: `<<2.0%>>` (below 5% default, justified)
 - **§D.2 Leakage calculation spreadsheet:** `01I_leakage.xlsx`
-- **§D.3 Monitoring of leakage:** Annual rice-husk price survey in Hetauda district; recorded in monitoring report.
+- **§D.3 Monitoring of leakage:** Annual rice-husk price survey in PlantA district; recorded in monitoring report.
 
 **VVB Expectation:** A flat 5% leakage (as the current code uses) is acceptable only with a one-page justification. A calculated per-activity leakage is preferred and is VVB-friendly.
 
@@ -158,7 +158,7 @@ Sincerely,
 **VVB Expectation:** The current code's "one-sentence monitoring plan" is **automatic rejection**. A 5+ page structured plan with parameter table is the minimum.
 
 ### §G — Stakeholder consultation
-- **§G.1 Local stakeholders consulted:** plant workers, plant management, kiln workers' families, local government (Hetauda sub-metropolitan), civil society (FNCCI, CECI Nepal)
+- **§G.1 Local stakeholders consulted:** plant workers, plant management, kiln workers' families, local government (PlantA sub-metropolitan), civil society (FNCCI, CECI Nepal)
 - **§G.2 Date(s) and location(s):** `<<YYYY-MM-DD>>` at `<<VENUE>>`
 - **§G.3 Minutes of meeting:** `01N_stakeholder_minutes.pdf` (signed by attendees)
 - **§G.4 Attendance sheet:** `01O_attendance.pdf` (with signatures)
@@ -301,7 +301,7 @@ Procedure must cover:
 **File:** `08_materiality_threshold.pdf`
 **Owner:** Mavis
 
-- Threshold: 5% of gross annual emission reductions (e.g., for Hetauda: 5% × 70,000 = 3,500 tCO₂/yr)
+- Threshold: 5% of gross annual emission reductions (e.g., for PlantA: 5% × 70,000 = 3,500 tCO₂/yr)
 - Justification: VCS Standard §3.5.6 and ISO 14064-3 §5.3.4 both permit a 5% threshold for voluntary carbon markets; below this, the VVB aggregates the misstatement and reports as a single item.
 
 ---
@@ -311,7 +311,7 @@ Procedure must cover:
 **Owner:** Nishchal (logistics) + Mavis (technical content)
 
 - VVB lead validator + 1 technical reviewer
-- 2 days on site at Hetauda
+- 2 days on site at PlantA
 - Day 1: plant walkthrough, kiln inspection, WHR pre-construction, biomass supply chain
 - Day 2: management interviews, data spot-checks, open findings meeting
 - Travel, accommodation, security, COVID protocols (as applicable)
@@ -322,7 +322,7 @@ Procedure must cover:
 
 ## SECTION 10 — Operator Competence Statements
 **File:** `10_operator_competence.pdf`
-**Owner:** Hetauda Cement HR + Nishchal
+**Owner:** PlantA HR + Nishchal
 
 CVs and competence statements for:
 - Plant Manager (10+ years cement ops)
@@ -346,7 +346,7 @@ Every CALCULATE event must export with:
 - `user_id`
 - `action` (always `CALCULATE` for this section)
 - `entity_type` (e.g., `cement_calculation_tier2`)
-- `entity_id` (e.g., `hetauda_2024_baseline`)
+- `entity_id` (e.g., `planta_2024_baseline`)
 - `input_hash` (SHA-256 of serialized input)
 - `output_hash` (SHA-256 of serialized output)
 - `code_version` (git SHA of `nepal_decarb_pro` at time of calc)
@@ -371,7 +371,7 @@ If VVB pushes back (e.g., "ISO 14064-1:2025 is out, why AR5?"), have a one-page 
 **File:** `13_methodology_decision_memo.pdf`
 **Owner:** Mavis + senior methodology consultant
 
-1-page memo explaining why we chose methodology `<<METHOD>>` over alternatives. For Hetauda, recommend: **AMS-III.H (alternative waste treatment / WHR component) + ACM0010 (low-carbon cement component)** — and **abandon the fictional VM0009**.
+1-page memo explaining why we chose methodology `<<METHOD>>` over alternatives. For PlantA, recommend: **AMS-III.H (alternative waste treatment / WHR component) + ACM0010 (low-carbon cement component)** — and **abandon the fictional VM0009**.
 
 ---
 
@@ -398,7 +398,7 @@ Evidence that the project capex was not committed before the PDD pipeline public
 
 ## SECTION 16 — Stakeholder Grievance Log
 **File:** `16_grievance_log.xlsx` (ongoing)
-**Owner:** Hetauda Plant EHS Officer
+**Owner:** PlantA Plant EHS Officer
 
 Even if no grievances have been received to date, the log must be set up and attached (empty is acceptable). The VVB checks the mechanism, not the volume.
 

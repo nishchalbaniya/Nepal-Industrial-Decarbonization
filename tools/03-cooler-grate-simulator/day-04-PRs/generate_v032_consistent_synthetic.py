@@ -1,4 +1,4 @@
-"""Day 5 -- generate a v0.3.2-model-consistent synthetic Hetauda
+"""Day 5 -- generate a v0.3.2-model-consistent synthetic PlantA
 plant-data CSV.
 
 The Day 4 generator (generate_synthetic_plant_data.py) produced
@@ -135,7 +135,7 @@ def observed_value(field: str, t_min: float) -> float:
 
 def main() -> None:
     here = Path(__file__).parent
-    out = here / "data" / "synthetic_hetauda_v050_shift_4h.csv"
+    out = here / "data" / "synthetic_planta_v050_shift_4h.csv"
     out.parent.mkdir(parents=True, exist_ok=True)
     n = DURATION_MIN // SAMPLE_EVERY_MIN
     with out.open("w", newline="", encoding="utf-8") as f:

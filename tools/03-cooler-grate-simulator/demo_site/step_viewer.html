@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Day 6 v0.6.0 — Hetauda Cooler STEP File</title>
+<title>Day 6 v0.6.0 — PlantA Cooler STEP File</title>
 <style>
   body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
          max-width: 980px; margin: 24px auto; padding: 0 16px;
@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<h1>Day 6 v0.6.0 &mdash; Hetauda cooler 3D STEP file</h1>
+<h1>Day 6 v0.6.0 &mdash; PlantA cooler 3D STEP file</h1>
 <p class="meta">
   Generated <span id="ts"></span> &middot;
   v0.6.0 = v0.5.0 calibrated model + FreeCAD 1.1.1 STEP export.
@@ -73,9 +73,9 @@
   <p class="meta">
     The geometry is the v0.5.0 calibrated posterior: 32.8 m grate
     length, 0.78 m bed depth, 6 compartments. This is close to the
-    real Hetauda plant geometry (~32 m grate, ~0.7 m bed, 5 compartments)
+    real PlantA plant geometry (~32 m grate, ~0.7 m bed, 5 compartments)
     and is the result of the Day 5 v0.5.0 calibration on the consistent
-    synthetic Hetauda target (loss 234 -> 5.0, 98% reduction).
+    synthetic PlantA target (loss 234 -> 5.0, 98% reduction).
   </p>
 </div>
 
@@ -127,7 +127,7 @@
 <h2>4. Calibrated geometry (Day 5 v0.5.0 posterior)</h2>
 <table>
   <thead>
-    <tr><th>Parameter</th><th>Value</th><th>Real Hetauda (approx)</th></tr>
+    <tr><th>Parameter</th><th>Value</th><th>Real PlantA (approx)</th></tr>
   </thead>
   <tbody id="geo"></tbody>
 </table>
@@ -181,7 +181,7 @@ const META = {
     "kiln_coupling_diameter_m": 1.5,
     "clinker_chute_width_m":    1.2,
   },
-  real_hetauda: {
+  real_planta: {
     "grate_length_m":          "~32",
     "bed_depth_m":             "~0.7",
     "n_compartments":          "5 (Polysius design)",
@@ -192,7 +192,7 @@ const META = {
 document.getElementById("ts").textContent = new Date().toISOString();
 
 const gt = document.getElementById("geo");
-const real = META.real_hetauda;
+const real = META.real_planta;
 for (const [k, v] of Object.entries(META.geometry)) {
   const realVal = real[k] ?? "—";
   const vStr = typeof v === "number" ? v.toFixed(3) : v;

@@ -13,7 +13,7 @@ clinker coolers, with:
   * Multiple fuels (coal, petcoke, biomass, TDF, RDF, natural gas)
   * Alternative fuel substitution impact on flame temperature and SEC
   * Steady-state solver and full transient simulation
-  * Hetauda / Udayapur / Hongshi-Shivam plant parameter presets
+  * PlantA / PlantB / plantc plant parameter presets
   * MATLAB / Octave live scripts (.mlx + .m) for cross-language use
   * Streamlit UI + CLI + Python API
   * CSV / JSON / Excel I/O for plant historian integration

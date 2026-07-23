@@ -32,15 +32,15 @@ ef = EmissionFactors.from_yaml()
 st.subheader("🏭 Cement sector — all major Nepali plants")
 
 cement_plants = {
-    "Hetauda Cement": dict(
+    "PlantA": dict(
         clinker_t=950_000, cement_t=1_100_000,
         coal_t=120_000, petcoke_t=18_000, diesel_t=400,
-        elec_kwh=85_000_000, location="Hetauda",
+        elec_kwh=85_000_000, location="PlantA",
     ),
-    "Udayapur Cement": dict(
+    "PlantB": dict(
         clinker_t=1_800_000, cement_t=2_100_000,
         coal_t=235_000, petcoke_t=32_000, diesel_t=600,
-        elec_kwh=160_000_000, location="Udayapur",
+        elec_kwh=160_000_000, location="PlantB",
     ),
     "Hongshi (Nawalparasi)": dict(
         clinker_t=3_200_000, cement_t=3_800_000,
@@ -52,10 +52,10 @@ cement_plants = {
         coal_t=158_000, petcoke_t=22_000, diesel_t=500,
         elec_kwh=108_000_000, location="Palpa",
     ),
-    "Ghorahi Cement": dict(
+    "plantd": dict(
         clinker_t=1_200_000, cement_t=1_400_000,
         coal_t=158_000, petcoke_t=22_000, diesel_t=500,
-        elec_kwh=108_000_000, location="Ghorahi",
+        elec_kwh=108_000_000, location="plantd",
     ),
     "Araniko Cement": dict(
         clinker_t=600_000, cement_t=750_000,

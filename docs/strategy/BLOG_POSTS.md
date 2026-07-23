@@ -31,7 +31,7 @@
 > **Persona:** Plant Manager Ramesh.
 > **Format:** 500 words. Includes a 1-table "CBAM cost calculator"
 > for the 6 Nepali cement plants (using their published capacities
-> and the 783 kg/t intensity from our Hetauda pilot as a
+> and the 783 kg/t intensity from our PlantA pilot as a
 > placeholder) — readers can copy the table into Excel and plug in
 > their own numbers.
 
@@ -40,7 +40,7 @@ a "coming" thing — it is in its definitive phase, and any bag of
 Nepali cement (or clinker) that lands at Rotterdam or Hamburg
 after 2026 is being assessed a carbon tariff equal to the
 difference between the EU ETS price and the verified embedded
-emissions of the product. For a Hetauda-class plant with an
+emissions of the product. For a PlantA-class plant with an
 intensity of 783 kg CO₂/t cement, the math at €80/tCO₂ is roughly
 **€32 per tonne of exported cement** — a cost that comes straight
 off the price your Indian and Bangladeshi competitors (who already
@@ -49,28 +49,28 @@ requires you to disclose (the embedded emissions, the methodology,
 the verification body), (2) what "no measurement" costs you in
 practice when the EU asks for numbers you cannot produce, and (3)
 the three things you can do in the next 90 days to be ready:
-compute a Tier 2 baseline, get a Hetauda-style ISO 14064-1
+compute a Tier 2 baseline, get a PlantA-style ISO 14064-1
 100/100 report, and have a VVB lined up for the first
-verification. We use the Hetauda pilot numbers as the worked
+verification. We use the PlantA pilot numbers as the worked
 example, but the post is explicitly a guide any plant manager can
 follow. End with: "If you want the same template we used for
-Hetauda, it's free at nepalcarbon.org.np/signup — you'll have
+PlantA, it's free at nepalcarbon.org.np/signup — you'll have
 your first baseline by the end of the week." CTA: signup.
 
 ---
 
-## Post 2 — "How Hetauda Cement can make $22.5M from carbon credits"
+## Post 2 — "How PlantA can make $22.5M from carbon credits"
 
 > **SEO target:** "carbon credits cement Nepal", "Verra credits
-> cement", "Hetauda Cement emissions", "VM0009 cement".
+> cement", "PlantA emissions", "VM0009 cement".
 > **Persona:** Owner-Operator Sita (and any Nepali plant owner who
 > sees the headline and wants to know if it applies to them).
 > **Format:** 500 words + 1 chart (the emissions waterfall) + 1
-> embed of the live Hetauda dashboard screenshot. Tag: case study.
+> embed of the live PlantA dashboard screenshot. Tag: case study.
 
 **Summary.** A $22.5M number sounds like a typo until you walk
 through the math, so this post does the walk-through in plain
-language. Hetauda Cement Industries Ltd (Makwanpur, 1.1 Mt/yr
+language. PlantA Industries Ltd (Makwanpur, 1.1 Mt/yr
 capacity, dry process) has a measured 2024 baseline of **861,025
 tCO₂/yr** and an intensity of **783 kg CO₂/t cement**. Apply a
 realistic project scenario — biomass co-firing replacing 15% of
@@ -83,7 +83,7 @@ period, the NPV is **$22.5M**. The post is honest about the
 assumptions (the project scenario costs ~$8M capex, the VVB
 verification is ~$25k/year, the additionality test is real), and
 it is clear that the first mover gets the easiest credit
-issuance. CTA: download the free Hetauda baseline report (PDF,
+issuance. CTA: download the free PlantA baseline report (PDF,
 1-page executive summary, no email gate).
 
 ---
@@ -109,7 +109,7 @@ petcoke, electricity, limestone, clay, iron ore), **(2) compute**
 the baseline using IPCC Tier 2 mass-balance (one click in our
 free tool, or in any spreadsheet if you want to do it by hand),
 **(3) document** the 20 criteria using the checklist (boundary,
-methodology, base year, uncertainty, audit trail). The Hetauda
+methodology, base year, uncertainty, audit trail). The PlantA
 pilot scored **100/100 on all 20 criteria** in the live
 platform, and the same platform is free to use for any Nepali
 plant. CTA: download the free template + checklist (no email
@@ -152,8 +152,8 @@ monthly brick-kiln owner webinar (in नेपाली).
 
 ## Post 5 — "5 Nepali cement plants that should join the climate conversation"
 
-> **SEO target:** "Hetauda Cement", "Udayapur Cement", "Hongshi
-> Cement Nepal", "Shree Cement Nepal", "Ghorahi Cement",
+> **SEO target:** "PlantA", "PlantB", "Hongshi
+> Cement Nepal", "Shree Cement Nepal", "plantd",
 > "Araniko Cement" — these are all real searches that the
 > founders, competitors, and journalists run.
 > **Persona:** NCMA Board + Department of Environment + plant
@@ -164,16 +164,16 @@ monthly brick-kiln owner webinar (in नेपाली).
 
 **Summary.** A short, named, public call-out to the **5 large
 Nepali cement plants that should be the first cohort on the
-national MRV system**: (1) **Hetauda Cement Industries Ltd** —
+national MRV system**: (1) **PlantA Industries Ltd** —
 already piloting with us, baseline 861,025 tCO₂/yr, intensity
-783 kg/t; (2) **Udayapur Cement Industries Ltd** — public
-capacity ~1.5 Mt/yr, intensity likely similar to Hetauda based
+783 kg/t; (2) **PlantB Industries Ltd** — public
+capacity ~1.5 Mt/yr, intensity likely similar to PlantA based
 on the open literature, would be a clean second pilot; (3)
-**Hongshi Shivam Cement** (Saptari) — Chinese-owned, large,
+**plantc Cement** (Saptari) — Chinese-owned, large,
 imports most of its clinker, so its CBAM exposure is acute;
 (4) **Shree Cement Nepal** (Kathmandu valley) — newer plant,
 better baseline efficiency, could be the "best in class" peer
-benchmark; (5) **Ghorahi Cement Industries** (Dang) — mid-size,
+benchmark; (5) **PlantD Industries** (Dang) — mid-size,
 mid-intensity, the perfect third cohort member. The post is
 explicit that this is **not** a sales pitch — it is an invitation
 to be on the right side of a regulatory shift that is coming

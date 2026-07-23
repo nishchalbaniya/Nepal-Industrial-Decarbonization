@@ -67,7 +67,7 @@ The script does not exist in v0.3.1.
 | 19 | `gold-std-cement` | Gold Standard cement methodology | Gold Standard Foundation | current | **Openly published** for methodologies, fees for full text | Cross-check Verra with Gold Standard cement rules | James |
 | 20 | `ceew-nepal-23` | CEEW Nepal cement decarbonization reports (public summaries) | Council on Energy, Environment and Water | 2023 | **Openly published** research reports (ceew.in) | Nepal-specific context: cement CO2 intensity, fuel mix, plant list | Priya pilot scoping |
 | 21 | `wri-india-22` | WRI India cement sector reports | WRI | 2022 | **Openly published** | Indian-plant benchmarks (NPC 72–75 %) for cross-check | Aanya §3 |
-| 22 | `hetauda-23` | HCIL Hetauda annual operating data (publicly disclosed) | Hetauda Cement Industries Ltd. / Ministry of Industry, Nepal | 2023 | **Public-domain** government disclosure | Pilot-plant context, altitude / humidity / coal-rate data | Ramesh §5.2, §5.4 |
+| 22 | `planta-23` | NIDC PlantA annual operating data (publicly disclosed) | PlantA Industries Ltd. / Ministry of Industry, Nepal | 2023 | **Public-domain** government disclosure | Pilot-plant context, altitude / humidity / coal-rate data | Ramesh §5.2, §5.4 |
 
 ### 2.1 License decision matrix (must be settled before Day 14 ingestion)
 
@@ -177,7 +177,7 @@ ranges. This is the "section-aware chunking" anchor in §3.
 
 ### 3.3 What does NOT go in the corpus
 
-- **Live data** — DCS feeds, Hetauda SCADA logs, SCADA tags.
+- **Live data** — DCS feeds, PlantA SCADA logs, SCADA tags.
   These go in the digital twin (Day 15), not the RAG corpus.
   Reason: the corpus is for *engineering references*, not
   *plant state*. Mixing them is the failure mode of "the LLM

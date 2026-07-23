@@ -63,7 +63,7 @@
         "plant_name": {
           "type": "string",
           "minLength": 1,
-          "description": "Plant name as registered. Example: 'Hetauda Cement Industries Ltd (HCIL) Line 2'."
+          "description": "Plant name as registered. Example: 'PlantA Industries Ltd (NIDC) Line 2'."
         },
         "plant_location": {
           "type": "object",
@@ -72,14 +72,14 @@
           "properties": {
             "latitude": { "type": "number", "minimum": -90, "maximum": 90, "description": "Decimal degrees, WGS84." },
             "longitude": { "type": "number", "minimum": -180, "maximum": 180, "description": "Decimal degrees, WGS84." },
-            "altitude_m": { "type": "number", "minimum": 0, "maximum": 5000, "description": "Plant altitude above sea level in metres. Cengel & Boles 2015 (ISA barometric). Hetauda = 1400 m." }
+            "altitude_m": { "type": "number", "minimum": 0, "maximum": 5000, "description": "Plant altitude above sea level in metres. Cengel & Boles 2015 (ISA barometric). PlantA = 1400 m." }
           }
         },
         "clinker_capacity_tpd": {
           "type": "number",
           "minimum": 100,
           "maximum": 15000,
-          "description": "Nameplate clinker capacity in tonnes per day. Hetauda 130 t/h ≈ 3120 tpd."
+          "description": "Nameplate clinker capacity in tonnes per day. PlantA 130 t/h ≈ 3120 tpd."
         },
         "cooler_technology": {
           "type": "string",
@@ -172,7 +172,7 @@
           "type": "number",
           "minimum": 400,
           "maximum": 1100,
-          "description": "Project secondary-air temperature in °C. Ship-gate: 600–1000 °C at Hetauda. Peray & Waddell 1986 §6.4."
+          "description": "Project secondary-air temperature in °C. Ship-gate: 600–1000 °C at PlantA. Peray & Waddell 1986 §6.4."
         },
         "secondary_air_outlet_k": {
           "type": "number",
@@ -214,7 +214,7 @@
           "type": "number",
           "minimum": 50,
           "maximum": 5000,
-          "description": "Project total cooler fan power in kW. KHD Pyrostep benchmark: 8–12 kW per t/h of clinker. For 130 t/h Hetauda, ~1000–1500 kW total."
+          "description": "Project total cooler fan power in kW. KHD Pyrostep benchmark: 8–12 kW per t/h of clinker. For 130 t/h PlantA, ~1000–1500 kW total."
         },
         "secondary_air_recovered_kw": {
           "type": "number",
@@ -325,7 +325,7 @@
         },
         "sec_air_in_realistic_band": {
           "type": "boolean",
-          "description": "True if secondary_air_outlet_c ∈ [600, 1000] °C for default Hetauda preset. Peray & Waddell 1986 §6.4."
+          "description": "True if secondary_air_outlet_c ∈ [600, 1000] °C for default PlantA preset. Peray & Waddell 1986 §6.4."
         },
         "clinker_outlet_in_realistic_band": {
           "type": "boolean",
@@ -339,7 +339,7 @@
     },
     "duty_case": {
       "type": "object",
-      "description": "Nepal duty-case block (mandatory for HCIL / UCIL plants). Cengel & Boles 2015; HCIL plant documents. Verra VCS Program Guide v4.5 §3.1 (operating conditions must be stated).",
+      "description": "Nepal duty-case block (mandatory for NIDC / UCIL plants). Cengel & Boles 2015; NIDC plant documents. Verra VCS Program Guide v4.5 §3.1 (operating conditions must be stated).",
       "additionalProperties": false,
       "required": [
         "altitude_m",
@@ -354,31 +354,31 @@
           "type": "number",
           "minimum": 0,
           "maximum": 5000,
-          "description": "Plant altitude in metres. Hetauda = 1400; Udayapur ≈ 300."
+          "description": "Plant altitude in metres. PlantA = 1400; PlantB ≈ 300."
         },
         "ambient_t_c": {
           "type": "number",
           "minimum": -20,
           "maximum": 55,
-          "description": "Ambient design-day temperature in °C. Hetauda May design day = 35 °C."
+          "description": "Ambient design-day temperature in °C. PlantA May design day = 35 °C."
         },
         "ambient_rh": {
           "type": "number",
           "minimum": 0.0,
           "maximum": 1.0,
-          "description": "Ambient design-day relative humidity as a fraction. Hetauda monsoon = 0.90."
+          "description": "Ambient design-day relative humidity as a fraction. PlantA monsoon = 0.90."
         },
         "air_density_kg_m3": {
           "type": "number",
           "minimum": 0.5,
           "maximum": 1.5,
-          "description": "Computed moist-air density at altitude / T / RH in kg/m³. Hetauda (1400 m, 35 °C, 90 % RH) ≈ 1.05. Cengel & Boles 2015. The v0.3.0 hard-coded 0.6 kg/m³ is wrong at any altitude < 3500 m — Ramesh's §5.1 fix."
+          "description": "Computed moist-air density at altitude / T / RH in kg/m³. PlantA (1400 m, 35 °C, 90 % RH) ≈ 1.05. Cengel & Boles 2015. The v0.3.0 hard-coded 0.6 kg/m³ is wrong at any altitude < 3500 m — Ramesh's §5.1 fix."
         },
         "p_atm_mbar": {
           "type": "number",
           "minimum": 500,
           "maximum": 1100,
-          "description": "Barometric pressure in mbar. Hetauda ≈ 858 mbar. ISA barometric formula."
+          "description": "Barometric pressure in mbar. PlantA ≈ 858 mbar. ISA barometric formula."
         },
         "design_mcr_pct": {
           "type": "number",
@@ -388,7 +388,7 @@
         },
         "note": {
           "type": "string",
-          "description": "Free-text note on the duty case. e.g. 'Hetauda May design day; air density at 1400 m / 35 °C / 90 % RH'."
+          "description": "Free-text note on the duty case. e.g. 'PlantA May design day; air density at 1400 m / 35 °C / 90 % RH'."
         }
       }
     }

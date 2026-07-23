@@ -50,7 +50,7 @@ class AdvisorQuery:
     question: str                              # user natural-language question
     cooler_state: CoolerState                  # from Day 3 simulator (v0.3.1 contract)
     cooler_params: CoolerParameters            # for context (plant preset, duty case)
-    optional_plant_preset: str | None          # "hetauda" | "udayapur" | "hongshi" | "ghorahi"
+    optional_plant_preset: str | None          # "planta" | "plantb" | "hongshi" | "plantd"
     optional_top_k: int = 8                    # retrieval depth; defaults to 8 (see §6.2)
 ```
 
@@ -250,7 +250,7 @@ The eval set is a JSONL file, one line per case, schema:
   "case_id": "diag-001",
   "input": {
     "question": "My secondary air is 480 °C, my clinker outlet is 220 °C. Am I over-stoking?",
-    "cooler_state_fixture": "fixtures/hetauda_steady.json"
+    "cooler_state_fixture": "fixtures/planta_steady.json"
   },
   "expected_citations": [
     {"chunk_id": "mui07:sec33:007", "must_cite": true},
@@ -314,7 +314,7 @@ coverage.
 - **@James** — Verra PDD JSON schema is the LLM's ground truth for
   "what credits can I claim?" questions. Day 13 ships the schema;
   Day 14 ingests it as a structured chunk type.
-- **@Priya** — pilot customer (Hetauda ops manager) is a great source
+- **@Priya** — pilot customer (PlantA ops manager) is a great source
   of 20–30 real-world questions for the eval set. Can you ask for
   30 minutes in the pilot kickoff?
 

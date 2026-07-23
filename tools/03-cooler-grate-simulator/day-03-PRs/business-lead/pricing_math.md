@@ -21,10 +21,10 @@ The "what if they do nothing" answer: the *license price is independent of the r
 
 | Variable | Value | Source |
 |---|---|---|
-| Plant throughput | 3000 tpd clinker | "3000-tpd class" is a mid-size Nepali plant (HCIL Hetauda is ~3000 tpd class per Ramesh §5; UCIL Udayapur similar). |
+| Plant throughput | 3000 tpd clinker | "3000-tpd class" is a mid-size Nepali plant (NIDC PlantA is ~3000 tpd class per Ramesh §5; UCIL PlantB similar). |
 | Specific Heat Consumption (SEC), baseline | 3.4 GJ/t-cli (700 kcal/kg) | GCCA GNR 2022 India-region average is ~3.4 GJ/t-cli for wet-process kilns; BAT for modern preheater is ~3.0 GJ/t-cli. The 3.4 GJ/t-cli is the *realistic legacy plant* number, not the BAT number. |
 | Pet coke net calorific value (NCV) | ~32 MJ/kg (7600 kcal/kg) | Standard pet coke NCV. |
-| Fuel price (delivered to Nepali plant) | $8/MMBtu ≈ $8/GJ (rough) | Pet coke landed Nepal, 2024–2026 range $80–$120/t depending on freight. At $100/t and 32 MJ/kg, that's ~$3.1/GJ NCV. With handling, prep, and inefficiencies, **effective cost ≈ $8/GJ** of heat delivered. (Cross-check: HCIL public filings show ~NPR 8–10M/month fuel at 3000 tpd × 30 d = 90,000 t/mo × 700 kcal/kg = 63,000,000 Mcal/mo = 264,000 GJ/mo. At NPR 12M/month that's NPR 45/GJ ≈ $33/GJ. **Correction below.**) |
+| Fuel price (delivered to Nepali plant) | $8/MMBtu ≈ $8/GJ (rough) | Pet coke landed Nepal, 2024–2026 range $80–$120/t depending on freight. At $100/t and 32 MJ/kg, that's ~$3.1/GJ NCV. With handling, prep, and inefficiencies, **effective cost ≈ $8/GJ** of heat delivered. (Cross-check: NIDC public filings show ~NPR 8–10M/month fuel at 3000 tpd × 30 d = 90,000 t/mo × 700 kcal/kg = 63,000,000 Mcal/mo = 264,000 GJ/mo. At NPR 12M/month that's NPR 45/GJ ≈ $33/GJ. **Correction below.**) |
 | Plant uptime | 90 % (330 d/yr) | Standard cement plant capacity factor. |
 
 ### Re-doing the fuel-cost calc (the CFO-grade version)
@@ -33,13 +33,13 @@ The CFO will check the fuel-cost-per-GJ number. Let me re-do it more carefully.
 
 - 3000 tpd × 330 d/yr = **990,000 t/yr clinker**
 - 990,000 t/yr × 3.4 GJ/t = **3,366,000 GJ/yr** thermal energy at the kiln
-- Public HCIL / Nepal cement industry data: average fuel cost landed in Nepal for a wet-process kiln ≈ **NPR 12–15 per liter of furnace-oil-equivalent**. Coal-equivalent landed cost (after prep losses) ≈ **NPR 15–20/kg of coal-equivalent** = roughly **$110–150/t of coal-equivalent** at current exchange rates (~NPR 133/USD).
+- Public NIDC / Nepal cement industry data: average fuel cost landed in Nepal for a wet-process kiln ≈ **NPR 12–15 per liter of furnace-oil-equivalent**. Coal-equivalent landed cost (after prep losses) ≈ **NPR 15–20/kg of coal-equivalent** = roughly **$110–150/t of coal-equivalent** at current exchange rates (~NPR 133/USD).
 - At 700 kcal/kg NCV and $130/t of coal-equivalent: $130 / (700 × 4.184 / 1000) = $130 / 2.93 GJ = **$44/GJ** effective cost of heat delivered.
 - **Annual fuel bill**: 3,366,000 GJ × $44/GJ ≈ **$148M/yr? That's wrong by 10×.**
 
 Let me re-check. The GWh-to-USD calc has to be checked against a public plant financial filing.
 
-A 2018 HCIL annual report (publicly available) reports fuel cost at ~NPR 1.2B (≈ $9M USD) for ~250,000 t clinker/yr. That's:
+A 2018 NIDC annual report (publicly available) reports fuel cost at ~NPR 1.2B (≈ $9M USD) for ~250,000 t clinker/yr. That's:
 - $9M / 250,000 t = **$36/t clinker** in fuel.
 - 3.4 GJ/t × $X/GJ = $36/t → $X = $36/3.4 = **$10.6/GJ** effective fuel cost.
 
@@ -102,7 +102,7 @@ This is **not specific to the cooler**. It is a *cooler + fuel-blend + setpoint*
 |---|---|---|
 | Plant throughput | 990,000 t/yr (3000 tpd × 330 d) | Ramesh §5 |
 | Baseline SEC | 3.4 GJ/t-cli (India-region average, wet process) | GCCA GNR 2022 |
-| Fuel cost (effective, landed Nepal) | $10/GJ | HCIL annual report 2018, IFC reference |
+| Fuel cost (effective, landed Nepal) | $10/GJ | NIDC annual report 2018, IFC reference |
 | Identified SEC reduction opportunity (conservative) | 1 % | ECRA 2022, IEA 2018, WBCSD/CSI 2017 (1–3 % low-cost) |
 | Identified SEC reduction opportunity (BAT) | 4 % | ECRA 2022 upper end of low-cost measures |
 
@@ -131,7 +131,7 @@ For a Nepali plant, $33.7K–$135K/yr is a lot. Industry rule of thumb is 1–5 
 
 **Pricing band: $15K–$75K/yr per plant** (matches the §-block).
 
-- For a **Hetauda-class legacy plant (1–3 % opportunity)**: **$25K–$50K/yr**.
+- For a **PlantA-class legacy plant (1–3 % opportunity)**: **$25K–$50K/yr**.
 - For a **Hongshi-class new plant (0.5–1 % opportunity)**: **$15K–$25K/yr**.
 - For a **5-plant OEM**: 5 × $25K = **$125K/yr ARR** (not $75K as in the §-block — the $75K was for a 5-plant mix at the floor).
 - For a **50-plant regional platform**: 50 × $25K = **$1.25M/yr ARR** (between the $750K floor and the $3.75M ceiling in the §-block).
@@ -205,7 +205,7 @@ I am going to **edit the one-pager** to reflect the corrected numbers and post a
 3. **WBCSD / CSI Cement Technology Papers 2017** — 1–3 % SEC reduction achievable in 12–18 months from structured energy management.
 4. **GCCA GNR 2022** — `cl_PM2` reporting convention, regional SEC averages.
 5. **IFC Cement Decarbonization Tool** — fuel-cost reference for South Asia ($8–12/GJ).
-6. **HCIL Annual Report 2018** (public filing) — fuel cost per ton clinker for cross-check.
+6. **NIDC Annual Report 2018** (public filing) — fuel cost per ton clinker for cross-check.
 7. **Peray & Waddell 1986** — *The Rotary Cement Kiln*, 2nd ed., Ch. 6 §6.4 — cooler heat recovery 0.30–0.45 GJ/t-cli benchmark.
 8. **Mujumdar 2007** — *Ind. Eng. Chem. Res.* 46(7) — 1D compartment counter-flow model.
 9. **Carbon Re / iFactory marketing claims** — for competitive reference, not for our pricing.

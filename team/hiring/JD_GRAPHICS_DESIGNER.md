@@ -15,7 +15,7 @@
 - Pitch deck (12 slides, designed)
 - Marketing site hero section (5 SVG illustrations)
 - 3 social media templates (LinkedIn, Twitter, square)
-- Case study 1-pager (Hetauda)
+- Case study 1-pager (PlantA)
 
 ## What you bring
 - 5+ years brand / graphic design

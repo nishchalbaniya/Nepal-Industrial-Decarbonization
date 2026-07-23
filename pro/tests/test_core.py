@@ -16,9 +16,9 @@ def test_default_factors_load(ef):
     assert ef.grid.combined_margin < 0.05  # Nepal hydro-dominated
 
 
-def test_cement_tier2_hetauda(ef):
+def test_cement_tier2_planta(ef):
     plant = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),
@@ -36,7 +36,7 @@ def test_cement_tier2_hetauda(ef):
 
 def test_cement_tier3(ef):
     plant = CementPlant(
-        name="Hetauda", location="Hetauda", year=2024,
+        name="PlantA", location="PlantA", year=2024,
         clinker_production_t=950_000, cement_production_t=1_100_000,
         fuel_use=[
             FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120_000),

@@ -61,7 +61,7 @@ To claim **9/10**, this report demonstrates:
 | IPCC Tier 3 kinetics (Arrhenius, raw-mix TOC, precalciner, NOx) | 25/25 | `core/cement.py::calculate_cement_tier3` |
 | Monte Carlo UQ (LHS, 95% CI, convergence) | 15/15 | `core/uncertainty.py::monte_carlo_cement` |
 | Sobol sensitivity indices (variance-based) | 5/5 | `core/uncertainty.py::sobol_indices` |
-| Cross-validation against Nepali field data | 8/8 | Hetauda 783 kg/t matches literature 770-810 |
+| Cross-validation against Nepali field data | 8/8 | PlantA 783 kg/t matches literature 770-810 |
 | Multi-objective optimization (NSGA-II) | 8/8 | `core/multi_objective.py` |
 | 50+ automated tests, all passing | 8/8 | `tests/` |
 | Process integration / pinch analysis | 5/5 | `pinch/analysis.py` |
@@ -144,7 +144,7 @@ To claim **9/10**, this report demonstrates:
 | Aspect | Score | Evidence |
 |---|:---:|---|
 | NEA 2023/24 grid emission factor (0.0256 kg CO₂/kWh) | 15/15 | `data/emission_factors.yaml` |
-| 6 Nepali cement plant presets (Hetauda, Udayapur, Hongshi, Shree, Ghorahi, Araniko) | 15/15 | `app/pages/1_Cement_Baseline.py` |
+| 6 Nepali cement plant presets (PlantA, PlantB, Hongshi, Shree, PlantD, Araniko) | 15/15 | `app/pages/1_Cement_Baseline.py` |
 | 5 brick kiln types calibrated to Nepali field data | 12/12 | `core/factors.py::BrickKilnSpec` |
 | Nepali coal EF (Indian bituminous, Dhansiri/Jharkhand) | 10/10 | `core/factors.py::Fuel` |
 | Real Nepali biomass availability (rice husk, sawdust, jatropha) | 8/8 | `core/factors.py` |
@@ -153,7 +153,7 @@ To claim **9/10**, this report demonstrates:
 | Nepal context carbon pricing (incl. projected 2030, 2040) | 7/7 | `markets/pricing.py` |
 | National aggregate data (5.2 MtCO₂ cement, 1.4 MtCO₂ brick) | 5/5 | `data/emission_factors.yaml::national_aggregate` |
 | 1,200+ Nepali brick kilns coverage | 3/3 | `data/...::brick_sector_aggregate` |
-| Field-survey of plant operating data (Hetauda 783 kg/t, Udayapur ~770) | 4/4 | `app/pages/1_Cement_Baseline.py` |
+| Field-survey of plant operating data (PlantA 783 kg/t, PlantB ~770) | 4/4 | `app/pages/1_Cement_Baseline.py` |
 | 22.5% NEA T&D loss factor | 4/4 | `core/factors.py::GridSpec` |
 | (deduction) Not all 1,200 brick kilns individually modeled | -1 | aggregate is used |
 | **TOTAL** | | **99/100** | |
@@ -198,7 +198,7 @@ decarbonization software, this is best-in-class as of 2026-07-21.
 
 3. **11 international standards in one package.** Most tools cover 2-3.
    We do all 11, with line-by-line criteria checkers and live 100/100 scores
-   verified on Hetauda.
+   verified on PlantA.
 
 4. **Engineering depth.** 40+ modules, 50+ tests, 8,868+ LoC Python, full
    physics-based simulators, not just calculators.

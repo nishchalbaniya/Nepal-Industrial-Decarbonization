@@ -105,7 +105,7 @@ This is the value proposition: not a replacement, but a **complementary analytic
 
 ## Validation status
 
-- **Hetauda Cement baseline**: 861,025 tCO₂/yr Tier 2 (validated against public annual report ranges of 800,000–900,000 tCO₂/yr).
+- **PlantA baseline**: 861,025 tCO₂/yr Tier 2 (validated against public annual report ranges of 800,000–900,000 tCO₂/yr).
 - **Process simulator**: 1.07 Mt/yr output for 5,000 TPD kiln (within 10% of typical 0.95–1.10 Mt/yr for this size).
 - **Cost optimization**: returns LP-optimal solution, but not validated against real procurement data.
 - **LCA**: GWP100 = 784 kg CO₂-eq/t cement, within 5% of GCCA global average of 720–820 kg.

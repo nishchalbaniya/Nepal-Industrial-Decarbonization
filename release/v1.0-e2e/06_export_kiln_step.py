@@ -1,7 +1,7 @@
 """
-Day 12 demo -- write the Hetauda rotary kiln STEP file via FreeCAD.
+Day 12 demo -- write the PlantA rotary kiln STEP file via FreeCAD.
 Geometry per IKN / KHD / Polysius product literature, sized to a
-typical 5000 tpd Nepal cement plant (Hetauda 60m × 4.6m).
+typical 5000 tpd Nepal cement plant (PlantA 60m × 4.6m).
 """
 import json
 import math
@@ -12,13 +12,13 @@ import FreeCAD
 import Part
 import Import
 
-OUT_TMP = Path("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_hetauda_kiln.tmp.step")
-OUT_FINAL = Path("C:/Users/TG/.mavis\workspace/nepal-decarb-build/demo-e2e/cad/06_hetauda_kiln.step".replace("C:\\Users\\TG\\.mavis", "C:/Users/TG/.mavis"))
-OUT_FINAL = Path("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_hetauda_kiln.step")
+OUT_TMP = Path("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_planta_kiln.tmp.step")
+OUT_FINAL = Path("C:/Users/TG/.mavis\workspace/nepal-decarb-build/demo-e2e/cad/06_planta_kiln.step".replace("C:\\Users\\TG\\.mavis", "C:/Users/TG/.mavis"))
+OUT_FINAL = Path("C:/Users/TG/.mavis/workspace/nepal-decarb-build/demo-e2e/cad/06_planta_kiln.step")
 if OUT_TMP.exists(): OUT_TMP.unlink()
 OUT_FINAL.parent.mkdir(parents=True, exist_ok=True)
 
-# Hetauda kiln dimensions (per IKN/Pyrorotor literature; Mujumdar 2007 Ch.4)
+# PlantA kiln dimensions (per IKN/Pyrorotor literature; Mujumdar 2007 Ch.4)
 KILN_LENGTH_M = 60.0
 KILN_DIAM_M = 4.6
 SHELL_THK_M = 0.05
@@ -34,7 +34,7 @@ PREHEATER_H_M = 25.0
 PREHEATER_DIA_M = 6.0
 COOLER_DX_M = 33.0  # mating cooler length
 
-doc = FreeCAD.newDocument("HetaudaKiln")
+doc = FreeCAD.newDocument("PlantAKiln")
 FreeCAD.setActiveDocument(doc.Name)
 
 parts = []

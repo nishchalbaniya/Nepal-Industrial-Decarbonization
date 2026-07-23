@@ -1,6 +1,6 @@
-"""Day 8 v0.8.0 -- FreeCAD STEP export of the Hetauda rotary kiln.
+"""Day 8 v0.8.0 -- FreeCAD STEP export of the PlantA rotary kiln.
 
-The Hetauda rotary kiln is a 60 m long, 4.0 m diameter cylinder,
+The PlantA rotary kiln is a 60 m long, 4.0 m diameter cylinder,
 slightly inclined, supported on 4 tire-and-roller stations. The
 hot end (lower) has a primary burner; the cold end (upper) has
 a preheater tower and a cooler discharge chute.
@@ -15,7 +15,7 @@ The geometry includes:
 
 Cite:
 - Peray & Waddell 1986 (rotary kiln mechanical design).
-- IKN / KHD / Polysius product literature (real Hetauda design).
+- IKN / KHD / Polysius product literature (real PlantA design).
 - ISO 10303-21:2016 (STEP file format, AP214).
 """
 from __future__ import annotations
@@ -33,13 +33,13 @@ try:
     import Import
 except ImportError:
     print("ERROR: This script must be run inside FreeCAD's Python:")
-    print("  FreeCADCmd.exe -c export_hetauda_kiln_step.py")
+    print("  FreeCADCmd.exe -c export_planta_kiln_step.py")
     sys.exit(1)
 
 
 DEFAULT_KILN = {
-    "length_m": 60.0,           # Hetauda rotary kiln length (Peray s6.1)
-    "diameter_m": 4.0,          # Hetauda inner diameter
+    "length_m": 60.0,           # PlantA rotary kiln length (Peray s6.1)
+    "diameter_m": 4.0,          # PlantA inner diameter
     "slope_deg": 3.5,           # typical rotary kiln slope
     "rotation_rpm": 1.8,        # typical slow rotation
     "shell_thickness_m": 0.05,  # structural plate thickness
@@ -201,8 +201,8 @@ def main():
                 script_path = Path(arg).resolve()
                 break
     if script_path is None:
-        script_path = Path(r"C:\Users\TG\.mavis\workspace\nepal-decarb-build\tools\02-kiln-dynamics-simulator\day-08-PRs\export_hetauda_kiln_step.py")
-    out_path = script_path.parent / "cad" / "hetauda_kiln_assembly.step"
+        script_path = Path(r"C:\Users\TG\.mavis\workspace\nepal-decarb-build\tools\02-kiln-dynamics-simulator\day-08-PRs\export_planta_kiln_step.py")
+    out_path = script_path.parent / "cad" / "planta_kiln_assembly.step"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     doc = FreeCAD.newDocument("KilnAssembly")
     parts = build_kiln_assembly(DEFAULT_KILN)

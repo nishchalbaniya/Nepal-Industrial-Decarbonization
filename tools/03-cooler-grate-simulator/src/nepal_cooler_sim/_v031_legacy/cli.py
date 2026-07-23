@@ -25,7 +25,7 @@ PRESETS = {
         under_grate_air_temp_c=35.0,
         clinker_throughput_t_h=210.0,
     ),
-    "hetauda_small": dict(
+    "planta_small": dict(
         length_m=20.0, width_m=2.5, n_compartments=4,
         bed_depth_m=0.55, grate_speed_m_min=10.0,
         clinker_inlet_t_c=1380.0, clinker_outlet_t_c=180.0,
@@ -33,7 +33,7 @@ PRESETS = {
         under_grate_air_temp_c=30.0,
         clinker_throughput_t_h=66.0,
     ),
-    "udayapur": dict(
+    "plantb": dict(
         length_m=26.0, width_m=3.2, n_compartments=5,
         bed_depth_m=0.65, grate_speed_m_min=12.0,
         clinker_inlet_t_c=1400.0, clinker_outlet_t_c=160.0,

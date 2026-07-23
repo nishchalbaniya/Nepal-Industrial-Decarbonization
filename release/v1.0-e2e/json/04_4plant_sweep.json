@@ -1,6 +1,6 @@
 {
   "plants": {
-    "hetauda": {
+    "planta": {
       "altitude_m": 1400.0,
       "throughput_t_h": 130.0,
       "annual_t": 1029600.0,
@@ -44,7 +44,7 @@
       "n_bands_pass": 1,
       "n_bands_total": 6
     },
-    "udayapur": {
+    "plantb": {
       "altitude_m": 300.0,
       "throughput_t_h": 110.0,
       "annual_t": 871200.0,
@@ -88,7 +88,7 @@
       "n_bands_pass": 3,
       "n_bands_total": 6
     },
-    "hongshi-shivam": {
+    "plantc": {
       "altitude_m": 250.0,
       "throughput_t_h": 208.0,
       "annual_t": 1647360.0,
@@ -132,7 +132,7 @@
       "n_bands_pass": 2,
       "n_bands_total": 6
     },
-    "ghorahi": {
+    "plantd": {
       "altitude_m": 200.0,
       "throughput_t_h": 150.0,
       "annual_t": 1188000.0,
@@ -217,6 +217,6 @@
     "cbam_indirect": "0.04 t CO2e/t clinker (electricity at 2023 Nepal grid factor ~0.02 t/MWh)",
     "cbam_2026+": "Country-specific values with 10/20/30% mark-up (Implementing Reg 2025/2621)",
     "sec_baseline": "3269 MJ/t per Cement Sustainability Initiative 2018 (Getting the Numbers Right)",
-    "ship_gate_failing_bands_honest": "3/6 bands fail on default-preset v0.5.0 Hetauda model (tertiary, exhaust, clinker). Unblocked with real plant data or v0.6.0 model changes."
+    "ship_gate_failing_bands_honest": "3/6 bands fail on default-preset v0.5.0 PlantA model (tertiary, exhaust, clinker). Unblocked with real plant data or v0.6.0 model changes."
   }
 }

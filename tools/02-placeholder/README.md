@@ -11,4 +11,4 @@ implementation.
 - Alternative fuel substitution impact on flame temperature
 - Clinker cooler performance
 - MATLAB live scripts (.mlx) + Octave-compatible .m files
-- Validation against Hetauda/Udayapur plant data
+- Validation against PlantA/PlantB plant data

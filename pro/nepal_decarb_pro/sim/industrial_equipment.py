@@ -197,7 +197,7 @@ INDUSTRIAL_DATABASE["khd_ball_4_8x14"] = IndustrialEquipment(
         "ball_charge_t": 200,
     },
     source="KHD ball mill catalog 2016",
-    notes="Common in older Nepali plants (Hetauda, Udayapur)",
+    notes="Common in older Nepali plants (PlantA, PlantB)",
 )
 
 # ============== ROLLER PRESS ==============
@@ -218,7 +218,7 @@ INDUSTRIAL_DATABASE["khd_roller_press_25_17"] = IndustrialEquipment(
         "product_fineness_pct_r90": 35.0,
     },
     source="KHD Roller Press catalog 2019",
-    notes="Used in COMFLEX pregrinding circuit for Hetauda, Udayapur upgrades",
+    notes="Used in COMFLEX pregrinding circuit for PlantA, PlantB upgrades",
 )
 
 # ============== COOLERS ==============
@@ -272,7 +272,7 @@ INDUSTRIAL_DATABASE["flsmidth_preheater_5stage"] = IndustrialEquipment(
         "tpd_throughput": 5000,
     },
     source="FLSmidth DOPOL'90 catalog 2017",
-    notes="Used in Hongshi Shivam, Maruti expansions",
+    notes="Used in plantc, Maruti expansions",
 )
 
 # ============== BRICK EQUIPMENT ==============
@@ -383,7 +383,7 @@ INDUSTRIAL_DATABASE["schenck_disocont"] = IndustrialEquipment(
         "control": "closed-loop load cell + speed",
     },
     source="Schenck product catalog 2019",
-    notes="Used in Hetauda, Udayapur, Arghakhanchi",
+    notes="Used in PlantA, PlantB, Arghakhanchi",
 )
 
 # ---------------------------------------------------------------------------

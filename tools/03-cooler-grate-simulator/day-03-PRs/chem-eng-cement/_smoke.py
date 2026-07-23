@@ -5,7 +5,7 @@ Useful for a quick visual check of the v0.3.1 model. Run with:
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cooler_ode import solve_steady_state, compute_outputs
-from plants import hetauda, udayapur, hongshi_shivam, ghorahi, PRESETS
+from plants import planta, plantb, plantc, plantd, PRESETS
 from compartments import build_compartment_inventory, check_second_law_compartments
 
 for name, fn in PRESETS.items():

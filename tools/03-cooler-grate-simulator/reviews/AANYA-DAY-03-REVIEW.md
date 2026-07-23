@@ -62,7 +62,7 @@ The right level of fidelity for a Day 3 deliverable is **the counter-flow 1D mod
 
 The default parameters are **in the right ballpark for a 5000-tpd plant**, but the 130 t/h case is closer to a 4000-tpd line. Comparison:
 
-| Parameter | Code default | Hongshi-Shivam-class 5000 tpd | GCCA GNR 2022 / ECRA 2022 BAT | Verdict |
+| Parameter | Code default | plantc-class 5000 tpd | GCCA GNR 2022 / ECRA 2022 BAT | Verdict |
 |---|---|---|---|---|
 | Length × width | 28 m × 3.5 m = 98 m² grate area | 30–34 m × 3.6–4.2 m (~110–140 m²) | — | OK for 4000 tpd; tight for 5000 tpd |
 | Throughput | 130 t/h (≈ 3120 t/d) | 208 t/h (5000 t/d) | 3000–10 000 t/d range | 130 t/h = small-to-mid plant, fine for Day 3 demo |
@@ -74,7 +74,7 @@ The default parameters are **in the right ballpark for a 5000-tpd plant**, but t
 | Cooler efficiency expected | 72.7 % (current) | 70–82 % | **75–80 % BAT** (ECRA 2022: "Modern reciprocating coolers can have a high degree of heat recuperation efficiency up to 75 to 80 %") | Current value is in the *Indian-industry* range (NPC India: 72–75 %); BAT is 78–80 % |
 | Total cooler heat loss | (compute from current 37.8 MW − 0.42 MJ/kg) | 0.42 MJ/kg-cli = 14.8 MW at 130 t/h | ECRA 2022: "total heat loss of latest generation clinker coolers is less than 0.42 MJ/kg cli" | Need to add this KPI — see §4 |
 
-The defaults are defensible. The bigger gap is that 130 t/h is **not** a 5000-tpd Hongshi-Shivam class plant — it is a 3000–4000 tpd line. Either bump throughput to 208 t/h to make the demo match a 5000-tpd BAT reference, or document the 130 t/h as the "small/medium Nepal plant" case. The geometry should follow: for 208 t/h, scale L·W to ~120 m² grate area (e.g. 32 m × 3.8 m).
+The defaults are defensible. The bigger gap is that 130 t/h is **not** a 5000-tpd plantc class plant — it is a 3000–4000 tpd line. Either bump throughput to 208 t/h to make the demo match a 5000-tpd BAT reference, or document the 130 t/h as the "small/medium Nepal plant" case. The geometry should follow: for 208 t/h, scale L·W to ~120 m² grate area (e.g. 32 m × 3.8 m).
 
 > Peray & Waddell (1986) §6.2 also notes that the **secondary-air mass flow is set by combustion-air demand, not by cooler hydraulics.** A 130 t/h plant firing 100 kg coal/t at 1.05× stoich needs ~38 kg/s secondary air. Today the model pumps 88 kg/s through the bed "as cooling air" and then takes the max cell as sec air — this confuses two physically distinct streams (see §2 fix).
 

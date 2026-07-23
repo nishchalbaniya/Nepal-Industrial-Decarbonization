@@ -40,8 +40,8 @@ class PlantPreset:
 # Plant parameters
 # -----------------------------------------------------------------------
 
-# Hetauda Cement Industries Ltd (HCIL)
-_hetauda = KilnParameters(
+# PlantA Industries Ltd (NIDC)
+_planta = KilnParameters(
     length_m=60.0,
     diameter_m=4.0,
     slope_deg=3.5,
@@ -57,8 +57,8 @@ _hetauda = KilnParameters(
     arrhenius_a=8.0e5,
 )
 
-# Udayapur Cement Industries Ltd (UCIL)
-_udayapur = KilnParameters(
+# PlantB Industries Ltd (UCIL)
+_plantb = KilnParameters(
     length_m=68.0,
     diameter_m=4.6,
     slope_deg=3.5,
@@ -74,7 +74,7 @@ _udayapur = KilnParameters(
     arrhenius_a=1.0e6,
 )
 
-# Hongshi-Shivam Cement (Nawalparasi) - newest, best efficiency
+# plantc Cement (Nawalparasi) - newest, best efficiency
 _hongshi = KilnParameters(
     length_m=72.0,
     diameter_m=5.0,
@@ -91,8 +91,8 @@ _hongshi = KilnParameters(
     arrhenius_a=1.2e6,
 )
 
-# Ghorahi Cement (Dang)
-_ghorahi = KilnParameters(
+# PlantD (Dang)
+_plantd = KilnParameters(
     length_m=64.0,
     diameter_m=4.4,
     slope_deg=3.5,
@@ -145,44 +145,44 @@ _legacy_wet_1000tpd = KilnParameters(
 
 
 PLANT_PRESETS: Dict[str, PlantPreset] = {
-    "hetauda": PlantPreset(
-        key="hetauda",
-        name="Hetauda Cement Industries Ltd (HCIL)",
-        location="Hetauda, Makwanpur",
+    "planta": PlantPreset(
+        key="planta",
+        name="PlantA Industries Ltd (NIDC)",
+        location="PlantA, Makwanpur",
         capacity_t_yr=1_200_000,
         kiln_technology="Dry process, 5-stage preheater, precalciner",
-        parameters=_hetauda,
-        source="HCIL Annual Report 2022/23; field survey 2024",
+        parameters=_planta,
+        source="NIDC Annual Report 2022/23; field survey 2024",
         notes="Older plant, 1983 commissioning. High SEC.",
     ),
-    "udayapur": PlantPreset(
-        key="udayapur",
-        name="Udayapur Cement Industries Ltd (UCIL)",
-        location="Udayapur",
+    "plantb": PlantPreset(
+        key="plantb",
+        name="PlantB Industries Ltd (UCIL)",
+        location="PlantB",
         capacity_t_yr=2_200_000,
         kiln_technology="Dry process, 5-stage preheater, precalciner",
-        parameters=_udayapur,
+        parameters=_plantb,
         source="UCIL Annual Report 2022/23",
         notes="1997 commissioning.",
     ),
-    "hongshi_shivam": PlantPreset(
-        key="hongshi_shivam",
-        name="Hongshi-Shivam Cement (Nawalparasi)",
+    "plantc": PlantPreset(
+        key="plantc",
+        name="plantc Cement (Nawalparasi)",
         location="Nawalparasi",
         capacity_t_yr=4_000_000,
         kiln_technology="Dry process, 5-stage preheater, 2 lines",
         parameters=_hongshi,
-        source="Hongshi-Shivam Sustainability Report 2023",
+        source="plantc Sustainability Report 2023",
         notes="Newest major plant, 2018 commissioning. Best SEC in Nepal.",
     ),
-    "ghorahi": PlantPreset(
-        key="ghorahi",
-        name="Ghorahi Cement Industry Pvt Ltd",
-        location="Ghorahi, Dang",
+    "plantd": PlantPreset(
+        key="plantd",
+        name="PlantD Industry Pvt Ltd",
+        location="PlantD, Dang",
         capacity_t_yr=1_500_000,
         kiln_technology="Dry process, preheater",
-        parameters=_ghorahi,
-        source="Ghorahi Cement company disclosure 2023",
+        parameters=_plantd,
+        source="PlantD company disclosure 2023",
     ),
     "reference_5000tpd": PlantPreset(
         key="reference_5000tpd",

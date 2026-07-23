@@ -40,10 +40,10 @@ The tool implements:
 pip install -e .
 
 # CLI
-nepal-mrv cement --plant hetauda --year 2024
+nepal-mrv cement --plant planta --year 2024
 nepal-mrv brick --kiln clamp --production 5000000
 nepal-mrv project --baseline cement-opc --project lcm-geopolymer --volume 50000
-nepal-mrv report --plant hetauda --year 2024 --out reports/hetauda_2024.pdf
+nepal-mrv report --plant planta --year 2024 --out reports/planta_2024.pdf
 
 # Streamlit UI
 streamlit run app/Home.py
@@ -58,7 +58,7 @@ All emission factors are sourced from:
 - ecoinvent v3.10 (LCA database)
 - Nepal Electricity Authority Annual Report 2023/24
 - WBSCD Cement Sustainability Initiative (CSI) / GCCA database
-- Field surveys of Nepali cement plants and brick kilns (Hetauda, Bhairahawa, Kathmandu Valley)
+- Field surveys of Nepali cement plants and brick kilns (PlantA, Bhairahawa, Kathmandu Valley)
 
 See `data/emission_factors.yaml` and `data/nepali_plants.yaml` for full sources.
 

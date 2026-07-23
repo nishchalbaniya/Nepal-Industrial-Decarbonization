@@ -76,9 +76,9 @@ git clone https://github.com/himalayancarbon/nepal-decarb-pro.git
 cd nepal-decarb-pro
 pip install -e ".[full]"
 
-# 2. CLI: calculate Hetauda Cement baseline
+# 2. CLI: calculate PlantA baseline
 nepal-decarb cement \
-    --name "Hetauda Cement Industries Ltd" \
+    --name "PlantA Industries Ltd" \
     --year 2024 --clinker-t 950000 --cement-t 1100000 \
     --coal-t 120000 --petcoke-t 18000 --elec-kwh 85000000
 
@@ -86,7 +86,7 @@ nepal-decarb cement \
 nepal-decarb brick --name "Bhairahawa #4" --kiln clamp_traditional --bricks 4500000
 
 # 4. Generate Verra VCS PDD
-nepal-decarb verra --name "Hetauda Decarb" \
+nepal-decarb verra --name "PlantA Decarb" \
     --baseline-tco2 861025 --project-tco2 791171 --crediting-years 10
 
 # 5. Streamlit UI
@@ -174,7 +174,7 @@ All emission factors are traceable to:
 - **ecoinvent v3.10** LCI database
 - **Nepal Electricity Authority (NEA)** Annual Report 2023/24
 - **UNEP/GEF** Brick Kiln Efficiency Project
-- **Field surveys** of Nepali plants (Hetauda, Udayapur, Hongshi, etc.)
+- **Field surveys** of Nepali plants (PlantA, PlantB, Hongshi, etc.)
 
 ## Roadmap to v2.0
 

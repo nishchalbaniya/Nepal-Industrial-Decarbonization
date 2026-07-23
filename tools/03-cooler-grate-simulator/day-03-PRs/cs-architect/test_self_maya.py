@@ -299,10 +299,10 @@ class TestCLI:
         rc = cli_main(["presets"])
         assert rc == 0
         captured = capsys.readouterr().out
-        # Hetauda is the canonical Nepal preset.
-        assert "hetauda" in captured
-        assert "udayapur" in captured
-        assert "hongshi_shivam" in captured
+        # PlantA is the canonical Nepal preset.
+        assert "planta" in captured
+        assert "plantb" in captured
+        assert "plantc" in captured
 
     def test_cli_run_writes_outputs(
         self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
@@ -310,7 +310,7 @@ class TestCLI:
         rc = cli_main(
             [
                 "run",
-                "--preset", "hetauda",
+                "--preset", "planta",
                 "--out", str(tmp_path),
                 "--grate-speed", "10.0",
             ]
@@ -333,7 +333,7 @@ class TestCLI:
     def test_cli_diagnose_default_is_json(
         self, capsys: pytest.CaptureFixture[str]
     ) -> None:
-        rc = cli_main(["diagnose", "--preset", "hetauda"])
+        rc = cli_main(["diagnose", "--preset", "planta"])
         assert rc == 0
         out = capsys.readouterr().out
         # JSON must parse and contain the v0.3.1 schema_version.
@@ -346,7 +346,7 @@ class TestCLI:
     def test_cli_diagnose_human_is_table(
         self, capsys: pytest.CaptureFixture[str]
     ) -> None:
-        rc = cli_main(["diagnose", "--preset", "hetauda", "--human"])
+        rc = cli_main(["diagnose", "--preset", "planta", "--human"])
         assert rc == 0
         out = capsys.readouterr().out
         # Human format is a fixed-width table — not JSON.
@@ -374,7 +374,7 @@ class TestCLI:
             pytest.skip(
                 f"subprocess invocation failed: {completed.stderr[:200]}"
             )
-        assert "hetauda" in completed.stdout
+        assert "planta" in completed.stdout
 
 
 # ---------------------------------------------------------------------------

@@ -33,7 +33,7 @@ WHAT YOU HAVE NOW
      Desktop\NepalDecarb\nepal-decarb.bat       (cmd.exe CLI)
      Desktop\NepalDecarb\nepal-decarb.ps1       (PowerShell CLI)
      Desktop\NepalDecarb\Start NepalDecarb Dashboard.vbs
-     Desktop\NepalDecarb\Run Demo (Hetauda).bat
+     Desktop\NepalDecarb\Run Demo (PlantA).bat
      Desktop\NepalDecarb\Uninstall NepalDecarb.bat
      Desktop\NepalDecarb\README.txt
      Desktop\NepalDecarb\START-HERE.txt   <- this file
@@ -74,7 +74,7 @@ The dashboard has 14 endpoints, an HTML page, and a Swagger UI:
   POST /api/kiln/run              - run kiln, return KPIs
   POST /api/cooler/calibrate      - calibrate cooler (v0.4.0 or v0.5.0)
   POST /api/cooler/export-step    - export v0.5.0 cooler STEP
-  POST /api/kiln/export-step      - export Hetauda kiln STEP
+  POST /api/kiln/export-step      - export PlantA kiln STEP
   POST /api/cooler/export-pid     - export cooler P&ID (STEP+SVG+JSON)
   GET  /api/pid-svg               - inline P&ID SVG
   GET  /api/artifacts             - list files in pro/demo-output/
@@ -95,7 +95,7 @@ THE THREE FAILING SHIP-GATE BANDS (honest disclosure)
 The v0.5.0 model physics at 130 t/h cannot deliver those three
 bands simultaneously. To unlock the full ship-gate we need
 EITHER:
-  (a) real Hetauda plant data (CSV with 4h shifts, columns
+  (a) real PlantA plant data (CSV with 4h shifts, columns
       specified in DAY-04-SPEC.md) so we can verify the model
       against actual measurements, OR
   (b) v0.6.0 model changes: compartment subdivision within
@@ -124,10 +124,10 @@ WHAT'S NOT YET DONE
 LET'S KEEP MOVING
 -----------------
 
-  If you have real Hetauda plant data, drop the CSV into:
+  If you have real PlantA plant data, drop the CSV into:
     C:\Users\TG\.mavis\workspace\nepal-decarb-build\tools\
       03-cooler-grate-simulator\day-04-PRs\data\
-  (name it plant_hetauda_shift_NNN.csv) and I'll re-run
+  (name it plant_planta_shift_NNN.csv) and I'll re-run
   calibration against it.
 
   If you want me to deploy a fresh demo to a public URL

@@ -5,7 +5,7 @@ All NCV and emission factors sourced from:
   - IPCC 2006 Vol. 2 Ch. 1 (Stationary Combustion)
   - IPCC 2019 Refinement
   - WBSCD/GCCA Cement Sustainability Initiative (CSI) Protocol
-  - Nepal field surveys 2023/24 (Hetauda, Udayapur, Hongshi-Shivam)
+  - Nepal field surveys 2023/24 (PlantA, PlantB, plantc)
 
 Biogenic fraction is from CEN 16449 (EN ISO 16948:2015) for biomass fuels.
 """

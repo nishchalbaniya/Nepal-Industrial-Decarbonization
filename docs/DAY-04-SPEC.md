@@ -1,14 +1,14 @@
-# Day 4 Spec — Cooler Calibration to Hetauda Plant Data
+# Day 4 Spec — Cooler Calibration to PlantA Plant Data
 
 > **Authored by Mavis, 2026-07-22, after Day 3 v0.3.2 ship (commit 49fe94d).**
 > Read this after `DAY-03-SPEC.md` and `DAY-03-VERIFIER-REPORT.md`.
 > Day 3 closed the physics (1/7 ship-gate bands pass). Day 4 closes the
 > ship-gate via plant-data calibration. **This day is blocked on
-> Hetauda plant data from the user. No code can substitute for that.**
+> PlantA plant data from the user. No code can substitute for that.**
 
 ## Goal
 
-Bring the 6 failing ship-gate bands on the Hetauda preset into spec
+Bring the 6 failing ship-gate bands on the PlantA preset into spec
 by **calibrating** the v0.3.2 model to plant data, not by changing the
 physics. The physics is right; the geometry/operating-handle is
 undersized for the design duty.
@@ -16,7 +16,7 @@ undersized for the design duty.
 ## What the spec ships
 
 1. **A plant-data loader** (`pro/nepal_decarb_pro/data/plant_history.py`):
-   CSV ingestion of one Hetauda operating shift's `timestamp,
+   CSV ingestion of one PlantA operating shift's `timestamp,
    clinker_outlet_T_c, secondary_air_T_c, exhaust_T_c, fan_amp_4_20mA,
    grate_speed_hz, ambient_T_c, ambient_rh_pct`. Pydantic v2
    validation. Schema in `day-04-PRs/data/plant_history_schema.json`.
@@ -33,7 +33,7 @@ undersized for the design duty.
    Catches the v0.3.0/v0.3.1 "monotonicity but not physical" failure
    mode.
 5. **A post-calibration ship-gate report** (`scratch/day4_ship_gate.md`):
-   the 7 ship-gate bands on the calibrated Hetauda preset. If 7/7
+   the 7 ship-gate bands on the calibrated PlantA preset. If 7/7
    pass, the day ships. If not, Day 4 is incomplete and Day 5 picks
    up the remaining bands.
 6. **Re-integration of the 8 specialist PRs** that ride along in
@@ -68,7 +68,7 @@ undersized for the design duty.
 
 ## Ship gate (Day 4)
 
-- [ ] `secondary_air_outlet_c ∈ [600, 1000] °C` on calibrated Hetauda
+- [ ] `secondary_air_outlet_c ∈ [600, 1000] °C` on calibrated PlantA
 - [ ] `tertiary_air_outlet_c ∈ [400, 700] °C`
 - [ ] `exhaust_air_outlet_c ∈ [150, 300] °C`
 - [ ] `clinker_outlet_c ∈ [120, 200] °C`
@@ -78,14 +78,14 @@ undersized for the design duty.
 - [ ] Calibration RMSE ≤ 25 K on clinker_outlet_T
 - [ ] Calibration RMSE ≤ 15 K on secondary_air_T
 - [ ] Sobol N=1024 sweep identifies the top-3 parameters
-- [ ] All 4 plant presets still run (Hetauda is the calibration
+- [ ] All 4 plant presets still run (PlantA is the calibration
       target; the others are sanity checks)
 - [ ] 5+ Hiro fragility tests added, all green
 - [ ] Re-integration of 8 specialist PRs, smoke-tested
 
 ## What I need from the user
 
-**One Hetauda operating shift's plant data**, CSV format, 1-minute
+**One PlantA operating shift's plant data**, CSV format, 1-minute
 sampling, columns:
 
 ```
@@ -130,7 +130,7 @@ standard Verra submission.
   ends with synthetic data, draft the VMD0053 deviation request
 - **Sofia** (ai-ml-engineer): RAG ingestion of the calibration
   report into pgvector so the LLM advisor (Day 14) can answer
-  "what is the calibration RMSE on Hetauda?" without re-running
+  "what is the calibration RMSE on PlantA?" without re-running
   the calibration
 - **Priya** (business-lead): pilot handoff — does the calibrated
   model + plant data change the $337K-$1.35M/yr fuel-savings range
@@ -149,8 +149,8 @@ standard Verra submission.
    either way; the user just needs to acknowledge the synthetic
    data is research-only, not registry-submittable.
 3. **Pick the Day 4 pilot plant** if the user wants Day 4 to also
-   validate against Udayapur or Hongshi-Shivam. Default: Hetauda
-   (per ADR-001). Optional: Udayapur (300 m, dry-process, easier
+   validate against PlantB or plantc. Default: PlantA
+   (per ADR-001). Optional: PlantB (300 m, dry-process, easier
    geometry match).
 
 ## References

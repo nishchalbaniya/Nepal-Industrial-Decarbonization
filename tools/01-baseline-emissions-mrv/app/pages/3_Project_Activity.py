@@ -72,7 +72,7 @@ else:
 st.markdown("**Activity parameters**")
 col3, col4, col5 = st.columns(3)
 with col3:
-    project_name = st.text_input("Project name", "Hetauda Cement Decarbonization")
+    project_name = st.text_input("Project name", "PlantA Decarbonization")
     vintage = st.number_input("Vintage year", value=2026, step=1)
 with col4:
     crediting = st.number_input("Crediting period (years)", value=10, min_value=1, max_value=20)

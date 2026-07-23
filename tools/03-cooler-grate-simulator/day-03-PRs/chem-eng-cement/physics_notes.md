@@ -98,7 +98,7 @@ p_v          = RH · p_ws
 ρ            = (p_d / (R_d T_k)) · (1 − 0.378 p_v / p)
 ```
 
-For Hetauda May design (1400 m, 35 °C, 90 % RH) this gives ρ ≈ 0.95
+For PlantA May design (1400 m, 35 °C, 90 % RH) this gives ρ ≈ 0.95
 kg/m³ (Perry's 9e eq. 2-66 moist-air formula; *corrected* from Ramesh's
 review §5.1 which had a small arithmetic error giving 1.05).
 
@@ -123,7 +123,7 @@ velocity 1.5–2.5 m/s), the model cools the clinker by only **~30 K per
 compartment**, not the ~300 K per compartment that the spec's sec-air
 / clinker-outlet bands require. The model is correct; the prescribed
 geometry is *undersized* for the design duty at the prescribed air
-flows. Real Hetauda, Udayapur, etc. operate at higher air flows
+flows. Real PlantA, PlantB, etc. operate at higher air flows
 (3–4 m/s, sometimes with recuperator preheat) and longer residence
 times. **Calibration to plant-measured KPIs is a Day 4 task** that
 needs Hiro's UQ + Ramesh's plant-data inventory + the operating-handle

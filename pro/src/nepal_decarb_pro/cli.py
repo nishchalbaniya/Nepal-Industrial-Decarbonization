@@ -4,18 +4,18 @@ nepal-decarb CLI -- the single user-facing entry point.
 Subcommands:
   nepal-decarb version
   nepal-decarb status                  (show installed modules + versions)
-  nepal-decarb run cooler --plant hetauda
-  nepal-decarb run kiln --plant hetauda --fuel coal_bituminous_NP
-  nepal-decarb run coupled --plant hetauda
+  nepal-decarb run cooler --plant planta
+  nepal-decarb run kiln --plant planta --fuel coal_bituminous_NP
+  nepal-decarb run coupled --plant planta
   nepal-decarb calibrate cooler --target synthetic
   nepal-decarb export step-cooler --calibration day-05
   nepal-decarb demo                   (run cooler + kiln + calibration end-to-end)
   nepal-decarb install                (install on Windows; place .bat + .ps1 in dist/)
 
 Examples:
-  nepal-decarb run cooler --plant hetauda
-  nepal-decarb run coupled --plant hetauda --out ./out
-  nepal-decarb demo --plant hetauda --out ./demo-output
+  nepal-decarb run cooler --plant planta
+  nepal-decarb run coupled --plant planta --out ./out
+  nepal-decarb demo --plant planta --out ./demo-output
 """
 from __future__ import annotations
 
@@ -93,17 +93,17 @@ def cmd_run_cooler(args) -> int:
     sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "src"))
     try:
         from nepal_cooler_sim import (
-            hetauda, udayapur, hongshi_shivam, ghorahi,
+            planta, plantb, plantc, plantd,
             solve_steady_state, compute_outputs,
         )
     except ImportError as e:
         print(f"ERROR: nepal_cooler_sim not importable: {e}")
         return 1
     presets = {
-        "hetauda": hetauda,
-        "udayapur": udayapur,
-        "hongshi-shivam": hongshi_shivam,
-        "ghorahi": ghorahi,
+        "planta": planta,
+        "plantb": plantb,
+        "plantc": plantc,
+        "plantd": plantd,
     }
     if args.plant not in presets:
         print(f"ERROR: unknown plant '{args.plant}'. Available: {list(presets)}")
@@ -178,7 +178,7 @@ def cmd_calibrate_cooler(args) -> int:
             CALIBRATION_PARAMETERS,
         )
         from nepal_cooler_sim import (
-            hetauda, solve_steady_state, compute_outputs,
+            planta, solve_steady_state, compute_outputs,
             SEC_AIR_BAND_C, TERT_AIR_BAND_C, EXHAUST_AIR_BAND_C,
             CLINKER_OUTLET_BAND_C, COOLER_EFF_BAND,
         )
@@ -187,9 +187,9 @@ def cmd_calibrate_cooler(args) -> int:
         return 1
     # Pick the target
     if args.target == "synthetic":
-        target_path = _P(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-04-PRs" / "data" / "synthetic_hetauda_v050_shift_4h.csv"
+        target_path = _P(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-04-PRs" / "data" / "synthetic_planta_v050_shift_4h.csv"
     elif args.target == "synthetic-legacy":
-        target_path = _P(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-04-PRs" / "data" / "synthetic_hetauda_shift_4h.csv"
+        target_path = _P(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-04-PRs" / "data" / "synthetic_planta_shift_4h.csv"
     elif args.csv:
         target_path = _P(args.csv)
     else:
@@ -413,14 +413,14 @@ def cmd_export_step_cooler(args) -> int:
 
 
 def cmd_export_step_kiln(args) -> int:
-    """Export the Hetauda rotary kiln as a STEP file via FreeCAD."""
+    """Export the PlantA rotary kiln as a STEP file via FreeCAD."""
     import subprocess
     freecad = r"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCADCmd.exe"
-    script = Path(__file__).parent.parent.parent.parent / "tools" / "02-kiln-dynamics-simulator" / "day-08-PRs" / "export_hetauda_kiln_step.py"
+    script = Path(__file__).parent.parent.parent.parent / "tools" / "02-kiln-dynamics-simulator" / "day-08-PRs" / "export_planta_kiln_step.py"
     if not script.exists():
         print(f"ERROR: STEP export script not found at {script}")
         return 1
-    out = Path(args.output or "hetauda_kiln_assembly.step")
+    out = Path(args.output or "planta_kiln_assembly.step")
     out.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
         freecad, "-c",
@@ -437,7 +437,7 @@ def cmd_export_step_kiln(args) -> int:
     if r.returncode != 0:
         print(f"ERROR: FreeCAD export failed: {r.stderr[-500:]}")
         return 1
-    src = script.parent / "cad" / "hetauda_kiln_assembly.step"
+    src = script.parent / "cad" / "planta_kiln_assembly.step"
     if src.exists() and src != out:
         out.write_bytes(src.read_bytes())
     print(f"  wrote {out}")
@@ -446,7 +446,7 @@ def cmd_export_step_kiln(args) -> int:
 
 
 def cmd_export_pid_cooler(args) -> int:
-    """Export the Hetauda cooler P&ID (STEP + SVG + JSON metadata)."""
+    """Export the PlantA cooler P&ID (STEP + SVG + JSON metadata)."""
     import subprocess
     freecad = r"C:\Users\TG\AppData\Local\Programs\FreeCAD 1.1\bin\FreeCADCmd.exe"
     script = Path(__file__).parent.parent.parent.parent / "tools" / "03-cooler-grate-simulator" / "day-09-PRs" / "export_pid_cooler.py"
@@ -468,7 +468,7 @@ def cmd_export_pid_cooler(args) -> int:
         print(f"ERROR: FreeCAD P&ID export failed: {r.stderr[-500:]}")
         return 1
     src_dir = script.parent / "cad"
-    for name in ("hetauda_cooler_pid.svg", "hetauda_cooler_pid.json", "hetauda_cooler_pid.step"):
+    for name in ("planta_cooler_pid.svg", "planta_cooler_pid.json", "planta_cooler_pid.step"):
         src = src_dir / name
         if src.exists():
             dst = out_dir / name
@@ -482,16 +482,16 @@ def cmd_demo(args) -> int:
     out = Path(args.out or "demo-output")
     out.mkdir(parents=True, exist_ok=True)
     print("=" * 78)
-    print("nepal-decarb demo: end-to-end run on the Hetauda preset")
+    print("nepal-decarb demo: end-to-end run on the PlantA preset")
     print("=" * 78)
     print()
-    print("Step 1/3: Run the cooler on the Hetauda preset")
+    print("Step 1/3: Run the cooler on the PlantA preset")
     print("-" * 78)
     rc = cmd_run_cooler(argparse.Namespace(plant=args.plant, out=str(out)))
     if rc != 0:
         return rc
     print()
-    print("Step 2/3: Run the kiln on the Hetauda preset")
+    print("Step 2/3: Run the kiln on the PlantA preset")
     print("-" * 78)
     rc = cmd_run_kiln(argparse.Namespace(plant=args.plant, fuel=None, out=str(out)))
     if rc != 0:
@@ -584,12 +584,12 @@ def cmd_install(args) -> int:
     print("Usage (cmd.exe):")
     print(f"  > {bat} version")
     print(f"  > {bat} status")
-    print(f"  > {bat} run cooler --plant hetauda")
-    print(f"  > {bat} demo --plant hetauda --out .\\demo-output")
+    print(f"  > {bat} run cooler --plant planta")
+    print(f"  > {bat} demo --plant planta --out .\\demo-output")
     print()
     print("Usage (PowerShell):")
     print(f"  > & '{ps1}' version")
-    print(f"  > & '{ps1}' demo --plant hetauda --out .\\demo-output")
+    print(f"  > & '{ps1}' demo --plant planta --out .\\demo-output")
     print()
     print("Note: the .bat and .ps1 expect Python at:")
     print(f"  {sys.executable}")
@@ -688,13 +688,13 @@ def cmd_setup(args) -> int:
     shutil.copy2(vbs, startmenu / "Start NepalDecarb Dashboard.vbs")
 
     # Build a "Run Demo" .bat that does a one-shot end-to-end demo
-    demo_bat = desktop / "Run Demo (Hetauda).bat"
+    demo_bat = desktop / "Run Demo (PlantA).bat"
     demo_bat.write_text(
         "@echo off\r\n"
         "REM Day 11 -- run the end-to-end demo and open the result folder.\r\n"
         "setlocal\r\n"
         f'set "NEPAL_DECARB_ROOT={repo_root}"\r\n'
-        f"\"{bat_src}\" demo --plant hetauda --out \"%USERPROFILE%\\Desktop\\NepalDecarb\\demo-output\"\r\n"
+        f"\"{bat_src}\" demo --plant planta --out \"%USERPROFILE%\\Desktop\\NepalDecarb\\demo-output\"\r\n"
         "if errorlevel 1 (\r\n"
         "  echo [nepal-decarb] demo failed; see output above.\r\n"
         "  pause\r\n"
@@ -702,7 +702,7 @@ def cmd_setup(args) -> int:
         ")\r\n"
         "start \"\" \"%USERPROFILE%\\Desktop\\NepalDecarb\\demo-output\"\r\n"
     )
-    shutil.copy2(demo_bat, startmenu / "Run Demo (Hetauda).bat")
+    shutil.copy2(demo_bat, startmenu / "Run Demo (PlantA).bat")
 
     # Build an "Uninstall" .bat
     uninstall_bat = desktop / "Uninstall NepalDecarb.bat"
@@ -760,7 +760,7 @@ def cmd_setup(args) -> int:
     demo_lnk = desktop / "NepalDecarb Run Demo.lnk"
     _write_shortcut(demo_bat, demo_lnk,
                     icon_path=default_icon,
-                    descr="NepalDecarb v1.0 - run the end-to-end Hetauda demo")
+                    descr="NepalDecarb v1.0 - run the end-to-end PlantA demo")
     shutil.copy2(demo_lnk, startmenu / "NepalDecarb Run Demo.lnk")
 
     uninstall_lnk = desktop / "NepalDecarb Uninstall.lnk"
@@ -781,7 +781,7 @@ def cmd_setup(args) -> int:
         "  2. Click 'Run cooler', 'Calibrate', 'Export' from the dashboard\n"
         "\n"
         "Other launchers:\n"
-        "  - Run Demo (Hetauda).bat   one-shot end-to-end demo\n"
+        "  - Run Demo (PlantA).bat   one-shot end-to-end demo\n"
         "  - nepal-decarb.bat         raw CLI (cmd.exe)\n"
         "  - nepal-decarb.ps1         raw CLI (PowerShell)\n"
         "  - Uninstall NepalDecarb.bat remove the desktop shortcuts\n"
@@ -836,7 +836,7 @@ def main(argv=None) -> int:
     p_run = sub.add_parser("run", help="Run a module (cooler, kiln, or coupled)")
     p_run_sub = p_run.add_subparsers(dest="module")
     pc = p_run_sub.add_parser("cooler", help="Run the cooler")
-    pc.add_argument("--plant", required=True, choices=["hetauda", "udayapur", "hongshi-shivam", "ghorahi"])
+    pc.add_argument("--plant", required=True, choices=["planta", "plantb", "plantc", "plantd"])
     pc.add_argument("--out", default=None)
     pc.set_defaults(func=cmd_run_cooler)
     pk = p_run_sub.add_parser("kiln", help="Run the kiln")
@@ -865,15 +865,15 @@ def main(argv=None) -> int:
     pcs.add_argument("--output", default=None, help="Output .step path")
     pcs.add_argument("--calibration", default="day-05", help="Calibration posterior to use (default: day-05)")
     pcs.set_defaults(func=cmd_export_step_cooler)
-    pks = p_exp_sub.add_parser("step-kiln", help="Export Hetauda rotary kiln as STEP")
+    pks = p_exp_sub.add_parser("step-kiln", help="Export PlantA rotary kiln as STEP")
     pks.add_argument("--output", default=None, help="Output .step path")
     pks.set_defaults(func=cmd_export_step_kiln)
-    ppid = p_exp_sub.add_parser("pid-cooler", help="Export Hetauda cooler P&ID (STEP + SVG + JSON)")
+    ppid = p_exp_sub.add_parser("pid-cooler", help="Export PlantA cooler P&ID (STEP + SVG + JSON)")
     ppid.add_argument("--output", default=".", help="Output directory")
     ppid.set_defaults(func=cmd_export_pid_cooler)
 
     p_demo = sub.add_parser("demo", help="Run cooler + kiln + calibration end-to-end")
-    p_demo.add_argument("--plant", default="hetauda")
+    p_demo.add_argument("--plant", default="planta")
     p_demo.add_argument("--out", default="demo-output")
     p_demo.set_defaults(func=cmd_demo)
 

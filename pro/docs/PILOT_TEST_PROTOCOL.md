@@ -47,7 +47,7 @@ This protocol tests the `nepal_decarb_pro` v1.0.0 platform against:
 ### 3.1 Cement baseline (Tier 2)
 
 **Test ID:** F-CEM-001
-**Input:** Hetauda Cement, 950k t clinker, 1.1M t cement, 120k t coal, 85 GWh elec
+**Input:** PlantA, 950k t clinker, 1.1M t cement, 120k t coal, 85 GWh elec
 **Expected output:**
 - Total emissions: 800,000 - 900,000 tCO₂/yr
 - Intensity: 750-820 kg CO₂/t cement
@@ -80,9 +80,9 @@ This protocol tests the `nepal_decarb_pro` v1.0.0 platform against:
 ### 3.4 Monte Carlo UQ
 
 **Test ID:** F-MC-001
-**Input:** Hetauda plant, 3000 samples
+**Input:** PlantA plant, 3000 samples
 **Expected output:**
-- CoV < 10% (typically ~3% for Hetauda)
+- CoV < 10% (typically ~3% for PlantA)
 - 90% CI covers nominal value
 - Converged = True
 
@@ -102,7 +102,7 @@ This protocol tests the `nepal_decarb_pro` v1.0.0 platform against:
 ### 3.6 LCA
 
 **Test ID:** F-LCA-001
-**Input:** Hetauda plant
+**Input:** PlantA plant
 **Expected output:**
 - GWP100: 600-1500 kg CO₂-eq/t cement
 - 6 impact categories computed
@@ -180,7 +180,7 @@ This protocol tests the `nepal_decarb_pro` v1.0.0 platform against:
 ### 4.8 GCCA
 
 **Test ID:** S-GCCA-001
-**Input:** Hetauda plant
+**Input:** PlantA plant
 **Expected:** 7 KPIs computed
 
 **Pass:** All 7 KPIs returned.
@@ -226,7 +226,7 @@ This protocol tests the `nepal_decarb_pro` v1.0.0 platform against:
 
 ### 5.2 Monte Carlo performance
 
-**Test:** 5000 samples on Hetauda plant
+**Test:** 5000 samples on PlantA plant
 **Expected:**
 - < 30 seconds
 - < 200 MB memory

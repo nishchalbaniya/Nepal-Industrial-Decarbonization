@@ -208,15 +208,15 @@ def _make_proxy(
 
 
 # ---------------------------------------------------------------------------
-# Test 1: Air density — Hetauda design day
+# Test 1: Air density — PlantA design day
 # ---------------------------------------------------------------------------
 
-def test_air_density_hetauda_design_day():
+def test_air_density_planta_design_day():
     """At 1400 m / 35 °C / 90% RH, the air density must be ≈ 0.95 kg/m³,
     not the v0.3.0 hard-coded 0.6 kg/m³ (which is wrong for any
     altitude < 3500 m). Cite: ASHRAE 2021 Ch. 1 + ISO 2533:1975.
 
-    The Hetauda design day is the failure mode the v0.3.0 review flagged
+    The PlantA design day is the failure mode the v0.3.0 review flagged
     as this agent's #1 cooler-fan undersize mistake in Nepal
     (agent.md L65-66). A density error here is a 58 % air-mass error
     which propagates linearly to fan power and to the heat-duty split.
@@ -231,7 +231,7 @@ def test_air_density_hetauda_design_day():
     rho_expected = p_d / (R_D_AIR * 308.15) + p_v / (R_V_WATER * 308.15)
     assert abs(rho - rho_expected) < 1e-6, "Density formula must match ASHRAE"
     assert 0.93 <= rho <= 0.96, (
-        f"Hetauda air density {rho:.4f} kg/m³ outside band [0.93, 0.96]. "
+        f"PlantA air density {rho:.4f} kg/m³ outside band [0.93, 0.96]. "
         f"v0.3.0 used 0.6 — this would silently break the cooler heat duty."
     )
 
@@ -335,7 +335,7 @@ def test_free_lime_quench_rate(quench_k_per_min, expected_band):
 # Test 5: First-law closure (catches v0.3.0's 13.5× imbalance)
 # ---------------------------------------------------------------------------
 
-def test_first_law_closure_synthetic_hetauda():
+def test_first_law_closure_synthetic_planta():
     """With a correctly-sized compartment solver, the air-side and
     clinker-side heat duties must agree within 5 %. v0.3.0 reported
     13.5× — the test would have rejected it. Cite: Peray §6.2 first-law
@@ -390,10 +390,10 @@ PRESETS = [
     # (name, altitude, amb_T, RH, tph, sec_air_T, expected_rho_band, total_air_kg_s)
     # Each preset's `total_air_kg_s` is tuned to close the first-law to
     # within 2 % for the stated throughput (Peray §6.4 design point).
-    ("Hetauda (HCIL)", 1400, 35.0, 0.90, 130.0, 850.0, (0.93, 0.96), 88.2),
-    ("Udayapur (UCIL)", 300, 25.0, 0.65, 67.0, 750.0, (1.11, 1.15), 60.0),
-    ("Hongshi-Shivam", 80, 40.0, 0.70, 208.0, 950.0, (1.07, 1.11), 140.0),
-    ("Ghorahi", 200, 32.0, 0.80, 208.0, 900.0, (1.09, 1.13), 145.0),
+    ("PlantA (NIDC)", 1400, 35.0, 0.90, 130.0, 850.0, (0.93, 0.96), 88.2),
+    ("PlantB (UCIL)", 300, 25.0, 0.65, 67.0, 750.0, (1.11, 1.15), 60.0),
+    ("plantc", 80, 40.0, 0.70, 208.0, 950.0, (1.07, 1.11), 140.0),
+    ("plantd", 200, 32.0, 0.80, 208.0, 900.0, (1.09, 1.13), 145.0),
 ]
 
 
@@ -453,14 +453,14 @@ def test_4_plant_presets_run(
     assert kpis["first_law_imbalance"] <= 0.02, (
         f"{name}: first-law imbalance {kpis['first_law_imbalance']:.4f} > 0.02"
     )
-    # SFP band: 8-12 kW/(t/h) is for *modern BAT* (KHD/IKN Hongshi/Ghorahi).
-    # Older plants (Hetauda, Udayapur) legitimately run below 8 because
+    # SFP band: 8-12 kW/(t/h) is for *modern BAT* (KHD/IKN Hongshi/PlantD).
+    # Older plants (PlantA, PlantB) legitimately run below 8 because
     # they have less aux load and lower t/d. Use a per-plant band:
     sfp_band = {
-        "Hetauda (HCIL)":  (3.0, 12.0),  # older 4-comp, less aux
-        "Udayapur (UCIL)": (1.0, 12.0),  # older 3-comp, smallest plant
-        "Hongshi-Shivam":  (8.0, 12.0),  # KHD Pyrostep, BAT
-        "Ghorahi":         (8.0, 12.0),  # KHD Pyrostep, BAT
+        "PlantA (NIDC)":  (3.0, 12.0),  # older 4-comp, less aux
+        "PlantB (UCIL)": (1.0, 12.0),  # older 3-comp, smallest plant
+        "plantc":  (8.0, 12.0),  # KHD Pyrostep, BAT
+        "plantd":         (8.0, 12.0),  # KHD Pyrostep, BAT
     }[name]
     sfp = kpis["specific_fan_power_kw_per_tph"]
     assert sfp_band[0] <= sfp <= sfp_band[1], (
@@ -642,7 +642,7 @@ def test_acceptance_check_catches_bogus_sec_air():
 
 
 def test_acceptance_check_passes_design_point():
-    """A correctly-computed design point (Hetauda, 5-comp, 130 t/h)
+    """A correctly-computed design point (PlantA, 5-comp, 130 t/h)
     must pass every acceptance criterion. Cite: ECRA 2022 BAT,
     Peray §6.4, Boateng §7.4.
 
@@ -672,12 +672,12 @@ def test_acceptance_check_passes_design_point():
         under_grate_air_velocity_m_s=v_air,
     )
     kpis = compute_kpis(res, p)
-    # SFP at 130 t/h Hetauda is below the modern BAT 8-12 band because
+    # SFP at 130 t/h PlantA is below the modern BAT 8-12 band because
     # the older 4-comp cooler has less aux load. Use the 4-preset
-    # Hetauda band [3, 12] here, not the modern BAT band.
+    # PlantA band [3, 12] here, not the modern BAT band.
     sfp = kpis["specific_fan_power_kw_per_tph"]
     assert 3.0 <= sfp <= 12.0, (
-        f"Design-point SFP {sfp:.2f} outside Hetauda band [3, 12]"
+        f"Design-point SFP {sfp:.2f} outside PlantA band [3, 12]"
     )
     acc = check_acceptance(kpis)
     # Override the SFP check (older plant) for this design point
@@ -815,7 +815,7 @@ def test_ergun_monotone_in_velocity():
 def test_efficiency_in_bat_band_flagged():
     """v0.3.0 reported 0.727 — Indian-industry range, *below* BAT
     (ECRA 2022: 75-80 %). The sanity block must flag this as a
-    stretch target for Hetauda and Udayapur (the old plants).
+    stretch target for PlantA and PlantB (the old plants).
     Cite: ECRA 2022.
     """
     duty = DutyCase()

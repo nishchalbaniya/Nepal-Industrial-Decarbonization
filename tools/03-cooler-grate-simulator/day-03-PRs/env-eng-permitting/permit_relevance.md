@@ -26,10 +26,10 @@ The cooler module itself is not a regulated emission source. It is a **heat-reco
 - **Rule 7 — Annual emissions report.** Prescribed industries submit annual CO₂, NOₓ, SO₂, PM, and (where applicable) heavy metals.
 - **Rule 12 — Monitoring and reporting.** Establishes the obligation to maintain monitoring records.
 - **Applicability to cooler module:** **Direct (as a kiln-coupled parameter).** All four plants in scope are above the 200 t/d threshold:
-  - Hetauda Cement Industries Ltd. (HCIL): ~3000 t/d clinker precalciner → **in scope**.
-  - Udayapur Cement Industries Ltd. (UCIL): ~3000 t/d → **in scope**.
-  - Hongshi-Shivam Cement: ~5000 t/d → **in scope**.
-  - Ghorahi Cement: ~4000 t/d → **in scope**.
+  - PlantA Industries Ltd. (NIDC): ~3000 t/d clinker precalciner → **in scope**.
+  - PlantB Industries Ltd. (UCIL): ~3000 t/d → **in scope**.
+  - plantc Cement: ~5000 t/d → **in scope**.
+  - PlantD: ~4000 t/d → **in scope**.
 - **Citation:** Industrial Emissions Rules 2020, Government of Nepal, Rule 5, 7, 12.
 
 ### 1.3 Nepal EIA Guidelines 2020 (and IEE 2020)

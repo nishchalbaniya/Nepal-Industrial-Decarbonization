@@ -16,7 +16,7 @@ and STEP / P&ID export in a single FastAPI app:
 | POST | `/api/kiln/run`         | `{plant, fuel?}`         | kiln KPIs                                  |
 | POST | `/api/cooler/calibrate` | `{target, v04?, out?}`   | loss, RMSE, posterior, ship-gate bands     |
 | POST | `/api/cooler/export-step` | `{output?}`            | v0.5.0 cooler STEP file path + size        |
-| POST | `/api/kiln/export-step` | `{output?}`              | Hetauda kiln STEP file path + size         |
+| POST | `/api/kiln/export-step` | `{output?}`              | PlantA kiln STEP file path + size         |
 | POST | `/api/cooler/export-pid` | `{output?}`             | P&ID STEP+SVG+JSON outputs                 |
 | GET  | `/api/pid-svg`          | --                       | inline SVG of the cooler P&ID              |
 | GET  | `/api/artifacts`        | --                       | list files in `pro/demo-output/`           |
@@ -51,7 +51,7 @@ What it does:
    - launches `nepal-decarb serve --port 8000` in a hidden window
    - polls `http://127.0.0.1:8000/api/version` for up to 10s
    - opens the user's default browser to `http://127.0.0.1:8000/`
-4. Writes `Run Demo (Hetauda).bat` (one-shot end-to-end demo +
+4. Writes `Run Demo (PlantA).bat` (one-shot end-to-end demo +
    opens the result folder).
 5. Writes `Uninstall NepalDecarb.bat` (removes the Desktop +
    Start Menu entries; the repo and Python packages are not
@@ -105,5 +105,5 @@ Day 12: re-deploy the public demo site with the v0.9.0 P&ID viewer
 and a "complete deliverables" index page.
 Day 13: bundle the Days 7-11 format-patch zip for the user.
 Day 14: LLM advisor (Sofia, deferred).
-Day 15+: Rina (CCO) + Priya Hetauda pilot outreach with the
+Day 15+: Rina (CCO) + Priya PlantA pilot outreach with the
 verified Day 4/5/10 numbers.

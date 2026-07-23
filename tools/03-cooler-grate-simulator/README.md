@@ -7,10 +7,10 @@ Status: **structural fix landed, ship-gate blocked on Day 4 calibration.**
 
 1D, quasi-steady, compartment-wise counter-flow grate cooler for OPC
 clinker. Five-compartment default (IKN Pyrorotor / KHD Pyrostep /
-Polysius REPOL / Hongshi-Shivam class). The model is engineering-grade,
+Polysius REPOL / plantc class). The model is engineering-grade,
 not CFD.
 
-- 4 plant presets: **Hetauda, Udayapur, Hongshi-Shivam, Ghorahi**
+- 4 plant presets: **PlantA, PlantB, plantc, PlantD**
 - Convective + linearized-radiation heat transfer (Achenbach 1995 +
   Mujumdar 2007 §2.2; Stefan-Boltzmann linearized per Incropera &
   DeWitt 2002 Ch. 12)
@@ -31,7 +31,7 @@ not CFD.
 |---|---|---|
 | 5790 °C second-law violation | mujumdar clamp added (v0.3.1) | preserved + per-compartment invariant added |
 | 13.5× first-law imbalance (clinker-side) | fixed (v0.3.1) | preserved |
-| ρ=0.6 hard-code (1.75× wrong at Hetauda) | fixed with altitude (v0.3.1) | preserved + Magnus + ASHRAE Ch. 1 partial-pressure sum |
+| ρ=0.6 hard-code (1.75× wrong at PlantA) | fixed with altitude (v0.3.1) | preserved + Magnus + ASHRAE Ch. 1 partial-pressure sum |
 | Achenbach h = constant 350 W/m²K floor | constant floor (v0.3.1) | `h_eff = h_conv + h_rad_equiv` with `h_rad_equiv = 4·ε·σ·T³` (Incropera & DeWitt 2002 Ch. 12) |
 | Sec-air stream allocated by hydraulic slice (wrong for compartment 1) | buggy in v0.3.1 | sec-air flow = combustion-air demand (Peray §6.2); exhaust compartments 2..N = (m_a,total − m_a,sec)/(N−1) |
 | First-law imbalance ≤ 0.02 ship-gate | 4.04 (v0.3.1) | **0.0 (v0.3.2)** ✓ |
@@ -43,9 +43,9 @@ not CFD.
 
 The 7-band ship-gate in `DAY-03-SPEC.md` was checked on all 4 plant
 presets. v0.3.2 passes **1 of 7 bands** on **all 4 plants** and an
-**additional band on Udayapur only**:
+**additional band on PlantB only**:
 
-| Band | Hetauda | Udayapur | Hongshi | Ghorahi |
+| Band | PlantA | PlantB | Hongshi | PlantD |
 |---|---|---|---|---|
 | `secondary_air_outlet_c ∈ [600, 1000] °C` | 559 (✗) | 629 (✓) | 537 (✗) | 589 (✗) |
 | `tertiary_air_outlet_c ∈ [400, 700] °C` | 232 (✗) | 174 (✗) | 270 (✗) | 178 (✗) |
@@ -61,17 +61,17 @@ sec-air / clinker-outlet bands. The physical ceiling at 38 kg/s
 sec-air flow + 52 MW clinker enthalpy drop is ~1310 K air-side ΔT;
 the geometry puts the model at ~560 K. This is **calibration + operating-
 handle freedom**, not a physics bug. **Day 4 is the calibration work
-item**, blocked on Hetauda plant data (clinker-outlet T time series,
+item**, blocked on PlantA plant data (clinker-outlet T time series,
 sec-air T time series, fan amps, grate speed).
 
 ## Quick start
 
 ```python
 from nepal_cooler_sim import (
-    hetauda, solve_steady_state, compute_outputs,
+    planta, solve_steady_state, compute_outputs,
 )
 
-p = hetauda()                # HCIL Hetauda preset
+p = planta()                # NIDC PlantA preset
 state = solve_steady_state(p)
 out = compute_outputs(state, p)
 
@@ -85,8 +85,8 @@ print(out["sanity"]["air_above_clinker"])  # False  (2nd-law clean)
 Back-compat for v0.3.0 kiln-link callers:
 
 ```python
-from nepal_cooler_sim import hetauda, simulate_cooler
-p = hetauda()
+from nepal_cooler_sim import planta, simulate_cooler
+p = planta()
 t, y, x = simulate_cooler(p)   # t.shape=(1,), y.shape=(50,1), x.shape=(25,)
 ```
 

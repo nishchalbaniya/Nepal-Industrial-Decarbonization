@@ -122,7 +122,7 @@ This checklist is what a third-party verifier will look at on Day 1 of an audit.
 - **Verifier question (Nepal domestic):** "Submit your 2024 annual CO₂ report to MoFE."
 - **Evidence expected:** Annual return in the format prescribed by the Rules.
 - **Current state:** **OUT OF SCOPE Day 3.** The cooler module provides daily/operator-trended data; the annual return is Day 19 (audit-ready docs).
-- **Note:** For plants **< 200 t/d clinker** there is **no current domestic MRV mandate** in Nepal. The plants in scope (Hetauda, Udayapur) are at or above the threshold; the smaller plants (Hongshi-Shivam precalciner at 5000 t/d is well above) are unambiguously in scope.
+- **Note:** For plants **< 200 t/d clinker** there is **no current domestic MRV mandate** in Nepal. The plants in scope (PlantA, PlantB) are at or above the threshold; the smaller plants (plantc precalciner at 5000 t/d is well above) are unambiguously in scope.
 
 ### E.2 Environmental Impact Assessment (EIA) / Initial Environmental Examination (IEE)
 - **Clause:** **Nepal EIA Guidelines 2020** (revised), **Environment Protection Rules 2020**.

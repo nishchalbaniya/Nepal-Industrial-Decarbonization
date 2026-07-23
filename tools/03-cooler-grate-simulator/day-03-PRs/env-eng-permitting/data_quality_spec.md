@@ -50,7 +50,7 @@ This document specifies the **per-field data quality** for every `compute_output
 
 | Field | Tier | Source (cite) | Year | 1-σ | Verifier rationale |
 |---|---|---|---|---|---|
-| `clinker_outlet_c` (model prediction) | **Tier 2** (engineering-grade 1D) | Aanya's `cooler_ode.py` model physics; Mujumdar 2007 | model-year | **±30 K** (1σ) propagated | Physics model; ±30 K covers numerical + parameter uncertainty combined; **note:** Aanya/Ramesh are debating model fidelity — Tier 2 today, Tier 1 if the model passes the Day 3 fragility tests with a calibration against Hetauda pyrometer data |
+| `clinker_outlet_c` (model prediction) | **Tier 2** (engineering-grade 1D) | Aanya's `cooler_ode.py` model physics; Mujumdar 2007 | model-year | **±30 K** (1σ) propagated | Physics model; ±30 K covers numerical + parameter uncertainty combined; **note:** Aanya/Ramesh are debating model fidelity — Tier 2 today, Tier 1 if the model passes the Day 3 fragility tests with a calibration against PlantA pyrometer data |
 | `secondary_air_outlet_c` (model prediction) | **Tier 2** | Aanya's model | model-year | **±50 K** (1σ) | Larger uncertainty because of compartment-flow modelling choice (counter-flow vs cross-flow); Hiro's UQ run will tighten this post-Day-3 |
 | `cooler_efficiency` | **derived (Tier 2)** | Ratio of `heat_recovered_kw` to `heat_in_kw`; numerator and denominator both Tier 2 | model-year | **±3 % absolute** (1σ) propagated | Energy-balance ratio; combined uncertainty via root-sum-square |
 | `heat_recovered_kw` | **derived (Tier 2)** | Air-side heat uptake; depends on `secondary_air_mass_flow_kg_s` (measured) and `secondary_air_outlet_c` (Tier 2) | model-year | **±5 %** (1σ) | Propagation: 5 % from mass × 5 % from ΔT (uncorrelated) → ~7 %; reduced to 5 % with cross-correlation |
@@ -83,7 +83,7 @@ Items below are **NOT in this Day 3 PR** but are flagged for Day 12 (PDD) and Da
 
 1. **Gap-fill policy** — when the DCS drops a reading, what is the substitution rule? Out of scope Day 3; Hiro owns the UQ layer.
 2. **Change-control log** — who changed what when. Out of scope Day 3; Maya's `io.py` is the foundation.
-3. **Plant-specific Tier 2 EFs** for the Hetauda / Udayapur / Hongshi-Shivam / Ghorahi presets. Day 3 ships *literature defaults* (Tier 1); Day 12 ships *plant-specific Tier 2* where the operator has data.
+3. **Plant-specific Tier 2 EFs** for the PlantA / PlantB / plantc / PlantD presets. Day 3 ships *literature defaults* (Tier 1); Day 12 ships *plant-specific Tier 2* where the operator has data.
 4. **CBAM default-value confirmation** — the 0.642 t CO₂/t clinker figure for CN 2523 10 00 is cited as Annex IV §4 but I have not re-verified the row. **Action: @James re-confirms.**
 
 ---

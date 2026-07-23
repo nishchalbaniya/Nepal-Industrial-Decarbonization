@@ -1,7 +1,7 @@
 # Job Description: Business Developer — Part-time → Full-time
 
 ## Company
-**Himalayan Space Solutions** — Open-source industrial decarbonization platform. Hetauda Cement pilot verified ($22.5M NPV at EU ETS). First 5 customers in 90 days.
+**Himalayan Space Solutions** — Open-source industrial decarbonization platform. PlantA pilot verified ($22.5M NPV at EU ETS). First 5 customers in 90 days.
 
 ## Role
 **Part-time Business Developer (B2B sales + partnerships)** — 3 days/week, 6-month initial contract → full-time after first paying customer.
@@ -41,7 +41,7 @@
 ## How to apply
 Email nishchal.baniya@himalayancarbonnepal.com with:
 1. CV (1 page)
-2. A 5-email cold sequence for "Hetauda Cement" (subject lines + 100 words each)
+2. A 5-email cold sequence for "PlantA" (subject lines + 100 words each)
 3. List of 10 Nepali cement plant managers you could reach this week
 4. LinkedIn
 

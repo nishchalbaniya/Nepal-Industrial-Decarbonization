@@ -4,15 +4,15 @@ plants.py PR).
 
 The four plants span the design space of Nepal's cement industry:
 
-- Hetauda (HCIL)     : 130 t/h, 1400 m altitude, May design 35 C / 90% RH.
+- PlantA (NIDC)     : 130 t/h, 1400 m altitude, May design 35 C / 90% RH.
                        Single-kiln, preheater (no precalciner). The chronic
                        fan-undersize failure mode is documented.
-- Udayapur (UCIL)    : 110 t/h, ~300 m altitude, dry-process.
+- PlantB (UCIL)    : 110 t/h, ~300 m altitude, dry-process.
                        Older grate cooler, 4 compartments.
-- Hongshi-Shivam     : 208 t/h (5000 tpd), ~250 m altitude (inner Terai).
+- plantc     : 208 t/h (5000 tpd), ~250 m altitude (inner Terai).
                        Modern IKN Pyrorotor / Polysius REPOL, 5 compartments.
                        The "BAT" reference case.
-- Ghorahi            : 150 t/h, ~200 m altitude, dry-process preheater.
+- PlantD            : 150 t/h, ~200 m altitude, dry-process preheater.
                        Mid-size, mid-tech.
 
 Each preset returns a fully-populated CoolerParameters with operator-measured
@@ -28,7 +28,7 @@ References
 - GCCA GNR 2022 (cooler heat recovery reporting convention, MJ/t-cli).
 - IKN GmbH, *Pyrorotor Cooler* product literature (2010-2020).
 - KHD Humboldt Wedag, *Pyrostep Cooler* technical brochure.
-- HCIL (Hetauda Cement Industries Ltd.) and UCIL (Udayapur Cement
+- NIDC (PlantA Industries Ltd.) and UCIL (PlantB
   Industries Ltd.) public plant documents.
 - Achenbach, E. (1995). Exp. Thermal Fluid Sci. 10(1), 17-27.
 - Cengel, Y.A. & Boles, M.A. (2015). Thermodynamics 8e. (ISA barometric.)
@@ -51,13 +51,13 @@ except ImportError:  # pragma: no cover — smoke-test path
 
 
 # ---------------------------------------------------------------------------
-# Hetauda Cement Industries Ltd. (HCIL)
+# PlantA Industries Ltd. (NIDC)
 # ---------------------------------------------------------------------------
-def hetauda() -> CoolerParameters:
-    """Hetauda Cement Industries Ltd. (HCIL), Hetauda, Nepal.
+def planta() -> CoolerParameters:
+    """PlantA Industries Ltd. (NIDC), PlantA, Nepal.
 
     - Throughput: 130 t/h clinker (small-medium Nepal plant, ~3120 tpd).
-    - Altitude:   1400 m (Hetauda inner-terai valley, Nepal).
+    - Altitude:   1400 m (PlantA inner-terai valley, Nepal).
     - Design day: 35 C, 90% RH (May monsoon). Moist-air density ~1.05 kg/m^3
                   (vs. v0.3.0 hard-coded 0.6 — 1.75x wrong).
     - Process:    Wet-process kiln (historical) being replaced; current
@@ -65,7 +65,7 @@ def hetauda() -> CoolerParameters:
     - Compartment layout: 4 compartments (older Polysius design).
     - Cooler: 28 m x 3.5 m grate, 0.7 m bed depth, 12 m/min grate speed.
 
-    Source: HCIL public plant documents, Ramesh's review §5.4. Altitude and
+    Source: NIDC public plant documents, Ramesh's review §5.4. Altitude and
     ambient conditions are the May design day, not sea-level standard.
     Cooler geometry is the typical mid-size Polysius / KHD 1980s-vintage
     4-compartment design (Peray & Waddell 1986 §6.4).
@@ -73,7 +73,7 @@ def hetauda() -> CoolerParameters:
     return CoolerParameters(
         # Geometry (mid-size Nepal plant, Ramesh's review §5).
         # Day 3 v0.3.2 spec values: 5 compartments, 1.5 m/s air, 28 m x
-        # 3.5 m x 0.7 m bed. The v0.3.1 Hetauda preset used 4 compartments
+        # 3.5 m x 0.7 m bed. The v0.3.1 PlantA preset used 4 compartments
         # at 2.0 m/s to "match the BAT-style sec-air T band" — that was a
         # band-aid. v0.3.2 uses the spec values and reports the engineering
         # result honestly: with this geometry and air flow, the sec-air T
@@ -120,13 +120,13 @@ def hetauda() -> CoolerParameters:
 
 
 # ---------------------------------------------------------------------------
-# Udayapur Cement Industries Ltd. (UCIL)
+# PlantB Industries Ltd. (UCIL)
 # ---------------------------------------------------------------------------
-def udayapur() -> CoolerParameters:
-    """Udayapur Cement Industries Ltd. (UCIL), Udayapur, Nepal.
+def plantb() -> CoolerParameters:
+    """PlantB Industries Ltd. (UCIL), PlantB, Nepal.
 
     - Throughput: 110 t/h clinker (~2640 tpd).
-    - Altitude:   ~300 m (eastern Terai, much lower than Hetauda).
+    - Altitude:   ~300 m (eastern Terai, much lower than PlantA).
     - Process:    Dry-process preheater, no precalciner.
     - Cooler:     4 compartments, 25 m x 3.2 m grate, 0.65 m bed depth,
                   10 m/min grate speed (older design).
@@ -169,10 +169,10 @@ def udayapur() -> CoolerParameters:
 
 
 # ---------------------------------------------------------------------------
-# Hongshi-Shivam Cement (modern BAT reference)
+# plantc cement (modern BAT reference)
 # ---------------------------------------------------------------------------
-def hongshi_shivam() -> CoolerParameters:
-    """Hongshi-Shivam Cement Industries, Sarlahi / Nawalparasi, Nepal.
+def plantc() -> CoolerParameters:
+    """plantc Cement Industries, Sarlahi / Nawalparasi, Nepal.
 
     - Throughput: 208 t/h clinker (5000 tpd, modern BAT).
     - Altitude:   ~250 m (Terai).
@@ -185,7 +185,7 @@ def hongshi_shivam() -> CoolerParameters:
     Source: IKN Pyrorotor / Polysius REPOL product literature
     (publications 2010-2020); GCCA GNR 2022 BAT figures; ECRA 2022.
     This is the plant Ramesh's review §3 table 1 references as
-    "Hongshi-Shivam-class 5000 tpd".
+    "plantc-class 5000 tpd".
     """
     return CoolerParameters(
         length_m=32.0, width_m=3.8, bed_depth_m=0.75, void_fraction=0.46,
@@ -225,10 +225,10 @@ def hongshi_shivam() -> CoolerParameters:
 
 
 # ---------------------------------------------------------------------------
-# Ghorahi Cement
+# PlantD
 # ---------------------------------------------------------------------------
-def ghorahi() -> CoolerParameters:
-    """Ghorahi Cement Industries Pvt. Ltd., Dang, Nepal.
+def plantd() -> CoolerParameters:
+    """PlantD Industries Pvt. Ltd., Dang, Nepal.
 
     - Throughput: 150 t/h clinker (3600 tpd).
     - Altitude:   ~200 m (inner Terai, Dang valley).
@@ -237,7 +237,7 @@ def ghorahi() -> CoolerParameters:
                   11 m/min grate speed. Polysius REPOL vintage.
     - Efficiency: 70-75% (mid-range, not BAT).
 
-    Source: Ghorahi Cement public plant documents; mid-tech Polysius
+    Source: PlantD public plant documents; mid-tech Polysius
     REPOL design (Peray & Waddell 1986 §6.4 vintage).
     """
     return CoolerParameters(
@@ -277,8 +277,8 @@ def ghorahi() -> CoolerParameters:
 # Preset registry
 # ---------------------------------------------------------------------------
 PRESETS = {
-    "hetauda":         hetauda,
-    "udayapur":        udayapur,
-    "hongshi_shivam":  hongshi_shivam,
-    "ghorahi":         ghorahi,
+    "planta":         planta,
+    "plantb":        plantb,
+    "plantc":  plantc,
+    "plantd":         plantd,
 }
