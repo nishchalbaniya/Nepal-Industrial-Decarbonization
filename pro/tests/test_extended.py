@@ -203,10 +203,14 @@ def test_cement_project_full_lifecycle():
         crediting_period_years=10,
     )
     assert pdd.net_emission_reductions_annual_tco2 > 0
+    assert "VM0009" not in pdd.methodology, (
+        "VM0009 is the Avoided Ecosystem Conversion methodology, not a "
+        "cement methodology. Use ACM0003 or ACM0005."
+    )
 
     # Tokenize
     md = build_token_metadata(
-        project_name="Test", vintage_year=2026, methodology="VM0009",
+        project_name="Test", vintage_year=2026, methodology="ACM0003",
         registry="Verra", total_tonnes_co2=pdd.net_emission_reductions_annual_tco2,
     )
     assert md.issuance_hash != ""

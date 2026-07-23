@@ -1,15 +1,12 @@
 # 🇳🇵 nepal_decarb_pro
 
-> **World-class, open-source industrial decarbonization platform for Nepal's cement and brick industry.**
-> **9.78/10 international standards rating · 11 standards · 78/78 tests · Deployable today**
+> **Open-source industrial decarbonization platform for Nepal's cement and brick industry.**
+> **Carbon markets references corrected in WP1; see `docs/METHODOLOGY.md`**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)]()
-[![Standards: 11](https://img.shields.io/badge/standards-11-brightgreen.svg)]()
-[![Tests: 78/78](https://img.shields.io/badge/tests-78%2F78-success.svg)]()
-[![Rating: 9.78/10](https://img.shields.io/badge/rating-9.78%2F10-gold.svg)]()
-[![Bilingual](https://img.shields.io/badge/i18n-EN%20%7C%20%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A5%80-blueviolet)]()
-[![Live demo](https://img.shields.io/badge/demo-LIVE-brightgreen)](https://fnj58e5yu30lp.space.minimax.io)
+[![Methodology](https://img.shields.io/badge/methodology-verified-blue)](docs/METHODOLOGY.md)
+[![Sizing output only](https://img.shields.io/badge/PDD-stub%2C%20not%20submittable-orange)](docs/METHODOLOGY.md)
 
 ---
 
@@ -116,9 +113,11 @@ See [`pro/docs/PILOT_DEPLOYMENT.md`](pro/docs/PILOT_DEPLOYMENT.md) for the full 
 ISO 14064-1, ISO 14064-2, ISO 14064-3, ISO 50001, ISO 14001, TCFD, SBTi, GCCA, PCAF, GHG Protocol
 
 ### Carbon markets (`pro/nepal_decarb_pro/markets/`)
-- Verra VCS PDD generator (VM0009 v2.0)
-- Gold Standard PDD (TPDDTEC)
-- 6 price scenarios (India CCTS → EU ETS)
+- Verra VCS PDD generator (stub -- not submittable; see `docs/METHODOLOGY.md` section 5)
+  - Real methodologies cited: CDM ACM0003 v9.0 (cement fuel-switch), CDM ACM0005 v7.1.0 (blended cement)
+  - The previous "VM0009 v2.0 (Cement Plant Decarbonization)" citation was fictional and is removed (WP1)
+- Gold Standard PDD (RECH v5.0, formerly TPDDTEC -- brick sub-product only; not applicable to industrial cement)
+- 6 price scenarios (India CCTS, Article 6.2 ITMO, Voluntary -- not EU-ETS as the central case)
 - Solidity ERC-3643 (T-REX) carbon credit token (6,185 chars)
 
 ### Simulators (`pro/nepal_decarb_pro/sim/`)
