@@ -1,0 +1,33 @@
+name: gitleaks
+
+# WP6 follow-up: gitleaks scan on every push and PR.
+# Catches secrets (PATs, API keys, AWS access keys, etc.)
+# that would otherwise be exposed in the commit history.
+
+on:
+  push:
+    branches: [main, 'remediation/**', 'day-*/**']
+  pull_request:
+    branches: [main, 'day-*/**', 'remediation/**']
+
+permissions:
+  contents: read
+  # gitleaks needs to read all commits and diffs
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    name: gitleaks (secrets scan)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITLEAKS_LICENSE is required for gitleaks >= 8.18
+          # (the action handles this automatically for public repos)
