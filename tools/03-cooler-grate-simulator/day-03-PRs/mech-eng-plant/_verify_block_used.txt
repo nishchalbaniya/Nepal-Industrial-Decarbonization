@@ -1,0 +1,11 @@
+from pathlib import Path
+p = Path(r'C:\Users\TG\.mavis\workspace\nepal-decarb-build\DAY-03-NEGOTIATION.md')
+t = p.read_text(encoding='utf-8')
+idx = t.find('### Ramesh')
+print(f'§-block starts at offset {idx}, content:')
+print(t[idx:idx+200])
+print('...')
+for needle in ['0.95 kg/m³', '27.9 kg/s', '5-compartment', 'Mujumdar 2007',
+               'ASHRAE 2021', 'ECRA 2022', 'f-CaO', 'specific fan power']:
+    has = needle in t
+    print(f'  contains "{needle}": {has}')

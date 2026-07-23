@@ -1,0 +1,108 @@
+{
+  "model": "v0.9.0 cooler P&ID (Day 9 ship)",
+  "drawing_number": "HCIL-CLR-PID-001 Rev A",
+  "calibration_source": "Day 5 v0.5.0 commit 2aa918c",
+  "free_geometry_step": "hetauda_cooler_pid.step",
+  "browser_svg": "hetauda_cooler_pid.svg",
+  "citations": [
+    "ISA-5.1-2009 Instrumentation Symbols and Identification",
+    "ISA-5.3-1983 Instrument Tag Conventions",
+    "Peray & Waddell 1986 s6.4 cooler process streams",
+    "Mujumdar 2007 compartment layout",
+    "Achenbach 1995 h correlation"
+  ],
+  "instrument_tags": [
+    {
+      "tag": "TI-1101",
+      "function": "sec-air T",
+      "type": "Type-K TC",
+      "uncertainty": "\u00c2\u00b120 K at 800 \u00c2\u00b0C"
+    },
+    {
+      "tag": "TI-1102",
+      "function": "tert-air T",
+      "type": "Type-K TC",
+      "uncertainty": "\u00c2\u00b120 K at 600 \u00c2\u00b0C"
+    },
+    {
+      "tag": "TI-1103",
+      "function": "exhaust T",
+      "type": "TC in plenum",
+      "uncertainty": "\u00c2\u00b110 K at 200 \u00c2\u00b0C"
+    },
+    {
+      "tag": "TI-1104",
+      "function": "clinker out T",
+      "type": "IR spot pyrometer",
+      "uncertainty": "\u00c2\u00b115 K at 200 \u00c2\u00b0C"
+    },
+    {
+      "tag": "TI-1105",
+      "function": "ambient T",
+      "type": "PT100 RTD",
+      "uncertainty": "\u00c2\u00b12 K"
+    },
+    {
+      "tag": "PI-1101",
+      "function": "bed dP",
+      "type": "\u00ce\u201d-P transmitter",
+      "uncertainty": "\u00c2\u00b10.5% span"
+    },
+    {
+      "tag": "FT-1101",
+      "function": "sec-air flow",
+      "type": "Annubar",
+      "uncertainty": "\u00c2\u00b15% at 26 kg/s"
+    },
+    {
+      "tag": "SC-1101",
+      "function": "grate speed",
+      "type": "VFD Hz",
+      "uncertainty": "\u00c2\u00b12%"
+    }
+  ],
+  "process_streams": [
+    {
+      "id": "S1",
+      "name": "Clinker in (kiln discharge)",
+      "T_c": 1400,
+      "m_kg_s": 36,
+      "direction": "in"
+    },
+    {
+      "id": "S2",
+      "name": "Sec air out (to kiln burner)",
+      "T_c": 715,
+      "m_kg_s": 26,
+      "direction": "out"
+    },
+    {
+      "id": "S3",
+      "name": "Tert air out (to calciner)",
+      "T_c": 190,
+      "m_kg_s": 80,
+      "direction": "out"
+    },
+    {
+      "id": "S4",
+      "name": "Exhaust out (to dust collector)",
+      "T_c": 149,
+      "m_kg_s": 53,
+      "direction": "out"
+    },
+    {
+      "id": "S5",
+      "name": "Clinker out (to cement mill)",
+      "T_c": 351,
+      "m_kg_s": 36,
+      "direction": "out"
+    },
+    {
+      "id": "S6",
+      "name": "Under-grate air in (from PA fan)",
+      "T_c": 120,
+      "m_kg_s": 159,
+      "direction": "in"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "t_clinker_peak_k": 8343.247663096712,
+  "t_clinker_peak_c": 8070.0976630967125,
+  "t_clinker_min_k": 302.2775945603521,
+  "t_gas_peak_k": 2300.006927259549,
+  "t_gas_peak_c": 2026.8569272595487,
+  "t_burning_zone_k": 8343.247663096712,
+  "t_burning_zone_c": 8070.0976630967125,
+  "avg_conversion": 0.9400000000919008,
+  "burning_conversion": 1.000000000062354,
+  "sec_mj_per_t_clinker": 3269.2307692307695,
+  "sec_kwh_per_t_clinker": 908.1923076923077,
+  "sec_gj_per_t_clinker": 3.2692307692307696,
+  "co2_calcination_t_h": 43.409924999999994,
+  "co2_fuel_t_h": 20.50455,
+  "co2_total_t_h": 63.914474999999996,
+  "co2_total_kg_h": 63914.475,
+  "co2_intensity_kg_per_t_clinker": 964.0192307692308,
+  "thermal_efficiency": 0.72,
+  "fuel_rate_t_h": 8.5,
+  "raw_meal_t_h": 85.0,
+  "clinker_t_h": 66.3
+}

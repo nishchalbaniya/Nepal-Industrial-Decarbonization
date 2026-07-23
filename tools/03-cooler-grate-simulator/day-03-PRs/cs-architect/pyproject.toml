@@ -1,0 +1,201 @@
+[build-system]
+requires = ["hatchling>=1.18", "wheel"]
+build-backend = "hatchling.build"
+
+# ---------------------------------------------------------------------------
+# Project
+# ---------------------------------------------------------------------------
+
+[project]
+name = "nepal-cooler-sim"
+version = "0.3.1"
+description = "Day 3 of 20-day suite — 1D grate cooler for cement clinker (v0.3.1)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [
+  {name = "Nishchal Baniya", email = "nishchal.baniya@himalayancarbonnepal.com"},
+  {name = "Maya Iyer", email = "maya@himalayancarbonnepal.com"},
+  {name = "Mavis (Day 3 build)"},
+]
+keywords = [
+  "cement", "cooler", "grate-cooler", "clinker", "decarbonization", "nepal",
+  "process-simulation", "secondary-air", "waste-heat-recovery",
+  "pydantic-v2",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Manufacturing",
+  "Intended Audience :: Engineering",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Environment",
+]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.11",
+  "pydantic>=2.0,<3",
+  "pandas>=2.0",
+  "streamlit>=1.30",
+  "plotly>=5.18",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "hypothesis>=6.92",
+  "ruff>=0.1",
+  "mypy>=1.7",
+  "types-PyYAML",
+]
+streamlit = ["streamlit>=1.30"]
+all = ["nepal-cooler-sim[dev,streamlit]"]
+
+[project.urls]
+Homepage = "https://himalayancarbonnepal.com/nepal-cooler-sim"
+Repository = "https://github.com/himalayancarbon/nepal-decarb-build"
+Issues = "https://github.com/himalayancarbon/nepal-decarb-build/issues"
+Documentation = "https://himalayancarbonnepal.com/nepal-cooler-sim/docs"
+Changelog = "https://github.com/himalayancarbon/nepal-decarb-build/blob/main/tools/03-cooler-grate-simulator/CHANGELOG.md"
+
+[project.scripts]
+nepal-cooler-sim = "nepal_cooler_sim.cli:main"
+
+# ---------------------------------------------------------------------------
+# Hatch build
+# ---------------------------------------------------------------------------
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nepal_cooler_sim"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/nepal_cooler_sim",
+  "README.md",
+  "LICENSE",
+  "pyproject.toml",
+]
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+minversion = "7.4"
+testpaths = ["tests"]
+addopts = "-ra -q -m 'not slow' --strict-markers"
+markers = [
+  "slow: marks tests as slow (run with -m slow)",
+  "fragility: marks fragility tests that catch pass-for-wrong-reason bugs",
+  "property: marks property-based tests (Hypothesis)",
+]
+filterwarnings = [
+  "error",
+  # numpy 2.x deprecation warnings about np.bool_ etc. are noisy in dev
+  "ignore::DeprecationWarning:numpy",
+]
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+
+[tool.coverage.run]
+branch = true
+source = ["nepal_cooler_sim"]
+omit = [
+  "src/nepal_cooler_sim/__pycache__/*",
+  "src/nepal_cooler_sim.egg-info/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 80
+exclude_lines = [
+  "pragma: no cover",
+  "raise NotImplementedError",
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+]
+
+# ---------------------------------------------------------------------------
+# Mypy — strict
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = [
+  "streamlit",
+  "plotly",
+  "pandas",
+  "scipy.*",
+  "numpy",
+]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+# ---------------------------------------------------------------------------
+# Ruff
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = [
+  "build",
+  "dist",
+  ".venv",
+  "src/nepal_cooler_sim.egg-info",
+]
+
+[tool.ruff.lint]
+select = [
+  "E",     # pycodestyle errors
+  "W",     # pycodestyle warnings
+  "F",     # pyflakes
+  "I",     # isort
+  "UP",    # pyupgrade
+  "B",     # flake8-bugbear
+  "SIM",   # flake8-simplify
+  "RUF",   # ruff-specific
+]
+ignore = [
+  "E501",   # line length (handled by formatter)
+  "B008",   # function call in default argument (Pydantic Field uses this)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]   # asserts are fine in tests
+"src/nepal_cooler_sim/__init__.py" = ["F401"]  # explicit re-exports
+
+[tool.ruff.lint.isort]
+known-first-party = ["nepal_cooler_sim"]
+combine-as-imports = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true

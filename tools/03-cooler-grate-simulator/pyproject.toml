@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nepal-cooler-sim"
+version = "0.3.0"
+description = "Day 3 of 20-day suite — 1D cross-flow grate cooler for cement clinker"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Nishchal Baniya", email = "nishchal.baniya@himalayancarbonnepal.com"},
+  {name = "Mavis (Day 3 build)"},
+]
+keywords = [
+  "cement", "cooler", "grate-cooler", "clinker", "decarbonization", "nepal",
+  "process-simulation", "secondary-air", "waste-heat-recovery",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Manufacturing",
+  "Intended Audience :: Engineering",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Environment",
+]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.11",
+  "pydantic>=2.0",
+  "pandas>=2.0",
+  "streamlit>=1.30",
+  "plotly>=5.18",
+  "click>=8.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.1", "mypy>=1.7"]
+
+[project.scripts]
+nepal-cooler-sim = "nepal_cooler_sim.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q -m 'not slow'"
+markers = ["slow: marks tests as slow (run with -m slow)"]

@@ -1,0 +1,67 @@
+{
+  "model": "v0.5.0 calibrated cooler (Day 5 ship)",
+  "calibration_source": "Day 5 v0.5.0 iterative two-stage L-BFGS-B (commit 2aa918c)",
+  "calibration_target": "consistent synthetic Hetauda shift (synthetic_hetauda_v050_shift_4h.csv)",
+  "calibration_loss_prior": 233.72,
+  "calibration_loss_posterior": 5.0,
+  "calibration_rmse_sec_air_K": 10.2,
+  "calibration_rmse_clinker_K": 0.7,
+  "calibration_rmse_exhaust_K": 24.0,
+  "calibrated_posterior": {
+    "grate_length_m": 32.797,
+    "bed_depth_m": 0.78,
+    "n_compartments": 6,
+    "grate_speed_m_min": 9.7,
+    "under_grate_air_velocity_m_s": 4.0,
+    "coal_rate_kg_s": 2.5,
+    "secondary_air_excess_factor": 1.59,
+    "emissivity": 0.95,
+    "void_fraction": 0.55,
+    "recuperator_preheat_c": 90.0,
+    "clinker_throughput_t_h": 130.0,
+    "clinker_inlet_t_c": 1400.0,
+    "altitude_m": 1400.0
+  },
+  "geometry": {
+    "grate_length_m": 32.797,
+    "bed_depth_m": 0.78,
+    "n_compartments": 6,
+    "width_m": 3.5,
+    "shell_height_m": 2.0,
+    "shell_thickness_m": 0.2,
+    "grate_plate_thickness_m": 0.08,
+    "sec_air_duct_diameter_m": 1.0,
+    "exhaust_duct_diameter_m": 0.8,
+    "kiln_coupling_diameter_m": 1.5
+  },
+  "bounding_box_mm": [
+    33197.0,
+    3900.0,
+    2200.0
+  ],
+  "n_parts": 11,
+  "n_faces": 53,
+  "step_file": "v050_cooler_assembly.step",
+  "step_format": "ISO 10303-21 (STEP AP214)",
+  "step_size_bytes": 62072,
+  "citations": [
+    "ISO 10303-21:2016 STEP file format",
+    "Peray & Waddell 1986 s6.4 cooler geometry",
+    "Mujumdar 2007 compartment layout",
+    "Achenbach 1995 h correlation",
+    "ICCC 2006 s2.3 emissivity",
+    "GCCA GNR 2022 cooler efficiency BAT",
+    "ECRA 2022 cooler heat loss BAT"
+  ],
+  "notes": [
+    "Geometry is a simplified 1D-compartment model rendered as 3D",
+    "compartment partitions, sec-air duct stub, exhaust duct stub,",
+    "kiln-discharge coupling, clinker-discharge chute, grate plate.",
+    "The bed material (clinker layer) is shown as a visual hint only;",
+    "no solid is rendered for it (the model is for a 1D thermal sim,",
+    "not a discrete-element simulation).",
+    "The number of compartments is the calibrated v0.5.0 posterior,",
+    "rounded to the nearest integer (Day 5 ship: 6 compartments",
+    "at 32.797 m grate and 0.78 m bed depth)."
+  ]
+}
