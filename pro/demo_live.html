@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>nepal_decarb_pro — Live Demo Dashboard</title>
+<title>nepal_decarb_pro -- honest status (2026-07-23)</title>
 <style>
 :root {
   --bg: #0a0e1a;
@@ -13,1176 +13,192 @@
   --fg-dim: #8b93a7;
   --accent: #4ade80;
   --accent-2: #38bdf8;
-  --accent-3: #fbbf24;
+  --warn: #fbbf24;
   --red: #f87171;
-  --green: #4ade80;
-  --blue: #60a5fa;
-  --yellow: #fbbf24;
   --border: #2a3245;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  background: var(--bg);
-  color: var(--fg);
-  line-height: 1.6;
-  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg); color: var(--fg);
+  line-height: 1.6; font-size: 14px;
 }
-.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 header {
   background: linear-gradient(135deg, #1a3a2e 0%, #0f1f2c 100%);
   border-bottom: 1px solid var(--border);
-  padding: 32px 0;
-  margin-bottom: 32px;
+  padding: 32px 0; margin-bottom: 24px;
 }
-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+header h1 { font-size: 24px; font-weight: 700; }
+header .subtitle { color: var(--fg-dim); font-size: 13px; margin-top: 4px; }
+.honesty {
+  background: var(--bg-2);
+  border-left: 4px solid var(--warn);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
 }
-header .subtitle {
-  color: var(--fg-dim);
-  font-size: 14px;
-  margin-top: 4px;
-}
-.status-bar {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-size: 12px;
-  color: var(--fg-dim);
-}
-.status-pill .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  animation: pulse 2s infinite;
-}
-.status-pill .dot.red { background: var(--red); box-shadow: 0 0 8px var(--red); }
-.status-pill .dot.yellow { background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
-@keyframes pulse { 50% { opacity: 0.5; } }
-h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 32px 0 16px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-h2 .num {
-  color: var(--fg-dim);
-  font-weight: 400;
-  font-size: 16px;
-}
-.grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
+.honesty h2 { font-size: 18px; color: var(--warn); margin-bottom: 12px; }
+.honesty p { color: var(--fg-dim); margin-bottom: 8px; }
+.honesty code { background: var(--bg-3); padding: 1px 6px; border-radius: 3px; font-size: 12px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 16px 0; }
 .card {
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px 20px;
 }
-.card-label {
-  color: var(--fg-dim);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
+.card h3 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
+.card p { color: var(--fg-dim); font-size: 13px; }
+.card .tag {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase; margin-top: 8px;
 }
-.card-value {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.card-value.green { color: var(--green); }
-.card-value.blue  { color: var(--blue); }
-.card-value.yellow { color: var(--yellow); }
-.card-value.red   { color: var(--red); }
-.card-sub {
-  color: var(--fg-dim);
-  font-size: 12px;
-  margin-top: 4px;
-}
-.kpi-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.kpi {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 6px;
-  padding: 12px 16px;
-}
-.kpi .label {
-  color: var(--fg-dim);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.kpi .value {
-  font-size: 20px;
-  font-weight: 700;
-  margin-top: 4px;
-}
-.kpi .sub { color: var(--fg-dim); font-size: 11px; }
-pre {
-  background: #0d1117;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 12px 16px;
-  overflow-x: auto;
-  font-size: 12px;
-  font-family: "SF Mono", Monaco, Consolas, monospace;
-  color: #c9d1d9;
-  white-space: pre-wrap;
-}
-.section-toggle {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px 20px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.section-toggle:hover { border-color: var(--accent); }
-.section-toggle .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  font-size: 15px;
-}
-.section-toggle .icon {
-  color: var(--fg-dim);
-  transition: transform 0.2s;
-}
-.section-toggle.open .icon { transform: rotate(90deg); }
-.section-toggle .body {
-  display: none;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-.section-toggle.open .body { display: block; }
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 16px;
-  margin: 16px 0;
-}
-.image-grid img {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: white;
-}
-.image-caption {
-  font-size: 12px;
-  color: var(--fg-dim);
-  margin-top: 6px;
-  text-align: center;
-}
-.advisor {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 16px 0;
-}
-.advisor .msg {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.advisor .msg .avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-.advisor .msg.user .avatar { background: var(--accent-2); color: #0a0e1a; }
-.advisor .msg.assistant .avatar { background: var(--accent); color: #0a0e1a; }
-.advisor .msg .bubble {
-  background: var(--bg-3);
-  border-radius: 12px;
-  padding: 10px 14px;
-  max-width: 80%;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.advisor .msg.user .bubble { background: #1e3a5f; }
-.advisor .lang-toggle {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.advisor .lang-toggle button {
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  color: var(--fg);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-}
-.advisor .lang-toggle button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-.advisor .input-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-.advisor input {
-  flex: 1;
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  color: var(--fg);
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-.advisor input:focus { outline: none; border-color: var(--accent); }
-.advisor .ask-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-th, td {
-  text-align: left;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
-}
-th { color: var(--fg-dim); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
-tr:hover { background: var(--bg-3); }
-.score-95 { color: var(--green); font-weight: 600; }
-.score-90 { color: var(--yellow); font-weight: 600; }
-.cert-banner {
-  background: linear-gradient(135deg, #134e4a 0%, #042f2e 100%);
-  border: 1px solid #134e4a;
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin: 24px 0;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.cert-score {
-  font-size: 64px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #4ade80 0%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -2px;
-}
-.cert-info { flex: 1; }
-.cert-info h3 { font-size: 18px; margin-bottom: 4px; }
-.cert-info p { color: var(--fg-dim); font-size: 13px; }
-.deployment-steps {
-  counter-reset: step;
-  list-style: none;
-  padding: 0;
-}
-.deployment-steps li {
-  counter-increment: step;
-  padding: 12px 16px 12px 48px;
-  position: relative;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.deployment-steps li::before {
-  content: counter(step);
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  width: 24px;
-  height: 24px;
-  background: var(--accent);
-  color: var(--bg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 12px;
-}
-.deployment-steps li strong { color: var(--accent-2); }
-.deployment-steps li code {
-  background: var(--bg);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 12px;
-  border: 1px solid var(--border);
-}
-.live {
-  color: var(--green);
-  font-weight: 600;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.live::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 6px var(--green);
-  animation: pulse 1.5s infinite;
-}
-footer {
-  margin-top: 64px;
-  padding: 24px 0;
-  border-top: 1px solid var(--border);
-  color: var(--fg-dim);
-  font-size: 12px;
-  text-align: center;
-}
-code.inline {
-  background: var(--bg-3);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 12px;
-  color: var(--accent-2);
-}
-.tabs {
-  display: flex;
-  gap: 4px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.tab {
-  padding: 8px 16px;
-  background: transparent;
-  border: none;
-  color: var(--fg-dim);
-  cursor: pointer;
-  font-size: 13px;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
-}
-.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+.tag.imp { background: #064e3b; color: #6ee7b7; }
+.tag.par { background: #78350f; color: #fbbf24; }
+.tag.stub { background: #7f1d1d; color: #fca5a5; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+th { color: var(--fg-dim); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+.section { background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+.section h2 { font-size: 17px; margin-bottom: 12px; }
+.section p { color: var(--fg-dim); margin-bottom: 8px; }
+code { background: var(--bg-3); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+.links a { color: var(--accent-2); text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+.links li { margin: 4px 0; }
+footer { margin-top: 32px; padding: 16px 0; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 12px; }
 </style>
 </head>
 <body>
 
 <header>
 <div class="container">
-  <h1>🇳🇵 nepal_decarb_pro <span class="live">LIVE</span></h1>
-  <div class="subtitle">Industrial Decarbonization Platform for Nepal · v1.1.1 · Pilot Deployment</div>
-  <div class="status-bar">
-    <span class="status-pill"><span class="dot"></span> FastAPI  :8000</span>
-    <span class="status-pill"><span class="dot"></span> Streamlit :8501</span>
-    <span class="status-pill"><span class="dot"></span> Postgres  :5432</span>
-    <span class="status-pill"><span class="dot"></span> MQTT      :1883</span>
-    <span class="status-pill"><span class="dot"></span> Grafana   :3000</span>
-    <span class="status-pill"><span class="dot yellow"></span> vLLM      :8001 (off — stub mode)</span>
-    <span class="status-pill"><span class="dot"></span> 78/78 tests passing</span>
-    <span class="status-pill"><span class="dot"></span> 9.78/10 certified</span>
-  </div>
+  <h1>nepal_decarb_pro <span style="font-size:12px; font-weight:400; color:var(--fg-dim);">-- honest status, 2026-07-23</span></h1>
+  <div class="subtitle">Open-source industrial decarbonization toolkit for Nepal's cement and brick industry. v1.0 sizing model.</div>
 </div>
 </header>
 
 <div class="container">
 
-<!-- ============== HERO ============== -->
-<div class="cert-banner">
-  <div class="cert-score">9.78</div>
-  <div class="cert-info">
-    <h3>9/10 World-class rating · All 5 axes ≥ 95/100</h3>
-    <p>Standards coverage · Methodological rigor · Engineering breadth · Deployment readiness · Nepal-specificity</p>
-  </div>
+<div class="honesty">
+  <h2>Read this first</h2>
+  <p>The previous version of this page contained false claims: a 9.78/10 rating, 78/78 tests, $22.5M NPV, "Verified on PlantA", a fictional "VM0009 v2.0 cement methodology", and a Nepal grid emission factor that was wrong by 4 orders of magnitude. Those have been removed.</p>
+  <p>This is now a <strong>sizing model</strong>, not a submittable carbon credit. The engineering simulators (cooler, kiln, brick, LCA) produce real physics output. The standards and markets modules (ISO 14064, Verra, Gold Standard, SBTi) are check-wrappers, not compliance engines. The PDD generator is a sizing tool, not a submittable PDD.</p>
+  <p>The full remediation report is at <code>reviews/REMEDIATION_REPORT.md</code>. The honest standards coverage is at <code>docs/STANDARDS_COVERAGE.md</code>. The honest methodology is at <code>docs/METHODOLOGY.md</code>.</p>
 </div>
 
-<div class="kpi-row">
-  <div class="kpi"><div class="label">PlantA baseline</div><div class="value">861,025 tCO₂/yr</div><div class="sub">783 kg CO₂/t cement · Tier 2</div></div>
-  <div class="kpi"><div class="label">Tier 3 (kinetics + TOC)</div><div class="value">867,815 tCO₂/yr</div><div class="sub">789 kg CO₂/t · 0.8% higher than Tier 2</div></div>
-  <div class="kpi"><div class="label">Monte Carlo 90% CI</div><div class="value">±25,820 tCO₂</div><div class="sub">5,000 samples · CoV 3% · converged</div></div>
-  <div class="kpi"><div class="label">Verra credits/yr</div><div class="value">56,407</div><div class="sub">NPV $22.5M @ EU ETS $65/t</div></div>
-  <div class="kpi"><div class="label">SBTi 2030 target</div><div class="value">1.5°C aligned</div><div class="sub">56% reduction vs 38% required</div></div>
-  <div class="kpi"><div class="label">ISO 14064-1</div><div class="value">100/100</div><div class="sub">20/20 criteria met</div></div>
-  <div class="kpi"><div class="label">Equipment library</div><div class="value">36 machines</div><div class="sub">6 categories · vendor specs</div></div>
-  <div class="kpi"><div class="label">Reports generated</div><div class="value">4 PDFs</div><div class="sub">Executive · ISO · Verra · TCFD</div></div>
-</div>
-
-<!-- ============== PILOT RUN ============== -->
-<h2>📊 <span class="num">§</span> Live Pilot Run — PlantA + Bhairahawa Brick</h2>
-<p style="color:var(--fg-dim); margin-bottom: 16px;">
-  This is the actual output from <code class="inline">scripts/run_pilot.py</code> running right now on the platform.
-  All 15 sections complete. Click any to expand.
-</p>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[1] CEMENT BASELINE — PlantA Industries Ltd <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-CementPlant(
-  name="PlantA Industries Ltd",
-  location="PlantA, Makwanpur, Bagmati Province",
-  year=2024,
-  clinker_production_t=950,000,
-  cement_production_t=1,100,000,
-  cao_fraction_clinker=0.66,
-  mgo_fraction_clinker=0.018,
-  fuel_use=[
-    FuelUse(fuel_name="coal_bituminous_NP", consumption_t=120,000),
-    FuelUse(fuel_name="petcoke", consumption_t=18,000),
-    FuelUse(fuel_name="diesel", consumption_t=400),
-  ],
-  electricity_consumption_kwh=85,000,000,
-)
-
-Tier 2:   861,025 tCO₂/yr  |  intensity 783 kg/t
-Tier 3:   867,815 tCO₂/yr  |  intensity 789 kg/t
-SEC:      4,168 MJ/t clinker
-Breakdown:
-  - Combustion (coal+petcoke+diesel) :   324,500 tCO₂/yr   (37.7%)
-  - Process (calcination CaCO3→CaO)  :   470,500 tCO₂/yr   (54.6%)
-  - Electricity (NEA grid EF 0.0256)  :    66,025 tCO₂/yr   ( 7.7%)
-  - (Scope 3 upstream is excluded from Tier 2/3 totals)
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[2] BRICK BASELINE — Bhairahawa Clamp Kiln #4 <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-BrickKiln(
-  name="Bhairahawa Clamp Kiln #4",
-  location="Bhairahawa, Lumbini Province",
-  year=2024,
-  kiln_type="clamp_traditional",
-  annual_brick_production=4,500,000,
-)
-
-Total: 3,257 tCO₂/yr  |  intensity 724 kg CO₂/1000 bricks
-Firing cycle: 10 days
-Coal consumption: ~300 kg / 1000 bricks
-Note: Migrating to zigzag kiln would cut this to ~150 kg/1000 (-79%)
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[3] MONTE CARLO UQ (5,000 samples) <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-5,000 samples drawn from:
-  - coal NCV:        ±5%
-  - petcoke NCV:     ±3%
-  - electricity:     ±2%
-  - clinker ratio:   ±1%
-
-Result:
-  Mean:        861,093 tCO₂
-  Std:          25,820 tCO₂
-  90% CI:       [820,064, 905,067]
-  CoV:          3.0%
-  Converged:    True (autocorr dropped below 0.05 by sample 2,800)
-
-Sobol sensitivity:
-  - coal consumption:        68% of variance
-  - petcoke consumption:     19% of variance
-  - clinker ratio:           8% of variance
-  - electricity:             5% of variance
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[4] MILP FUEL BLEND — optimal cost vs emissions trade-off <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-Decision: Replace 40% coal with biomass + 15% with RDF, blend 45% natural gas
-
-Optimal balanced (cost_w=0.4, em_w=0.6):
-  Total cost:        $18,037,675 / yr
-  Total emissions:   117,350 tCO₂ / yr
-  Fuel mix:
-    natural_gas:        45.0%
-    biomass_sawdust:    40.0%
-    rdf_municipal:      15.0%
-
-Reduction vs baseline: -86.4% emissions
-NPV at EU ETS ($65/t):  $48,295,000 (10-yr, 8% discount)
-Payback: 1.8 years
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[5] NSGA-II Pareto front <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-Multi-objective optimization (cost vs emissions), 20 pop × 15 gen
-8 non-dominated solutions on the Pareto front.
-
-Sample (sorted by emissions):
-  $12,321,121  vs  147,742 tCO₂
-  $13,203,622  vs  134,955 tCO₂
-  $13,277,828  vs  133,809 tCO₂
-  $14,500,000  vs  130,500 tCO₂
-  $16,200,000  vs  125,000 tCO₂
-  $17,800,000  vs  120,000 tCO₂
-  $18,037,675  vs  117,350 tCO₂   ← "balanced" point picked
-  $19,500,000  vs  115,000 tCO₂
-
-Knee point: ($18M, 117k tCO₂) — best cost/emissions trade-off
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[6] LCA (6 impact categories) <span class="icon">▶</span></div>
-  <div class="body">
-<table>
-<thead><tr><th>Category</th><th>Unit</th><th>Per t cement</th><th>Per t clinker</th><th>BAT target</th></tr></thead>
-<tbody>
-<tr><td><b>GWP100</b> (climate change)</td><td>kg CO₂-eq</td><td>784</td><td>1007</td><td>&lt; 700</td></tr>
-<tr><td>AP (acidification)</td><td>kg SO₂-eq</td><td>2.10</td><td>2.69</td><td>&lt; 2.0</td></tr>
-<tr><td>EP (eutrophication)</td><td>kg PO₄-eq</td><td>0.100</td><td>0.128</td><td>&lt; 0.1</td></tr>
-<tr><td>POCP (photochemical ozone)</td><td>kg C₂H₄-eq</td><td>0.100</td><td>0.128</td><td>&lt; 0.1</td></tr>
-<tr><td>ADP (resource depletion)</td><td>kg Sb-eq</td><td>0.000</td><td>0.000</td><td>&lt; 0.001</td></tr>
-<tr><td>HTP (human toxicity)</td><td>kg 1,4-DCB-eq</td><td>0.00</td><td>0.00</td><td>&lt; 0.01</td></tr>
-</tbody>
-</table>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[7] PROCESS SIMULATORS — kiln + brick <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-ROTARY KILN (5-zone ODE, 1800s sim):
-  Peak T (clinker):  1,738 °C       (target ~1450)
-  SEC:               2,931 MJ/t     (BAT ~2900)
-  CO₂:               122 t/h        = 1.07 Mt/yr
-  NO_x:              480 mg/Nm³
-  Conversion:        98.5%
-
-CLAMP BRICK KILN (10-day cycle, 4.5M bricks):
-  Peak brick T:      849 °C         (target ~900)
-  CO₂ emitted:       13,556 t
-  Energy:            18.2 GWh
-
-ZIGZAG KILN (continuous, 15k bricks/day):
-  Peak T:            748 °C
-  CO₂ / day:         17 t           (vs clamp 36 t/day)
-  Reduction vs clamp: -53%
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[8] EQUIPMENT & CAD — 36 machines catalogued <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-Equipment database: 36 machines across 6 categories
-  - Kiln (2):        rotary 1500/5000 TPD
-  - Preheater (3):   4-stage, 5-stage, 6-stage
-  - Cooler (2):      grate, planetary
-  - Grinding (6):    ball, vertical roller, HPGR
-  - Separation (2):  cyclone, bag filter
-  - Brick (11):      clamp, zigzag, tunnel, hoffman variants
-
-Sample — Rotary kiln 5000 TPD:
-  Length:        72.0 m
-  Diameter:      4.6 m
-  Power:         850 kW
-  Slope:         3.5°
-  Rotation:      3.5 rpm
-  Vendor:        FLSmidth, KHD, Polysius
-  CAPEX:         $14.2M
-  OPEX:          $1.8M/yr
-
-CAD outputs generated:
-  - DXF (AutoCAD R12):    planta_kiln.dxf
-  - SVG (web-viewable):   planta_kiln.svg
-  - FreeCAD macro:        planta_kiln.FCMacro (parametric 3D)
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[9] FORECASTING — ETS, 12 months <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-Model:       ETS (error / trend / seasonal, additive)
-History:     60 months synthetic, seasonality=12
-Validation:  last 12 months (MAPE 6.24%, RMSE 6,398 tCO₂)
-
-Next 12 months point forecast:
-  2025-08:   70,398 tCO₂
-  2025-09:   69,585 tCO₂
-  2025-10:   71,328 tCO₂
-  2025-11:   75,420 tCO₂
-  2025-12:   82,156 tCO₂   ← winter peak
-  2026-01:   85,022 tCO₂
-  2026-02:   79,318 tCO₂
-  2026-03:   73,520 tCO₂
-  2026-04:   71,118 tCO₂
-  2026-05:   70,225 tCO₂
-  2026-06:   68,940 tCO₂
-  2026-07:   69,800 tCO₂
-
-Annual forecast: 866,830 tCO₂/yr (close to current 861,025)
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[10] PINCH ANALYSIS — heat integration <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-4 streams analyzed (2 hot, 2 cold):
-  - Kiln exhaust:      350 → 180 °C,  cp=20 kW/K
-  - Clinker cooler:    600 → 200 °C,  cp=15 kW/K
-  - Raw meal (cold):    80 → 300 °C,  cp=12 kW/K
-  - Combustion air:     30 → 250 °C,  cp= 8 kW/K
-
-ΔT_min:                20 °C
-Pinch temperature:     305 °C
-Q_H,min (hot utility): 0 kW        (fully self-sufficient!)
-Q_C,min (cold util):   7,800 kW    (raw meal preheating)
-MER (minimum energy):  7,800 kW
-Min HX area:           1,950 m²
-
-Recommendation: install raw meal preheater using kiln exhaust + cooler air
-Estimated energy savings: 7.8 MW × 8000 hr/yr × 0.04 kg/kWh = ~2,500 tCO₂/yr
-CAPEX: ~$1.5M, payback 4 years
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[11] DIGITAL TWIN — Kalman filter + anomaly detection <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-Twin state for "PlantA":
-  Sensors tracked:  T-kiln, P-kiln, CO, NOx
-  Filter:           Extended Kalman (Q=0.01, R=0.1)
-
-Test: feed 50 normal readings + 1 anomaly
-  - Normal:           1450 ± 3 °C
-  - Anomaly at #51:   2000 °C  (above safe limit of 1500)
-  - Detected:         True (|z-score| = 8.4, threshold 3.0)
-  - Estimated T:      1598.6 °C (Kalman smooths the spike)
-
-Action: Send Slack alert to plant manager within 5 seconds
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[12] STANDARDS COMPLIANCE — 11 standards, all passing <span class="icon">▶</span></div>
-  <div class="body">
-<table>
-<thead><tr><th>Standard</th><th>Score</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td><b>ISO 14064-1</b> (org-level GHG)</td><td class="score-95">100/100</td><td>20/20 criteria met</td></tr>
-<tr><td><b>ISO 14064-2</b> (project-level)</td><td class="score-95">100/100</td><td>Validation + verification procedures</td></tr>
-<tr><td><b>ISO 14064-3</b> (verification)</td><td class="score-95">100/100</td><td>Verifier qualification</td></tr>
-<tr><td><b>ISO 50001</b> (energy mgmt)</td><td class="score-95">100/100</td><td>EnPI, baseline, M&V plan</td></tr>
-<tr><td><b>ISO 14001</b> (env mgmt)</td><td class="score-95">100/100</td><td>Aspects, objectives, audits</td></tr>
-<tr><td><b>TCFD</b> (climate disclosure)</td><td class="score-95">858,218 tCO₂ Scope 1</td><td>3 scenarios (1.5°C, 2°C, BAU)</td></tr>
-<tr><td><b>SBTi</b> (science-based target)</td><td class="score-95">1.5°C aligned</td><td>56% reduction vs 38% required</td></tr>
-<tr><td><b>GCCA</b> (cement industry KPIs)</td><td class="score-95">CO₂/t = 783, AF = 0%</td><td>"Getting the Numbers Right"</td></tr>
-<tr><td><b>PCAF</b> (financed emissions)</td><td class="score-95">50,000 tCO₂</td><td>Data quality score 2.0</td></tr>
-<tr><td><b>GHG Protocol</b></td><td class="score-95">100/100</td><td>Scope 1+2+3 complete</td></tr>
-<tr><td><b>IPCC 2006/2019</b></td><td class="score-95">Tier 2/3</td><td>Raw-mix TOC, precalciner, NOx</td></tr>
-</tbody>
-</table>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[13] CARBON MARKETS — Verra VCS, Gold Standard, on-chain <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-VERRA VCS (VM0009 v2.0 — cement methodology):
-  Baseline:    861,025 tCO₂/yr
-  Project:     791,171 tCO₂/yr  (after AF + efficiency)
-  Reduction:   69,854 tCO₂/yr   (= ~70k credits/yr gross)
-  Net:         56,407 credits/yr (after leakage, buffer, M&V)
-  Vintage:     10 years
-  Price:       $9-65/t (voluntary to EU ETS)
-  Revenue NPV: $22,528,937 @ EU ETS $65/t
-
-GOLD STANDARD (TPDDTEC):
-  Reduction:   59,725 credits/yr
-  SDGs:        SDG 7 (clean energy), SDG 9 (industry), SDG 13 (climate), SDG 3 (health)
-  Price:       $13-25/t
-  Revenue NPV: $4,505,787 @ $13/t
-
-REVENUE COMPARISON (10-yr NPV):
-  India CCTS ($8/t):              $  2,772,792
-  Verra VCS voluntary ($9/t):     $  3,119,391
-  Gold Standard voluntary ($13/t):$  4,505,787
-  Verra VCS w/ CCBC ($20/t):      $  6,938,920
-  California LCFS ($28/t):        $  9,714,488
-  EU ETS compliance ($65/t):      $ 22,528,937   ← biggest market
-
-TOKENIZATION (Solidity ERC-3643 / T-REX):
-  Serial:      ba62199d46f6c1df
-  Contract:    6,185 chars (verified, audit-ready)
-  Features:    whitelist (KYC), forced transfer, retirement
-  Compatible:  Verra Bridge, Gold Standard Registry API
-</pre>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[14] PDF REPORTS — 4 generated <span class="icon">▶</span></div>
-  <div class="body">
-<table>
-<thead><tr><th>Report</th><th>File</th><th>Size</th><th>Audience</th></tr></thead>
-<tbody>
-<tr><td>Executive summary</td><td>reports/planta_executive.pdf</td><td>3.9 KB</td><td>Plant manager</td></tr>
-<tr><td>ISO 14064-1 compliance</td><td>reports/planta_iso.pdf</td><td>5.0 KB</td><td>Verifier (VVB)</td></tr>
-<tr><td>Verra monitoring</td><td>reports/planta_verra.pdf</td><td>5.7 KB</td><td>Verra / auditor</td></tr>
-<tr><td>TCFD disclosure</td><td>reports/planta_tcfd.pdf</td><td>5.3 KB</td><td>Investors, banks</td></tr>
-</tbody>
-</table>
-  </div>
-</div>
-
-<div class="section-toggle" onclick="toggle(this)">
-  <div class="head">[15] JSON RESULTS <span class="icon">▶</span></div>
-  <div class="body">
-<pre>
-reports/planta_pilot_results.json — 27,688 bytes
-
-Full machine-readable output containing every number from
-sections [1]-[14]. Suitable for:
-  - API responses
-  - Audit trail
-  - Cross-plant comparison
-  - Submission to standards bodies
-</pre>
-  </div>
-</div>
-
-<!-- ============== PROCESS FLOWS ============== -->
-<h2>🏭 <span class="num">§</span> Process Flow Diagrams (PFD + P&ID)</h2>
-<div class="image-grid">
-  <div>
-    <img src="planta_pfd.png" alt="Cement PFD">
-    <div class="image-caption">Cement PFD — PlantA (5-stage preheater, precalciner, grate cooler)</div>
-  </div>
-  <div>
-    <img src="bhairahawa_pfd.png" alt="Brick PFD">
-    <div class="image-caption">Brick PFD — Bhairahawa (clamp kiln, mobile chimney)</div>
-  </div>
-  <div>
-    <img src="planta_pid.png" alt="Cement P&ID">
-    <div class="image-caption">P&ID — Kiln burning zone (ISA-style instrumentation)</div>
-  </div>
-  <div>
-    <img src="planta_kiln.svg" alt="Rotary kiln SVG">
-    <div class="image-caption">Rotary kiln — 3D parametric CAD (DXF / SVG / FreeCAD macro)</div>
-  </div>
-</div>
-
-<!-- ============== LLM ADVISOR ============== -->
-<h2>🤖 <span class="num">§</span> LLM Advisor — Bilingual (English / नेपाली)</h2>
-<p style="color:var(--fg-dim); margin-bottom: 12px;">
-  This is a working RAG-powered advisor grounded in your plant's real data.
-  In production: backed by Qwen2.5-7B (AWQ) on a single GPU. In this demo: deterministic stub.
-  <strong>Click a question or type your own.</strong>
-</p>
-<div class="advisor">
-  <div class="lang-toggle">
-    <button class="active" onclick="setLang('en', this)">English</button>
-    <button onclick="setLang('ne', this)">नेपाली</button>
-  </div>
-  <div id="chat-history">
-    <div class="msg user">
-      <div class="avatar">👤</div>
-      <div class="bubble" id="user-bubble">Why is my CO₂ high compared to the global average?</div>
+<div class="section">
+  <h2>What is real (Implemented)</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Cooler simulator</h3>
+      <p>Multi-compartment grate cooler with L-BFGS-B calibration to plant data, Sobol sensitivity, STEP and ISA-style P&ID export. Synthetic PlantA/B/C/D presets. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/tree/main/tools/03-cooler-grate-simulator" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
     </div>
-    <div class="msg assistant">
-      <div class="avatar">🤖</div>
-      <div class="bubble" id="assistant-bubble">Loading…</div>
+    <div class="card">
+      <h3>Kiln simulator</h3>
+      <p>5-zone rotary kiln ODE with Arrhenius kinetics, calcination, NOx. STEP export. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/tree/main/tools/02-kiln-dynamics-simulator" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>Brick kiln simulator</h3>
+      <p>Clamp, zigzag, tunnel, Hoffman variants. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/sim/brick_dynamics.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>Cement Tier 2/3 baseline</h3>
+      <p>IPCC 2006 mass-balance + Tier 3 kinetics with raw-mix TOC, precalciner, NOx. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/core/cement.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>LCA (6 categories)</h3>
+      <p>GWP100, AP, EP, POCP, ADP, HTP. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/lca/" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>Monte Carlo UQ + Sobol</h3>
+      <p>5,000 samples, 90% CI on the baseline. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/core/uncertainty.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>NSGA-II Pareto + MILP</h3>
+      <p>Multi-objective optimisation, fuel-blend MILP. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/core/multi_objective.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>GCCA Sustainability Framework</h3>
+      <p>CO2/t cement, thermal substitution rate, clinker-to-cement ratio. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/standards/gcca.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
+    </div>
+    <div class="card">
+      <h3>ISO 14064-1 checker</h3>
+      <p>Organizational GHG inventory; 8 criteria from real plant fields. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/pro/nepal_decarb_pro/standards/iso_14064.py" style="color:var(--accent-2);">Source</a></p>
+      <span class="tag imp">Implemented</span>
     </div>
   </div>
-  <div class="input-row">
-    <input type="text" id="user-input" placeholder="Ask about your plant's emissions…" onkeydown="if(event.key==='Enter') ask()">
-    <button class="ask-btn" onclick="ask()">Ask</button>
-  </div>
-  <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
-    <button class="tab" onclick="quick('en','Why is my CO2 high?')">Why is my CO2 high?</button>
-    <button class="tab" onclick="quick('en','How do I reduce by 30%?')">How do I reduce by 30%?</button>
-    <button class="tab" onclick="quick('en','What savings from alternative fuels?')">Alternative fuel savings?</button>
-    <button class="tab" onclick="quick('ne','किन CO2 बढी छ?')">किन CO2 बढी छ?</button>
-    <button class="tab" onclick="quick('ne','३०% कम गर्न के गर्ने?')">३०% कम गर्न के गर्ने?</button>
-    <button class="tab" onclick="quick('ne','वैकल्पिक इन्धन बचत कति?')">वैकल्पिक इन्धन बचत कति?</button>
-  </div>
 </div>
 
-<!-- ============== DEPLOYMENT ============== -->
-<h2>🚀 <span class="num">§</span> How to deploy this for all of Nepal's cement industry</h2>
-<p style="color:var(--fg-dim); margin-bottom:16px;">
-  Three paths. Pick the one that matches your scale. <strong>Start with #1, scale to #2 when needed, add #3 only when users want the LLM advisor.</strong>
-</p>
-
-<div class="tabs">
-  <button class="tab active" onclick="showPath(1, this)">1. VPS — $20/mo</button>
-  <button class="tab" onclick="showPath(2, this)">2. AWS — $150/mo</button>
-  <button class="tab" onclick="showPath(3, this)">3. GPU + LLM — +$0.60/hr</button>
+<div class="section">
+  <h2>What is partial / stub (check-wrappers, not compliance)</h2>
+  <table>
+    <tr><th>Module</th><th>Status</th><th>What's missing</th></tr>
+    <tr><td>ISO 14064-2:2019 (project)</td><td><span class="tag par">Partial</span></td><td>Monitoring frequency table, QA/QC procedure, sampling plan, data archive policy</td></tr>
+    <tr><td>ISO 14064-3:2019 (verification)</td><td><span class="tag stub">Stub</span></td><td>Real VVB-prepared Validation Report. (V.2/V.5/V.6 hard-coded True defect was fixed in WP2.)</td></tr>
+    <tr><td>ISO 50001:2018 (energy mgmt)</td><td><span class="tag stub">Stub</span></td><td>Energy review, EnB, EnPIs. Self-assertion wrapper.</td></tr>
+    <tr><td>ISO 14001:2015 (env mgmt)</td><td><span class="tag stub">Stub</span></td><td>Aspects register, compliance obligations. Self-assertion wrapper.</td></tr>
+    <tr><td>GHG Protocol Corporate</td><td><span class="tag par">Partial</span></td><td>Scope 3 category screening (15 categories).</td></tr>
+    <tr><td>PCAF Global Scorebook</td><td><span class="tag stub">Stub</span></td><td>Outstanding-debt vs project-finance option not exposed.</td></tr>
+    <tr><td>TCFD / ISSB IFRS S2</td><td><span class="tag stub">Stub</span></td><td>Pillar template only; no real scenario analysis.</td></tr>
+    <tr><td>SBTi</td><td><span class="tag stub">Stub</span></td><td>Hard-coded pathway multipliers; not traceable to the published SBTi sector pathway files.</td></tr>
+    <tr><td>Verra VCS PDD generator</td><td><span class="tag stub">Stub</span></td><td>Not submittable. Missing additionality, baseline alternative analysis, stakeholder consultation, monitoring tier, leakage per activity, VVB-prepared Validation Report. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/METHODOLOGY.md" style="color:var(--accent-2);">Full gap list</a></td></tr>
+    <tr><td>Gold Standard PDD</td><td><span class="tag stub">Stub</span></td><td>Brick sub-product only (RECH v5.0). Not applicable to industrial cement.</td></tr>
+  </table>
 </div>
 
-<div id="path-1" class="tab-content active">
-<h3 style="margin: 16px 0 8px 0;">Hetzner / DigitalOcean VPS (5 min to live)</h3>
-<p style="color:var(--fg-dim); margin-bottom:12px;">Recommended for: pilot, NCMA cohort, plants 1-20. Costs €8.50/mo. Deploy from a fresh Ubuntu 22.04 in Mumbai region (closest to Nepal).</p>
-<ol class="deployment-steps">
-  <li>Rent <strong>Hetzner CX21</strong> (Mumbai region, €4.85/mo for ARM, €8.50/mo for x86) at <code>hetzner.com/cloud</code></li>
-  <li>Point your domain (e.g. <code>nepalcarbon.org.np</code>) at the server IP via Cloudflare DNS</li>
-  <li>SSH in and run the one-command deploy:<br><br>
-    <code>DOMAIN=carbon.example.com ADMIN_EMAIL=ops@example.com \<br>
-    &nbsp;&nbsp;curl -sSL https://raw.githubusercontent.com/.../deploy.sh | sudo bash</code>
-  </li>
-  <li>Wait 5 min. The script: installs Docker, sets up Postgres + FastAPI + Streamlit + MQTT + Redis, configures nginx + Let's Encrypt, sets daily backups, enables UFW firewall</li>
-  <li>Run the pilot smoke test:<br>
-    <code>cd /opt/nepal_decarb_pro && python3 scripts/run_pilot.py</code>
-  </li>
-  <li>Verify everything is live:<br>
-    <code>python3 scripts/verify_deployment.py http://carbon.example.com</code>
-  </li>
-  <li>Access the platform:<br>
-    <code>https://carbon.example.com/</code> (Streamlit)<br>
-    <code>https://carbon.example.com/docs</code> (FastAPI)<br>
-    <code>https://carbon.example.com:3000</code> (Grafana)
-  </li>
-</ol>
-</div>
-
-<div id="path-2" class="tab-content">
-<h3 style="margin: 16px 0 8px 0;">AWS production (Terraform, ~30 min to live)</h3>
-<p style="color:var(--fg-dim); margin-bottom:12px;">Recommended for: 20+ plants, national rollout, 99.9% uptime SLA. Provisions ECS Fargate, RDS multi-AZ, ALB, S3, KMS, ACM, IAM, CloudWatch.</p>
-<ol class="deployment-steps">
-  <li>Get an AWS account + IAM user with admin</li>
-  <li>Install Terraform ≥1.5</li>
-  <li>Configure the deploy:<br>
-    <code>cd deploy/terraform<br>
-    export TF_VAR_db_password=$(openssl rand -base64 24)<br>
-    export TF_VAR_jwt_secret=$(openssl rand -base64 48)<br>
-    export TF_VAR_mqtt_password=$(openssl rand -base64 16)<br>
-    export TF_VAR_domain_name=carbon.example.com</code>
-  </li>
-  <li>Apply:<br><code>terraform init && terraform apply</code> (15-20 min)</li>
-  <li>Build and push Docker images:<br>
-    <code>aws ecr get-login-password ... | docker login ...<br>
-    docker build -t $ECR_API:v1.1.1 . && docker push $ECR_API:v1.1.1</code>
-  </li>
-  <li>Point Route53 at the ALB</li>
-  <li>Verify:<br>
-    <code>python3 scripts/verify_deployment.py https://carbon.example.com</code>
-  </li>
-</ol>
-</div>
-
-<div id="path-3" class="tab-content">
-<h3 style="margin: 16px 0 8px 0;">GPU + vLLM (for the LLM advisor, optional)</h3>
-<p style="color:var(--fg-dim); margin-bottom:12px;">Recommended for: 50+ active users asking the advisor in Nepali. The CPU stub works fine for pilots. Don't add GPU until you have real users asking questions.</p>
-<ol class="deployment-steps">
-  <li>Rent a GPU instance — <strong>Lambda Labs A10</strong> ($0.60/hr) is the sweet spot</li>
-  <li>Install NVIDIA Container Toolkit (one-time, 5 min)</li>
-  <li>Start vLLM:<br>
-    <code>cd deploy/vllm && docker compose up -d</code>
-  </li>
-  <li>Wait 5 min for Qwen2.5-7B-AWQ to load. Check:<br>
-    <code>curl http://localhost:8001/v1/models</code>
-  </li>
-  <li>On the API host, point at the GPU:<br>
-    <code>export LLM_ENDPOINT=http://gpu-host:8001<br>
-    export LLM_MODEL=Qwen/Qwen2.5-7B-Instruct-AWQ<br>
-    export LLM_BACKEND=vllm<br>
-    docker restart nepal-decarb-api</code>
-  </li>
-  <li>Test:<br>
-    <code>curl -X POST http://api:8000/api/v1/advisor/ask -d '{...}'</code>
-  </li>
-  <li><strong>Cost tip</strong>: $30/hr GPU cap is overkill. For advisor Q&A, A10 at $0.60/hr on-demand 8 hr/day = $144/mo. For fine-tuning, burst the A100 for 3 hr one-time = $3.</li>
-</ol>
-</div>
-
-<!-- ============== WHAT'S NEXT ============== -->
-<h2>📋 <span class="num">§</span> First 24 hours after going live</h2>
-<ol class="deployment-steps">
-  <li>Run the <strong>pilot</strong> to confirm the platform works (5 min)</li>
-  <li>Run the <strong>verification script</strong> to confirm all 11 endpoints are ✅ (1 min)</li>
-  <li>Onboard <strong>PlantA</strong> as your reference plant (Express, 15 min)</li>
-  <li>Generate the 5 reference reports (Executive, ISO 14064-1, Verra, TCFD, SBTi) for PlantA (2 min)</li>
-  <li>Onboard 2-3 more plants from the NCMA list (Express each, 15 min each)</li>
-  <li>Set up <strong>Cloudflare</strong> in front of the domain (free tier, DDoS + caching)</li>
-  <li>Set up <strong>SMTP</strong> for alert emails (Gmail SMTP, free)</li>
-  <li>Smoke-test the GPU path on-demand (don't keep it running 24/7)</li>
-  <li>Write a 1-page <strong>ops runbook</strong> for whoever's on call</li>
-</ol>
-
-<div style="background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 24px 0;">
-  <h3 style="margin-bottom: 12px;">❌ Don't do these in the first 24 hours</h3>
-  <ul style="padding-left: 20px; color: var(--fg-dim);">
-    <li>Don't keep the $30/hr GPU running 24/7 — you'll burn $720/day for zero user benefit</li>
-    <li>Don't skip the pilot smoke test — it's the only way to confirm every module works</li>
-    <li>Don't onboard plants before verifying the platform yourself</li>
-    <li>Don't deploy to AWS for a pilot — start with the $20/mo VPS</li>
-    <li>Don't add custom features before the basic platform is live</li>
+<div class="section">
+  <h2>What is removed (was on this page before)</h2>
+  <p>Removed 2026-07-23 in the WP0-WP6 credibility remediation pass:</p>
+  <ul>
+    <li>The 9.78/10 self-awarded rating</li>
+    <li>The "5-axis rating, every axis &gt;= 95/100" table</li>
+    <li>The "78/78 tests passing" badge</li>
+    <li>The "$22.5M NPV at EU ETS $65/t" claim</li>
+    <li>The "Verified on PlantA Industries Ltd" framing (no VVB sign-off)</li>
+    <li>The fictional "VM0009 v2.0 (Cement Plant Decarbonization)" methodology citation (real VM0009 is AFOLU grasslands)</li>
+    <li>The TPDDTEC-for-cement citation (TPDDTEC is for cookstoves, &lt;= 150 kW/unit)</li>
+    <li>The "SBTi: 1.5C aligned (56% reduction vs 38% required)" claim (the pathway multipliers were hard-coded, not SBTi-validated)</li>
+    <li>The "ISO 14064-1: 100/100 (20/20 criteria met)" claim (the checker is real, but the 100% is self-asserted)</li>
+    <li>The "NEA grid EF 0.0256 kg CO2/kWh" figure (the real value from IEA/Enerdata 2024 is ~0.0023 g/kWh -- off by 4 orders of magnitude)</li>
+    <li>The "$30/hr GPU 24/7" recommendation (now correctly labelled as optional, not required)</li>
   </ul>
 </div>
 
-<!-- ============== STANDARDS ============== -->
-<h2>📜 <span class="num">§</span> 11 international standards, all in one platform</h2>
-<div class="grid">
-  <div class="card"><div class="card-label">ISO 14064-1</div><div class="card-value green">100/100</div><div class="card-sub">Organizational GHG inventory</div></div>
-  <div class="card"><div class="card-label">ISO 14064-2</div><div class="card-value green">100/100</div><div class="card-sub">Project-level GHG</div></div>
-  <div class="card"><div class="card-label">ISO 14064-3</div><div class="card-value green">100/100</div><div class="card-sub">Verification</div></div>
-  <div class="card"><div class="card-label">ISO 50001</div><div class="card-value green">100/100</div><div class="card-sub">Energy management</div></div>
-  <div class="card"><div class="card-label">ISO 14001</div><div class="card-value green">100/100</div><div class="card-sub">Environmental management</div></div>
-  <div class="card"><div class="card-label">TCFD</div><div class="card-value green">Aligned</div><div class="card-sub">Climate disclosure · 3 scenarios</div></div>
-  <div class="card"><div class="card-label">SBTi</div><div class="card-value green">1.5°C</div><div class="card-sub">56% reduction target</div></div>
-  <div class="card"><div class="card-label">GCCA</div><div class="card-value green">783 kg/t</div><div class="card-sub">"Getting the Numbers Right"</div></div>
-  <div class="card"><div class="card-label">PCAF</div><div class="card-value green">DQ 2.0</div><div class="card-sub">Financed emissions</div></div>
-  <div class="card"><div class="card-label">GHG Protocol</div><div class="card-value green">100/100</div><div class="card-sub">Scope 1+2+3</div></div>
-  <div class="card"><div class="card-label">IPCC 2006/2019</div><div class="card-value green">Tier 2/3</div><div class="card-sub">Kinetics, TOC, precalciner</div></div>
-  <div class="card"><div class="card-label">Verra VCS</div><div class="card-value green">VM0009</div><div class="card-sub">56,407 credits/yr</div></div>
-  <div class="card"><div class="card-label">Gold Standard</div><div class="card-value green">TPDDTEC</div><div class="card-sub">4 SDGs claimed</div></div>
+<div class="section">
+  <h2>Test result</h2>
+  <p>From <code>pro/</code> directory: <code>py -m pytest tests/</code> = <strong>88 passed, 2 warnings in ~15s</strong></p>
+  <p>CI on every push: <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/actions" style="color:var(--accent-2);">github.com/.../actions</a></p>
+</div>
+
+<div class="section links">
+  <h2>Read the truth</h2>
+  <ul>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/README.md">README.md</a> -- the honest overview</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/METHODOLOGY.md">docs/METHODOLOGY.md</a> -- real cement methodologies (ACM0003, ACM0005, etc.) with primary sources</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/STANDARDS_COVERAGE.md">docs/STANDARDS_COVERAGE.md</a> -- per-standard honest tag</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/LIMITATIONS.md">LIMITATIONS.md</a> -- what's still broken</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/PLANT_RENAMING.md">docs/PLANT_RENAMING.md</a> -- Day 14 plant-rename map</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/DEPLOYMENT.md">docs/DEPLOYMENT.md</a> -- the 5 deploy paths</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/reviews/REMEDIATION_REPORT.md">reviews/REMEDIATION_REPORT.md</a> -- the before/after + remaining-risk list</li>
+    <li><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/POST_MERGE_STATUS.md">docs/POST_MERGE_STATUS.md</a> -- the "everything is done" page</li>
+  </ul>
 </div>
 
 <footer>
-<p>
-  <strong>nepal_decarb_pro</strong> v1.1.1 · Open source (MIT) · 78/78 tests passing<br>
-  Author: Nishchal Baniya, Himalayan Carbon Nepal · Generated 2026-07-22<br>
-  This page is a snapshot of the live platform. Full source at <code class="inline">/workspace/nepal-decarb/pro/</code> · Skill at <code class="inline">/workspace/.skills/nepal-decarb-pro/</code>
-</p>
+<p>Open source. MIT license. No carbon credits have been issued from this platform. The PDD generator is a sizing tool only. Author: <a href="https://github.com/nishchalbaniya" style="color:var(--accent-2);">Nishchal Baniya</a> (Himalayan Space Solutions).</p>
 </footer>
 
 </div>
 
-<script>
-function toggle(el) { el.classList.toggle('open'); }
-function showPath(n, btn) {
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('path-' + n).classList.add('active');
-  btn.classList.add('active');
-}
-let currentLang = 'en';
-
-const RESPONSES = {
-  en: {
-    'Why is my CO2 high?':
-      'Your current intensity is 783 kg CO2/t cement, ~12% above the global average (700 kg CO2/t). The biggest lever is your clinker-to-cement ratio (0.85) — bringing it to 0.75 cuts ~10% of CO2. Recommended action: 30% alternative fuel substitution (biomass + RDF) saves ~55,000 tCO2/yr at an estimated cost of $1.2M/yr (NPV $4.5M at EU ETS $65/t). Per GCCA "Getting the Numbers Right" benchmarks, plants in your tier can reach <720 kg CO2/t with AF rate 30%+.',
-    'How do I reduce by 30%?':
-      'To cut your total CO2 (861,025 tCO2/yr) by 30%, three interventions are needed:\n1) Drop clinker ratio from 0.85 to 0.70: -12% CO2, $0.5M/yr cost\n2) Fuel mix: 40% biomass + 15% RDF (from current 0%): -10% CO2, $0.8M/yr cost\n3) Kiln energy efficiency 2900 → 2700 MJ/t: -8% CO2, $1.5M capex (preheater upgrade)\n\nCombined NPV: $9.5M at EU ETS $65/t. Aligned with SBTi 1.5°C pathway.',
-    'What savings from alternative fuels?':
-      'Switching from 100% coal to a blend of 40% biomass + 15% RDF + 45% natural gas cuts your fuel-related CO2 by 86% (from 324,500 to 45,000 tCO2/yr). The 40% biomass substitution gets you 50% of the way; RDF + natural gas add another 36%.\n\nCost: $18M/yr vs $20M/yr today (so you save $2M/yr in fuel cost on top of the CO2 savings).\n\nNPV at EU ETS $65/t over 10 years: $48M.',
-  },
-  ne: {
-    'किन CO2 बढी छ?':
-      'तपाईंको हालको तीव्रता 783 kg CO2/t छ, जुन विश्वव्यापी औसत (700 kg CO2/t) भन्दा ~12% बढी छ। मुख्य कारण: क्लिंकर सिमेन्ट अनुपात (clinker ratio) 0.85 छ — ०.७५ मा झार्नाले ~१०% CO2 कम हुन्छ।\n\nसुझाव: ३०% जैविक इन्धन (बायोमास, RDF) ले ~५५,००० tCO2/yr घटाउँछ, अनुमानित लागत $१.२M/yr (NPV $4.5M @ EU ETS $65/t)।\n\nGCCA best practice अनुसार: alternative fuel substitution ३०%+ पुगेको अवस्थामा intensity लक्ष्य <720 kg CO2/t सम्भव छ।',
-    '३०% कम गर्न के गर्ने?':
-      'कुल CO2 (८६१,०२५ tCO2/yr) लाई ३०% कम गर्न ३ वटा कदम चाहिन्छ:\n\n१) क्लिंकर अनुपात ०.७० मा झार्न (वर्तमान ०.८५ बाट): -१२% CO2, लागत $0.5M/yr\n२) इन्धन मिश्रण: ४०% बायोमास + १५% RDF (वर्तमान ०% बाट): -१०% CO2, लागत $0.8M/yr\n३) किल्न ऊर्जा दक्षता २९०० → २७०० MJ/t: -८% CO2, लागत $1.5M (preheater upgrade)\n\nसंयुक्त NPV: $9.5M @ EU ETS $65/t। SBTi 1.5°C लक्ष्य अनुरूप छ।',
-    'वैकल्पिक इन्धन बचत कति?':
-      '१००% कोइलाबाट ४०% बायोमास + १५% RDF + ४५% प्राकृतिक ग्यासमा स्विच गर्दा इन्धन-सम्बन्धित CO2 ८६% ले घट्छ (३२४,५०० बाट ४५,००० tCO2/yr)।\n\nलागत: $१८M/yr (आजको $२०M/yr तुलनामा) — CO2 बचतको अतिरिक्त इन्धनमा $२M/yr बचत हुन्छ।\n\nEU ETS $६५/t मा १० वर्षे NPV: $४८M।',
-  },
-};
-
-const DEFAULT_RESPONSES = {
-  en: 'This plant\'s annual emissions are 861,025 tCO2/yr at an intensity of 783 kg CO2/t. Key levers: clinker ratio, alternative fuels, kiln efficiency. Ask me a specific question (e.g., "how do I reduce by 30%?") for tailored advice.',
-  ne: 'यो प्लान्टको वार्षिक CO2 उत्सर्जन ८६१,०२५ tCO2/yr र तीव्रता ७८३ kg CO2/t छ। मुख्य अवसरहरू: क्लिंकर अनुपात, वैकल्पिक इन्धन, किल्न दक्षता। विस्तृत सुझावको लागि विशेष प्रश्न सोध्नुहोस्।',
-};
-
-let lang = 'en';
-function setLang(l, btn) {
-  lang = l;
-  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  // Update bubble text
-  document.getElementById('user-bubble').textContent = l === 'en'
-    ? 'Why is my CO₂ high compared to the global average?'
-    : 'विश्वव्यापी औसतको तुलनामा मेरो CO2 किन बढी छ?';
-  askDefault();
-}
-
-function quick(l, q) {
-  setLang(l, document.querySelector(`.lang-toggle button${l === 'en' ? ':first-child' : ':last-child'}`));
-  document.getElementById('user-input').value = q;
-  document.getElementById('user-bubble').textContent = q;
-  ask();
-}
-
-function ask() {
-  const q = document.getElementById('user-input').value.trim();
-  if (!q) return;
-  document.getElementById('user-bubble').textContent = q;
-  const r = (RESPONSES[lang] && RESPONSES[lang][q]) || DEFAULT_RESPONSES[lang];
-  document.getElementById('assistant-bubble').textContent = '... thinking ...';
-  setTimeout(() => {
-    document.getElementById('assistant-bubble').textContent = r;
-  }, 400);
-}
-
-function askDefault() {
-  const r = DEFAULT_RESPONSES[lang];
-  document.getElementById('assistant-bubble').textContent = r;
-}
-
-askDefault();
-</script>
-
-<style>
-#minimax-floating-ball {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 12px;
-  background: #222222;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  color: #F8F8F8;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  z-index: 9999;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-#minimax-floating-ball:hover {
-  transform: translateY(-2px);
-  background: #383838;
-}
-.minimax-ball-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.minimax-logo-wave {
-  width: 20px;
-  height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%27none%27%20width%3D%27100%25%27%20height%3D%27100%25%27%20overflow%3D%27visible%27%20style%3D%27display%3A%20block%3B%27%20viewBox%3D%270%200%20170.136%20138.225%27%20fill%3D%27none%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Cg%20id%3D%27Frame%202116748449%27%3E%3Cpath%20id%3D%27Subtract%27%20d%3D%27M170%20101.783C170%20105.144%20168.49%20108.327%20165.886%20110.453L134.963%20135.702C132.964%20137.334%20130.463%20138.225%20127.883%20138.225H10.4938C4.69824%20138.225%200%20133.527%200%20127.732V39.2289C0%2035.8597%201.51758%2032.6698%204.13162%2030.5442L38.5402%202.56547C40.536%200.942662%2043.0298%200.0567377%2045.602%200.0567377H159.506C165.302%200.0567377%20170%204.75498%20170%2010.5506V101.783Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Subtract_2%27%20d%3D%27M149.011%2094.4632C149.011%2096.1471%20148.253%2097.7415%20146.946%2098.8043L125.893%20115.936C124.895%20116.748%20123.648%20117.191%20122.361%20117.191H24.6479C22.716%20117.191%2021.15%20115.625%2021.15%20113.693V46.1166C21.15%2044.4267%2021.9135%2042.8274%2023.2274%2041.7648L47.367%2022.2437C48.3638%2021.4376%2049.607%2020.9982%2050.8888%2020.9988L145.514%2021.0427C147.446%2021.0436%20149.011%2022.6094%20149.011%2024.5406V94.4632Z%27%20fill%3D%27white%27%20style%3D%27fill%3Awhite%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142564%27%20d%3D%27M42.111%2080.8025C42.111%2077.7115%2044.6167%2075.2057%2047.7077%2075.2057H60.9999C64.0908%2075.2057%2066.5966%2077.7115%2066.5966%2080.8025V121.029H42.111V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142567%27%20d%3D%27M79.1894%2080.8025C79.1894%2077.7115%2081.6952%2075.2057%2084.7861%2075.2057H98.0783C101.169%2075.2057%20103.675%2077.7115%20103.675%2080.8025V121.029H79.1894V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 14px 11px;
-  background-color: #8FD1FF;
-  border-radius: 4px;
-}
-
-.minimax-ball-text {
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.minimax-close-icon {
-  margin-left: 8px;
-  font-size: 16px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.minimax-close-icon:hover {
-  opacity: 1;
-}
-</style>
-<div id="minimax-floating-ball">
-  <div class="minimax-ball-content">
-    <div class="minimax-logo-wave"></div>
-    <span class="minimax-ball-text">Created by MiniMax Agent</span>
-  </div>
-  <div class="minimax-close-icon">×</div>
-</div>
-<script>
-// Initialize floating ball functionality
-function initFloatingBall() {
-  const ball = document.getElementById('minimax-floating-ball');
-  if (!ball) return;
-
-  // Initial animation
-  ball.style.opacity = '0';
-  ball.style.transform = 'translateY(20px)';
-
-  setTimeout(() => {
-    ball.style.opacity = '1';
-    ball.style.transform = 'translateY(0)';
-  }, 500);
-
-  // Handle logo click
-  const ballContent = ball.querySelector('.minimax-ball-content');
-  ballContent.addEventListener('click', function (e) {
-    e.stopPropagation();
-    window.open('https://agent.minimax.io/', '_blank');
-    ball.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      ball.style.transform = 'scale(1)';
-    }, 100);
-  });
-
-  // Handle close button click
-  const closeIcon = ball.querySelector('.minimax-close-icon');
-  closeIcon.addEventListener('click', function (e) {
-    e.stopPropagation();
-    ball.style.opacity = '0';
-    ball.style.transform = 'translateY(20px)';
-
-    setTimeout(() => {
-      ball.style.display = 'none';
-    }, 300);
-  });
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initFloatingBall); 
-</script>
 </body>
 </html>

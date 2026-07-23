@@ -85,11 +85,11 @@ The full test suite (`py -m pytest tests/`) has some pre-existing
 failures documented in `reviews/GROUND_TRUTH.md` (missing optional
 deps `reportlab` / `matplotlib`, working-directory assumptions for
 `helm/`, `docker-compose.yml`). Fixing these is in the WP6 work
-package; see `reviews/REMEDIATION_REPORT.md` (forthcoming).
+package; the full before/after is in `reviews/REMEDIATION_REPORT.md`.
 
 ### Run the end-to-end demo (4 plants, 6 minutes)
 See `tools/03-cooler-grate-simulator/demo_site/` for the public demo
-and `docs/DEPLOYMENT.md` (forthcoming) for local-run instructions.
+and `docs/DEPLOYMENT.md` for the 5 deploy paths (VPS, Docker, free one-click, AWS, IoT edge).
 
 ### Live demos
 | URL | What | Status |
@@ -111,7 +111,7 @@ been removed from this README (WP6). Do not link to them.
   grate cooler, L-BFGS-B calibration, Sobol sensitivity, STEP and
   P&ID export. Default plant configs: PlantA, PlantB, PlantC, PlantD.
   The "PlantA" name is a placeholder; see `docs/PLANT_RENAMING.md`
-  (forthcoming in WP5) for the original 4 specific Nepali plants.
+  for the original 4 specific Nepali plants. (See `docs/PLANT_RENAMING.md`.)
 - **Rotary kiln** (`tools/02-kiln-dynamics/`) -- 5-zone ODE with
   Arrhenius kinetics, calcination, NOx. STEP export.
 - **Brick kiln** (`pro/nepal_decarb_pro/sim/brick_dynamics.py`) --
@@ -236,8 +236,7 @@ Nepal-Industrial-Decarbonization/
   ground-truth audit (17 defects, the basis for the WP1-WP6 work
   packages).
 - [`reviews/REMEDIATION_REPORT.md`](reviews/REMEDIATION_REPORT.md) --
-  before/after, defect list, remaining-risk list (forthcoming in
-  the final WP).
+  -- before/after, defect list, remaining-risk list.
 - [`pro/README.md`](pro/README.md) -- package-level overview.
 - [`pro/docs/OPERATOR_MANUAL.md`](pro/docs/OPERATOR_MANUAL.md) --
   for plant operators.
@@ -248,8 +247,7 @@ Nepal-Industrial-Decarbonization/
 
 ## Known limitations (the honest ones)
 
-The full limitations list is in `docs/LIMITATIONS.md` (forthcoming
-in WP3). The short version:
+The full limitations list is in [`docs/LIMITATIONS.md`](LIMITATIONS.md). The short version:
 
 1. **No plant data yet.** The default plant configs are placeholders
    labelled PlantA, PlantB, PlantC, PlantD. The model has not been

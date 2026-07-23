@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himalayan Space Solutions — Industrial Decarbonization for Nepal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<title>Nepal Industrial Decarbonization Platform</title>
 <style>
 :root {
   --bg: #f7f5f0;
@@ -19,416 +16,151 @@
   --primary: #2f6f5e;
   --primary-2: #4a8e7c;
   --accent: #c97b3f;
-  --green: #2f6f5e;
-  --blue: #3a4256;
-  --warn: #c97b3f;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Outfit', -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
   font-size: 16px;
 }
-.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-
-/* HERO */
-.hero {
-  position: relative;
-  padding: 80px 0 60px;
-  overflow: hidden;
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+header {
+  border-bottom: 1px solid var(--line);
+  padding: 32px 0;
 }
-.hero::before, .hero::after {
-  content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(47,111,94,0.06), transparent 70%);
-  pointer-events: none;
-}
-.hero::before { top: -300px; left: -200px; }
-.hero::after { bottom: -300px; right: -200px; }
-.hero-inner { position: relative; text-align: center; }
-.logo {
-  display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px;
-  font-weight: 600; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--primary);
-}
-.logo svg { width: 36px; height: 36px; }
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 64px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 400;
-  max-width: 900px;
-  margin: 0 auto 24px;
-  color: var(--ink);
-}
-.hero h1 em { color: var(--primary); font-style: normal; }
-.hero p.lede {
-  font-size: 19px; color: var(--ink-2); max-width: 720px; margin: 0 auto 40px;
-}
-.cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+header .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+header h1 { font-size: 18px; font-weight: 600; }
+header nav a { color: var(--ink-2); text-decoration: none; margin-left: 24px; font-size: 14px; }
+header nav a:hover { color: var(--primary); }
+.hero { padding: 64px 0 32px; }
+.hero h2 { font-size: 36px; line-height: 1.2; margin-bottom: 16px; max-width: 800px; }
+.hero p { font-size: 17px; color: var(--ink-2); max-width: 760px; margin-bottom: 12px; }
 .btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px;
-  text-decoration: none; transition: all 0.2s; cursor: pointer; border: 1px solid transparent;
+  display: inline-block; padding: 10px 20px; border-radius: 8px;
+  font-weight: 600; font-size: 14px; text-decoration: none; margin-right: 8px;
+  border: 1px solid var(--line);
 }
-.btn-primary { background: var(--primary); color: white; }
-.btn-primary:hover { background: var(--primary-2); transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(47,111,94,0.3); }
-.btn-secondary { background: var(--card); color: var(--ink); border-color: var(--line); }
-.btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
-.metric-strip {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  margin-top: 64px; padding: 32px; background: var(--card);
-  border: 1px solid var(--line); border-radius: 16px;
+.btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-2); }
+.btn-secondary { background: white; color: var(--ink); }
+section { padding: 48px 0; border-top: 1px solid var(--line-soft); }
+section h3 { font-size: 24px; margin-bottom: 16px; }
+section p { color: var(--ink-2); margin-bottom: 12px; max-width: 820px; }
+.honesty {
+  background: #fef9e7; border: 1px solid #f1c40f; border-left: 4px solid #c97b3f;
+  padding: 16px 20px; border-radius: 6px; margin: 24px 0;
 }
-.metric { text-align: center; }
-.metric .v { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--primary); }
-.metric .l { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
-/* SECTIONS */
-section { padding: 80px 0; border-top: 1px solid var(--line-soft); }
-.section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  color: var(--ink);
-  max-width: 800px;
-  margin-bottom: 16px;
+.honesty strong { color: #c97b3f; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+.box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+  padding: 20px; margin: 12px 0;
 }
-.section-sub { color: var(--ink-2); font-size: 18px; max-width: 700px; margin-bottom: 48px; }
-
-/* PROBLEM */
-.problem-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
-.problem-card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-  padding: 28px; position: relative;
-}
-.problem-card .num {
-  font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--accent);
-  position: absolute; top: 16px; right: 24px; opacity: 0.25;
-}
-.problem-card h3 { font-size: 19px; margin-bottom: 8px; color: var(--ink); }
-.problem-card p { color: var(--ink-2); font-size: 14px; }
-
-/* SOLUTION */
-.solution {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
-}
-.solution-image {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-  padding: 24px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
-}
-.solution-image .mock {
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, #f7f5f0, #e9e3d6);
-  border-radius: 8px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 24px; text-align: center;
-}
-.solution-image .mock h4 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--primary); margin-bottom: 8px; }
-.solution-image .mock .big { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 600; color: var(--ink); }
-.solution-image .mock .small { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
-.solution h3 { font-size: 22px; margin-bottom: 16px; }
-.solution ul { list-style: none; }
-.solution li { padding: 12px 0; padding-left: 32px; position: relative; color: var(--ink-2); }
-.solution li::before {
-  content: ''; position: absolute; left: 0; top: 18px; width: 18px; height: 18px;
-  background: var(--primary); border-radius: 50%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  background-size: 14px; background-repeat: no-repeat; background-position: center;
-}
-
-/* CASE STUDY */
-.case-study {
-  background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
-}
-.case-quote {
-  font-family: 'DM Serif Display', serif; font-size: 28px; line-height: 1.3; color: var(--ink);
-  border-left: 3px solid var(--primary); padding-left: 20px;
-}
-.case-stats { display: flex; flex-direction: column; gap: 16px; }
-.case-stat { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
-.case-stat:last-child { border-bottom: none; }
-.case-stat .label { color: var(--ink-3); font-size: 14px; }
-.case-stat .value { font-weight: 600; color: var(--ink); }
-
-/* STANDARDS */
-.standards {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-}
-.std {
-  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-  padding: 18px; text-align: center; transition: all 0.2s;
-}
-.std:hover { border-color: var(--primary); transform: translateY(-2px); }
-.std .code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--primary); font-weight: 600; }
-.std .name { font-size: 11px; color: var(--ink-3); margin-top: 4px; }
-.std .score { font-size: 10px; color: var(--primary); font-weight: 600; margin-top: 6px; }
-
-/* PRICING */
-.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.price-card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 32px;
-  display: flex; flex-direction: column;
-}
-.price-card.featured { border-color: var(--primary); box-shadow: 0 8px 30px -8px rgba(47,111,94,0.15); }
-.price-tier { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-3); }
-.price-card.featured .price-tier { color: var(--primary); }
-.price-amount { font-family: 'DM Serif Display', serif; font-size: 48px; margin: 8px 0; color: var(--ink); }
-.price-amount .per { font-size: 14px; color: var(--ink-3); font-family: 'Outfit', sans-serif; }
-.price-desc { color: var(--ink-2); font-size: 14px; margin-bottom: 20px; min-height: 40px; }
-.price-features { list-style: none; margin: 16px 0 24px; flex: 1; }
-.price-features li { padding: 6px 0; padding-left: 24px; position: relative; color: var(--ink-2); font-size: 14px; }
-.price-features li::before {
-  content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 600;
-}
-.price-card .btn { width: 100%; justify-content: center; margin-top: auto; }
-
-/* CTA */
-.cta-section {
-  text-align: center; padding: 100px 0; background: linear-gradient(135deg, #2f6f5e, #1f4f40);
-  color: white;
-}
-.cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1.1; margin-bottom: 16px; }
-.cta-section p { font-size: 19px; opacity: 0.9; max-width: 700px; margin: 0 auto 32px; }
-.cta-section .btn-primary { background: white; color: var(--primary); }
-.cta-section .btn-primary:hover { background: #f7f5f0; }
-.cta-section .btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,0.4); }
-
-/* FOOTER */
-footer { padding: 48px 0; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 13px; }
-.footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-.footer-row a { color: var(--ink-3); text-decoration: none; }
-.footer-row a:hover { color: var(--primary); }
-
-@media (max-width: 900px) {
-  .hero h1 { font-size: 40px; }
-  .metric-strip { grid-template-columns: repeat(2, 1fr); }
-  .problem-grid, .standards, .pricing, .solution, .case-study { grid-template-columns: 1fr; }
-  .cta-section h2 { font-size: 36px; }
-  section { padding: 60px 0; }
-}
+.box h4 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+.box p { font-size: 14px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { background: #fafaf6; color: var(--ink-2); font-weight: 600; }
+code { background: #f0ebde; padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 13px; }
+footer a { color: var(--ink-3); }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<header>
+<div class="container">
+<div class="row">
+  <h1>Nepal Industrial Decarbonization Platform</h1>
+  <nav>
+    <a href="#status">Status</a>
+    <a href="#what">What this is</a>
+    <a href="#docs">Docs</a>
+    <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization">GitHub</a>
+  </nav>
+</div>
+</div>
+</header>
+
 <div class="hero">
 <div class="container">
-<div class="hero-inner">
-  <div class="logo">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 80 L40 30 L55 55 L70 20 L90 80 Z" fill="currentColor" opacity="0.85"/>
-      <circle cx="50" cy="50" r="6" fill="white"/>
-    </svg>
-    HIMALAYAN SPACE SOLUTIONS
-  </div>
-  <h1>The decarbonization platform for <em>Nepal's</em> cement and brick industry.</h1>
-  <p class="lede">11 international standards. 78/78 tests. Open source. Bilingual (EN / नेपाली). From baseline to Verra carbon credit in one afternoon.</p>
-  <div class="cta-row">
-    <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization" class="btn btn-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      View on GitHub
-    </a>
-    <a href="https://nishchalbaniya.github.io/Nepal-Industrial-Decarbonization/" class="btn btn-secondary">Try the live demo →</a>
-    <a href="mailto:nishchal.baniya@himalayancarbonnepal.com" class="btn btn-secondary">Book a 30-min call</a>
-  </div>
-  <div class="metric-strip">
-    <div class="metric"><div class="v">9.78/10</div><div class="l">World-class rating</div></div>
-    <div class="metric"><div class="v">11</div><div class="l">International standards</div></div>
-    <div class="metric"><div class="v">78/78</div><div class="l">Tests passing</div></div>
-    <div class="metric"><div class="v">$22.5M</div><div class="l">PlantA NPV @ EU ETS</div></div>
-  </div>
-</div>
+  <h2>Open-source industrial decarbonization toolkit for Nepal's cement and brick industry.</h2>
+  <p>Honest engineering. No self-awarded scores. The truth is in the docs.</p>
+  <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization" class="btn btn-primary">View on GitHub</a>
+  <a href="#docs" class="btn btn-secondary">Read the docs</a>
 </div>
 </div>
 
-<!-- PROBLEM -->
-<section>
+<section id="status">
 <div class="container">
-  <h2 class="section-title">Nepal's industrial transition is happening without measurement.</h2>
-  <p class="section-sub">Six million tonnes of CO₂ a year from cement. Two million from brick. Zero ISO 14064 compliance. Zero Verra registrations. Zero SBTi targets. The world is moving to a carbon-priced economy — and Nepali plants have no baseline to even begin.</p>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="num">1</div>
-      <h3>EU CBAM arrives 2026</h3>
-      <p>Cement exported to the EU will be tariffed based on its carbon intensity. Plants without verified baselines lose market access.</p>
+  <h3>Status (2026-07-23)</h3>
+  <div class="honesty">
+    <strong>Read this first.</strong> This repository is a working <em>sizing model</em>, not a submittable carbon credit. The engineering simulators (cooler, kiln, brick, LCA, UQ) produce real physics output. The standards and markets modules (ISO 14064, Verra, Gold Standard, SBTi) are check-wrappers, not compliance engines. The PDD generator is a sizing tool, not a submittable PDD.
+  </div>
+  <p>Tag: <code>v1.0.0-credible</code> &middot; Tests: <code>88/88 pass</code> (from <code>pro/</code> directory) &middot; License: MIT</p>
+</div>
+</section>
+
+<section id="what">
+<div class="container">
+  <h3>What this is</h3>
+  <p>An open-source toolkit for the Nepali cement and brick industry. Two layers:</p>
+  <div class="two-col">
+    <div class="box">
+      <h4>Engineering simulators (Implemented)</h4>
+      <p>5-zone rotary kiln ODE, multi-compartment grate cooler with first-law / second-law diagnostics, brick-kiln dynamics, LCA (6 categories), Monte Carlo UQ, MILP fuel-blend optimisation, NSGA-II Pareto front, digital twin. The numbers from these are reproducible physics / chemistry / heat balance.</p>
     </div>
-    <div class="problem-card">
-      <div class="num">2</div>
-      <h3>Banks require PCAF</h3>
-      <p>By 2027, international banks will require financed emissions disclosure (PCAF) before lending. Most Nepali plants have nothing.</p>
-    </div>
-    <div class="problem-card">
-      <div class="num">3</div>
-      <h3>Carbon credits = revenue</h3>
-      <p>A PlantA-sized plant can issue 56,000 Verra credits/year. At $30/t that's $1.7M/yr in new revenue. Most plants don't know this exists.</p>
+    <div class="box">
+      <h4>Standards and markets wrappers (Stub / Partial)</h4>
+      <p>ISO 14064-1/2/3, ISO 50001, ISO 14001, GHG Protocol, GCCA, PCAF, TCFD, SBTi, plus a Verra / Gold Standard PDD generator. These are stubs and self-assertion wrappers, not compliance engines. See <code>docs/STANDARDS_COVERAGE.md</code> for the per-standard honest tag.</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- SOLUTION -->
-<section>
+<section id="whatnot">
 <div class="container">
-  <h2 class="section-title">One platform. Every standard. From baseline to credit.</h2>
-  <p class="section-sub">nepal_decarb_pro is a single open-source platform that takes a plant from raw data to a Verra-registered carbon credit. Built specifically for Nepal's cement and brick industry — not a Western tool retrofitted.</p>
-  <div class="solution">
-    <div class="solution-image">
-      <div class="mock">
-        <h4>PlantA · 2024</h4>
-        <div class="big">861,025 tCO₂/yr</div>
-        <div class="small">ISO 14064-1: 100/100 · SBTi: 1.5°C aligned</div>
-      </div>
-    </div>
-    <div>
-      <h3>What you get on day 1</h3>
-      <ul>
-        <li>Tier 2 + Tier 3 baseline in seconds (IPCC 2006/2019)</li>
-        <li>5,000-sample Monte Carlo with Sobol sensitivity</li>
-        <li>Auto-generated Verra + Gold Standard PDD</li>
-        <li>ISO 14064-1, TCFD, SBTi, GCCA, PCAF compliance reports</li>
-        <li>Bilingual EN/नेपाली — your plant manager doesn't need English</li>
-        <li>IoT integration: ESP32 + DHT22 + MQ-7 + MAX31855 sensors</li>
-        <li>On-chain carbon credit via ERC-3643 (T-REX)</li>
-        <li>Optional LLM advisor: "Why is my CO₂ high?" answered in Nepali</li>
-      </ul>
-    </div>
-  </div>
+  <h3>What this is NOT</h3>
+  <ul>
+    <li><strong>Not certified by any VVB.</strong> No VVB has reviewed this code, and no ISO 14064-3:2019 verification opinion has been issued.</li>
+    <li><strong>Not compliant with any standard by self-assertion.</strong> Passing the standards modules with default <code>True</code> values does not constitute compliance. A VVB will not accept it.</li>
+    <li><strong>Not submittable to Verra or Gold Standard.</strong> The PDD generator is missing additionality assessment, baseline alternative analysis, stakeholder consultation, per-field monitoring tier, leakage per activity, and the VVB-prepared Validation Report. The full gap list is in <code>docs/METHODOLOGY.md</code> section 5.</li>
+    <li><strong>Not "9.78/10" or any other self-awarded rating.</strong> See <code>docs/STANDARDS_COVERAGE.md</code> for the truth (2 implemented, 2 partial, 7 stub out of 11 claimed).</li>
+  </ul>
 </div>
 </section>
 
-<!-- CASE STUDY -->
-<section>
+<section id="docs">
 <div class="container">
-  <h2 class="section-title">Verified on PlantA Industries Ltd.</h2>
-  <p class="section-sub">The platform was built around a real plant. Every number below comes from the actual run, not a demo.</p>
-  <div class="case-study">
-    <div class="case-quote">
-      "In one afternoon, we computed our full ISO 14064-1 inventory, generated a Verra monitoring report, and projected $22.5M in carbon credit revenue — at no consultant cost."
-    </div>
-    <div class="case-stats">
-      <div class="case-stat"><span class="label">Baseline (Tier 2)</span><span class="value">861,025 tCO₂/yr</span></div>
-      <div class="case-stat"><span class="label">Intensity</span><span class="value">783 kg CO₂/t cement</span></div>
-      <div class="case-stat"><span class="label">Verra credits/yr</span><span class="value">56,407</span></div>
-      <div class="case-stat"><span class="label">NPV @ EU ETS $65/t</span><span class="value">$22.5M</span></div>
-      <div class="case-stat"><span class="label">SBTi target</span><span class="value">1.5°C aligned</span></div>
-      <div class="case-stat"><span class="label">ISO 14064-1</span><span class="value">100/100</span></div>
-      <div class="case-stat"><span class="label">Monte Carlo 90% CI</span><span class="value">±25,820 tCO₂</span></div>
-      <div class="case-stat"><span class="label">LCA (GWP100)</span><span class="value">784 kg CO₂-eq/t</span></div>
-    </div>
-  </div>
+  <h3>Docs (read these before judging the work)</h3>
+  <table>
+    <tr><th>Doc</th><th>What it contains</th></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/METHODOLOGY.md"><code>docs/METHODOLOGY.md</code></a></td><td>Truth table for the 4 carbon-market methodologies. Real codes (ACM0003 v9.0, ACM0005 v7.1.0, VM0043 v1.1, VMR0012, RECH v5.0) with primary sources.</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/STANDARDS_COVERAGE.md"><code>docs/STANDARDS_COVERAGE.md</code></a></td><td>Truth table for the 11 claimed standards. Implemented / Partial / Stub tags.</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/LIMITATIONS.md"><code>LIMITATIONS.md</code></a></td><td>What's still broken: 3 of 6 cooler ship-gate bands fail on v0.5.0; no real plant data; etc.</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/PLANT_RENAMING.md"><code>docs/PLANT_RENAMING.md</code></a></td><td>Day 14 plant-rename map (PlantA/B/C/D are placeholders).</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/DEPLOYMENT.md"><code>docs/DEPLOYMENT.md</code></a></td><td>The 5 deploy paths (VPS, Docker, free one-click, AWS, IoT edge).</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/reviews/REMEDIATION_REPORT.md"><code>reviews/REMEDIATION_REPORT.md</code></a></td><td>The 15KB before/after + 12 remaining-risk items from the WP0-WP6 remediation pass.</td></tr>
+    <tr><td><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/docs/POST_MERGE_STATUS.md"><code>docs/POST_MERGE_STATUS.md</code></a></td><td>The "everything is done" page. Remediation timeline. What this pass is NOT.</td></tr>
+  </table>
 </div>
 </section>
 
-<!-- STANDARDS -->
-<section>
+<section id="github">
 <div class="container">
-  <h2 class="section-title">11 international standards in one platform.</h2>
-  <p class="section-sub">Most tools cover 2-3 standards. We cover the full set your plant will need over the next 5 years.</p>
-  <div class="standards">
-    <div class="std"><div class="code">ISO 14064-1</div><div class="name">Organizational GHG</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">ISO 14064-2</div><div class="name">Project GHG</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">ISO 14064-3</div><div class="name">Verification</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">ISO 50001</div><div class="name">Energy mgmt</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">ISO 14001</div><div class="name">Env mgmt</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">TCFD</div><div class="name">Climate disclosure</div><div class="score">Aligned</div></div>
-    <div class="std"><div class="code">SBTi</div><div class="name">Science-based targets</div><div class="score">1.5°C</div></div>
-    <div class="std"><div class="code">GCCA</div><div class="name">Cement KPIs</div><div class="score">"GtNR"</div></div>
-    <div class="std"><div class="code">PCAF</div><div class="name">Financed emissions</div><div class="score">DQ 2.0</div></div>
-    <div class="std"><div class="code">GHG Protocol</div><div class="name">Scope 1+2+3</div><div class="score">100/100</div></div>
-    <div class="std"><div class="code">IPCC 2006/19</div><div class="name">Tier 2/3</div><div class="score">Full</div></div>
-    <div class="std"><div class="code">Verra VCS</div><div class="name">PDD generator</div><div class="score">Stub (not submittable; see docs/METHODOLOGY.md s5)</div></div>
-  </div>
+  <h3>Repo</h3>
+  <p><a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization">github.com/nishchalbaniya/Nepal-Industrial-Decarbonization</a></p>
+  <p>Default branch: <code>main</code>. Tag: <code>v1.0.0-credible</code>. Tests: 88/88 pass. Author: <a href="https://github.com/nishchalbaniya">Nishchal Baniya</a> (Himalayan Space Solutions).</p>
 </div>
 </section>
 
-<!-- PRICING -->
-<section>
-<div class="container">
-  <h2 class="section-title">Free for the first year. Pay when you earn.</h2>
-  <p class="section-sub">We make money when you make money. The first 12 months are free for all Nepali plants. After that, pricing scales with the value you extract.</p>
-  <div class="pricing">
-    <div class="price-card">
-      <div class="price-tier">Free · Year 1</div>
-      <div class="price-amount">$0<span class="per">/year</span></div>
-      <div class="price-desc">For all Nepali plants. No credit card. No expiry.</div>
-      <ul class="price-features">
-        <li>1 plant per tenant</li>
-        <li>1 year of historical data</li>
-        <li>All 11 standards reports</li>
-        <li>Bilingual EN/नेपाली</li>
-        <li>50 API calls/day</li>
-        <li>Community support</li>
-      </ul>
-      <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization" class="btn btn-secondary">Self-serve on GitHub</a>
-    </div>
-    <div class="price-card featured">
-      <div class="price-tier">Pro · Most popular</div>
-      <div class="price-amount">$50<span class="per">/plant/month</span></div>
-      <div class="price-desc">For cement plants earning carbon credits or preparing for EU exports.</div>
-      <ul class="price-features">
-        <li>Unlimited history</li>
-        <li>IoT sensor integration</li>
-        <li>Multi-user (5 seats)</li>
-        <li>Real-time alerts</li>
-        <li>5,000 API calls/day</li>
-        <li>Email + chat support</li>
-        <li>Quarterly review call</li>
-      </ul>
-      <a href="mailto:nishchal.baniya@himalayancarbonnepal.com" class="btn btn-primary">Start 30-day trial →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-tier">Enterprise</div>
-      <div class="price-amount">Custom</div>
-      <div class="price-desc">For NCMA, government, multi-plant groups.</div>
-      <ul class="price-features">
-        <li>White-label option</li>
-        <li>SSO integration</li>
-        <li>On-premise deployment</li>
-        <li>99.9% SLA</li>
-        <li>Unlimited seats</li>
-        <li>Dedicated success manager</li>
-        <li>Custom integrations</li>
-      </ul>
-      <a href="mailto:nishchal.baniya@himalayancarbonnepal.com" class="btn btn-secondary">Talk to us</a>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-<div class="container">
-  <h2>Ready to measure, reduce, and monetize your emissions?</h2>
-  <p>Two-week free PoC. We'll install the platform, onboard your team, and produce a real Verra-ready baseline. If you don't see value, you owe nothing.</p>
-  <div class="cta-row">
-    <a href="mailto:nishchal.baniya@himalayancarbonnepal.com?subject=2-week%20PoC" class="btn btn-primary">Book the 2-week PoC →</a>
-    <a href="https://nishchalbaniya.github.io/Nepal-Industrial-Decarbonization/" class="btn btn-secondary">Try the live demo first</a>
-  </div>
-</div>
-</section>
-
-<!-- FOOTER -->
 <footer>
 <div class="container">
-<div class="footer-row">
-  <div>
-    <strong style="color: var(--ink);">Himalayan Space Solutions</strong> · Built by Nishchal Baniya · nishchal.baniya@himalayancarbonnepal.com
-  </div>
-  <div>
-    <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization">GitHub</a> · 
-    <a href="https://nishchalbaniya.github.io/Nepal-Industrial-Decarbonization/">Demo</a> · 
-    <a href="mailto:nishchal.baniya@himalayancarbonnepal.com">Contact</a>
-  </div>
-</div>
+  <p>Open source. MIT license. No carbon credits have been issued from this platform; the PDD generator is a sizing tool only. <a href="https://github.com/nishchalbaniya/Nepal-Industrial-Decarbonization/blob/main/reviews/REMEDIATION_REPORT.md">Read the full remediation report</a> for the honest assessment.</p>
 </div>
 </footer>
 
