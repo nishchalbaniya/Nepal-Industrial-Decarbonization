@@ -259,6 +259,8 @@ def main():
 
     # Create a fresh document
     doc = FreeCAD.newDocument("CoolerAssembly")
+    FreeCAD.setActiveDocument(doc.Name)
+    FreeCAD.ActiveDocument = doc
     parts = build_cooler_assembly(calib, SITE_DEFAULTS)
     result = export_step(parts, out_path, calib)
 
