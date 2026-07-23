@@ -75,7 +75,7 @@ _plantb = KilnParameters(
 )
 
 # plantc Cement (Nawalparasi) - newest, best efficiency
-_hongshi = KilnParameters(
+_plantc = KilnParameters(
     length_m=72.0,
     diameter_m=5.0,
     slope_deg=4.0,
@@ -171,7 +171,7 @@ PLANT_PRESETS: Dict[str, PlantPreset] = {
         location="Nawalparasi",
         capacity_t_yr=4_000_000,
         kiln_technology="Dry process, 5-stage preheater, 2 lines",
-        parameters=_hongshi,
+        parameters=_plantc,
         source="plantc Sustainability Report 2023",
         notes="Newest major plant, 2018 commissioning. Best SEC in Nepal.",
     ),

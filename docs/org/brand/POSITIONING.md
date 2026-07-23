@@ -50,7 +50,7 @@ wins the next decade of contracts. None of them are ready today. We are.
 ## Who we are for (be specific, name the people)
 
 - **Plant managers and owners of the 6 large Nepali cement plants** —
-  PlantA Industries Ltd, PlantB, Hongshi (Shivam Cement),
+  PlantA Industries Ltd, PlantB, PlantC,
   Shree Cement, PlantD, Araniko Cement. If you run a kiln in
   Makwanpur, PlantB, Palpa, or Kathmandu valley, this is for you.
 - **Brick kiln owners and cooperative leaders** running any of Nepal's

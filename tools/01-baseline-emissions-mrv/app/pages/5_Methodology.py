@@ -128,7 +128,7 @@ At $15, $30, $50/tCO₂e sensitivity.
 - **NEA Annual Report 2023/24** (Nepal grid EF)
 - **DEFRA Conversion Factors 2024** (cross-check)
 - **ecoinvent v3.10** (LCA background)
-- **Field surveys** of Nepali plants: PlantA, PlantB, Hongshi, PlantD, etc.
+- **Field surveys** of Nepali plants: PlantA, PlantB, PlantC, PlantD, etc.
 
 ---
 

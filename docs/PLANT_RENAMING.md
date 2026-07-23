@@ -51,6 +51,37 @@ generic PlantA/B/C/D`). The full set of changes:
 | `hetauda()` in plants.py PRESETS dict | `planta()` etc. |
 | PlantC (uppercase, in some docstrings) | plantc (lowercase, in function names) |
 
+### Follow-up pass (2026-07-23, post-remediation)
+
+The original Day 14 commit (`2b24a3c`) renamed 172 files but missed
+a second batch of stragglers. The follow-up pass closed the gap:
+
+| File / location | Old | New |
+|---|---|---|
+| `tools/02-kiln-dynamics-simulator/src/nepal_kiln_sim/plants.py` | `_hongshi` variable, "plantc Cement" comment | `_plantc` variable, "PlantC" comment |
+| `pro/nepal_decarb_pro/data/nepal_plants.yaml` | `operator: "Sino-Nepalese JV (Hongshi Group, China)"` (on PlantC) | `operator: "Sino-Nepalese JV (PlantC majority owner)"` |
+| `pro/app/pages/1_Cement_Baseline.py` | `"Hongshi (Nawalparasi)"` dict key | `"PlantC"` dict key |
+| `tools/01-baseline-emissions-mrv/app/pages/1_Cement_Baseline.py` | same dict key | `"PlantC"` |
+| `tools/01-baseline-emissions-mrv/app/pages/4_Sector_Benchmarking.py` | same dict key | `"PlantC"` |
+| `tools/01-baseline-emissions-mrv/CHANGELOG.md`, `app/pages/5_Methodology.py` | "Hongshi" in plant-list | "PlantC" |
+| `tools/03-cooler-grate-simulator/README.md`, `scratch/smoke_4plants_v0.3.2.py` | "Hongshi" column header | "PlantC" |
+| `tools/03-cooler-grate-simulator/src/nepal_cooler_sim/cooler_ode.py` and the `day-03-PRs/chem-eng-cement/cooler_ode.py` copy | "Hongshi\nShivam-class" engineering note | "PlantC-class" |
+| `tools/03-cooler-grate-simulator/src/nepal_cooler_sim/cooler_ode.py` and the `day-03-PRs/chem-eng-cement/cooler_ode.py` copy | "IKN/KHD/Polysius/Hongshi default" (compartment count) | "IKN/KHD/Polysius/modern-Chinese-OEM default" |
+| `tools/03-cooler-grate-simulator/day-03-PRs/mech-eng-plant/*`, `business-lead/*`, `carbon-markets-expert/pdd_json_schema.json`, `reviews/AANYA-DAY-03-REVIEW.md` | "Hongshi-class", "Shivam-class", "IKN/Polycom/Hongshi" | "PlantC-class", "modern-Chinese-OEM-class" |
+| `docs/org/brand/POSITIONING.md` | "PlantA Industries Ltd, PlantB, Hongshi (Shivam Cement)" | "PlantA Industries Ltd, PlantB, PlantC" |
+| `docs/org/release/v1.0-e2e/DEPLOY-AND-SELL.md` | "PlantA + PlantB + Hongshi + PlantD" sweep listing, "PlantD (Shivam)" (the parenthetical was wrong; Shivam = PlantC, not PlantD) | "PlantA + PlantB + PlantC + PlantD" sweep listing, "PlantD" |
+| `docs/org/release/v1.0-e2e/cad/06_planta_kiln.step` | `PRODUCT('HetaudaKiln','HetaudaKiln',...)` in STEP file | `PRODUCT('PlantAKiln','PlantAKiln',...)` |
+| `docs/org/release/v1.0-e2e/pid/07_planta_cooler_pid.json` | `"drawing_no": "HCIL-CLR-PID-001"`, title `"Hetauda Cement Cooler..."` | `"drawing_no": "NIDC-CLR-PID-001"`, title `"PlantA Cement Cooler..."` |
+| `docs/org/release/v1.0-e2e/pid/07_planta_cooler_pid.svg` | "HCIL-CLR-PID-001 Rev A", "Hetauda Cement Cooler", "Hetauda 130 t/h" | "NIDC-CLR-PID-001 Rev A", "PlantA Cement Cooler", "PlantA 130 t/h" |
+| `docs/strategy/BLOG_POSTS.md`, `docs/strategy/VALIDATION_PACK_TEMPLATE.md` | "Hongshi" in plant lists | "PlantC" |
+
+Total files touched in this follow-up: 26.
+
+### Intentionally NOT renamed (third-party company names)
+
+- `Hongshi-Huaxin` in `tools/03-cooler-grate-simulator/day-03-PRs/mech-eng-plant/plant_equipment.md` — refers to the **Hongshi Group + Huaxin Cement** Chinese OEM joint venture that built PlantC. This is a real third-party company, not a Nepali plant. Same logic as keeping "KHD", "Polysius", "FLSmidth", "IKN" as real equipment vendors.
+- `Shivam Cement Pvt Ltd` (Reliance Group, Makwanpur, 1000 tpd) in `pro/nepal_decarb_pro/data/nepal_plants.yaml` — this is a **different** Shivam (not the Hongshi-Shivam JV that was renamed to PlantC). It is a 5th plant in the data file, not one of the 4 renamed plants.
+
 ## What was NOT renamed (and why)
 
 - **"Himalayan Carbon" / "Himalayan Space Solutions"**: the user

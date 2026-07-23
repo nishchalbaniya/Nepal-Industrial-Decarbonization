@@ -453,7 +453,7 @@ def test_4_plant_presets_run(
     assert kpis["first_law_imbalance"] <= 0.02, (
         f"{name}: first-law imbalance {kpis['first_law_imbalance']:.4f} > 0.02"
     )
-    # SFP band: 8-12 kW/(t/h) is for *modern BAT* (KHD/IKN Hongshi/PlantD).
+    # SFP band: 8-12 kW/(t/h) is for *modern BAT* (KHD/IKN/modern-Chinese-OEM/PlantD).
     # Older plants (PlantA, PlantB) legitimately run below 8 because
     # they have less aux load and lower t/d. Use a per-plant band:
     sfp_band = {

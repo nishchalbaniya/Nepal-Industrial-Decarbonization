@@ -90,7 +90,7 @@
           "type": "integer",
           "minimum": 3,
           "maximum": 7,
-          "description": "Number of compartments in the grate cooler. Default 5 (IKN/Polycom/Hongshi). Peray & Waddell 1986 §6.4."
+          "description": "Number of compartments in the grate cooler. Default 5 (IKN/Polycom/modern-Chinese-OEM). Peray & Waddell 1986 §6.4."
         },
         "cooler_manufacturer": {
           "type": "string",

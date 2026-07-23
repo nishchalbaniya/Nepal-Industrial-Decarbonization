@@ -42,7 +42,7 @@ cement_plants = {
         coal_t=235_000, petcoke_t=32_000, diesel_t=600,
         elec_kwh=160_000_000, location="PlantB",
     ),
-    "Hongshi (Nawalparasi)": dict(
+    "PlantC": dict(
         clinker_t=3_200_000, cement_t=3_800_000,
         coal_t=420_000, petcoke_t=55_000, diesel_t=900,
         elec_kwh=290_000_000, location="Nawalparasi",

@@ -28,7 +28,7 @@ demo-e2e/
 │   ├── 01_calibration.json            v0.5.0 cooler calibration result
 │   ├── 02_cooler_planta.json         v0.3.2 default PlantA cooler KPIs
 │   ├── 03_kiln_planta.json           v0.2.0 PlantA kiln KPIs
-│   ├── 04_4plant_sweep.json           PlantA + PlantB + Hongshi + PlantD
+│   ├── 04_4plant_sweep.json           PlantA + PlantB + PlantC + PlantD
 │   └── 08_verify_report.json          FreeCAD re-open verification
 ├── cad/
 │   ├── 05_cooler_v050_calibrated.step   22.7 KB, 11 parts, 36.3m x 3.5m x 2.8m
@@ -120,7 +120,7 @@ python demo-e2e/09_save_verify.py
 | PlantA (Himalayan) | 130 | 1,030 | 896 | 1/6 |
 | PlantB (Himalayan) | 110 | 871 | 758 | 3/6 |
 | plantc (CN) | 208 | 1,647 | 1,433 | 2/6 |
-| PlantD (Shivam) | 150 | 1,188 | 1,034 | 1/6 |
+| PlantD | 150 | 1,188 | 1,034 | 1/6 |
 | **Total** | **598** | **4,736** | **4,120** | - |
 
 CBAM exposure at €80/t CO2 = **€330M / year** across just 4 plants.

@@ -34,7 +34,7 @@ presets = {
         coal_t=235_000, petcoke_t=32_000, diesel_t=600,
         elec_kwh=160_000_000, whr_kwh=0,
     ),
-    "Hongshi (Nawalparasi)": dict(
+    "PlantC (Nawalparasi)": dict(
         name="plantc Cement",
         location="Nawalparasi",
         year=2024, clinker_t=3_200_000, cement_t=3_800_000,

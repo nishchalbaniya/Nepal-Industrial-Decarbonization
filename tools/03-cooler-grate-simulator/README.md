@@ -45,7 +45,7 @@ The 7-band ship-gate in `DAY-03-SPEC.md` was checked on all 4 plant
 presets. v0.3.2 passes **1 of 7 bands** on **all 4 plants** and an
 **additional band on PlantB only**:
 
-| Band | PlantA | PlantB | Hongshi | PlantD |
+| Band | PlantA | PlantB | PlantC | PlantD |
 |---|---|---|---|---|
 | `secondary_air_outlet_c ∈ [600, 1000] °C` | 559 (✗) | 629 (✓) | 537 (✗) | 589 (✗) |
 | `tertiary_air_outlet_c ∈ [400, 700] °C` | 232 (✗) | 174 (✗) | 270 (✗) | 178 (✗) |

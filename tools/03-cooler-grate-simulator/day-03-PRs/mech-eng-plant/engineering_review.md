@@ -68,7 +68,7 @@ v0.3.0 was broken at first-law and rejected by three independent reviewers (Aany
 - `n_compartments` becomes a first-class solver input (compartment solver iterates over it).
 - `CompartmentParameters` carries per-compartment `inlet_air_t_c`, `air_mass_flow_kg_s`, `is_secondary`, `is_exhaust`.
 - API accepts uniform-distribution helper for backward compat with the smoke test.
-- Default = 5 (IKN/Polycom/Hongshi default).
+- Default = 5 (IKN/Polycom/modern-Chinese-OEM default).
 - Configurable 3-7 (UCIL 3, NIDC 4, modern 5, large 6-7 with air-to-air preheater).
 
 **Files / line refs:**

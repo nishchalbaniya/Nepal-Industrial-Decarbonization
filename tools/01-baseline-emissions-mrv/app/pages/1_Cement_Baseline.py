@@ -30,7 +30,7 @@ with st.sidebar:
     st.header("Plant inputs")
     preset = st.selectbox(
         "Load preset",
-        ["Custom", "PlantA", "PlantB", "Hongshi (Nawalparasi)", "plantd"],
+        ["Custom", "PlantA", "PlantB", "PlantC", "plantd"],
     )
     presets = {
         "PlantA": dict(
@@ -51,7 +51,7 @@ with st.sidebar:
             coal_t=235_000, petcoke_t=32_000, diesel_t=600,
             elec_kwh=160_000_000,
         ),
-        "Hongshi (Nawalparasi)": dict(
+        "PlantC": dict(
             name="plantc Cement",
             location="Nawalparasi",
             year=2024,

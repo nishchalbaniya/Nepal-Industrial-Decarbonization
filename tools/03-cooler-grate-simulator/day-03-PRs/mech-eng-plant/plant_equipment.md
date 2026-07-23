@@ -11,7 +11,7 @@
 
 A cooler commissioned for sea-level standard air (1.225 kg/m³, 15 °C) will **not** deliver its design heat duty in the Nepal Terai or hills. v0.3.0 hard-coded `air_density_kg_m3 = 0.6` and broke every Nepali preset; the next failure mode is a cooler-fan undersized for PlantA's 35 °C / 90 % RH / 1400 m May design day. Per **API 617** §3.3 *"Compressors — General Requirements"* and **HEI** *Standards for Closed Feedwater Heaters* §3 (operating, design, and test conditions), the rated point of any thermal or rotating machine must be stated together with the ambient conditions it was sized at. This document is the cooler-side analogue.
 
-**Cross-references:** API 617 (8th ed., 2014) §3.3; HEI *Closed Feedwater Heater Standards* (2015) §3; Peray & Waddell (1986) §6.4 (cooler-fan duty correction); ISO 2533:1975 (standard atmosphere); ASHRAE Handbook (Fundamentals) 2021 Ch. 1 (moist-air properties); NIDC/UCIL/Hongshi/PlantD annual reports for plant throughput and fuel mix.
+**Cross-references:** API 617 (8th ed., 2014) §3.3; HEI *Closed Feedwater Heater Standards* (2015) §3; Peray & Waddell (1986) §6.4 (cooler-fan duty correction); ISO 2533:1975 (standard atmosphere); ASHRAE Handbook (Fundamentals) 2021 Ch. 1 (moist-air properties); NIDC/UCIL/PlantC/PlantD annual reports for plant throughput and fuel mix.
 
 ---
 

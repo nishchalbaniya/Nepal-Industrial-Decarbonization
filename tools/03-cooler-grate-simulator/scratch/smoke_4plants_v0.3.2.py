@@ -53,7 +53,7 @@ print()
 print("=" * 78)
 print("v0.3.2 honest summary (1/7 ship-gate bands pass on all 4 presets)")
 print("=" * 78)
-print("Band                                      PlantA  PlantB  Hongshi  PlantD")
+print("Band                                      PlantA  PlantB  PlantC  PlantD")
 bands = [
     ("secondary_air_outlet_c [600-1000]", lambda r: r[1]),
     ("tertiary_air_outlet_c  [400-700]",  lambda r: r[2]),

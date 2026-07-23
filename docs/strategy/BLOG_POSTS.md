@@ -152,7 +152,7 @@ monthly brick-kiln owner webinar (in नेपाली).
 
 ## Post 5 — "5 Nepali cement plants that should join the climate conversation"
 
-> **SEO target:** "PlantA", "PlantB", "Hongshi
+> **SEO target:** "PlantA", "PlantB", "PlantC
 > Cement Nepal", "Shree Cement Nepal", "plantd",
 > "Araniko Cement" — these are all real searches that the
 > founders, competitors, and journalists run.

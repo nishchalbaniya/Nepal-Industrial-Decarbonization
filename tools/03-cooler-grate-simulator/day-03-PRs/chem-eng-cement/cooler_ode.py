@@ -5,8 +5,8 @@ radiation-floor bugs fixed).
 
 Architecture
 ------------
-Real grate coolers (IKN Pyrorotor, KHD Pyrostep, Polysius REPOL, Hongshi
-Shivam-class) are a 5-compartment hybrid. Compartment 1 (kiln end) is
+Real grate coolers (IKN Pyrorotor, KHD Pyrostep, Polysius REPOL,
+PlantC-class) are a 5-compartment hybrid. Compartment 1 (kiln end) is
 operated as a secondary-air recovery zone — its outlet T is the air that
 goes to the kiln burner. Compartments 2..N-1 feed the calciner as
 tertiary air in a preheater/calciner plant. Compartment N (cold end)
@@ -231,7 +231,7 @@ class CoolerParameters(BaseModel):
     n_compartments: int = Field(5, ge=3, le=7,
         description=(
             "Number of under-grate air compartments. 5 is the "
-            "IKN/KHD/Polysius/Hongshi default. 3-4 for older Nepal plants."
+            "IKN/KHD/Polysius/modern-Chinese-OEM default. 3-4 for older Nepal plants."
         ),
     )
     compartments: List[CompartmentParameters] = Field(

@@ -1,8 +1,8 @@
 {
   "drawing": {
-    "drawing_no": "HCIL-CLR-PID-001",
+    "drawing_no": "NIDC-CLR-PID-001",
     "revision": "A",
-    "title": "Hetauda Cement Cooler -- Piping & Instrumentation Diagram",
+    "title": "PlantA Cement Cooler -- Piping & Instrumentation Diagram",
     "client": "Generic cement plant (configurable per deployment)",
     "plant": "PlantA (generic — configure per deployment)",
     "designed_by": "Mavis / nepal-decarb v1.0",

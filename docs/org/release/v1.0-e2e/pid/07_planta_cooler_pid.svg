@@ -2,7 +2,7 @@
 <rect width="100%" height="100%" fill="#fafaf7"/>
 <g transform="translate(740,570)">
 <rect width="250" height="120" fill="#fff" stroke="#333" stroke-width="1"/>
-<text x="10" y="20" font-size="13" font-weight="bold">HCIL-CLR-PID-001 Rev A</text>
+<text x="10" y="20" font-size="13" font-weight="bold">NIDC-CLR-PID-001 Rev A</text>
 <text x="10" y="40" font-size="10">Plant: PlantA (generic — configure per deployment)</text>
 <text x="10" y="55" font-size="10">Client: Generic cement plant (configur</text>
 <text x="10" y="70" font-size="10">Date: 2026-07-22</text>
@@ -11,7 +11,7 @@
 <text x="10" y="115" font-size="9" fill="#666">Designed: Mavis / nepal-decarb v1.0</text>
 </g>
 <text x="20" y="30" font-size="18" font-weight="bold">PlantA Cooler P&amp;ID</text>
-<text x="20" y="48" font-size="11" fill="#555">Hetauda Cement Cooler -- Piping & Instrumentation Diagram</text>
+<text x="20" y="48" font-size="11" fill="#555">PlantA Cement Cooler -- Piping & Instrumentation Diagram</text>
 <text x="20" y="62" font-size="10" fill="#666">Per ISA-5.1 / ISA-5.3 | ISA-5.1 (instrumentation symbols), ISA-5.3 (P&ID)</text>
 <g id="cooler">
 <rect x="200" y="250" width="500" height="100" fill="#fff" stroke="#000" stroke-width="2"/>
@@ -116,6 +116,6 @@
 <text x="10" y="125" font-size="9"><tspan font-weight="bold">Under-grate air in</tspan> T=   35 C  m=131.2 kg/s</text>
 </g>
 <g transform="translate(20, 670)">
-<text x="0" y="0" font-size="9" fill="#666">Instruments: 8 ISA-5.1 loops. Drawing HCIL-CLR-PID-001 Rev A. Source: cooler v0.5.0 calibrated model (Hetauda 130 t/h, 1400 m altitude). First-law energy balance: 1.8e-16. License: MIT.</text>
+<text x="0" y="0" font-size="9" fill="#666">Instruments: 8 ISA-5.1 loops. Drawing NIDC-CLR-PID-001 Rev A. Source: cooler v0.5.0 calibrated model (PlantA 130 t/h, 1400 m altitude). First-law energy balance: 1.8e-16. License: MIT.</text>
 </g>
 </svg>

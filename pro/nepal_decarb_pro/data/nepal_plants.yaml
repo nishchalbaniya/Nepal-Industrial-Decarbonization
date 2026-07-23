@@ -61,7 +61,7 @@ plants:
 
   - id: plantc
     name: plantc Cement Pvt Ltd
-    operator: "Sino-Nepalese JV (Hongshi Group, China)"
+    operator: "Sino-Nepalese JV (PlantC majority owner)"
     location:
       district: Dhading
       province: Bagmati

@@ -132,7 +132,7 @@ For a Nepali plant, $33.7K–$135K/yr is a lot. Industry rule of thumb is 1–5 
 **Pricing band: $15K–$75K/yr per plant** (matches the §-block).
 
 - For a **PlantA-class legacy plant (1–3 % opportunity)**: **$25K–$50K/yr**.
-- For a **Hongshi-class new plant (0.5–1 % opportunity)**: **$15K–$25K/yr**.
+- For a **PlantC-class new plant (0.5–1 % opportunity)**: **$15K–$25K/yr**.
 - For a **5-plant OEM**: 5 × $25K = **$125K/yr ARR** (not $75K as in the §-block — the $75K was for a 5-plant mix at the floor).
 - For a **50-plant regional platform**: 50 × $25K = **$1.25M/yr ARR** (between the $750K floor and the $3.75M ceiling in the §-block).
 

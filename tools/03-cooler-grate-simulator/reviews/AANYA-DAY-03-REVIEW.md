@@ -42,7 +42,7 @@ The fix: **enforce a second-law cap on air heating**, i.e. `dT_a ≤ T_c − T_a
 
 Real coolers are neither purely cross-flow nor purely counter-flow — they are a **5-compartment hybrid**:
 
-- The first compartment (kiln end, the hot end) is operated as a **secondary-air recovery** zone. Air is ducted *up* through the bed at that compartment and sent directly to the kiln burner. In a 5-compartment IKN/Polycom/Hongshi-style cooler this is the kiln-end compartment. **Tertiary air** to the calciner comes from the second compartment.
+- The first compartment (kiln end, the hot end) is operated as a **secondary-air recovery** zone. Air is ducted *up* through the bed at that compartment and sent directly to the kiln burner. In a 5-compartment IKN/Polycom/modern-Chinese-OEM-style cooler this is the kiln-end compartment. **Tertiary air** to the calciner comes from the second compartment.
 - Compartments 2–5 (cold end) are **cooling-air compartments**: the air is exhausted to dust collection or to a waste-heat boiler.
 
 So the *integrated* 1D model should be: **a counter-flow exchanger with N compartments, the first compartment's air outlet is the secondary air, the rest are exhaust air** (Mujumdar 2007; Boateng 2008 Ch. 7).

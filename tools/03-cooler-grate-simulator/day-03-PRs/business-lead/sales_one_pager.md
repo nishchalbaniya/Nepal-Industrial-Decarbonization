@@ -39,7 +39,7 @@ We don't claim "we built it and it works." We name the bugs we caught and what w
 
 ## The payback
 
-1 % SEC reduction on a 3000-tpd plant = ~$337K/yr in fuel. 4 % = ~$1.35M/yr. Our price = 1–5 % of that = **$15K–75K/yr per plant** (PlantA-class: $25K–$50K; Hongshi-class: $15K–$25K). 5 plants = $75K–$375K ARR. 50-plant regional platform = $1.25M–$2.5M ARR. See `pricing_math.md` for the line-by-line.
+1 % SEC reduction on a 3000-tpd plant = ~$337K/yr in fuel. 4 % = ~$1.35M/yr. Our price = 1–5 % of that = **$15K–75K/yr per plant** (PlantA-class: $25K–$50K; PlantC-class: $15K–$25K). 5 plants = $75K–$375K ARR. 50-plant regional platform = $1.25M–$2.5M ARR. See `pricing_math.md` for the line-by-line.
 
 The pilot at $50K for 90 days pays back if the plant finds 0.15 % of SEC reduction over the 90-day window *and acts on it for 1 year*. The historical record (ECRA, IEA, WBCSD/CSI) says plants find 1–4 %; the question is whether they act.
 

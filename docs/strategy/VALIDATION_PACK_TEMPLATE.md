@@ -115,7 +115,7 @@ Sincerely,
   - **Institutional barrier:** Biomass supply chain is not yet developed in the PlantA district; we are creating it.
   - Narrative: `01F_barrier_test.pdf`
 - **§C.4 Common practice test:**
-  - Survey of 6 Nepali cement plants (PlantA, PlantB, Hongshi, Shree, PlantD, Araniko) — none have biomass + WHR.
+  - Survey of 6 Nepali cement plants (PlantA, PlantB, PlantC, Shree, PlantD, Araniko) — none have biomass + WHR.
   - Table: `01D_common_practice.xlsx`
 - **§C.5 Prior consideration:**
   - Pipeline publication date: `<<YYYY-MM-DD>>`
